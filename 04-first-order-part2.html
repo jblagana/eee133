@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 04 · First-Order Circuits Part 2 — EEE 133</title>
+<meta name="description" content="EEE 133 Lecture 4: the 4-step procedure for first-order circuits, Thévenin resistance, the unit step function, and pulsed excitation. With interactive labs and quiz.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232453d6'/%3E%3Cpath d='M14 24h36M14 40h36' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body data-lecture="04" data-lecture-name="First-Order Circuits Part 2">
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">E133</span> EEE&nbsp;133 <span class="crumb">· Circuit Theory</span></a>
+  <div class="spacer"></div>
+  <span class="progress-pill" id="progPill">Read 0%</span>
+  <button class="icon-btn" id="themeBtn" title="Toggle light/dark theme">🌙</button>
+</header>
+
+<div class="page">
+  <div class="layout">
+
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">Lecture 04 · First-Order II</p>
+      <a href="#ss-recall">1 · L &amp; C at steady state</a>
+      <a href="#ss-ex">2 · Steady-state examples</a>
+      <a href="#procedure">3 · The 4-step procedure</a>
+      <a href="#tau-thev">4 · τ via Thévenin R</a>
+      <a href="#worked">🧪 Lab · response builder</a>
+      <a href="#stepfn">5 · The unit step u(t)</a>
+      <a href="#step-lab">🧪 Lab · step sketcher</a>
+      <a href="#step-ex">6 · Example with u(t)</a>
+      <a href="#pulse">7 · Pulse excitation</a>
+      <a href="#pulse-lab">🧪 Lab · pulse response</a>
+      <a href="#summary">8 · Summary</a>
+      <a href="#quiz">9 · Self-test quiz</a>
+    </nav>
+
+    <main class="content">
+
+      <div class="hero">
+        <svg class="wave" viewBox="0 0 380 120" fill="none">
+          <path d="M0 95 H60 V35 H150 V95 H240 V35 H330 V95 H380" stroke="#7ea2ff" stroke-width="3"/>
+        </svg>
+        <p class="kicker">Lecture 04 · 1st Semester A.Y. 2026–2027</p>
+        <h1>First-Order Circuits · Part 2</h1>
+        <p class="lede">The method, not the algebra: a 4-step procedure that solves every first-order problem,
+        the unit step function that describes switching, and pulsed excitation handled in two intervals.</p>
+        <div class="hero-meta">
+          <span class="chip">🎯 Apply the step-by-step procedure</span>
+          <span class="chip">✏️ Complete response formulas</span>
+          <span class="chip">📶 Switched &amp; pulsed excitations</span>
+        </div>
+      </div>
+
+      <div class="pdf-strip">
+        <span class="pdf-ico">📄</span>
+        <span>Original deck:</span>
+        <a href="Lectures/04%20First-Order%20Circuits%20Part%202.pdf" target="_blank" rel="noopener">04 First-Order Circuits Part 2 (PDF)</a>
+      </div>
+
+      <!-- ============ 1. STEADY STATE RECALL ============ -->
+      <section class="block" id="ss-recall">
+        <h2 class="sec"><span class="sec-num">1</span> Recall · L and C at steady state</h2>
+        <p>With <strong>all sources constant</strong>, at steady state <em>all</em> currents and voltages are
+        constant. Then:</p>
+        <div class="formula-row">
+          <div class="formula center">
+            <span>\( i = \text{const} \Rightarrow v_L = L\dfrac{di}{dt} = 0 \)</span>
+            <span class="flabel">inductor ⇒ <strong>short circuit</strong></span>
+          </div>
+          <div class="formula center">
+            <span>\( v = \text{const} \Rightarrow i_C = C\dfrac{dv}{dt} = 0 \)</span>
+            <span class="flabel">capacitor ⇒ <strong>open circuit</strong></span>
+          </div>
+        </div>
+        <div class="callout co-key"><span class="ico">🗝️</span>
+          <span class="co-title">This is the whole trick of the procedure</span>
+          <p>“Steady state” means <em>replace L by a short and C by an open, then do plain DC analysis</em>.
+          Every initial value and every final value in this lecture comes from exactly that move.</p>
+        </div>
+      </section>
+
+      <!-- ============ 2. STEADY-STATE EXAMPLES ============ -->
+      <section class="block" id="ss-ex">
+        <h2 class="sec"><span class="sec-num">2</span> Steady-state examples</h2>
+        <p class="lede-note">Slides’ Examples 1–2, in the same form: “find the inductor currents and capacitor
+        voltages at steady state.” At steady state, <em>short the inductors and open the capacitors</em>.</p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Example 1 (adapted) — 24 V, 9 Ω</h3>
+            <p>24 V source feeding a 9 Ω series resistor into a node where L and C hang to ground in parallel.</p>
+            <div class="steps">
+              <div class="step open">
+                <button class="step-head"><span class="step-idx">1</span> L → short, C → open<span class="chev">▸</span></button>
+                <div class="step-body"><div class="step-inner">
+                  <p>The node is shorted to ground through L, so its DC voltage is 0. No current can enter the
+                  opened C branch.</p>
+                </div></div>
+              </div>
+              <div class="step">
+                <button class="step-head"><span class="step-idx">2</span> Read off the values<span class="chev">▸</span></button>
+                <div class="step-body"><div class="step-inner">
+                  <div class="formula center">\[ v_C(\infty) = 0\ \text{V}, \qquad i_L(\infty) = \frac{24\ \text{V}}{9\ \Omega} = 2.67\ \text{A} \]</div>
+                </div></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Example 2 (adapted) — 24 V, 4 Ω / 8 Ω</h3>
+            <p>24 V source through 4 Ω into node B; an 8 Ω to ground and an inductor to ground from B; a capacitor
+            (in series with 3 Ω) tapping node B.</p>
+            <div class="steps">
+              <div class="step open">
+                <button class="step-head"><span class="step-idx">1</span> L → short, C → open<span class="chev">▸</span></button>
+                <div class="step-body"><div class="step-inner">
+                  <p>Node B is pulled to 0 V by the shorted inductor; the C branch (open) carries no current, so the
+                  3 Ω drops nothing.</p>
+                </div></div>
+              </div>
+              <div class="step">
+                <button class="step-head"><span class="step-idx">2</span> Read off the values<span class="chev">▸</span></button>
+                <div class="step-body"><div class="step-inner">
+                  <div class="formula center">\[ i_L(\infty) = \frac{24\ \text{V}}{4\ \Omega} = 6\ \text{A}, \qquad v_C(\infty) = 0\ \text{V} \]</div>
+                </div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3. THE 4-STEP PROCEDURE ============ -->
+      <section class="block" id="procedure">
+        <h2 class="sec"><span class="sec-num">3</span> The general 4-step procedure</h2>
+        <p>This is the single most useful procedure of the course. For <em>any</em> first-order circuit that
+        changes at t = 0, and any response x(t):</p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3><span class="tag">Step 1</span>&nbsp; Find x(0⁺)</h3>
+            <p>Reduce the <strong>t &lt; 0</strong> circuit to its DC steady state (L short, C open). Read the
+            state variable, then use <strong>continuity</strong> (v<sub>C</sub> and i<sub>L</sub> don’t jump):
+            x(0⁺) = x(0⁻).</p>
+          </div>
+          <div class="card">
+            <h3><span class="tag">Step 2</span>&nbsp; Find x(∞)</h3>
+            <p>Reduce the <strong>t &gt; 0</strong> circuit to its DC steady state (L short, C open). Read the
+            final value of the response.</p>
+          </div>
+          <div class="card">
+            <h3><span class="tag">Step 3</span>&nbsp; Find τ</h3>
+            <p>Find the <strong>Thévenin resistance R<sub>th</sub></strong> seen by the single storage element in
+            the t &gt; 0 circuit, then \( \tau = R_{th}C \) or \( \tau = L/R_{th} \).</p>
+          </div>
+          <div class="card">
+            <h3><span class="tag">Step 4</span>&nbsp; Write the response</h3>
+            <div class="formula center" style="margin-bottom:0">
+              \[ x(t) = x(\infty) + \big[x(0^+) - x(\infty)\big]\,e^{-t/\tau} \]
+            </div>
+          </div>
+        </div>
+
+        <div class="callout co-key"><span class="ico">🧮</span>
+          <span class="co-title">Why one formula covers everything</span>
+          <p>The t &gt; 0 solution is “forced + natural.” The forced part <em>is</em> x(∞) (the DC steady state of
+          the final circuit), and the natural part is a single exponential whose amplitude is whatever makes the
+          formula match x(0⁺) at t = 0. The 4 steps are just bookkeeping for that logic — no differential equations
+          required.</p>
+        </div>
+      </section>
+
+      <!-- ============ 4. THEVENIN ============ -->
+      <section class="block" id="tau-thev">
+        <h2 class="sec"><span class="sec-num">4</span> Step 3 in detail · τ via the Thévenin resistance</h2>
+        <p>For the t &gt; 0 circuit, look into the terminals where the single storage element sits:</p>
+        <ol class="tight">
+          <li><strong>Deactivate the independent sources</strong> — voltage sources become shorts, current sources
+          become opens.</li>
+          <li><strong>Reduce the resistor network</strong> seen by the element to one resistance: R<sub>th</sub>.</li>
+          <li>Compute \( \tau = R_{th}C \) (or \( L/R_{th} \)).</li>
+        </ol>
+        <div class="callout co-warn"><span class="ico">⚠️</span>
+          <span class="co-title">Two frequent slips</span>
+          <p>(a) The R in τ is <em>not</em> necessarily a single literal resistor — it’s the whole network as seen
+          from L or C. (b) Dependent sources are <em>not</em> deactivated; with them in the circuit, find
+          R<sub>th</sub> = v<sub>test</sub>/i<sub>test</sub> with a test source at the terminals.</p>
+        </div>
+
+        <div class="fig">
+          <svg viewBox="0 0 460 190" width="440" role="img" aria-label="Thévenin resistance seen by C">
+            <!-- 12V source -->
+            <text x="24" y="60" class="clab">12 V</text>
+            <line x1="40" y1="72" x2="40" y2="86" class="cpart"/>
+            <line x1="26" y1="86" x2="54" y2="86" class="cpart"/>
+            <line x1="40" y1="72" x2="40" y2="40" class="cwire"/>
+            <line x1="40" y1="86" x2="40" y2="150" class="cwire"/>
+            <line x1="40" y1="40" x2="150" y2="40" class="cwire"/>
+            <!-- R1 4k -->
+            <rect x="150" y="26" width="60" height="28" class="cpart" style="fill:none"/>
+            <text x="158" y="72" class="clab">4 kΩ</text>
+            <line x1="210" y1="40" x2="280" y2="40" class="cwire"/>
+            <!-- node A -->
+            <circle cx="280" cy="40" r="3" class="cheav"/>
+            <!-- R2 2k to ground -->
+            <line x1="280" y1="40" x2="280" y2="70" class="cwire"/>
+            <rect x="266" y="70" width="28" height="52" class="cpart" style="fill:none"/>
+            <text x="300" y="100" class="clab">2 kΩ</text>
+            <line x1="280" y1="122" x2="280" y2="150" class="cwire"/>
+            <!-- C branch (removed, terminals) -->
+            <line x1="280" y1="40" x2="380" y2="40" class="cdash"/>
+            <circle cx="380" cy="40" r="4" class="cheav"/>
+            <line x1="380" y1="150" x2="280" y2="150" class="cwire"/>
+            <line x1="380" y1="150" x2="380" y2="120" class="cdash"/>
+            <circle cx="380" cy="120" r="4" class="cheav"/>
+            <text x="392" y="95" class="clab">→ C</text>
+            <line x1="40" y1="150" x2="280" y2="150" class="cwire"/>
+            <text x="120" y="180" class="cnote">Rth seen by C = 4 kΩ ∥ 2 kΩ = 1.33 kΩ  ⇒  τ = Rth·C</text>
+          </svg>
+          <div class="figcap">Remove C, kill the source (12 V → short), reduce what’s left: 4 kΩ ∥ 2 kΩ.</div>
+        </div>
+      </section>
+
+      <!-- ============ 5. WORKED EXAMPLE + BUILDER LAB ============ -->
+      <section class="block" id="worked">
+        <h2 class="sec"><span class="sec-num">5</span> Worked example · the procedure, end to end</h2>
+        <p class="lede-note">Slide-style example: a capacitor that has sat on a 12 V supply is switched at t = 0
+        onto a 4 V supply through 4 kΩ, with C = 0.5 µF. Find v<sub>C</sub>(t) and i(t) for t ≥ 0.</p>
+
+        <div class="steps">
+          <div class="step open">
+            <button class="step-head"><span class="step-idx">1</span> x(0⁺): steady state of the t &lt; 0 circuit<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>C is open at steady state, so no current in the 4 kΩ and the full source appears on it:</p>
+              <div class="formula center">\[ v_C(0^+) = v_C(0^-) = 12\ \text{V} \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">2</span> x(∞): steady state of the t &gt; 0 circuit<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Eventually the capacitor sits on the 4 V supply with no current again:</p>
+              <div class="formula center">\[ v_C(\infty) = 4\ \text{V} \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">3</span> τ: Thévenin resistance seen by C<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Deactivate the 4 V source (short). The only resistance left at C’s terminals is the 4 kΩ:</p>
+              <div class="formula center">\[ R_{th} = 4\ \text{k}\Omega \quad\Rightarrow\quad \tau = R_{th}C = (4\times10^3)(0.5\times10^{-6}) = 2\ \text{ms} \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">4</span> Assemble the response<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">\[ v_C(t) = 4 + (12 - 4)\,e^{-t/2\text{ms}} = 4 + 8\,e^{-t/2\text{ms}}\ \text{V} \]</div>
+              <div class="formula center">\[ i(t) = C\,\frac{dv_C}{dt} = -16\,e^{-t/2\text{ms}}\ \text{mA} \]</div>
+              <p>The voltage falls from 12 V toward 4 V; the current is a negative exponential that jumps from 0 to
+              −16 mA at t = 0⁺.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <h3>🧪 Response builder — see the formula breathe</h3>
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">🏗️</div>
+            <div><div class="t">Build \( x(t) = x(\infty) + [x(0^+) - x(\infty)]e^{-t/\tau} \) from its three ingredients</div>
+            <div class="s">Drag x(0⁺), x(∞) and τ — the curve, the markers and the 5τ point follow.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="rbX0">x(0⁺) — initial value</label><span class="val" id="rbX0v"></span></div>
+                <input type="range" id="rbX0" min="-20" max="20" step="0.5" value="12"></div>
+              <div class="ctl"><div class="ctl-top"><label for="rbXinf">x(∞) — final value</label><span class="val" id="rbXinfv"></span></div>
+                <input type="range" id="rbXinf" min="-20" max="20" step="0.5" value="4"></div>
+              <div class="ctl"><div class="ctl-top"><label for="rbTau">τ — time constant</label><span class="val" id="rbTauv"></span></div>
+                <input type="range" id="rbTau" min="0.5" max="10" step="0.5" value="2"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">x(τ)</div><div class="v" id="rbXtau"></div></div>
+                <div class="readout"><div class="k">x(5τ)</div><div class="v" id="rbX5"></div></div>
+                <div class="readout"><div class="k">swing |x0−x∞|</div><div class="v" id="rbSwing"></div></div>
+              </div>
+            </div>
+            <div class="stage"><canvas class="plot" id="rbPlot" aria-label="General first-order response"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 6. UNIT STEP ============ -->
+      <section class="block" id="stepfn">
+        <h2 class="sec"><span class="sec-num">6</span> The unit step function</h2>
+        <p>Switching a source in or out of a circuit is just a multiplication by a step. The
+        <strong>unit step</strong> is defined by</p>
+        <div class="formula center">
+          <span class="fnum">(4.1)</span>
+          \[ u(t) = \begin{cases} 0, & t < 0 \\ 1, & t \ge 0 \end{cases} \]
+          <span class="flabel">A voltage source that turns on at t = 0 is V·u(t); a current source that turns on is I·u(t).</span>
+        </div>
+        <div class="formula-row">
+          <div class="formula center">
+            <span>Translated: \( u(t - t_0) \)</span>
+            <span class="flabel">step that turns on at t = t₀ (e.g. a pulse start)</span>
+          </div>
+          <div class="formula center">
+            <span>Inverted: \( u(t_0 - t) \)</span>
+            <span class="flabel">on until t = t₀, then off (e.g. a pulse end)</span>
+          </div>
+        </div>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">📶</div>
+            <div><div class="t">Step sketcher</div>
+            <div class="s">Compose A·u(t − t₀) — and build a rectangular pulse from two steps.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="stepA">Amplitude A</label><span class="val" id="stepAv"></span></div>
+                <input type="range" id="stepA" min="-10" max="10" step="0.5" value="5"></div>
+              <div class="ctl"><div class="ctl-top"><label for="stepT0">Switch time t₀ (s)</label><span class="val" id="stepT0v"></span></div>
+                <input type="range" id="stepT0" min="-4" max="8" step="0.5" value="0"></div>
+              <div class="ctl"><div class="ctl-top"><label>Pulse end t₁ (draws A·[u(t−t₀) − u(t−t₁)])</label></div>
+                <div class="seg" id="stepPulse">
+                  <button data-pulse="0" class="on">Single step</button>
+                  <button data-pulse="1">Pulse</button>
+                </div>
+              </div>
+              <div class="ctl"><div class="ctl-top"><label for="stepT1">Pulse end t₁ (s)</label><span class="val" id="stepT1v"></span></div>
+                <input type="range" id="stepT1" min="-4" max="8" step="0.5" value="3"></div>
+            </div>
+            <div class="stage"><canvas class="plot" id="stepPlot" aria-label="Step function sketch"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 7. EXAMPLE WITH u(t) ============ -->
+      <section class="block" id="step-ex">
+        <h2 class="sec"><span class="sec-num">7</span> Example 9 (slide-style) · sources written with u(t)</h2>
+        <p class="lede-note">A 24 V source in series with 6 Ω, and a 2 A current source, both switched on at t = 0,
+        feed an inductor L = 12 H to ground. Find i<sub>L</sub>(t) for t ≥ 0.</p>
+        <div class="steps">
+          <div class="step open">
+            <button class="step-head"><span class="step-idx">1</span> Initial condition<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>For t &lt; 0 the sources are off (multiplied by u(t) = 0): the inductor carries nothing, and
+              inductor current is continuous:</p>
+              <div class="formula center">\[ i_L(0^+) = i_L(0^-) = 0 \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">2</span> Final condition<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>At t → ∞ the inductor is a short, so the node it sits on is at 0 V. By KCL at that node:</p>
+              <div class="formula center">\[ i_L(\infty) = \frac{24}{6} + 2 = 6\ \text{A} \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">3</span> Time constant<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Seen from L: deactivate the 24 V (short) and the 2 A (open) — only the 6 Ω remains:</p>
+              <div class="formula center">\[ \tau = \frac{L}{R_{th}} = \frac{12}{6} = 2\ \text{s} \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">4</span> Response<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">\[ i_L(t) = 6 + (0 - 6)\,e^{-t/2} = 6\left(1 - e^{-t/2}\right)\ \text{A}, \quad t \ge 0 \]</div>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 8. PULSE EXCITATION ============ -->
+      <section class="block" id="pulse">
+        <h2 class="sec"><span class="sec-num">8</span> Pulse excitation · two intervals</h2>
+        <p>A rectangular pulse of amplitude V<sub>p</sub> and width t<sub>p</sub> that starts at t = 0 is written
+        as a difference of shifted steps:</p>
+        <div class="formula center">
+          <span class="fnum">(4.2)</span>
+          \[ v_{in}(t) = V_p\,\big[u(t) - u(t - t_p)\big] \]
+          <span class="flabel">A pulse is “a step up, and later a step down.” First-order responses therefore come in two intervals.</span>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Interval 1 · 0 &lt; t &lt; tₚ (pulse on)</h3>
+            <p>The circuit sees a step of V<sub>p</sub>. Apply the 4-step procedure with x(0⁺) and
+            x(∞) = value if the pulse <em>never</em> ended:</p>
+            <div class="formula center" style="margin-bottom:0">
+              \[ x(t) = x_1(\infty) + \big[x(0^+) - x_1(\infty)\big]e^{-(t-0)/\tau} \]
+            </div>
+          </div>
+          <div class="card">
+            <h3>Interval 2 · t &gt; tₚ (pulse off)</h3>
+            <p>The new initial condition is <strong>the state left at t = tₚ</strong> (continuity!). The new final
+            value is the DC steady state of the post-pulse circuit:</p>
+            <div class="formula center" style="margin-bottom:0">
+              \[ x(t) = x_2(\infty) + \big[x(t_p) - x_2(\infty)\big]e^{-(t-t_p)/\tau} \]
+            </div>
+          </div>
+        </div>
+        <div class="callout co-tip"><span class="ico">🧠</span>
+          <span class="co-title">The one rule that makes pulses easy</span>
+          <p>At every switching instant the <em>state variable</em> (v<sub>C</sub> or i<sub>L</sub>) carries over
+          unchanged. Every interval is a fresh 4-step problem whose “initial value” is simply the previous
+          interval’s ending value.</p>
+        </div>
+
+        <div class="lab" id="pulse-lab">
+          <div class="lab-head"><div class="lab-ico">📊</div>
+            <div><div class="t">Pulse lab · RC low-pass driven by a rectangular pulse</div>
+            <div class="s">v<sub>C</sub>(t) over both intervals — watch the handoff point at t = tₚ.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="plVp">Pulse amplitude Vₚ</label><span class="val" id="plVpv"></span></div>
+                <input type="range" id="plVp" min="2" max="20" step="1" value="10"></div>
+              <div class="ctl"><div class="ctl-top"><label for="plTp">Pulse width tₚ (× τ)</label><span class="val" id="plTpv"></span></div>
+                <input type="range" id="plTp" min="0.5" max="10" step="0.5" value="3"></div>
+              <div class="ctl"><div class="ctl-top"><label for="plTau">Time constant τ</label><span class="val" id="plTaum"></span></div>
+                <input type="range" id="plTau" min="0.5" max="5" step="0.1" value="1"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">v(tₚ) — handoff</div><div class="v" id="plVtp"></div></div>
+                <div class="readout"><div class="k">sag at tₚ</div><div class="v" id="plSag"></div></div>
+                <div class="readout"><div class="k">charge ratio tₚ/τ</div><div class="v" id="plRatio"></div></div>
+              </div>
+              <p class="kbd-note">Rule of thumb (Lecture 5 preview): to pass the pulse with little distortion,
+              want tₚ ≫ τ so the capacitor fully charges during the high interval.</p>
+            </div>
+            <div class="stage"><canvas class="plot" id="plPlot" aria-label="Pulse response"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 9. SUMMARY ============ -->
+      <section class="block" id="summary">
+        <h2 class="sec"><span class="sec-num">9</span> Summary</h2>
+        <div class="callout co-key"><span class="ico">📌</span>
+          <p>• At DC steady state: <strong>L = short, C = open</strong> — that single rule gives x(0⁻) and x(∞).</p>
+          <p>• <strong>4-step procedure</strong>: x(0⁺) → x(∞) → τ (via R<sub>th</sub> seen by L or C) →
+          \( x(t) = x(\infty) + [x(0^+) - x(\infty)]e^{-t/\tau} \).</p>
+          <p>• The <strong>unit step</strong> u(t − t₀) models switching; a pulse is a difference of two steps.</p>
+          <p>• <strong>Pulsed excitation</strong> = two intervals; each interval reuses the 4-step procedure with the
+          previous interval’s ending state as its initial condition.</p>
+        </div>
+
+        <h3>Flashcards — test yourself</h3>
+        <div class="grid grid-2">
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Order of the 4-step procedure<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">x(0⁺) → x(∞) → τ → assemble x(t)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">How is R<sub>th</sub> found for τ?<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">Deactivate independent sources; reduce the network seen by L or C<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">u(t − t₀) for t &lt; t₀, and for t ≥ t₀<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">0, and 1<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">A pulse of width tₚ as steps<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ V_p\big[u(t) - u(t - t_p)\big] \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Initial condition of interval 2 in a pulse response<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">The value of the state variable at t = tₚ (continuity)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Inductor at DC steady state<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back"><strong>Short circuit</strong> (v<sub>L</sub> = 0)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- ============ 10. QUIZ ============ -->
+      <section class="block" id="quiz">
+        <h2 class="sec"><span class="sec-num">10</span> Self-test quiz</h2>
+        <p class="lede-note">The procedure is the exam. Make it automatic.</p>
+        <div class="quiz" data-quiz="l04">
+          <div class="quiz-q" data-answer="0" data-expl="Step 1 of the procedure: reduce the t<0 circuit to DC steady state (L short, C open) and read x(0⁻); continuity gives x(0⁺).">
+            <div class="q"><span class="qn">Q1.</span>The first thing the 4-step procedure asks for is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>The initial value x(0⁺)</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>The final value x(∞)</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>The time constant τ</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>The source values</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="1" data-expl="To find Rth you deactivate the independent sources: voltage sources become shorts, current sources become opens — then reduce the network seen by the storage element.">
+            <div class="q"><span class="qn">Q2.</span>To compute R<sub>th</sub> for τ, independent sources are:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>Replaced by their maximum values</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>Deactivated (V → short, I → open)</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>Left in place</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Removed entirely along with their branches</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="3" data-expl="x(τ) = x(∞) + [x0−x(∞)]e^(−1) = 4 + 8(0.368) = 4 + 2.94 = 6.94 V.">
+            <div class="q"><span class="qn">Q3.</span>v<sub>C</sub>(0⁺) = 12 V, v<sub>C</sub>(∞) = 4 V, τ = 2 ms. v<sub>C</sub> at t = τ is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>12 V</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>4 V</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>8 V</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>6.94 V</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="0" data-expl="u(t−3) = 0 until t = 3 and 1 afterwards. At t = 2 the step has not turned on yet.">
+            <div class="q"><span class="qn">Q4.</span>The value of u(t − 3) at t = 2 is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>0</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>1</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>−3</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Undefined</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="2" data-expl="Continuity: the state variable carries over unchanged, so x(0⁺) of interval 2 is x(tₚ⁻) = x(tₚ).">
+            <div class="q"><span class="qn">Q5.</span>In a pulse response, the initial condition of the second interval is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>Zero</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>The pulse amplitude</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>The state value at t = tₚ</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>The value of x(∞) of interval 1</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <span class="quiz-score"></span>
+        </div>
+      </section>
+
+      <div class="pager">
+        <a href="03-first-order-part1.html"><div class="dir">← Previous lecture</div><div class="ti">03 · First-Order Circuits Part 1</div></a>
+        <a class="next" href="05-linear-waveshaping.html"><div class="dir">Next lecture →</div><div class="ti">05 · Linear Waveshaping</div></a>
+      </div>
+
+      <div style="text-align:center; margin-top:26px">
+        <button class="btn" data-mark-complete="04">Mark lecture complete</button>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="foot">
+    <span>EEE 133 · Circuit Theory — Lecture 04: First-Order Circuits Part 2</span>
+    <span>UP Diliman · College of Engineering · EEE Institute</span>
+  </div>
+</div>
+
+<script src="js/plot.js"></script>
+<script src="js/common.js"></script>
+<script src="js/lecture04.js"></script>
+</body>
+</html>

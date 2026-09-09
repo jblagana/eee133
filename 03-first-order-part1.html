@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 03 · First-Order Circuits Part 1 — EEE 133</title>
+<meta name="description" content="EEE 133 Lecture 3: first-order circuits — differential equations, natural and forced response, the time constant, source-free RC and RL networks. With interactive transient labs and quiz.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232453d6'/%3E%3Cpath d='M14 24h36M14 40h36' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body data-lecture="03" data-lecture-name="First-Order Circuits Part 1">
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">E133</span> EEE&nbsp;133 <span class="crumb">· Circuit Theory</span></a>
+  <div class="spacer"></div>
+  <span class="progress-pill" id="progPill">Read 0%</span>
+  <button class="icon-btn" id="themeBtn" title="Toggle light/dark theme">🌙</button>
+</header>
+
+<div class="page">
+  <div class="layout">
+
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">Lecture 03 · First-Order I</p>
+      <a href="#fo-def">1 · What is first-order?</a>
+      <a href="#chars">2 · R, L, C at a glance</a>
+      <a href="#intuition">3 · Example 1: switched RC</a>
+      <a href="#de">4 · The differential equation</a>
+      <a href="#homogeneous">5 · Homogeneous ⇒ natural</a>
+      <a href="#tau">6 · The time constant τ</a>
+      <a href="#rc-free">7 · Source-free RC</a>
+      <a href="#rl-free">8 · Source-free RL</a>
+      <a href="#rl-step">9 · Step response</a>
+      <a href="#nonhom">10 · Non-homogeneous DE</a>
+      <a href="#remarks">11 · Transient vs steady-state</a>
+      <a href="#labs">🧪 Labs · three transients</a>
+      <a href="#summary">12 · Summary</a>
+      <a href="#quiz">13 · Self-test quiz</a>
+    </nav>
+
+    <main class="content">
+
+      <div class="hero">
+        <svg class="wave" viewBox="0 0 380 120" fill="none">
+          <path d="M0 20 H60 V35 C 120 35, 140 100, 380 100" stroke="#7ea2ff" stroke-width="3"/>
+        </svg>
+        <p class="kicker">Lecture 03 · 1st Semester A.Y. 2026–2027</p>
+        <h1>First-Order Circuits · Part 1</h1>
+        <p class="lede">Where does the famous exponential come from? This lecture derives it from a first-order
+        differential equation, defines the time constant, and works the two source-free cases — RC and RL.</p>
+        <div class="hero-meta">
+          <span class="chip">🎯 Initial conditions &amp; τ of RL / RC</span>
+          <span class="chip">✏️ Solve 1st-order linear DEs</span>
+          <span class="chip">📈 Separate transient &amp; steady-state</span>
+        </div>
+      </div>
+
+      <div class="pdf-strip">
+        <span class="pdf-ico">📄</span>
+        <span>Original deck:</span>
+        <a href="Lectures/03%20First-Order%20Circuits%20Part%201.pdf" target="_blank" rel="noopener">03 First-Order Circuits Part 1 (PDF)</a>
+      </div>
+
+      <!-- ============ 1. DEFINITION ============ -->
+      <section class="block" id="fo-def">
+        <h2 class="sec"><span class="sec-num">1</span> What is a first-order circuit?</h2>
+        <p>Any circuit with <strong>exactly one independent energy-storage element</strong> (a single L <em>or</em>
+        single C, after all series/parallel reductions), an arbitrary number of sources, and an arbitrary number of
+        resistors. <strong>Any voltage or current</strong> in such a circuit is the solution of a
+        <strong>first-order differential equation</strong>.</p>
+        <div class="callout co-key"><span class="ico">📦</span>
+          <span class="co-title">“Independent” energy-storage elements</span>
+          <p>Elements are independent if they <em>cannot</em> be reduced to a single equivalent element via series
+          or parallel combinations. Two series capacitors that collapse to one equivalent capacitor? Not independent —
+          the circuit is still first-order. A C and an L that can't be merged? Second-order (beyond this lecture).</p>
+        </div>
+        <p class="lede-note">RL networks and RC networks are the two flavors of first-order circuit. Everything in
+        this lecture is a statement about those two families.</p>
+      </section>
+
+      <!-- ============ 2. CHAR TABLE ============ -->
+      <section class="block" id="chars">
+        <h2 class="sec"><span class="sec-num">2</span> Characteristics of R, L and C</h2>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Element</th><th>V-I relation</th><th>DC steady state</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Resistor</strong></td><td>\( v = R\,i \)</td><td>itself (\(v = Ri\))</td></tr>
+              <tr><td><strong>Inductor</strong></td><td>\( v = L\,\dfrac{di}{dt} \)</td><td>\(v = 0\): <strong>short circuit</strong></td></tr>
+              <tr><td><strong>Capacitor</strong></td><td>\( i = C\,\dfrac{dv}{dt} \)</td><td>\(i = 0\): <strong>open circuit</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============ 3. EXAMPLE 1 ============ -->
+      <section class="block" id="intuition">
+        <h2 class="sec"><span class="sec-num">3</span> Example 1 · An intuitive transient (switched RC)</h2>
+        <p class="lede-note">“The switch has been in position 1 for a very, very long time. At t = 0 it moves to
+        position 2. Sketch v(t) and i(t) for all time.”</p>
+
+        <div class="fig">
+          <svg viewBox="0 0 420 220" width="400" role="img" aria-label="Switched RC circuit">
+            <!-- source E at position 1 -->
+            <text x="36" y="40" class="clab">E</text>
+            <line x1="45" y1="52" x2="45" y2="66" class="cpart"/>
+            <line x1="30" y1="66" x2="60" y2="66" class="cpart"/>
+            <line x1="45" y1="66" x2="45" y2="96" class="cwire"/>
+            <line x1="45" y1="52" x2="45" y2="30" class="cwire"/>
+            <line x1="45" y1="30" x2="180" y2="30" class="cwire"/>
+            <!-- switch pole -->
+            <circle cx="185" cy="30" r="3.5" class="cheav"/>
+            <line x1="185" y1="30" x2="232" y2="52" class="cpart"/>
+            <circle cx="185" cy="70" r="3.5" class="cheav"/>
+            <circle cx="232" cy="70" r="3.5" class="cheav"/>
+            <text x="240" y="26" class="clab">1</text>
+            <text x="240" y="74" class="clab">2</text>
+            <!-- top wire to R -->
+            <line x1="232" y1="30" x2="300" y2="30" class="cwire"/>
+            <!-- R -->
+            <rect x="300" y="14" width="56" height="32" class="cpart" style="fill:none"/>
+            <text x="313" y="66" class="clab">R</text>
+            <line x1="356" y1="30" x2="392" y2="30" class="cwire"/>
+            <line x1="392" y1="30" x2="392" y2="130" class="cwire"/>
+            <!-- C -->
+            <line x1="357" y1="135" x2="427" y2="135" style="display:none"/>
+            <line x1="392" y1="140" x2="392" y2="152" class="cwire"/>
+            <line x1="362" y1="155" x2="422" y2="155" class="cpart" stroke-width="5"/>
+            <line x1="362" y1="168" x2="422" y2="168" class="cpart" stroke-width="5"/>
+            <text x="430" y="166" class="clab">C</text>
+            <line x1="392" y1="168" x2="392" y2="185" class="cwire"/>
+            <!-- bottom wire -->
+            <line x1="392" y1="185" x2="45" y2="185" class="cwire"/>
+            <line x1="45" y1="185" x2="45" y2="96" class="cwire"/>
+            <!-- switch position 2 branch: R-C loop -->
+            <line x1="232" y1="70" x2="300" y2="70" class="cdash"/>
+            <line x1="300" y1="70" x2="300" y2="30" class="cdash"/>
+            <text x="150" y="212" class="cnote">position 1: C charged by E · position 2: C discharges through R</text>
+          </svg>
+          <div class="figcap">For t &lt; 0 the switch charges the capacitor from E. At t = 0 it swings to position 2 and the capacitor is left with R alone.</div>
+        </div>
+
+        <div class="steps">
+          <div class="step open">
+            <button class="step-head"><span class="step-idx">1</span> Before switching (t &lt; 0): find v(0⁻)<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>“Very, very long time” ⇒ DC steady state ⇒ the capacitor is an <strong>open circuit</strong>. No
+              current flows, so the full source appears across C:</p>
+              <div class="formula center">\[ v(0^-) = E, \qquad i(0^-) = 0 \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">2</span> Apply continuity at t = 0<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Capacitor voltage cannot jump, so the discharge starts exactly where the charging left off:</p>
+              <div class="formula center">\[ v(0^+) = v(0^-) = E \]</div>
+              <p class="lede-note">(The <em>current</em> will jump — see step 4. Only v is continuous.)</p>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">3</span> After switching (t &gt; 0): source-free RC<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Position 2 is a capacitor and a resistor in a loop — the <strong>source-free RC</strong> circuit of
+              §7. Its solution is the decaying exponential:</p>
+              <div class="formula center">\[ v(t) = E\,e^{-t/RC}, \qquad t \ge 0 \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">4</span> Get i(t) from the V-I relation<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>With the passive reference direction shown, \( i = C\,dv/dt \):</p>
+              <div class="formula center">\[ i(t) = C\,\frac{d}{dt}\left(E e^{-t/RC}\right) = -\frac{E}{R}\,e^{-t/RC} \]</div>
+              <p>At t = 0⁺ the capacitor (still at E) sees the whole of R: \( i(0^+) = -E/R \). The current
+              <em>jumps</em> from 0 to −E/R at the switching instant while v stays continuous — the sketch on the
+              slide follows immediately.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 4. DE ============ -->
+      <section class="block" id="de">
+        <h2 class="sec"><span class="sec-num">4</span> The first-order differential equation</h2>
+        <p>Take the simplest excited case — an inductor, a resistor and a DC source (the circuit of §9). KVL gives</p>
+        <div class="formula center">
+          <span class="fnum">(3.1)</span>
+          \[ L\,\frac{di(t)}{dt} + R\,i(t) = V \qquad\Longleftrightarrow\qquad \frac{di}{dt} + \frac{R}{L}\,i = \frac{V}{L} \]
+          <span class="flabel">First-order, linear, constant-coefficient. No matter how complicated the rest of the network is, its response always looks like this.</span>
+        </div>
+        <p>The general solution is the sum of two pieces, which the rest of the lecture separates:</p>
+        <div class="formula center">
+          \[ i(t) = \underbrace{i_{\text{natural}}(t)}_{\text{solution of the homogeneous DE}} \;+\; \underbrace{i_{\text{forced}}(t)}_{\text{solution of the full DE}} \]
+        </div>
+      </section>
+
+      <!-- ============ 5. HOMOGENEOUS ============ -->
+      <section class="block" id="homogeneous">
+        <h2 class="sec"><span class="sec-num">5</span> Homogeneous DE ⇒ natural response</h2>
+        <p>Set the source to zero: \( \dfrac{di}{dt} + \dfrac{R}{L} i = 0 \). Try a solution of the form
+        \( i(t) = A\,e^{st} \); substituting gives the <strong>characteristic equation</strong>:</p>
+        <div class="formula center">
+          \[ s + \frac{R}{L} = 0 \quad\Rightarrow\quad s = -\frac{R}{L} \]
+        </div>
+        <p>So every natural response in a first-order circuit has the shape</p>
+        <div class="formula center">
+          <span class="fnum">(3.2)</span>
+          \[ i_{\text{natural}}(t) = A\,e^{-t/\tau}, \qquad \tau = \frac{L}{R}\ \ (\text{RL}) \;\;\text{or}\;\; \tau = RC\ \ (\text{RC}) \]
+          <span class="flabel">An exponential decay. The constant A is fixed by the initial condition; τ is fixed by the circuit.</span>
+        </div>
+        <div class="callout co-key"><span class="ico">🌿</span>
+          <span class="co-title">Properties of the natural (transient) response</span>
+          <p>(1) It is an exponential whose rate is set by R, L, C. (2) It is called the <em>natural response</em> of the
+          network. (3) It is <strong>independent of the sources</strong> — kill the sources and it’s still there.
+          (4) It is the bridge between the initial state and the final steady state.</p>
+        </div>
+      </section>
+
+      <!-- ============ 6. TIME CONSTANT ============ -->
+      <section class="block" id="tau">
+        <h2 class="sec"><span class="sec-num">6</span> The time constant τ</h2>
+        <p>The <strong>time constant</strong> \( \tau \) is the single number that sets the <em>speed</em> of any
+        first-order transient:</p>
+        <div class="formula-row">
+          <div class="formula center"><span>\( \tau_{RC} = R\,C \)</span><span class="flabel">RC network [s]</span></div>
+          <div class="formula center"><span>\( \tau_{RL} = \dfrac{L}{R} \)</span><span class="flabel">RL network [s]</span></div>
+        </div>
+        <p>After \( t = n\tau \), a decay \( e^{-n} \) of its initial swing has disappeared:</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>t</th><td class="c">τ</td><td class="c">2τ</td><td class="c">3τ</td><td class="c">4τ</td><td class="c">5τ</td></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>remaining fraction</strong></td>
+                <td class="c">36.8%</td><td class="c">13.5%</td><td class="c">5.0%</td><td class="c">1.8%</td><td class="c">0.7%</td>
+              </tr>
+              <tr>
+                <td><strong>“progress” toward final value</strong></td>
+                <td class="c">63.2%</td><td class="c">86.5%</td><td class="c">95.0%</td><td class="c">98.2%</td><td class="c">99.3%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout co-tip"><span class="ico">⏱️</span>
+          <span class="co-title">The 5τ rule</span>
+          <p>By \( t = 5\tau \) the transient is down to under 1% — engineers call that
+          <strong>steady state</strong>. “How long is the transient?” is answered by τ alone.</p>
+        </div>
+      </section>
+
+      <!-- ============ 7. SOURCE-FREE RC ============ -->
+      <section class="block" id="rc-free">
+        <h2 class="sec"><span class="sec-num">7</span> The source-free RC circuit</h2>
+        <p>A charged capacitor (\( v(0) = V_0 \)) in a loop with a resistor. KCL/KVL around the loop:
+        \( R\,i + v = 0 \) with \( i = C\,dv/dt \):</p>
+        <div class="formula center">
+          \[ RC\,\frac{dv}{dt} + v = 0 \;\;\Rightarrow\;\; \boxed{\,v(t) = V_0\,e^{-t/\tau}\,},\qquad \tau = RC \]
+          <span class="flabel">Voltage decays from V₀ with time constant τ = RC. The current is \( i(t) = -\dfrac{V_0}{R}e^{-t/\tau} \) — an opposite-sign exponential that jumps at t = 0.</span>
+        </div>
+        <div class="callout co-violet"><span class="ico">🔁</span>
+          <span class="co-title">Energy viewpoint</span>
+          <p>All energy the capacitor started with, \( \tfrac12 C V_0^2 \), ends up as heat in R:
+          \( \int_0^\infty R i^2 dt = \tfrac12 C V_0^2 \). The exponential is just the bookkeeping of that hand-off.</p>
+        </div>
+      </section>
+
+      <!-- ============ 8. SOURCE-FREE RL ============ -->
+      <section class="block" id="rl-free">
+        <h2 class="sec"><span class="sec-num">8</span> The source-free RL circuit</h2>
+        <p>An inductor carrying \( i(0) = I_0 \) in a loop with a resistor. KVL: \( L\,di/dt + R\,i = 0 \):</p>
+        <div class="formula center">
+          \[ \boxed{\,i(t) = I_0\,e^{-t/\tau}\,},\qquad \tau = \frac{L}{R} \]
+          <span class="flabel">Current decays from I₀ with time constant τ = L/R. The inductor voltage is \( v(t) = -R I_0 e^{-t/\tau} \).</span>
+        </div>
+        <p class="lede-note">Same shape, different element: where RC decays its <em>voltage</em>, RL decays its
+        <em>current</em> — the continuous quantity of each element.</p>
+      </section>
+
+      <!-- ============ 9. STEP RESPONSE ============ -->
+      <section class="block" id="rl-step">
+        <h2 class="sec"><span class="sec-num">9</span> The step response: forced + natural</h2>
+        <p>Now energize the RL loop: a DC source V steps in at t = 0 (switch closes), with \( i(0) = 0 \).
+        The answer has two parts:</p>
+        <div class="formula-row">
+          <div class="formula center">
+            <span>Forced: \( i_f = \dfrac{V}{R} \)</span>
+            <span class="flabel">the constant that makes the DE true forever (DC: inductor = short, so i = V/R)</span>
+          </div>
+          <div class="formula center">
+            <span>Natural: \( i_n = A\,e^{-Rt/L} \)</span>
+            <span class="flabel">the homogeneous solution from §5</span>
+          </div>
+        </div>
+        <div class="formula center">
+          <span class="fnum">(3.3)</span>
+          \[ i(t) = \frac{V}{R} + A\,e^{-Rt/L} \quad\xrightarrow{\;i(0)=0\;}\quad \boxed{\,i(t) = \frac{V}{R}\left(1 - e^{-t/\tau}\right)\,},\quad \tau = \frac{L}{R} \]
+          <span class="flabel">Rises from 0 toward V/R. At t = τ the current has covered 63.2% of its total swing; at 5τ it is in steady state.</span>
+        </div>
+      </section>
+
+      <!-- ============ 10. NON-HOMOGENEOUS ============ -->
+      <section class="block" id="nonhom">
+        <h2 class="sec"><span class="sec-num">10</span> Solving the non-homogeneous DE</h2>
+        <p class="lede-note">The formal recipe behind (3.3), matching the worked slides: (1) write the DE,
+        (2) solve the homogeneous part, (3) guess the forced part, (4) fix the constant from the initial condition.</p>
+        <div class="steps">
+          <div class="step open">
+            <button class="step-head"><span class="step-idx">1</span> Write the DE for the RL loop<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">\[ \frac{di}{dt} + \frac{R}{L}\,i = \frac{V}{L} \qquad (t \ge 0) \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">2</span> Homogeneous solution<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">\[ i_h(t) = A\,e^{-(R/L)t} \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">3</span> Forced solution (guess = source’s form)<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>The source is constant ⇒ guess a constant \( i_f = K \). Substituting: \( 0 + (R/L)K = V/L \Rightarrow K = V/R \).</p>
+              <div class="formula center">\[ i(t) = \frac{V}{R} + A\,e^{-(R/L)t} \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">4</span> Apply the initial condition<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>The switch was open before t = 0, so \( i(0^-) = 0 \); inductor current is continuous: \( i(0^+) = 0 \):</p>
+              <div class="formula center">\[ 0 = \frac{V}{R} + A \;\Rightarrow\; A = -\frac{V}{R} \quad\Rightarrow\quad i(t) = \frac{V}{R}\left(1 - e^{-t/\tau}\right) \]</div>
+              <p>The slide then plots exactly this: an exponential climb from 0 to V/R.</p>
+            </div></div>
+          </div>
+        </div>
+        <div class="callout co-key"><span class="ico">🧮</span>
+          <span class="co-title">General first-order response — the formula to keep</span>
+          <p>For <em>any</em> first-order circuit, any state variable x(t) (capacitor voltage, inductor current,
+          any branch quantity that is first-order):</p>
+          <div class="formula center">\[ x(t) = x(\infty) + \big[x(0^+) - x(\infty)\big]\,e^{-t/\tau} \]</div>
+          <p>Three ingredients — final value, initial value, time constant — and you never touch a differential
+          equation again. This is the engine of Lecture 4.</p>
+        </div>
+      </section>
+
+      <!-- ============ 11. REMARKS ============ -->
+      <section class="block" id="remarks">
+        <h2 class="sec"><span class="sec-num">11</span> Transient vs steady-state response</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Transient response</h3>
+            <ul class="tight">
+              <li>Solution of the <strong>homogeneous</strong> DE: \( A e^{-t/\tau} \).</li>
+              <li>Its rate is set by the R, L, C values — <strong>independent of the sources</strong>.</li>
+              <li>Also called the <strong>natural response</strong>.</li>
+              <li>Serves as the transition from the initial steady state to the final one.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Steady-state (forced) response</h3>
+            <ul class="tight">
+              <li>Solution of the <strong>original</strong> (non-homogeneous) DE.</li>
+              <li>Called <strong>forced</strong>: its form is forced on the network by the applied source.</li>
+              <li>Same form as the source (plus unique derivatives) — for a DC source, a constant.</li>
+              <li><strong>Independent of the initial conditions</strong>; exists as long as the source is applied.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 12. LABS ============ -->
+      <section class="block" id="labs">
+        <h2 class="sec"><span class="sec-num">12</span> 🧪 Interactive · the three canonical transients</h2>
+        <p class="lede-note">Three live circuits: two source-free decays and one step response. The dashed lines
+        mark \( \tau, 2\tau, \dots \) so you can read the 5τ rule straight off the plot.</p>
+
+        <!-- RC natural -->
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">🔋</div>
+            <div><div class="t">Source-free RC · \( v(t) = V_0 e^{-t/RC} \)</div>
+            <div class="s">Discharging a charged capacitor through a resistor.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="rcV0">Initial voltage V₀</label><span class="val" id="rcV0v"></span></div>
+                <input type="range" id="rcV0" min="1" max="20" step="0.5" value="12"></div>
+              <div class="ctl"><div class="ctl-top"><label for="rcR">Resistance R</label><span class="val" id="rcRv"></span></div>
+                <input type="range" id="rcR" min="100" max="10000" step="100" value="4000"></div>
+              <div class="ctl"><div class="ctl-top"><label for="rcC">Capacitance C</label><span class="val" id="rcCv"></span></div>
+                <input type="range" id="rcC" min="0.01" max="5" step="0.01" value="0.25"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">τ = RC</div><div class="v" id="rcTau"></div></div>
+                <div class="readout"><div class="k">v(τ)</div><div class="v" id="rcVtau"></div></div>
+                <div class="readout"><div class="k">w₀ = ½CV₀²</div><div class="v" id="rcW0"></div></div>
+              </div>
+            </div>
+            <div class="stage"><canvas class="plot" id="rcPlot" aria-label="RC natural response"></canvas></div>
+          </div>
+        </div>
+
+        <!-- RL natural -->
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">🧲</div>
+            <div><div class="t">Source-free RL · \( i(t) = I_0 e^{-Rt/L} \)</div>
+            <div class="s">An inductor’s stored current bleeding off through a resistor.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="rlI0">Initial current I₀</label><span class="val" id="rlI0v"></span></div>
+                <input type="range" id="rlI0" min="0.5" max="10" step="0.5" value="4"></div>
+              <div class="ctl"><div class="ctl-top"><label for="rlR">Resistance R</label><span class="val" id="rlRv"></span></div>
+                <input type="range" id="rlR" min="10" max="500" step="10" value="120"></div>
+              <div class="ctl"><div class="ctl-top"><label for="rlL">Inductance L</label><span class="val" id="rlLv"></span></div>
+                <input type="range" id="rlL" min="0.5" max="20" step="0.5" value="6"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">τ = L/R</div><div class="v" id="rlTau"></div></div>
+                <div class="readout"><div class="k">i(τ)</div><div class="v" id="rlItau"></div></div>
+                <div class="readout"><div class="k">w₀ = ½LI₀²</div><div class="v" id="rlW0"></div></div>
+              </div>
+            </div>
+            <div class="stage"><canvas class="plot" id="rlPlot" aria-label="RL natural response"></canvas></div>
+          </div>
+        </div>
+
+        <!-- RL step -->
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">📈</div>
+            <div><div class="t">RL step response · \( i(t) = i(\infty) + [i(0^+) - i(\infty)] e^{-t/\tau} \)</div>
+            <div class="s">DC source switched in at t = 0 — forced part plus natural part.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="stV">Source V</label><span class="val" id="stVv"></span></div>
+                <input type="range" id="stV" min="2" max="24" step="1" value="12"></div>
+              <div class="ctl"><div class="ctl-top"><label for="stR">Resistance R</label><span class="val" id="stRv"></span></div>
+                <input type="range" id="stR" min="10" max="500" step="10" value="120"></div>
+              <div class="ctl"><div class="ctl-top"><label for="stL">Inductance L</label><span class="val" id="stLv"></span></div>
+                <input type="range" id="stL" min="0.5" max="20" step="0.5" value="6"></div>
+              <div class="ctl"><div class="ctl-top"><label for="stI0">Initial current i(0⁺)</label><span class="val" id="stI0v"></span></div>
+                <input type="range" id="stI0" min="0" max="10" step="0.5" value="0"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">τ = L/R</div><div class="v" id="stTau"></div></div>
+                <div class="readout"><div class="k">i(∞) = V/R</div><div class="v" id="stInf"></div></div>
+                <div class="readout"><div class="k">i(τ)</div><div class="v" id="stItau"></div></div>
+              </div>
+            </div>
+            <div class="stage"><canvas class="plot" id="stPlot" aria-label="RL step response"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 13. SUMMARY ============ -->
+      <section class="block" id="summary">
+        <h2 class="sec"><span class="sec-num">13</span> Summary</h2>
+        <div class="callout co-key"><span class="ico">📌</span>
+          <p>• A first-order circuit has <strong>one independent energy-storage element</strong>; every response satisfies a
+          first-order linear DE.</p>
+          <p>• The response = <strong>natural</strong> (homogeneous, \( Ae^{-t/\tau} \), source-independent) +
+          <strong>forced/steady-state</strong> (full DE, source-shaped, initial-condition-independent).</p>
+          <p>• Source-free RC: \( v = V_0 e^{-t/RC} \). Source-free RL: \( i = I_0 e^{-Rt/L} \).</p>
+          <p>• \( \tau_{RC} = RC \), \( \tau_{RL} = L/R \); the transient is “done” at \( 5\tau \).</p>
+          <p>• Universal form: \( x(t) = x(\infty) + [x(0^+) - x(\infty)]e^{-t/\tau} \).</p>
+        </div>
+
+        <h3>Flashcards — test yourself</h3>
+        <div class="grid grid-2">
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Time constant of an RC circuit<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\(\tau = RC\) [seconds]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Time constant of an RL circuit<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\(\tau = L/R\) [seconds]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Source-free RC response<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ v(t) = V_0 e^{-t/RC} \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">RL step response from rest<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ i(t) = \frac{V}{R}\left(1-e^{-t/\tau}\right),\ \tau = L/R \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Values of e^(−1) … e^(−5)<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">36.8% · 13.5% · 5.0% · 1.8% · 0.7%<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">What is independent of the sources?<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">The <strong>natural (transient)</strong> response<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">What is independent of initial conditions?<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">The <strong>forced (steady-state)</strong> response<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">The general first-order response<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ x(t) = x(\infty) + [x(0^+) - x(\infty)] e^{-t/\tau} \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- ============ 14. QUIZ ============ -->
+      <section class="block" id="quiz">
+        <h2 class="sec"><span class="sec-num">14</span> Self-test quiz</h2>
+        <p class="lede-note">Time constants and the exponential, before Lecture 4 generalizes them.</p>
+        <div class="quiz" data-quiz="l03">
+          <div class="quiz-q" data-answer="1" data-expl="τ = RC = 10 kΩ · 100 µF = 1 s. (Resistances in ohms, capacitances in farads, τ in seconds.)">
+            <div class="q"><span class="qn">Q1.</span>R = 10 kΩ, C = 100 µF. The time constant is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>0.001 s</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>1 s</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>1000 s</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>0.1 s</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="3" data-expl="For a source-free RC, v(τ) = V₀e^(−1) = 0.368·V₀. With V₀ = 10 V: v(τ) ≈ 3.68 V.">
+            <div class="q"><span class="qn">Q2.</span>A source-free RC circuit has V₀ = 10 V. The capacitor voltage at t = τ is closest to:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>10 V</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>6.32 V</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>5 V</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>3.68 V</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="0" data-expl="i(τ) = (V/R)(1−e^(−1)) = 0.632·(V/R): after one time constant a rising response has covered 63.2% of its total swing.">
+            <div class="q"><span class="qn">Q3.</span>An RL circuit steps from rest toward i(∞) = V/R. At t = τ, the current equals:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>0.632·V/R</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>0.368·V/R</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>0.5·V/R</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>0.95·V/R</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="2" data-expl="The natural response solves the homogeneous DE (sources set to zero) — it depends only on R, L, C and the initial condition, never on the sources.">
+            <div class="q"><span class="qn">Q4.</span>The natural response of a first-order circuit is independent of:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>The resistance</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>The initial condition</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>The sources</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>The time constant</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="1" data-expl="At 5τ only e^(−5) ≈ 0.7% of the transient remains — under 1%, so the circuit is treated as being in steady state.">
+            <div class="q"><span class="qn">Q5.</span>After how many time constants is a first-order transient usually considered over?</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>1τ</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>5τ</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>100τ</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Never</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <span class="quiz-score"></span>
+        </div>
+      </section>
+
+      <div class="pager">
+        <a href="02-capacitors-inductors.html"><div class="dir">← Previous lecture</div><div class="ti">02 · Capacitors &amp; Inductors</div></a>
+        <a class="next" href="04-first-order-part2.html"><div class="dir">Next lecture →</div><div class="ti">04 · First-Order Circuits Part 2</div></a>
+      </div>
+
+      <div style="text-align:center; margin-top:26px">
+        <button class="btn" data-mark-complete="03">Mark lecture complete</button>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="foot">
+    <span>EEE 133 · Circuit Theory — Lecture 03: First-Order Circuits Part 1</span>
+    <span>UP Diliman · College of Engineering · EEE Institute</span>
+  </div>
+</div>
+
+<script src="js/plot.js"></script>
+<script src="js/common.js"></script>
+<script src="js/lecture03.js"></script>
+</body>
+</html>

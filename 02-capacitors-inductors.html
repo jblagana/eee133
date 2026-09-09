@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 02 · Capacitors and Inductors — EEE 133</title>
+<meta name="description" content="EEE 133 Lecture 2: capacitors and inductors — capacitance and inductance, V-I relations, power and stored energy, series/parallel combinations. With interactive labs and quiz.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232453d6'/%3E%3Cpath d='M14 24h36M14 40h36' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body data-lecture="02" data-lecture-name="Capacitors and Inductors">
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">E133</span> EEE&nbsp;133 <span class="crumb">· Circuit Theory</span></a>
+  <div class="spacer"></div>
+  <span class="progress-pill" id="progPill">Read 0%</span>
+  <button class="icon-btn" id="themeBtn" title="Toggle light/dark theme">🌙</button>
+</header>
+
+<div class="page">
+  <div class="layout">
+
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">Lecture 02 · Capacitors &amp; Inductors</p>
+      <a href="#cap-overview">1 · What is a capacitor?</a>
+      <a href="#capacitance">2 · Capacitance</a>
+      <a href="#cap-vi">3 · Capacitor V-I relation</a>
+      <a href="#cap-energy">4 · Power &amp; stored energy</a>
+      <a href="#cap-props">5 · Key properties of C</a>
+      <a href="#cap-lab">🧪 Lab · i = C dv/dt</a>
+      <a href="#cap-dc">6 · Capacitors in DC circuits</a>
+      <a href="#cap-comb">7 · Series &amp; parallel C</a>
+      <a href="#ind-overview">8 · What is an inductor?</a>
+      <a href="#inductance">9 · Inductance</a>
+      <a href="#ind-vi">10 · Inductor V-I relation</a>
+      <a href="#ind-energy">11 · Power &amp; stored energy</a>
+      <a href="#ind-props">12 · Key properties of L</a>
+      <a href="#ind-lab">🧪 Lab · v = L di/dt</a>
+      <a href="#ind-comb">13 · Series &amp; parallel L</a>
+      <a href="#comb-lab">🧪 Lab · Combine C / L</a>
+      <a href="#elements-table">14 · Element characteristics</a>
+      <a href="#summary">15 · Summary</a>
+      <a href="#quiz">16 · Self-test quiz</a>
+    </nav>
+
+    <main class="content">
+
+      <div class="hero">
+        <svg class="wave" viewBox="0 0 380 120" fill="none">
+          <path d="M0 90 C 40 90, 55 30, 90 30 S 140 90, 180 90 S 230 30, 270 30 S 330 90, 380 90" stroke="#7ea2ff" stroke-width="3"/>
+        </svg>
+        <p class="kicker">Lecture 02 · 1st Semester A.Y. 2026–2027</p>
+        <h1>Capacitors and Inductors</h1>
+        <p class="lede">The two energy-storage elements of circuit theory. The capacitor hoards charge in an
+        electric field; the inductor hoards current in a magnetic field. Together they explain every
+        transient you will meet in Lectures 3–5.</p>
+        <div class="hero-meta">
+          <span class="chip">🎯 Recall properties &amp; V-I behavior</span>
+          <span class="chip">⚡ Compute v, i, power, energy</span>
+          <span class="chip">🔌 Simplify C and L networks</span>
+        </div>
+      </div>
+
+      <div class="pdf-strip">
+        <span class="pdf-ico">📄</span>
+        <span>Original deck:</span>
+        <a href="Lectures/02%20Capacitors%20and%20Inductors.pdf" target="_blank" rel="noopener">02 Capacitors and Inductors (PDF)</a>
+      </div>
+
+      <!-- ============ 1. CAPACITOR OVERVIEW ============ -->
+      <section class="block" id="cap-overview">
+        <h2 class="sec"><span class="sec-num">1</span> What is a capacitor?</h2>
+        <p>A <strong>capacitor</strong> consists of <strong>two conducting plates separated by an insulator</strong>
+        (a dielectric). It stores energy in its <strong>electric field</strong>. The two plates can hold equal and
+        opposite charges, and the separation — even a vacuum gap — is what lets a voltage build up across them.</p>
+        <div class="grid grid-2">
+          <div class="fig">
+            <svg viewBox="0 0 340 200" width="330" role="img" aria-label="Capacitor symbol">
+              <path class="cwire" d="M20 100 H110"/>
+              <path class="cwire" d="M130 100 H320"/>
+              <line x1="115" y1="55" x2="115" y2="145" class="cpart" stroke-width="5"/>
+              <line x1="125" y1="55" x2="125" y2="145" class="cpart" stroke-width="5"/>
+              <text x="90" y="42" class="clab">+</text>
+              <text x="132" y="42" class="clab">−</text>
+              <text x="160" y="78" class="clab">C</text>
+              <text x="160" y="190" class="cnote">two plates · dielectric gap · equal &amp; opposite charge</text>
+              <g>
+                <circle class="pulse-dot" r="3.5">
+                  <animateMotion dur="4s" repeatCount="indefinite" path="M30 100 L310 100"/>
+                </circle>
+              </g>
+            </svg>
+            <div class="figcap">The capacitor. Current flows into one plate and out the other — but never across the gap.</div>
+          </div>
+          <div class="card">
+            <h3>Where you see them</h3>
+            <ul class="tight">
+              <li><strong>Tuning circuits</strong> of radio receivers — selecting which frequency you hear.</li>
+              <li><strong>Dynamic memory elements</strong> (DRAM) — a charged plate is a stored bit.</li>
+              <li>Timing, filtering, power conditioning — and, from the next lecture, <em>transients</em>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 2. CAPACITANCE ============ -->
+      <section class="block" id="capacitance">
+        <h2 class="sec"><span class="sec-num">2</span> Capacitance</h2>
+        <p><strong>Capacitance</strong> is the ratio of the charge on one plate to the voltage between the two
+        plates, measured in <strong>farads (F)</strong>. One farad is enormous — practical parts are in
+        <code>µF</code> and <code>nF</code>.</p>
+        <div class="formula center">
+          <span class="fnum">(2.1)</span>
+          \[ C \;=\; \frac{q(t)}{v(t)} \qquad \big[\text{F}\big] = \frac{\text{coulomb}}{\text{volt}} \]
+          <span class="flabel">Charge on one plate over plate-to-plate voltage.</span>
+        </div>
+        <div class="callout co-key"><span class="ico">📐</span>
+          <span class="co-title">Capacitance depends on the physical dimensions!</span>
+          For the parallel-plate geometry, \( C = \varepsilon\,\dfrac{A}{d} \): larger plate area <em>A</em> and a
+          thinner gap <em>d</em> mean more capacitance; the dielectric constant \( \varepsilon \) sets how strongly
+          the gap stores field.
+        </div>
+      </section>
+
+      <!-- ============ 3. CAP V-I ============ -->
+      <section class="block" id="cap-vi">
+        <h2 class="sec"><span class="sec-num">3</span> Current–voltage relation of the capacitor</h2>
+        <p>Start from charge. Because \( q(t) = C\,v(t) \), the current (rate of change of charge) is the
+        derivative of the voltage — this single fact drives everything that follows:</p>
+        <div class="formula center">
+          <span class="fnum">(2.2)</span>
+          \[ i(t) \;=\; \frac{dq}{dt} \;=\; C\,\frac{dv(t)}{dt} \]
+          <span class="flabel">Capacitor V-I relation (passive sign convention). Current is proportional to how fast v changes.</span>
+        </div>
+        <p>Reading (2.2) in reverse, voltage is the <em>integral</em> of current:</p>
+        <div class="formula center">
+          <span class="fnum">(2.3)</span>
+          \[ v(t) \;=\; \frac{1}{C}\int_{t_0}^{t} i(\lambda)\,d\lambda \;+\; v(t_0) \]
+          <span class="flabel">Voltage “remembers” its whole past — this is why v(0⁻) = v(0⁺) later.</span>
+        </div>
+        <div class="callout co-warn"><span class="ico">🔑</span>
+          <span class="co-title">The derivative is the whole story</span>
+          Steady voltage → zero current (acts like an <strong>open circuit</strong>).
+          Abruptly changing voltage → enormous current. A capacitor <em>opposes changes in voltage</em>.
+        </div>
+      </section>
+
+      <!-- ============ 4. CAP POWER & ENERGY ============ -->
+      <section class="block" id="cap-energy">
+        <h2 class="sec"><span class="sec-num">4</span> Power and energy of the capacitor</h2>
+        <p>Instantaneous power absorbed by the element is \( p(t) = v(t)\,i(t) \). Substituting
+        \( i = C\,dv/dt \) and integrating from 0 (un-charged) up to the present voltage \( v(t) \):</p>
+        <div class="formula center">
+          \[ w(t) = \int_{0}^{t} p(\lambda)\,d\lambda
+              = \int_{0}^{v(t)} C v\,\frac{dv}{dt}\,dt
+              = \boxed{\;\tfrac{1}{2}\,C\,v(t)^2\;} \]
+          <span class="flabel">Energy stored in the electric field. Always ≥ 0 — the capacitor never burns energy; it only stores and returns it.</span>
+        </div>
+        <p class="lede-note">Notice what the square does: <strong>the sign of the voltage does not matter</strong> —
+        a −5 V capacitor stores the same energy as a +5 V one.</p>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">⚡</div>
+            <div><div class="t">Energy lab · \( w = \tfrac{1}{2} C v^2 \)</div>
+            <div class="s">Drag C and v — watch the stored energy and the parabola respond.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl">
+                <div class="ctl-top"><label for="capE_C">Capacitance C</label><span class="val" id="capE_Cv"></span></div>
+                <input type="range" id="capE_C" min="0.1" max="10" step="0.1" value="4">
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label for="capE_V">Voltage v</label><span class="val" id="capE_Vv"></span></div>
+                <input type="range" id="capE_V" min="-12" max="12" step="0.5" value="8">
+              </div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">w(½CV²)</div><div class="v" id="capE_w"></div></div>
+                <div class="readout"><div class="k">Charge q</div><div class="v" id="capE_q"></div></div>
+              </div>
+            </div>
+            <div class="stage">
+              <canvas class="plot" id="capE_plot" aria-label="Energy versus voltage"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 5. CAP PROPERTIES ============ -->
+      <section class="block" id="cap-props">
+        <h2 class="sec"><span class="sec-num">5</span> Remarks on the properties of the capacitor</h2>
+        <div class="grid grid-2">
+          <div class="callout co-key" style="margin:0"><span class="ico">📡</span>
+            <span class="co-title">DC voltage ⇒ zero current</span>
+            <p>When the voltage across a capacitor is <em>not changing</em> with time, the current through it is
+            <strong>zero</strong>. Under steady-state DC, a capacitor behaves as an <strong>open circuit</strong>.</p>
+          </div>
+          <div class="callout co-key" style="margin:0"><span class="ico">🧵</span>
+            <span class="co-title">Voltage must be continuous</span>
+            <p>An instantaneous change in v would demand \( i = C\,dv/dt \to \infty \), which an ideal source-free
+            network cannot supply. Hence <strong>\( v(0^-) = v(0^+) \)</strong> across a capacitor.</p>
+          </div>
+          <div class="callout co-key" style="margin:0"><span class="ico">♻️</span>
+            <span class="co-title">Ideal ⇒ lossless</span>
+            <p>The ideal capacitor <strong>does not dissipate energy</strong>; it only shuttles it between field and
+            source. Real (non-ideal) capacitors have a <strong>parallel leakage resistance</strong> that slowly bleeds
+            the stored charge.</p>
+          </div>
+          <div class="callout co-key" style="margin:0"><span class="ico">🚪</span>
+            <span class="co-title">Un-charged ⇒ short circuit</span>
+            <p>A capacitor with <em>zero</em> initial voltage has v = 0 whether or not current flows — it behaves
+            like a <strong>short circuit</strong> at the instant it starts charging. (See Lecture 3 for the transient
+            that follows.)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 6. CAP LAB ============ -->
+      <section class="block" id="cap-lab">
+        <h2 class="sec"><span class="sec-num">6</span> 🧪 Interactive · \( i = C\,dv/dt \)</h2>
+        <p class="lede-note">The slide “voltage–current curve” example, made live. Pick a voltage waveform and watch
+        the current it forces through a capacitor. This is the intuition every first-order problem in Lecture 3 builds on.</p>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">📈</div>
+            <div><div class="t">Capacitor response lab</div>
+            <div class="s">Choose v(t), set C and the signal size — read off i(t) = C dv/dt.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl">
+                <div class="ctl-top"><label>Applied voltage v(t)</label></div>
+                <div class="seg" id="capLab_wave">
+                  <button data-wave="dc" class="on">DC</button>
+                  <button data-wave="ramp">Ramp</button>
+                  <button data-wave="step">Step</button>
+                  <button data-wave="sin">Sine</button>
+                </div>
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label for="capLab_C">Capacitance C</label><span class="val" id="capLab_Cv"></span></div>
+                <input type="range" id="capLab_C" min="0.1" max="5" step="0.1" value="1">
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label for="capLab_A">Signal level</label><span class="val" id="capLab_Av"></span></div>
+                <input type="range" id="capLab_A" min="1" max="12" step="0.5" value="8">
+              </div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">i at t = 0⁺</div><div class="v" id="capLab_i0"></div></div>
+                <div class="readout"><div class="k">Peak |i|</div><div class="v" id="capLab_ipk"></div></div>
+                <div class="readout"><div class="k">Phase i vs v</div><div class="v" id="capLab_ph"></div></div>
+              </div>
+            </div>
+            <div class="stage">
+              <canvas class="plot" id="capLab_plot" aria-label="v and i waveforms"></canvas>
+              <p class="kbd-note" id="capLab_note"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout co-tip"><span class="ico">💡</span>
+          <span class="co-title">What to notice</span>
+          <p><strong>DC:</strong> flat v ⇒ i = 0 — the open-circuit fact from §5.
+          <strong>Ramp:</strong> constant slope ⇒ <em>constant</em> current \( i = C \times \text{slope} \).
+          <strong>Step:</strong> infinitely fast change ⇒ an <em>impulse</em> of current (infinite in the ideal).
+          <strong>Sine:</strong> cosine current <em>leading</em> the voltage by 90° — the capacitor “sees the future.”</p>
+        </div>
+      </section>
+
+      <!-- ============ 7. CAP DC CIRCUITS ============ -->
+      <section class="block" id="cap-dc">
+        <h2 class="sec"><span class="sec-num">7</span> Capacitors in DC circuits (worked example)</h2>
+        <p class="lede-note">Slide example: “obtain the energy stored in each capacitor under DC conditions.”
+        The recipe: replace every capacitor by an <strong>open circuit</strong>, solve the resistor-only circuit,
+        then apply \( w = \tfrac12 C v^2 \).</p>
+
+        <div class="steps">
+          <div class="step open">
+            <button class="step-head"><span class="step-idx">1</span> Replace capacitors with open circuits (t → ∞)<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>With no DC current able to flow into a capacitor branch, the capacitors vanish (open), and the
+              remaining resistors fix the node voltages. For the slide’s network (12 V source, 2 kΩ–2 kΩ divider
+              feeding the capacitor nodes) the open-circuit solution gives
+              <strong>v₁ = 8 V across C₁</strong> and <strong>v₂ = 4 V across C₂</strong>.</p>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">2</span> Compute the stored energies<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">\[ w_1 = \tfrac{1}{2} C_1 v_1^2 = \tfrac{1}{2}(0.5\,\mu\text{F})(8\,\text{V})^2 = 16\ \mu\text{J} \]</div>
+              <div class="formula center">\[ w_2 = \tfrac{1}{2} C_2 v_2^2 = \tfrac{1}{2}(0.25\,\mu\text{F})(4\,\text{V})^2 = 2\ \mu\text{J} \]</div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">3</span> Double-check the logic<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>DC ⇒ capacitors are <em>open</em> ⇒ no current into their branches ⇒ their terminal voltages equal the
+              DC node voltages of the resistor network. If instead the question had been about the behavior
+              <em>right after</em> a switch, an <em>un-energized</em> capacitor would model as a <em>short</em> at
+              t = 0⁺ — that distinction is the heart of Lecture 3.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 8. CAP SERIES/PARALLEL ============ -->
+      <section class="block" id="cap-comb">
+        <h2 class="sec"><span class="sec-num">8</span> Capacitors in series and parallel</h2>
+        <p>Capacitors combine <strong>the opposite way</strong> resistors do:</p>
+        <div class="formula-row">
+          <div class="formula center">\[ C_{\text{eq}} = \sum_k C_k \quad (\text{parallel}) \]</div>
+          <div class="formula center">\[ \frac{1}{C_{\text{eq}}} = \sum_k \frac{1}{C_k} \quad (\text{series}) \]</div>
+        </div>
+        <div class="callout co-violet"><span class="ico">🤔</span>
+          <span class="co-title">Why the opposite of resistors?</span>
+          <p>Parallel capacitors share the <em>same voltage</em>, so charges add: \( q_{eq} = \sum C_k v \Rightarrow
+          C_{eq} = \sum C_k \). Series capacitors share the <em>same charge</em>, so voltages add:
+          \( v_{eq} = \sum q/C_k \Rightarrow 1/C_{eq} = \sum 1/C_k \). Inductors (next section) behave like resistors
+          — the exact mirror image of capacitors.</p>
+        </div>
+        <div class="callout co-warn"><span class="ico">⚠️</span>
+          <span class="co-title">Watch the initial conditions</span>
+          <p>Series capacitors each keep <em>their own</em> initial voltage; the equivalent capacitor’s initial voltage
+          is found by superposing \( v_k = \sum q/C_k \). Don’t assume the series string starts “discharged” unless every
+          member is.</p>
+        </div>
+      </section>
+
+      <!-- ============ 9. IND OVERVIEW ============ -->
+      <section class="block" id="ind-overview">
+        <h2 class="sec"><span class="sec-num">9</span> What is an inductor?</h2>
+        <p>An <strong>inductor</strong> is a conducting wire wound into a coil. It stores energy in the
+        <strong>magnetic field</strong> surrounding it — a field that exists <em>only while current is flowing</em>.
+        Where the capacitor said “voltage changes slowly,” the inductor says “<strong>current changes slowly</strong>.”</p>
+        <div class="grid grid-2">
+          <div class="fig">
+            <svg viewBox="0 0 340 200" width="330" role="img" aria-label="Inductor symbol">
+              <path class="cwire" d="M20 100 H60"/>
+              <path d="M60 100 a10 12 0 0 1 20 0 a10 12 0 0 1 20 0 a10 12 0 0 1 20 0 a10 12 0 0 1 20 0 a10 12 0 0 1 20 0" class="cpart"/>
+              <path class="cwire" d="M160 100 H320"/>
+              <text x="105" y="70" class="clab">L</text>
+              <text x="160" y="190" class="cnote">coil · N turns · core material sets L</text>
+              <g>
+                <circle class="pulse-dot" r="3.5">
+                  <animateMotion dur="4s" repeatCount="indefinite" path="M30 100 L310 100"/>
+                </circle>
+              </g>
+            </svg>
+            <div class="figcap">The inductor symbol: a chain of half-circles. The field wraps around every turn.</div>
+          </div>
+          <div class="card">
+            <h3>The mirror image of C</h3>
+            <div class="tbl-wrap" style="box-shadow:none">
+              <table class="tbl">
+                <tr><th>Capacitor</th><th>Inductor</th></tr>
+                <tr><td>stores in <strong>electric</strong> field</td><td>stores in <strong>magnetic</strong> field</td></tr>
+                <tr><td>opposes Δv</td><td>opposes Δi</td></tr>
+                <tr><td>DC steady state ⇒ open</td><td>DC steady state ⇒ short</td></tr>
+                <tr><td>un-energized ⇒ short</td><td>un-energized ⇒ open</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 10. INDUCTANCE ============ -->
+      <section class="block" id="inductance">
+        <h2 class="sec"><span class="sec-num">10</span> Inductance</h2>
+        <p><strong>Inductance</strong> is the ratio of the total magnetic flux linkage generated by a given current
+        through the coil, measured in <strong>henrys (H)</strong>. The coil’s physical dimensions — turns, area,
+        length, core — set the value.</p>
+        <div class="formula center">
+          <span class="fnum">(2.4)</span>
+          \[ L \;=\; \frac{\lambda(t)}{i(t)} = \frac{N\,\Phi(t)}{i(t)} \qquad \big[\text{H}\big] = \frac{\text{weber·turn}}{\text{ampere}} \]
+          <span class="flabel">Flux linkage λ = N·Φ over current. 1 H ⇒ 1 V appears across the coil when current ramps at 1 A/s.</span>
+        </div>
+      </section>
+
+      <!-- ============ 11. IND V-I ============ -->
+      <section class="block" id="ind-vi">
+        <h2 class="sec"><span class="sec-num">11</span> Voltage–current relation of the inductor</h2>
+        <p>Faraday: the voltage across a coil equals the rate at which its flux linkage changes. With
+        \( \lambda = L\,i \), and signed for the <strong>passive sign convention</strong>:</p>
+        <div class="formula center">
+          <span class="fnum">(2.5)</span>
+          \[ v(t) \;=\; L\,\frac{di(t)}{dt} \]
+          <span class="flabel">Inductor V-I relation. Voltage is proportional to how fast i changes.</span>
+        </div>
+        <p>And in reverse — current is the integral of voltage:</p>
+        <div class="formula center">
+          <span class="fnum">(2.6)</span>
+          \[ i(t) \;=\; \frac{1}{L}\int_{t_0}^{t} v(\lambda)\,d\lambda \;+\; i(t_0) \]
+          <span class="flabel">The inductor “remembers” the whole past of its voltage — why i(0⁻) = i(0⁺).</span>
+        </div>
+        <div class="callout co-warn"><span class="ico">🔑</span>
+          <span class="co-title">The derivative is the whole story</span>
+          Steady current → zero voltage (acts like a <strong>short circuit</strong>).
+          Abruptly changing current → enormous voltage. An inductor <em>opposes changes in current</em> —
+          spark plugs and relay snubbers exist because of this very equation.
+        </div>
+      </section>
+
+      <!-- ============ 12. IND POWER & ENERGY ============ -->
+      <section class="block" id="ind-energy">
+        <h2 class="sec"><span class="sec-num">12</span> Power and energy of the inductor</h2>
+        <p>Power absorbed is \( p(t) = v(t)\,i(t) \); with \( v = L\,di/dt \), integrate from zero current:</p>
+        <div class="formula center">
+          \[ w(t) = \int_{0}^{t} p(\lambda)\,d\lambda
+              = \int_{0}^{i(t)} L i\,\frac{di}{dt}\,dt
+              = \boxed{\;\tfrac{1}{2}\,L\,i(t)^2\;} \]
+          <span class="flabel">Energy stored in the magnetic field — same square, same sign-insensitivity as the capacitor.</span>
+        </div>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">🧲</div>
+            <div><div class="t">Energy lab · \( w = \tfrac{1}{2} L i^2 \)</div>
+            <div class="s">Drag L and i — magnetic-field energy responds to the square of the current.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl">
+                <div class="ctl-top"><label for="indE_L">Inductance L</label><span class="val" id="indE_Lv"></span></div>
+                <input type="range" id="indE_L" min="0.1" max="10" step="0.1" value="4">
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label for="indE_I">Current i</label><span class="val" id="indE_Iv"></span></div>
+                <input type="range" id="indE_I" min="-10" max="10" step="0.5" value="6">
+              </div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">w(½Li²)</div><div class="v" id="indE_w"></div></div>
+                <div class="readout"><div class="k">Flux linkage</div><div class="v" id="indE_lam"></div></div>
+              </div>
+            </div>
+            <div class="stage">
+              <canvas class="plot" id="indE_plot" aria-label="Energy versus current"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 13. IND PROPERTIES ============ -->
+      <section class="block" id="ind-props">
+        <h2 class="sec"><span class="sec-num">13</span> Remarks on the properties of the inductor</h2>
+        <div class="grid grid-2">
+          <div class="callout co-key" style="margin:0"><span class="ico">🔌</span>
+            <span class="co-title">Zero voltage ⇒ constant current</span>
+            <p>When the voltage across an inductor is <em>zero</em>, the current through it is
+            <strong>constant</strong>. Under steady-state DC, an inductor behaves as a <strong>short circuit</strong>.</p>
+          </div>
+          <div class="callout co-key" style="margin:0"><span class="ico">🧵</span>
+            <span class="co-title">Current must be continuous</span>
+            <p>Jumping current would demand \( v = L\,di/dt \to \infty \). Hence
+            <strong>\( i(0^-) = i(0^+) \)</strong> through an inductor. This continuity is the key to every
+            switched circuit in Lecture 3.</p>
+          </div>
+          <div class="callout co-key" style="margin:0"><span class="ico">♻️</span>
+            <span class="co-title">Ideal ⇒ lossless</span>
+            <p>The ideal inductor <strong>does not dissipate energy</strong>. Real (non-ideal) inductors have a
+            <strong>series winding resistance</strong> that eventually bleeds the stored energy as heat.</p>
+          </div>
+          <div class="callout co-key" style="margin:0"><span class="ico">🚪</span>
+            <span class="co-title">Zero current ⇒ open circuit</span>
+            <p>An inductor carrying <em>no</em> current can have any voltage across it — like an
+            <strong>open circuit</strong> — until something starts charging its field.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 14. IND LAB ============ -->
+      <section class="block" id="ind-lab">
+        <h2 class="sec"><span class="sec-num">14</span> 🧪 Interactive · \( v = L\,di/dt \)</h2>
+        <p class="lede-note">The mirror of the capacitor lab. Pick a <em>current</em> waveform and watch the voltage
+        the inductor develops across its terminals.</p>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">📉</div>
+            <div><div class="t">Inductor response lab</div>
+            <div class="s">Choose i(t), set L and the signal size — read off v(t) = L di/dt.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl">
+                <div class="ctl-top"><label>Applied current i(t)</label></div>
+                <div class="seg" id="indLab_wave">
+                  <button data-wave="dc" class="on">DC</button>
+                  <button data-wave="ramp">Ramp</button>
+                  <button data-wave="step">Step</button>
+                  <button data-wave="sin">Sine</button>
+                </div>
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label for="indLab_L">Inductance L</label><span class="val" id="indLab_Lv"></span></div>
+                <input type="range" id="indLab_L" min="0.1" max="5" step="0.1" value="1">
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label for="indLab_A">Signal level</label><span class="val" id="indLab_Av"></span></div>
+                <input type="range" id="indLab_A" min="1" max="12" step="0.5" value="6">
+              </div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">v at t = 0⁺</div><div class="v" id="indLab_v0"></div></div>
+                <div class="readout"><div class="k">Peak |v|</div><div class="v" id="indLab_vpk"></div></div>
+                <div class="readout"><div class="k">Phase v vs i</div><div class="v" id="indLab_ph"></div></div>
+              </div>
+            </div>
+            <div class="stage">
+              <canvas class="plot" id="indLab_plot" aria-label="i and v waveforms"></canvas>
+              <p class="kbd-note" id="indLab_note"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout co-tip"><span class="ico">💡</span>
+          <span class="co-title">What to notice</span>
+          <p><strong>DC:</strong> constant i ⇒ v = 0 — the short-circuit fact.
+          <strong>Ramp:</strong> constant slope ⇒ <em>constant</em> voltage \( v = L \times \text{slope} \).
+          <strong>Step:</strong> an <em>impulse</em> of voltage (infinite in the ideal).
+          <strong>Sine:</strong> voltage <em>leads</em> the current by 90°.</p>
+        </div>
+      </section>
+
+      <!-- ============ 15. IND SERIES/PARALLEL ============ -->
+      <section class="block" id="ind-comb">
+        <h2 class="sec"><span class="sec-num">15</span> Inductors in series and parallel</h2>
+        <p>Inductors combine <strong>like resistors</strong> — the exact opposite of capacitors:</p>
+        <div class="formula-row">
+          <div class="formula center">\[ L_{\text{eq}} = \sum_k L_k \quad (\text{series}) \]</div>
+          <div class="formula center">\[ \frac{1}{L_{\text{eq}}} = \sum_k \frac{1}{L_k} \quad (\text{parallel}) \]</div>
+        </div>
+        <div class="callout co-violet"><span class="ico">🤔</span>
+          <span class="co-title">Why like resistors?</span>
+          <p>Series inductors carry the <em>same current</em>, so voltages add:
+          \( v_{eq} = \sum L_k\,di/dt \Rightarrow L_{eq} = \sum L_k \). Parallel inductors share the <em>same
+          voltage</em>, so currents add. (If parallel inductors start with different currents, a circulating current
+          can exist in the equivalent — keep that in mind for energy bookkeeping.)</p>
+        </div>
+
+        <div class="lab" id="comb-lab">
+          <div class="lab-head"><div class="lab-ico">🔀</div>
+            <div><div class="t">Combine C / L lab</div>
+            <div class="s">Toggle element type and topology — the equivalent updates both ways.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl">
+                <div class="ctl-top"><label>Element</label></div>
+                <div class="seg" id="comb_type">
+                  <button data-type="C" class="on">Capacitors</button>
+                  <button data-type="L">Inductors</button>
+                </div>
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label>Topology</label></div>
+                <div class="seg" id="comb_top">
+                  <button data-top="series" class="on">Series</button>
+                  <button data-top="parallel">Parallel</button>
+                </div>
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label for="comb_1">C₁ or L₁</label><span class="val" id="comb_1v"></span></div>
+                <input type="range" id="comb_1" min="0.5" max="20" step="0.5" value="6">
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label for="comb_2">C₂ or L₂</label><span class="val" id="comb_2v"></span></div>
+                <input type="range" id="comb_2" min="0.5" max="20" step="0.5" value="3">
+              </div>
+            </div>
+            <div class="stage">
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">C_eq or L_eq</div><div class="v" id="comb_eq"></div></div>
+                <div class="readout"><div class="k">Rule used</div><div class="v" id="comb_rule" style="font-size:13px"></div></div>
+              </div>
+              <canvas class="plot" id="comb_plot" aria-label="Equivalent value comparison"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 16. ELEMENT TABLE ============ -->
+      <section class="block" id="elements-table">
+        <h2 class="sec"><span class="sec-num">16</span> Important characteristics of the basic elements</h2>
+        <p class="lede-note">The summary table from the final slide — memorize this; it decides how you draw
+        every “before” and “after” circuit in the next two lectures.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead>
+              <tr><th>Element</th><th>V-I relation</th><th>Energy</th><th>DC steady state</th><th>At t = 0⁺ (un-energized)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Resistor</strong></td>
+                <td>\( v = R\,i \)</td>
+                <td>dissipates: \( w = Ri^2 t \)</td>
+                <td><span class="c">itself</span> (v = Ri)</td>
+                <td><span class="c">itself</span> (instantaneous)</td>
+              </tr>
+              <tr>
+                <td><strong>Inductor</strong></td>
+                <td>\( v = L\,di/dt \)</td>
+                <td>\( w = \tfrac12 L i^2 \)</td>
+                <td><strong>short circuit</strong></td>
+                <td><strong>open circuit</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Capacitor</strong></td>
+                <td>\( i = C\,dv/dt \)</td>
+                <td>\( w = \tfrac12 C v^2 \)</td>
+                <td><strong>open circuit</strong></td>
+                <td><strong>short circuit</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============ 17. SUMMARY ============ -->
+      <section class="block" id="summary">
+        <h2 class="sec"><span class="sec-num">17</span> Summary</h2>
+        <div class="callout co-key"><span class="ico">📌</span>
+          <p>• Capacitors <strong>resist changes in voltage</strong> and store energy in their <strong>electric field</strong>.</p>
+          <p>• Inductors <strong>resist changes in current</strong> and store energy in their <strong>magnetic field</strong>.</p>
+          <p>• Under <strong>steady-state DC</strong>, a capacitor is an <strong>open circuit</strong> and an inductor a
+          <strong>short circuit</strong>.</p>
+          <p>• An <strong>un-energized</strong> capacitor is a <strong>short</strong>; an un-energized inductor is an
+          <strong>open</strong> — the two “initial” cases that open every problem in Lecture 3.</p>
+        </div>
+
+        <h3>Flashcards — test yourself</h3>
+        <p class="lede-note">Click a card to flip it.</p>
+        <div class="grid grid-2">
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">V-I relation of a capacitor<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\( i = C\,dv/dt \) — current is the derivative of voltage<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">V-I relation of an inductor<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\( v = L\,di/dt \) — voltage is the derivative of current<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Capacitor at DC steady state<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back"><strong>Open circuit</strong> (i = 0 when v is constant)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Inductor at DC steady state<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back"><strong>Short circuit</strong> (v = 0 when i is constant)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Stored energy, both elements<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\( w_C = \tfrac12 C v^2 \), &nbsp; \( w_L = \tfrac12 L i^2 \)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Series rule for capacitors<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\( 1/C_{eq} = \sum 1/C_k \) — like resistors<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Continuity facts<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">Capacitor <em>voltage</em> is continuous; inductor <em>current</em> is continuous<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Un-energized at t = 0⁺<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">Capacitor ⇒ short; inductor ⇒ open<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- ============ 18. QUIZ ============ -->
+      <section class="block" id="quiz">
+        <h2 class="sec"><span class="sec-num">18</span> Self-test quiz</h2>
+        <p class="lede-note">Check the essentials before moving on — two short quizzes cover the whole lecture.</p>
+        <div class="quiz" data-quiz="l02">
+          <div class="quiz-q" data-answer="1" data-expl="i = C dv/dt: constant (DC) voltage means dv/dt = 0, so the current is zero — the capacitor is an open circuit at DC steady state.">
+            <div class="q"><span class="qn">Q1.</span>A capacitor has a constant 12 V across it. What is the current through it?</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>12 A, by i = Cv</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>Zero — steady voltage means dv/dt = 0</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>It depends on the capacitance alone</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Infinite, since the voltage is nonzero</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="0" data-expl="Energy in the magnetic field is ½Li². With i = 2 A and L = 4 H: w = ½·4·4 = 8 J. The sign of i doesn't matter.">
+            <div class="q"><span class="qn">Q2.</span>An inductor carries i = 2 A and has L = 4 H. Energy stored?</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>8 J</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>4 J</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>16 J</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>2 J</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="3" data-expl="Capacitors combine like resistors in the opposite topology: in series, 1/Ceq = 1/C1 + 1/C2. With C1 = C2 = C, Ceq = C/2.">
+            <div class="q"><span class="qn">Q3.</span>Two equal capacitors C are connected in series. The equivalent capacitance is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>2C</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>C</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>C/4</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>C/2</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <span class="quiz-score"></span>
+        </div>
+        <div class="quiz" data-quiz="l02b">
+          <div class="quiz-q" data-answer="2" data-expl="A step in the capacitor's voltage means dv/dt is an impulse, so i = C dv/dt is an impulse (theoretically infinite in magnitude at t = 0).">
+            <div class="q"><span class="qn">Q4.</span>The voltage across a capacitor jumps instantly (a step). The current is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>Zero for all t</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>A constant equal to Cv</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>An impulse (infinite in the ideal)</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Undefined — capacitors can't have steps</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="1" data-expl="Continuity: capacitor voltage cannot jump (v(0⁻)=v(0⁺)) and inductor current cannot jump (i(0⁻)=i(0⁺)). Both statements are true.">
+            <div class="q"><span class="qn">Q5.</span>Which quantities must be continuous through a switching event?</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>Capacitor current only</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>Capacitor voltage and inductor current</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>Capacitor voltage and inductor voltage</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Nothing — everything can jump</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="0" data-expl="At t = 0⁺ an un-energized capacitor has v = 0 (acts as a short); an un-energized inductor has i = 0 (acts as an open).">
+            <div class="q"><span class="qn">Q6.</span>At t = 0⁺, an un-energized capacitor models as a ___, and an un-energized inductor as a ___.</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>short circuit / open circuit</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>open circuit / short circuit</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>short circuit / short circuit</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>open circuit / open circuit</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <span class="quiz-score"></span>
+        </div>
+      </section>
+
+      <div class="pager">
+        <a class="ghost" href="index.html"><div class="dir">← Dashboard</div><div class="ti">All lectures</div></a>
+        <a class="next" href="03-first-order-part1.html"><div class="dir">Next lecture →</div><div class="ti">03 · First-Order Circuits Part 1</div></a>
+      </div>
+
+      <div style="text-align:center; margin-top:26px">
+        <button class="btn" data-mark-complete="02">Mark lecture complete</button>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="foot">
+    <span>EEE 133 · Circuit Theory — Lecture 02: Capacitors and Inductors</span>
+    <span>UP Diliman · College of Engineering · EEE Institute</span>
+  </div>
+</div>
+
+<script src="js/plot.js"></script>
+<script src="js/common.js"></script>
+<script src="js/lecture02.js"></script>
+</body>
+</html>

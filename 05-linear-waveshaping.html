@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 05 · Linear Waveshaping — EEE 133</title>
+<meta name="description" content="EEE 133 Lecture 5: linear waveshaping — high-pass and low-pass RC circuits, step/pulse/rectangular responses, 3-dB cutoff, differentiator and integrator action. With interactive labs and quiz.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232453d6'/%3E%3Cpath d='M14 24h36M14 40h36' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body data-lecture="05" data-lecture-name="Linear Waveshaping">
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">E133</span> EEE&nbsp;133 <span class="crumb">· Circuit Theory</span></a>
+  <div class="spacer"></div>
+  <span class="progress-pill" id="progPill">Read 0%</span>
+  <button class="icon-btn" id="themeBtn" title="Toggle light/dark theme">🌙</button>
+</header>
+
+<div class="page">
+  <div class="layout">
+
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">Lecture 05 · Linear Waveshaping</p>
+      <a href="#wp-def">1 · What is waveshaping?</a>
+      <a href="#hp">2 · High-pass RC circuit</a>
+      <a href="#hp-step">3 · HP · step input</a>
+      <a href="#hp-pulse">4 · HP · pulse input</a>
+      <a href="#hp-behavior">5 · HP behavior (3 rules)</a>
+      <a href="#hp-diff">6 · HP as differentiator</a>
+      <a href="#lp">7 · Low-pass RC circuit</a>
+      <a href="#lp-step">8 · LP · step input</a>
+      <a href="#lp-pulse">9 · LP · pulse &amp; rectangular</a>
+      <a href="#lp-int">10 · LP as integrator</a>
+      <a href="#cutoff">11 · 3-dB cutoff frequency</a>
+      <a href="#labs">🧪 Labs · waveshaper &amp; Bode</a>
+      <a href="#summary">12 · Summary</a>
+      <a href="#quiz">13 · Self-test quiz</a>
+    </nav>
+
+    <main class="content">
+
+      <div class="hero">
+        <svg class="wave" viewBox="0 0 380 120" fill="none">
+          <path d="M0 60 H40 V25 H110 V60 H180 V95 H250 V60 H320 V25 H380" stroke="#7ea2ff" stroke-width="3"/>
+        </svg>
+        <p class="kicker">Lecture 05 · 1st Semester A.Y. 2026–2027</p>
+        <h1>Linear Waveshaping</h1>
+        <p class="lede">Everything from Lectures 3–4, applied to the two most useful circuits in the book:
+        the high-pass and low-pass RC. Steps, pulses and square waves in — distorted versions out — and exactly
+        how much distortion, computed with τ and the 3-dB cutoff.</p>
+        <div class="hero-meta">
+          <span class="chip">🎯 Formulate &amp; sketch non-sinusoidal responses</span>
+          <span class="chip">✏️ Cutoff frequencies &amp; tilt</span>
+          <span class="chip">📐 Differentiator / integrator limits</span>
+        </div>
+      </div>
+
+      <div class="pdf-strip">
+        <span class="pdf-ico">📄</span>
+        <span>Original deck:</span>
+        <a href="Lectures/05%20Linear%20Waveshaping.pdf" target="_blank" rel="noopener">05 Linear Waveshaping (PDF)</a>
+      </div>
+
+      <!-- ============ 1. DEFINITION ============ -->
+      <section class="block" id="wp-def">
+        <h2 class="sec"><span class="sec-num">1</span> What is linear waveshaping?</h2>
+        <p><strong>Linear waveshaping</strong> is the process whereby the <em>shape of a non-sinusoidal signal</em>
+        is altered by transmission through a <strong>linear network</strong>. We study how step, pulse, square,
+        ramp and exponential waveforms come out of simple RC circuits — and this lecture’s two workhorses are:</p>
+        <div class="grid grid-2">
+          <div class="card"><h3>High-pass RC</h3>
+            <p>Output taken across the <strong>resistor</strong>. Passes fast changes, blocks DC.</p></div>
+          <div class="card"><h3>Low-pass RC</h3>
+            <p>Output taken across the <strong>capacitor</strong>. Passes slow/DC, blocks fast changes.</p></div>
+        </div>
+      </section>
+
+      <!-- ============ 2. HP CIRCUIT ============ -->
+      <section class="block" id="hp">
+        <h2 class="sec"><span class="sec-num">2</span> The high-pass RC circuit</h2>
+        <div class="grid grid-2">
+          <div class="fig">
+            <svg viewBox="0 0 420 210" width="400" role="img" aria-label="High-pass RC">
+              <line x1="30" y1="60" x2="90" y2="60" class="cwire"/>
+              <line x1="95" y1="30" x2="95" y2="90" class="cpart" stroke-width="5"/>
+              <line x1="105" y1="30" x2="105" y2="90" class="cpart" stroke-width="5"/>
+              <line x1="105" y1="60" x2="250" y2="60" class="cwire"/>
+              <text x="92" y="20" class="clab">C</text>
+              <circle cx="250" cy="60" r="3" class="cheav"/>
+              <line x1="250" y1="60" x2="250" y2="95" class="cwire"/>
+              <rect x="236" y="95" width="28" height="52" class="cpart" style="fill:none"/>
+              <text x="272" y="125" class="clab">R</text>
+              <line x1="250" y1="147" x2="250" y2="170" class="cwire"/>
+              <line x1="250" y1="170" x2="30" y2="170" class="cwire"/>
+              <line x1="30" y1="170" x2="30" y2="60" class="cwire"/>
+              <text x="44" y="52" class="clab">v_in</text>
+              <text x="258" y="80" class="clab">v_o</text>
+              <text x="60" y="200" class="cnote">output across R — the “top of the resistor” node</text>
+            </svg>
+            <div class="figcap">High-pass: series C, shunt R.</div>
+          </div>
+          <div>
+            <p>For <strong>sinusoidal</strong> input (preview of Laplace territory), the transfer function has:</p>
+            <div class="formula-row" style="grid-template-columns:1fr 1fr">
+              <div class="formula center"><span>\(\omega_c = \dfrac{1}{RC}\)</span><span class="flabel">lower 3-dB frequency</span></div>
+              <div class="formula center"><span>\(\left|\dfrac{v_o}{v_i}\right| = \dfrac{\omega RC}{\sqrt{1+\omega^2R^2C^2}}\)</span></div>
+            </div>
+            <div class="callout co-violet"><span class="ico">👀</span>
+              <span class="co-title">Phase: output leads input</span>
+              <p>The HP output <em>leads</em> the input by \( \theta = \arctan\!\big(\dfrac{1}{\omega RC}\big) \),
+              approaching 90° at high frequency. (Full frequency response returns with Laplace later — the slides
+              note exactly that. 🙂)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3. HP STEP ============ -->
+      <section class="block" id="hp-step">
+        <h2 class="sec"><span class="sec-num">3</span> HP · step voltage input</h2>
+        <p>Apply a step \( v_{in} = V\,u(t) \). Steady-state (DC) analysis says the capacitor ends up an open, so
+        <strong>no</strong> final current flows and the final output is zero. The 4-step procedure gives:</p>
+        <div class="formula center">
+          <span class="fnum">(5.1)</span>
+          \[ v_o(0^+) = V \quad(\text{C uncharged ⇒ short ⇒ all of } V \text{ across } R) \]
+          \[ \boxed{\;v_o(t) = V\,e^{-t/\tau}\;}, \qquad \tau = RC, \qquad t \ge 0 \]
+          <span class="flabel">The output <em>jumps</em> to V at t = 0 and decays to zero — the mirror image of the LP step.</span>
+        </div>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>t / τ</th><td class="c">0.5</td><td class="c">1</td><td class="c">2</td><td class="c">3</td><td class="c">4</td><td class="c">5</td></tr></thead>
+            <tbody><tr><td><strong>v<sub>o</sub>/V</strong></td>
+              <td class="c">0.607</td><td class="c">0.368</td><td class="c">0.135</td><td class="c">0.050</td><td class="c">0.018</td><td class="c">0.007</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============ 4. HP PULSE ============ -->
+      <section class="block" id="hp-pulse">
+        <h2 class="sec"><span class="sec-num">4</span> HP · pulse input</h2>
+        <p>With \( v_{in} = V_p[u(t) - u(t-t_p)] \), the output is again two intervals — same method as Lecture 4,
+        now with \( v_o = v_{in} - v_C \):</p>
+        <div class="formula-row">
+          <div class="formula center">
+            <span>0 &lt; t &lt; tₚ</span>
+            \[ v_o(t) = V_p\,e^{-t/\tau} \]
+          </div>
+          <div class="formula center">
+            <span>t &gt; tₚ</span>
+            \[ v_o(t) = -V_p\left(1 - e^{-t_p/\tau}\right)e^{-(t-t_p)/\tau} \]
+          </div>
+        </div>
+        <p class="lede-note">At the falling edge the output jumps <em>down</em> by exactly V<sub>p</sub> (same size,
+        opposite direction as the input jump) and decays back toward zero from below. The pulse is “centered”
+        around zero DC — previewing the HP’s DC-blocking character.</p>
+      </section>
+
+      <!-- ============ 5. HP BEHAVIOR ============ -->
+      <section class="block" id="hp-behavior">
+        <h2 class="sec"><span class="sec-num">5</span> HP behavior · three rules to memorize</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>① DC block</h3>
+            <p>The <strong>average level</strong> of the output is always <strong>zero</strong>. Any DC component in
+            the input is removed — the output swings around 0 V.</p>
+          </div>
+          <div class="card">
+            <h3>② Edge copying</h3>
+            <p>Whenever the input changes discontinuously by \( \Delta V \), the output changes
+            discontinuously <strong>by the same amount, in the same direction</strong> — the capacitor voltage
+            can’t jump, so the whole jump appears across R.</p>
+          </div>
+          <div class="card">
+            <h3>③ Exponential decay to zero</h3>
+            <p>During any finite interval where the input holds a constant level, the output
+            <strong>decays exponentially toward zero</strong> with time constant RC.</p>
+          </div>
+        </div>
+        <div class="callout co-tip"><span class="ico">🎯</span>
+          <span class="co-title">These three rules draw any HP waveform</span>
+          <p>Sketch the input, copy every edge 1:1, then draw a decay toward 0 between edges. No algebra needed —
+          the interactive lab below does exactly this for you.</p>
+        </div>
+      </section>
+
+      <!-- ============ 6. HP DIFFERENTIATOR ============ -->
+      <section class="block" id="hp-diff">
+        <h2 class="sec"><span class="sec-num">6</span> HP as a differentiator</h2>
+        <p>When \( RC \) is <strong>very small</strong> compared with the time over which the input can make an
+        appreciable change, the output barely decays between edges — and the math collapses to:</p>
+        <div class="formula center">
+          <span class="fnum">(5.2)</span>
+          \[ v_o(t) = v_{in}(t) - v_C(t), \qquad v_C(t) = \frac{1}{RC}\int_{-\infty}^{t} v_{in}(\lambda)\,d\lambda \]
+          <span class="flabel">With τ = RC very small, v_C stays tiny and the output is a narrow spike at every edge — its area is ΔV·RC, exactly the area of RC times the impulse that is d v_in/dt.</span>
+        </div>
+        <div class="formula center">
+          \[ \boxed{\;v_o(t) \;\approx\; RC\,\frac{d\,v_{in}(t)}{dt}\;} \qquad \left(\tau = RC \ll \frac{T}{2}\right) \]
+          <span class="flabel">The HP circuit is a <strong>differentiator</strong> in the small-RC limit.</span>
+        </div>
+        <div class="callout co-key"><span class="ico">📐</span>
+          <span class="co-title">What that means in practice</span>
+          <p>A square wave in gives <em>spikes</em> out (huge at edges, zero between) — the classic differentiator
+          waveform. Condition: \( \tau \ll T/2 \) (small RC relative to the signal period). The mirror condition
+          \( \tau \gg T/2 \) makes the LP an <strong>integrator</strong> — next.</p>
+        </div>
+      </section>
+
+      <!-- ============ 7. LP CIRCUIT ============ -->
+      <section class="block" id="lp">
+        <h2 class="sec"><span class="sec-num">7</span> The low-pass RC circuit</h2>
+        <div class="grid grid-2">
+          <div class="fig">
+            <svg viewBox="0 0 420 210" width="400" role="img" aria-label="Low-pass RC">
+              <line x1="30" y1="60" x2="90" y2="60" class="cwire"/>
+              <rect x="90" y="46" width="56" height="28" class="cpart" style="fill:none"/>
+              <text x="104" y="40" class="clab">R</text>
+              <line x1="146" y1="60" x2="250" y2="60" class="cwire"/>
+              <circle cx="250" cy="60" r="3" class="cheav"/>
+              <line x1="250" y1="60" x2="250" y2="95" class="cwire"/>
+              <line x1="220" y1="98" x2="280" y2="98" class="cpart" stroke-width="5"/>
+              <line x1="220" y1="111" x2="280" y2="111" class="cpart" stroke-width="5"/>
+              <line x1="250" y1="111" x2="250" y2="170" class="cwire"/>
+              <text x="272" y="110" class="clab">C</text>
+              <line x1="250" y1="170" x2="30" y2="170" class="cwire"/>
+              <line x1="30" y1="170" x2="30" y2="60" class="cwire"/>
+              <text x="44" y="52" class="clab">v_in</text>
+              <text x="258" y="80" class="clab">v_o</text>
+              <text x="60" y="200" class="cnote">output across C — the capacitor node</text>
+            </svg>
+            <div class="figcap">Low-pass: series R, shunt C.</div>
+          </div>
+          <div>
+            <p>With sinusoidal input, the <strong>upper</strong> 3-dB frequency is again \( \omega_c = 1/(RC) \), but
+            now the response falls off <em>above</em> it:</p>
+            <div class="formula center">
+              \[ \left|\frac{v_o}{v_i}\right| = \frac{1}{\sqrt{1+\omega^2R^2C^2}}, \qquad \theta = -\arctan(\omega RC) \]
+              <span class="flabel">Output lags input by θ; at ω_c the gain is 1/√2 ≈ 0.707 (−3 dB).</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 8. LP STEP ============ -->
+      <section class="block" id="lp-step">
+        <h2 class="sec"><span class="sec-num">8</span> LP · step voltage input</h2>
+        <p>For \( v_{in} = V\,u(t) \): the capacitor starts at 0 (a short), and at DC it becomes an open carrying
+        the full source. The 4-step procedure gives the classic charging curve:</p>
+        <div class="formula center">
+          <span class="fnum">(5.3)</span>
+          \[ v_o(0^+) = 0, \qquad v_o(\infty) = V, \qquad \tau = RC \]
+          \[ \boxed{\;v_o(t) = V\left(1 - e^{-t/\tau}\right)\;}, \qquad t \ge 0 \]
+          <span class="flabel">Same exponential as Lecture 3’s RL step — the capacitor voltage is the star here.</span>
+        </div>
+      </section>
+
+      <!-- ============ 9. LP PULSE / RECTANGULAR ============ -->
+      <section class="block" id="lp-pulse">
+        <h2 class="sec"><span class="sec-num">9</span> LP · pulse and rectangular wave input</h2>
+        <p>A pulse \( V_p[u(t) - u(t-t_p)] \) gives two intervals of the charging curve:</p>
+        <div class="formula-row">
+          <div class="formula center">
+            <span>0 &lt; t &lt; tₚ (charging)</span>
+            \[ v_o(t) = V_p\left(1 - e^{-t/\tau}\right) \]
+          </div>
+          <div class="formula center">
+            <span>t &gt; tₚ (discharging)</span>
+            \[ v_o(t) = V_p\left(1 - e^{-t_p/\tau}\right)e^{-(t-t_p)/\tau} \]
+          </div>
+        </div>
+        <div class="callout co-tip"><span class="ico">📏</span>
+          <span class="co-title">Rule of thumb (slide): preserve the pulse shape</span>
+          <p>To pass a pulse with <strong>minimal distortion</strong>, choose \( \tau \) so the capacitor
+          <em>fully charges</em> during the high interval — i.e. \( t_p \gtrsim 5\tau \) (large RC relative to the
+          pulse width is the opposite error: the output barely rises).</p>
+        </div>
+        <h3>Rectangular wave (slide exercise)</h3>
+        <p class="lede-note">“Draw the output if the input is a 50% rectangular wave.” In steady state the
+        capacitor oscillates between two levels, found exactly by the handoff rule from Lecture 4. With
+        \( a = e^{-(T/2)/\tau} \):</p>
+        <div class="formula center">
+          \[ v_{o,\min} = \frac{aV}{1+a}, \qquad v_{o,\max} = \frac{V}{1+a}
+          \qquad\Longrightarrow\qquad \text{tilt} = \frac{v_{o,\max} - v_{o,\min}}{(v_{o,\max}+v_{o,\min})/2} = \frac{2(1-a)}{1+a} \]
+          <span class="flabel">Tilt quantifies the sag of a distorted rectangular output, in percent: tilt × 100%.</span>
+        </div>
+        <p class="lede-note">Small a (τ ≪ T/2) ⇒ big tilt (the LP output is a “rounded triangle”); a → 1
+        (τ ≫ T/2) ⇒ tilt → 0 (the output is an almost-perfect copy with only a tiny ripple).</p>
+      </section>
+
+      <!-- ============ 10. LP INTEGRATOR ============ -->
+      <section class="block" id="lp-int">
+        <h2 class="sec"><span class="sec-num">10</span> LP as an integrator</h2>
+        <p>When \( RC \) is <strong>very large</strong> compared with the time over which the input can make an
+        appreciable change, the capacitor voltage changes so slowly that its drop is <em>negligible compared
+        to the drop across R</em> — so essentially all of the input appears across R, and</p>
+        <div class="formula center">
+          <span class="fnum">(5.4)</span>
+          \[ i(t) = \frac{v_R}{R} \approx \frac{v_{in}}{R}, \qquad v_o = v_C = \frac{1}{C}\int_{0}^{t} i\,d\lambda
+              \quad\Longrightarrow\quad \boxed{\;v_o(t) \approx \frac{1}{RC}\int_{0}^{t} v_{in}(\lambda)\,d\lambda\;} \]
+          <span class="flabel">The LP circuit is an <strong>integrator</strong> in the large-RC limit. Condition: \( \tau = RC \gg T/2 \).</span>
+        </div>
+        <div class="callout co-key"><span class="ico">⚖️</span>
+          <span class="co-title">The two limits side by side</span>
+          <ul class="tight">
+            <li><strong>HP, \( \tau \ll T/2 \)</strong> ⇒ differentiator: \( v_o \approx RC\,\dfrac{dv_{in}}{dt} \).</li>
+            <li><strong>LP, \( \tau \gg T/2 \)</strong> ⇒ integrator: \( v_o \approx \dfrac{1}{RC}\int v_{in}\,dt \).</li>
+          </ul>
+          <p>Both are “RC much larger or much smaller than the signal period” — the same number, two regimes.
+          In between, the circuit just <em>waveshapes</em>.</p>
+        </div>
+      </section>
+
+      <!-- ============ 11. 3dB CUTOFF ============ -->
+      <section class="block" id="cutoff">
+        <h2 class="sec"><span class="sec-num">11</span> The 3-dB cutoff, both ways</h2>
+        <p>Both circuits share the same corner frequency; only the side of the band differs:</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Circuit</th><th>3-dB frequency</th><th>Behavior below ω<sub>c</sub></th><th>Behavior above ω<sub>c</sub></th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>High-pass RC</strong></td>
+                <td>lower cutoff: \( \omega_c = \dfrac{1}{RC} \)</td>
+                <td>attenuates (−20 dB/dec slope)</td>
+                <td>passes (gain → 1, phase → 0°)</td>
+              </tr>
+              <tr>
+                <td><strong>Low-pass RC</strong></td>
+                <td>upper cutoff: \( \omega_c = \dfrac{1}{RC} \)</td>
+                <td>passes (gain → 1, phase → 0°)</td>
+                <td>attenuates (−20 dB/dec slope)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="lede-note">In hertz: \( f_c = \dfrac{1}{2\pi RC} \). At exactly ω<sub>c</sub>, |v<sub>o</sub>/v<sub>i</sub>| = 1/√2,
+        i.e. the output power is half the input power — hence “3 dB”.</p>
+      </section>
+
+      <!-- ============ 12. LABS ============ -->
+      <section class="block" id="labs">
+        <h2 class="sec"><span class="sec-num">12</span> 🧪 Interactive · the RC waveshaper</h2>
+        <p class="lede-note">One lab, both circuits, every waveform of the lecture. Flip HP/LP, pick an input,
+        drag R and C — the output, the tilt and the cutoff follow.</p>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">🌊</div>
+            <div><div class="t">RC waveshaper — input &amp; output, live</div>
+            <div class="s">HP output across R · LP output across C. Dashed = input, solid = output.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl">
+                <div class="ctl-top"><label>Circuit</label></div>
+                <div class="seg" id="ws_mode">
+                  <button data-mode="LP" class="on">Low-pass (out = C)</button>
+                  <button data-mode="HP">High-pass (out = R)</button>
+                </div>
+              </div>
+              <div class="ctl">
+                <div class="ctl-top"><label>Input</label></div>
+                <div class="seg" id="ws_in">
+                  <button data-in="step" class="on">Step</button>
+                  <button data-in="pulse">Pulse</button>
+                  <button data-in="square">Square</button>
+                </div>
+              </div>
+              <div class="ctl"><div class="ctl-top"><label for="ws_R">Resistance R</label><span class="val" id="ws_Rv"></span></div>
+                <input type="range" id="ws_R" min="1" max="20" step="0.5" value="5"></div>
+              <div class="ctl"><div class="ctl-top"><label for="ws_C">Capacitance C (µF scale)</label><span class="val" id="ws_Cv"></span></div>
+                <input type="range" id="ws_C" min="0.1" max="10" step="0.1" value="2"></div>
+              <div class="ctl"><div class="ctl-top"><label for="ws_A">Input amplitude</label><span class="val" id="ws_Av"></span></div>
+                <input type="range" id="ws_A" min="2" max="12" step="1" value="8"></div>
+              <div class="ctl"><div class="ctl-top"><label for="ws_W">Width / period (× τ)</label><span class="val" id="ws_Wv"></span></div>
+                <input type="range" id="ws_W" min="1" max="12" step="0.5" value="4"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">τ = RC</div><div class="v" id="ws_tau"></div></div>
+                <div class="readout"><div class="k">f<sub>c</sub> = 1/2πRC</div><div class="v" id="ws_fc"></div></div>
+                <div class="readout"><div class="k">tilt (square)</div><div class="v" id="ws_tilt"></div></div>
+              </div>
+            </div>
+            <div class="stage"><canvas class="plot" id="wsPlot" aria-label="Waveshaper input and output"></canvas></div>
+          </div>
+        </div>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">📡</div>
+            <div><div class="t">Frequency response · gain &amp; phase</div>
+            <div class="s">|v<sub>o</sub>/v<sub>i</sub>| and θ versus f/f<sub>c</sub> — the −3 dB point sits at f/f<sub>c</sub> = 1.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl">
+                <div class="ctl-top"><label>Circuit</label></div>
+                <div class="seg" id="fr_mode">
+                  <button data-mode="LP" class="on">Low-pass</button>
+                  <button data-mode="HP">High-pass</button>
+                </div>
+              </div>
+              <div class="ctl"><div class="ctl-top"><label for="fr_R">Resistance R</label><span class="val" id="fr_Rv"></span></div>
+                <input type="range" id="fr_R" min="1" max="20" step="0.5" value="5"></div>
+              <div class="ctl"><div class="ctl-top"><label for="fr_C">Capacitance C (µF scale)</label><span class="val" id="fr_Cv"></span></div>
+                <input type="range" id="fr_C" min="0.1" max="10" step="0.1" value="2"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">ω<sub>c</sub> = 1/RC</div><div class="v" id="fr_wc"></div></div>
+                <div class="readout"><div class="k">f<sub>c</sub></div><div class="v" id="fr_fc"></div></div>
+                <div class="readout"><div class="k">gain @ f<sub>c</sub></div><div class="v">0.707 (−3 dB)</div></div>
+              </div>
+            </div>
+            <div class="stage">
+              <canvas class="plot" id="frGain" aria-label="Gain versus frequency"></canvas>
+              <canvas class="plot" id="frPhase" aria-label="Phase versus frequency" style="margin-top:12px"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 13. SUMMARY ============ -->
+      <section class="block" id="summary">
+        <h2 class="sec"><span class="sec-num">13</span> Summary</h2>
+        <div class="callout co-key"><span class="ico">📌</span>
+          <p>• The <strong>HP RC</strong> (output across R) is a high-pass filter with lower 3-dB cutoff
+          \( \omega_c = 1/RC \); step ⇒ \( Ve^{-t/RC} \); it blocks DC, copies edges, and decays to zero between edges.</p>
+          <p>• The <strong>LP RC</strong> (output across C) is a low-pass filter with upper 3-dB cutoff
+          \( \omega_c = 1/RC \); step ⇒ \( V(1-e^{-t/RC}) \); pulses charge and discharge by handoff.</p>
+          <p>• HP differentiates when \( RC \ll T/2 \): \( v_o \approx RC\,dv_{in}/dt \).</p>
+          <p>• LP integrates when \( RC \gg T/2 \): \( v_o \approx \frac{1}{RC}\int v_{in}\,dt \).</p>
+        </div>
+
+        <h3>Flashcards — test yourself</h3>
+        <div class="grid grid-2">
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">HP RC step response<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ v_o(t) = V e^{-t/RC} \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">LP RC step response<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ v_o(t) = V(1 - e^{-t/RC}) \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">3-dB cutoff of both circuits<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\( \omega_c = 1/RC \) — lower for HP, upper for LP<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">HP output when input jumps by ΔV<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">Jumps by ΔV, same direction, then decays to 0<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">HP differentiator condition<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\( RC \ll T/2 \) ⇒ \( v_o \approx RC\,dv_{in}/dt \)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">LP integrator condition<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\( RC \gg T/2 \) ⇒ \( v_o \approx \frac{1}{RC}\int v_{in}\,dt \)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">HP average output level<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">Always <strong>zero</strong> (DC blocking)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Gain at the cutoff frequency<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">1/√2 ≈ 0.707 (−3 dB)<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- ============ 14. QUIZ ============ -->
+      <section class="block" id="quiz">
+        <h2 class="sec"><span class="sec-num">14</span> Self-test quiz</h2>
+        <p class="lede-note">Cutoffs, tilt, and the two operator limits.</p>
+        <div class="quiz" data-quiz="l05">
+          <div class="quiz-q" data-answer="2" data-expl="Both HP and LP RC circuits have the same corner frequency ωc = 1/RC — the HP treats it as its lower cutoff, the LP as its upper cutoff.">
+            <div class="q"><span class="qn">Q1.</span>For both the HP and LP RC circuits, the 3-dB cutoff angular frequency is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>ωc = RC</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>ωc = 1/(2πRC)</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>ωc = 1/RC</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Different for each circuit</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="1" data-expl="An HP output jumps by the same amount as the input discontinuity, in the same direction, then decays exponentially to zero.">
+            <div class="q"><span class="qn">Q2.</span>The input to an HP RC circuit jumps up by 5 V. The output:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>Stays at its previous value</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>Jumps up by 5 V, then decays toward 0</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>Jumps down by 5 V</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Rises slowly toward 5 V</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="0" data-expl="The HP circuit differentiates when τ = RC is very small compared with the time the input takes to change appreciably — v_o ≈ RC·dv_in/dt.">
+            <div class="q"><span class="qn">Q3.</span>An RC circuit acts as a differentiator when:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>RC is small compared to the input period (HP output)</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>RC is large compared to the input period (HP output)</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>RC is large compared to the input period (LP output)</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>RC equals the input period</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="3" data-expl="At ωc the magnitude is 1/√(1+1) = 1/√2 ≈ 0.707 — half power, i.e. −3 dB.">
+            <div class="q"><span class="qn">Q4.</span>At the cutoff frequency, the gain |v<sub>o</sub>/v<sub>i</sub>| of a first-order RC filter is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>1</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>0</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>0.5</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>0.707</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="2" data-expl="DC is a “constant” and the HP blocks constants: the average of its output is always zero.">
+            <div class="q"><span class="qn">Q5.</span>The average (DC) level of the output of an HP RC circuit is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>Equal to the input average</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>Twice the input average</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>Always zero</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Undefined</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <span class="quiz-score"></span>
+        </div>
+      </section>
+
+      <div class="pager">
+        <a href="04-first-order-part2.html"><div class="dir">← Previous lecture</div><div class="ti">04 · First-Order Circuits Part 2</div></a>
+        <a class="next ghost" href="index.html"><div class="dir">Back to →</div><div class="ti">Dashboard &amp; all lectures</div></a>
+      </div>
+
+      <div style="text-align:center; margin-top:26px">
+        <button class="btn" data-mark-complete="05">Mark lecture complete</button>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="foot">
+    <span>EEE 133 · Circuit Theory — Lecture 05: Linear Waveshaping</span>
+    <span>UP Diliman · College of Engineering · EEE Institute</span>
+  </div>
+</div>
+
+<script src="js/plot.js"></script>
+<script src="js/common.js"></script>
+<script src="js/lecture05.js"></script>
+</body>
+</html>
