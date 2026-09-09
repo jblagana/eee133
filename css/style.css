@@ -1,5 +1,5 @@
 /* ============================================================
-   EEE 133 · Circuit Theory — Interactive Lecture Site
+   EEE 133 · Circuits and Electronics II — Interactive Lecture Site
    Design system
    ============================================================ */
 
@@ -533,7 +533,7 @@ canvas.plot { width: 100%; height: auto; display: block; background: var(--surfa
 }
 @media (max-width: 700px) { .foot { padding: 22px 20px 36px; } }
 
-/* narrow phones: drop the "· Circuit Theory" crumb so the burger + theme
+/* narrow phones: drop the "· Circuits and Electronics II" crumb so the burger + theme
    buttons fit the topbar without squeezing the progress pill */
 @media (max-width: 640px) {
   .topbar { gap: 10px; padding: 0 14px; }

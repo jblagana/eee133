@@ -1,7 +1,7 @@
-# EEE 133 · Circuit Theory — Interactive Lecture Companion
+# EEE 133 · Circuits and Electronics II — Interactive Lecture Companion
 
-Interactive companion site for the EEE 133 (Circuit Theory) lecture decks,
-UP Diliman · College of Engineering · EEE Institute, 1st Semester A.Y. 2026–2027.
+Interactive companion site for the EEE 133 (Circuits and Electronics II) lecture decks,
+Lectures 2–6.
 
 Each lecture page mirrors the slide flow: concept → theory → worked example →
 hands-on lab → self-test. Every equation is rendered live with MathJax, the
