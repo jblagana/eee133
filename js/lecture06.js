@@ -88,7 +88,7 @@
   (function () {
     var cv = $("drTime"), pv = $("drPlane");
     if (!cv || !pv) return;
-    var tFix = null;                                    /* axes locked to the default case */
+    var tFix = null, pFix = null;                       /* axes locked to the default case */
     var R = bindSlider("dr_R", "dr_Rv", function (x) { return x.toFixed(0) + " Ω"; });
     var L = bindSlider("dr_L", "dr_Lv", function (x) { return x.toFixed(0) + " mH"; });
     var C = bindSlider("dr_C", "dr_Cv", function (x) { return x.toFixed(0) + " nF"; });
@@ -127,7 +127,8 @@
       if (!tFix) tFix = rr;
 
       /* s-plane: roots against the ω₀ circle and the −α line */
-      var m = 1.35 * Math.max(s.w0, s.alpha);
+      if (!pFix) pFix = 1.35 * Math.max(s.w0, s.alpha);
+      var m = pFix;
       var wo2 = s.w0 * s.w0;
       var circleTop = function (x) { var d = wo2 - x * x; return d >= 0 ? Math.sqrt(d) : NaN; };
       var circleBot = function (x) { var d = wo2 - x * x; return d >= 0 ? -Math.sqrt(d) : NaN; };

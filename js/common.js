@@ -226,16 +226,22 @@
     Array.prototype.slice.call(document.querySelectorAll(".formula")).forEach(function (box) {
       var m = box.querySelector("mjx-container");
       if (!m) return;
-      var line = m.querySelector("mjx-mrow") || m;
+      /* measure the WHOLE equation: mjx-math wraps all glyphs (the top level is
+         not always an mjx-mrow, so querying mrow alone can hit a nested fragment) */
+      var line = m.querySelector("mjx-math") || m.querySelector("mjx-mrow") || m;
       m.style.transform = "";
       m.style.height = "";
       var avail = box.clientWidth - 46;                 /* horizontal padding + slack */
       var w = line.offsetWidth;
-      if (w > 0 && isFinite(avail) && w > avail) {
+      if (w > 0 && avail > 0 && w > avail) {
         var s = avail / w;
         var h = m.offsetHeight;
-        m.style.display = "block";
-        m.style.transformOrigin = "top center";
+        /* CSS transforms are ignored on plain inline elements (MathJax inline
+           containers are display:inline), so make it inline-block first */
+        if (getComputedStyle(m).display === "inline") m.style.display = "inline-block";
+        /* wide equations sit at the container's left edge and overflow right,
+           so scale from the top-left corner to keep the result inside the box */
+        m.style.transformOrigin = "top left";
         m.style.transform = "scale(" + s + ")";
         m.style.height = Math.round(h * s) + "px";
       }
@@ -246,8 +252,8 @@
     (function queueFit() {
       if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
         MathJax.startup.promise.then(function () { fitFormulas(); });
-      } else if (++fitTries < 50) {                     /* give up after ~6 s */
-        setTimeout(queueFit, 120);
+      } else if (++fitTries < 150) {                    /* keep waiting ~30 s (slow CDN) */
+        setTimeout(queueFit, 200);
       }
     })();
     var fitRt = null;
