@@ -283,7 +283,8 @@ window.MathJax = {
                 <div class="readout"><div class="k">swing |x0−x∞|</div><div class="v" id="rbSwing"></div></div>
               </div>
             </div>
-            <div class="stage"><canvas class="plot" id="rbPlot" aria-label="General first-order response"></canvas></div>
+            <div class="stage"><canvas class="plot" id="rbPlot" aria-label="General first-order response"></canvas>
+            <p class="kbd-note">Axes are locked to the default case — the curve and the τ marks adapt as you sweep (extreme values may clip off-view).</p></div>
           </div>
         </div>
       </section>
@@ -329,7 +330,8 @@ window.MathJax = {
               <div class="ctl"><div class="ctl-top"><label for="stepT1">Pulse end t₁ (s)</label><span class="val" id="stepT1v"></span></div>
                 <input type="range" id="stepT1" min="-4" max="8" step="0.5" value="3"></div>
             </div>
-            <div class="stage"><canvas class="plot" id="stepPlot" aria-label="Step function sketch"></canvas></div>
+            <div class="stage"><canvas class="plot" id="stepPlot" aria-label="Step function sketch"></canvas>
+            <p class="kbd-note">Axes are locked to the default case — the sketch adapts as you sweep (extreme values may clip off-view).</p></div>
           </div>
         </div>
       </section>
@@ -427,7 +429,8 @@ window.MathJax = {
               <p class="kbd-note">Rule of thumb (Lecture 5 preview): to pass the pulse with little distortion,
               want tₚ ≫ τ so the capacitor fully charges during the high interval.</p>
             </div>
-            <div class="stage"><canvas class="plot" id="plPlot" aria-label="Pulse response"></canvas></div>
+            <div class="stage"><canvas class="plot" id="plPlot" aria-label="Pulse response"></canvas>
+            <p class="kbd-note">Axes are locked to the default case — the curves adapt as you sweep (extreme values may clip off-view).</p></div>
           </div>
         </div>
       </section>

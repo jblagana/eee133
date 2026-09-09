@@ -26,6 +26,7 @@
     var X0 = bindSlider("rbX0", "rbX0v", function (x) { return x.toFixed(1); });
     var Xinf = bindSlider("rbXinf", "rbXinfv", function (x) { return x.toFixed(1); });
     var Tau = bindSlider("rbTau", "rbTauv", function (x) { return x.toFixed(1) + " s"; });
+    var fix = null;                       /* axes locked to the default case */
 
     function draw() {
       var x0 = parseFloat(X0.value), xinf = parseFloat(Xinf.value), tau = parseFloat(Tau.value);
@@ -34,7 +35,7 @@
       $("rbX5").textContent = x(5 * tau).toFixed(2);
       $("rbSwing").textContent = Math.abs(x0 - xinf).toFixed(1);
 
-      Plot.draw(cv, {
+      var c = {
         xMin: 0, xMax: 5 * tau,
         series: [{ fn: x, color: COL.blue, width: 2.6, fill: "to0" }],
         xLabel: "t (s)", yLabel: "x(t)",
@@ -50,7 +51,10 @@
           { x: 0, y: x0, color: COL.amber, r: 5.5, label: "x(0⁺)", baseline: "top" },
           { x: tau, y: x(tau), color: COL.green, r: 5, label: "63.2% of the swing" }
         ]
-      });
+      };
+      if (fix) { c.xMin = fix.xMin; c.xMax = fix.xMax; c.yMin = fix.yMin; c.yMax = fix.yMax; }
+      var rr = Plot.draw(cv, c);
+      if (!fix) fix = rr;
     }
     redrows.push(draw);
     draw();
@@ -61,12 +65,14 @@
     var cv = $("stepPlot");
     if (!cv) return;
     var st = { pulse: false };
+    var fix = null;                       /* axes locked to the default case */
     var btns = Array.prototype.slice.call(document.querySelectorAll("#stepPulse button"));
     btns.forEach(function (b) {
       b.addEventListener("click", function () {
         btns.forEach(function (x) { x.classList.remove("on"); });
         b.classList.add("on");
         st.pulse = b.dataset.pulse === "1";
+        fix = null;                       /* step ↔ pulse: re-lock axes */
         draw();
       });
     });
@@ -87,12 +93,15 @@
       var vLines = [{ x: t0, color: COL.amber, dash: [4, 4], label: "t₀" }];
       if (st.pulse) vLines.push({ x: t1, color: COL.green, dash: [4, 4], label: "t₁" });
 
-      Plot.draw(cv, {
+      var c = {
         xMin: xMin, xMax: xMax,
         series: series,
         xLabel: "t (s)", yLabel: "v (V)",
         vLines: vLines, legend: false
-      });
+      };
+      if (fix) { c.xMin = fix.xMin; c.xMax = fix.xMax; c.yMin = fix.yMin; c.yMax = fix.yMax; }
+      var rr = Plot.draw(cv, c);
+      if (!fix) fix = rr;
     }
     redrows.push(draw);
     draw();
@@ -105,6 +114,7 @@
     var Vp = bindSlider("plVp", "plVpv", function (x) { return x.toFixed(0) + " V"; });
     var Tp = bindSlider("plTp", "plTpv", function (x) { return x.toFixed(1) + " τ"; });
     var Tau = bindSlider("plTau", "plTaum", function (x) { return x.toFixed(1) + " s"; });
+    var fix = null;                       /* axes locked to the default case */
 
     function draw() {
       var vp = parseFloat(Vp.value);
@@ -125,7 +135,7 @@
       function vIn(t) { return (t >= 0 && t <= tpSec) ? vp : 0; }
 
       var xMax = tpSec + 5 * tau;
-      Plot.draw(cv, {
+      var c = {
         xMin: 0, xMax: xMax,
         series: [
           { fn: vIn, color: COL.green, width: 1.8, dash: [6, 4], label: "input pulse" },
@@ -135,7 +145,10 @@
         vLines: [{ x: tpSec, color: COL.amber, dash: [4, 4], label: "tₚ" }],
         points: [{ x: tpSec, y: vtp, color: COL.amber, r: 5.5, label: "v(tₚ) = " + vtp.toFixed(1) + " V" }],
         regions: [{ x0: 0, x1: tpSec, color: COL.green, alpha: 0.05 }]
-      });
+      };
+      if (fix) { c.xMin = fix.xMin; c.xMax = fix.xMax; c.yMin = fix.yMin; c.yMax = fix.yMax; }
+      var rr = Plot.draw(cv, c);
+      if (!fix) fix = rr;
     }
     redrows.push(draw);
     draw();

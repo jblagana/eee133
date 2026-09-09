@@ -25,12 +25,13 @@
     if (!cv) return;
     var C = bindSlider("capE_C", "capE_Cv", function (x) { return x.toFixed(1) + " F"; });
     var V = bindSlider("capE_V", "capE_Vv", function (x) { return x.toFixed(1) + " V"; });
+    var fix = null;                       /* axes locked to the default case */
 
     function draw() {
       var c = parseFloat(C.value), v = parseFloat(V.value);
       $("capE_w").textContent = (0.5 * c * v * v).toFixed(2) + " J";
       $("capE_q").textContent = (c * v).toFixed(2) + " C";
-      Plot.draw(cv, {
+      var cfg = {
         xMin: -12, xMax: 12,
         series: [
           { fn: function (x) { return 0.5 * c * x * x; }, color: COL.blue, width: 2.4, fill: "to0", label: "w(v) = ½Cv²" }
@@ -38,7 +39,10 @@
         points: [{ x: v, y: 0.5 * c * v * v, color: COL.amber, r: 6, label: "here", baseline: "bottom" }],
         xLabel: "v (V)", yLabel: "w (J)",
         vLines: v !== 0 ? [{ x: v, color: COL.amber, label: "" }] : []
-      });
+      };
+      if (fix) { cfg.xMin = fix.xMin; cfg.xMax = fix.xMax; cfg.yMin = fix.yMin; cfg.yMax = fix.yMax; }
+      var rr = Plot.draw(cv, cfg);
+      if (!fix) fix = rr;
     }
     redrows.push(draw);
     draw();
@@ -47,12 +51,14 @@
   /* ---------- 2 & 4. Derivative labs (cap + ind) ---------- */
   function derivLab(opts) {
     var st = { wave: "dc" };
+    var fix = null;                       /* axes locked per waveform (default sliders) */
     var waveBtns = Array.prototype.slice.call(document.querySelectorAll(opts.waveEl + " button"));
     waveBtns.forEach(function (b) {
       b.addEventListener("click", function () {
         waveBtns.forEach(function (x) { x.classList.remove("on"); });
         b.classList.add("on");
         st.wave = b.dataset.wave;
+        fix = null;                       /* new waveform family: re-lock axes */
         draw();
       });
     });
@@ -129,12 +135,15 @@
         points.push({ x: 0.5, y: aNow * 0.45, color: out, r: 5,
           label: "area = " + opts.kName + "·" + (opts.kind === "cap" ? "Δv" : "Δi") });
       }
-      Plot.draw(cv, {
+      var cfg = {
         xMin: 0, xMax: tMax,
         series: series,
         xLabel: "t (s)", yLabel: opts.yIn + " / " + opts.yOut,
         vLines: vLines, points: points
-      });
+      };
+      if (fix) { cfg.xMin = fix.xMin; cfg.xMax = fix.xMax; cfg.yMin = fix.yMin; cfg.yMax = fix.yMax; }
+      var rr = Plot.draw(cv, cfg);
+      if (!fix) fix = rr;
     }
     redrows.push(draw);
     draw();
@@ -164,12 +173,13 @@
     if (!cv) return;
     var L = bindSlider("indE_L", "indE_Lv", function (x) { return x.toFixed(1) + " H"; });
     var I = bindSlider("indE_I", "indE_Iv", function (x) { return x.toFixed(1) + " A"; });
+    var fix = null;                       /* axes locked to the default case */
 
     function draw() {
       var l = parseFloat(L.value), i = parseFloat(I.value);
       $("indE_w").textContent = (0.5 * l * i * i).toFixed(2) + " J";
       $("indE_lam").textContent = (l * i).toFixed(2) + " Wb·t";
-      Plot.draw(cv, {
+      var cfg = {
         xMin: -10, xMax: 10,
         series: [
           { fn: function (x) { return 0.5 * l * x * x; }, color: COL.violet, width: 2.4, fill: "to0", label: "w(i) = ½Li²" }
@@ -177,7 +187,10 @@
         points: [{ x: i, y: 0.5 * l * i * i, color: COL.amber, r: 6, label: "here", baseline: "bottom" }],
         xLabel: "i (A)", yLabel: "w (J)",
         vLines: i !== 0 ? [{ x: i, color: COL.amber, label: "" }] : []
-      });
+      };
+      if (fix) { cfg.xMin = fix.xMin; cfg.xMax = fix.xMax; cfg.yMin = fix.yMin; cfg.yMax = fix.yMax; }
+      var rr = Plot.draw(cv, cfg);
+      if (!fix) fix = rr;
     }
     redrows.push(draw);
     draw();
@@ -188,6 +201,7 @@
     var cv = $("comb_plot");
     if (!cv) return;
     var st = { type: "C", top: "series" };
+    var fix = null;                       /* axes locked per component/topology (default sliders) */
 
     function seg(id, attr, key) {
       var btns = Array.prototype.slice.call(document.querySelectorAll(id + " button"));
@@ -196,6 +210,7 @@
           btns.forEach(function (x) { x.classList.remove("on"); });
           b.classList.add("on");
           st[key] = b.dataset[attr];
+          fix = null;                     /* new curve family: re-lock axes */
           draw();
         });
       });
@@ -220,7 +235,7 @@
       else rule = st.top === "series" ? "Leq = L1 + L2" : "1/Leq = 1/L1 + 1/L2";
       $("comb_rule").textContent = rule;
 
-      Plot.draw(cv, {
+      var cfg = {
         xMin: 0.5, xMax: 20,
         series: [
           { fn: function (x) { return eq(c1, x); }, color: COL.blue, width: 2.6, fill: "to0",
@@ -230,7 +245,10 @@
         hLines: [{ y: c1, color: COL.green, dash: [5, 4], label: "C₁/L₁ = " + c1.toFixed(1) }],
         xLabel: st.type === "C" ? "C₂ (F)" : "L₂ (H)",
         yLabel: "C_eq (F)"
-      });
+      };
+      if (fix) { cfg.xMin = fix.xMin; cfg.xMax = fix.xMax; cfg.yMin = fix.yMin; cfg.yMax = fix.yMax; }
+      var rr = Plot.draw(cv, cfg);
+      if (!fix) fix = rr;
     }
     redrows.push(draw);
     draw();

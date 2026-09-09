@@ -32,6 +32,7 @@
     //        points(params) -> [...] }
     var cv = $(cfg.plotId);
     if (!cv) return;
+    var fix = null;                       /* axes locked to the default case */
     var sliders = {};
     cfg.sliders.forEach(function (s) { sliders[s.id] = bindSlider(s.id, s.lab, s.fmt); });
 
@@ -73,13 +74,16 @@
         points.push({ x: tau, y: yTau, color: COL.amber, r: 5 });
       }
 
-      Plot.draw(cv, {
+      var c = {
         xMin: 0, xMax: xMax,
         series: series,
         xLabel: cfg.xLabel, yLabel: cfg.yLabel,
         vLines: tauLines(tau), hLines: hLines, points: points,
         legend: false
-      });
+      };
+      if (fix) { c.xMin = fix.xMin; c.xMax = fix.xMax; c.yMin = fix.yMin; c.yMax = fix.yMax; }
+      var rr = Plot.draw(cv, c);
+      if (!fix) fix = rr;
     }
     redrows.push(draw);
     draw();
