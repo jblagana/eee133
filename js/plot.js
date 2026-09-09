@@ -272,6 +272,7 @@
         });
       }
     }
+    return { xMin: xMin, xMax: xMax, yMin: yMin, yMax: yMax };
   }
 
   /* progressive animation: calls draw with increasing progress */

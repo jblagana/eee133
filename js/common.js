@@ -221,6 +221,42 @@
     }
   }
 
+  /* ---------- formula auto-fit (keep wide equations from scrolling) ---------- */
+  function fitFormulas() {
+    Array.prototype.slice.call(document.querySelectorAll(".formula")).forEach(function (box) {
+      var m = box.querySelector("mjx-container");
+      if (!m) return;
+      var line = m.querySelector("mjx-mrow") || m;
+      m.style.transform = "";
+      m.style.height = "";
+      var avail = box.clientWidth - 46;                 /* horizontal padding + slack */
+      var w = line.offsetWidth;
+      if (w > 0 && isFinite(avail) && w > avail) {
+        var s = avail / w;
+        var h = m.offsetHeight;
+        m.style.display = "block";
+        m.style.transformOrigin = "top center";
+        m.style.transform = "scale(" + s + ")";
+        m.style.height = Math.round(h * s) + "px";
+      }
+    });
+  }
+  if (document.querySelectorAll(".formula").length) {
+    var fitTries = 0;
+    (function queueFit() {
+      if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(function () { fitFormulas(); });
+      } else if (++fitTries < 50) {                     /* give up after ~6 s */
+        setTimeout(queueFit, 120);
+      }
+    })();
+    var fitRt = null;
+    window.addEventListener("resize", function () {
+      if (fitRt) return;
+      fitRt = setTimeout(function () { fitRt = null; fitFormulas(); }, 150);
+    });
+  }
+
   /* ---------- expose redraw registry ---------- */
   window.E133 = {
     onRedraw: function (fn) { (window.__e133Redraw = window.__e133Redraw || []).push(fn); },

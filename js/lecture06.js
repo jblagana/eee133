@@ -88,6 +88,7 @@
   (function () {
     var cv = $("drTime"), pv = $("drPlane");
     if (!cv || !pv) return;
+    var tFix = null;                                    /* axes locked to the default case */
     var R = bindSlider("dr_R", "dr_Rv", function (x) { return x.toFixed(0) + " Ω"; });
     var L = bindSlider("dr_L", "dr_Lv", function (x) { return x.toFixed(0) + " mH"; });
     var C = bindSlider("dr_C", "dr_Cv", function (x) { return x.toFixed(0) + " nF"; });
@@ -115,11 +116,15 @@
         series.push({ fn: env, color: COL.amber, width: 1.6, dash: [6, 4], label: "±e^{−αt}·B" });
         series.push({ fn: function (t) { return -env(t); }, color: COL.amber, width: 1.6, dash: [6, 4] });
       }
-      Plot.draw(cv, {
-        xMin: 0, xMax: s.tmax,
+      var rr = Plot.draw(cv, {
+        xMin: tFix ? tFix.xMin : 0,
+        xMax: tFix ? tFix.xMax : s.tmax,
+        yMin: tFix ? tFix.yMin : undefined,
+        yMax: tFix ? tFix.yMax : undefined,
         series: series,
         xLabel: "t (s)", yLabel: "i (A)"
       });
+      if (!tFix) tFix = rr;
 
       /* s-plane: roots against the ω₀ circle and the −α line */
       var m = 1.35 * Math.max(s.w0, s.alpha);
@@ -152,6 +157,7 @@
   (function () {
     var cv = $("prTime");
     if (!cv) return;
+    var tFix = null;                                    /* axes locked to the default case */
     var R = bindSlider("pr_R", "pr_Rv", function (x) { return x.toFixed(0) + " Ω"; });
     var L = bindSlider("pr_L", "pr_Lv", function (x) { return x.toFixed(0) + " mH"; });
     var C = bindSlider("pr_C", "pr_Cv", function (x) { return x.toFixed(0) + " nF"; });
@@ -184,11 +190,15 @@
         series.push({ fn: env, color: COL.amber, width: 1.6, dash: [6, 4], label: "±e^{−αt}·B" });
         series.push({ fn: function (t) { return -env(t); }, color: COL.amber, width: 1.6, dash: [6, 4] });
       }
-      Plot.draw(cv, {
-        xMin: 0, xMax: s.tmax,
+      var rr = Plot.draw(cv, {
+        xMin: tFix ? tFix.xMin : 0,
+        xMax: tFix ? tFix.xMax : s.tmax,
+        yMin: tFix ? tFix.yMin : undefined,
+        yMax: tFix ? tFix.yMax : undefined,
         series: series,
         xLabel: "t (s)", yLabel: "v (V)"
       });
+      if (!tFix) tFix = rr;
     }
     redrows.push(draw);
     draw();
@@ -198,6 +208,7 @@
   (function () {
     var c1 = $("lcVI"), c2 = $("lcEnergy");
     if (!c1 || !c2) return;
+    var vFix = null, eFix = null;                       /* axes locked to the default case */
     var L = bindSlider("lc_L", "lc_Lv", function (x) { return x.toFixed(0) + " mH"; });
     var C = bindSlider("lc_C", "lc_Cv", function (x) { return x.toFixed(0) + " nF"; });
     var V = bindSlider("lc_V", "lc_Vv", function (x) { return x.toFixed(0) + " V"; });
@@ -220,17 +231,24 @@
       $("lc_T").textContent = fmtCoef(T) + " s";
       $("lc_W").textContent = W.toExponential(2) + " J";
 
-      Plot.draw(c1, {
-        xMin: 0, xMax: 2 * T,
+      var rv = Plot.draw(c1, {
+        xMin: vFix ? vFix.xMin : 0,
+        xMax: vFix ? vFix.xMax : 2 * T,
+        yMin: vFix ? vFix.yMin : undefined,
+        yMax: vFix ? vFix.yMax : undefined,
         series: [
           { fn: vC, color: COL.blue, width: 2.4, label: "v_C(t)" },
           { fn: function (t) { return Z * iL(t); }, color: COL.amber, width: 2, label: "i_L(t)·Z₀" }
         ],
         xLabel: "t (s)", yLabel: "volts"
       });
+      if (!vFix) vFix = rv;
 
-      Plot.draw(c2, {
-        xMin: 0, xMax: 2 * T,
+      var re2 = Plot.draw(c2, {
+        xMin: eFix ? eFix.xMin : 0,
+        xMax: eFix ? eFix.xMax : 2 * T,
+        yMin: eFix ? eFix.yMin : undefined,
+        yMax: eFix ? eFix.yMax : undefined,
         series: [
           { fn: function (t) { return 0.5 * c * vC(t) * vC(t); },
             color: COL.blue, width: 2.2, fill: "to0", label: "w_C = ½Cv²" },
@@ -240,6 +258,7 @@
         hLines: W > 0 ? [{ y: W, color: COL.amber, dash: [4, 4], label: "W total (constant)" }] : [],
         xLabel: "t (s)", yLabel: "w (J)"
       });
+      if (!eFix) eFix = re2;
     }
     redrows.push(draw);
     draw();
