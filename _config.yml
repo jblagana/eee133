@@ -1,5 +1,0 @@
-# Jekyll is enabled (no .nojekyll) so the original slide decks can be
-# excluded from the GitHub Pages build. The PDFs remain in the repo under
-# Lectures/ and are linked from the site via github.com blob URLs.
-exclude:
-  - Lectures
