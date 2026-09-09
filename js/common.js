@@ -224,27 +224,33 @@
   /* ---------- formula auto-fit (keep wide equations from scrolling) ---------- */
   function fitFormulas() {
     Array.prototype.slice.call(document.querySelectorAll(".formula")).forEach(function (box) {
-      var m = box.querySelector("mjx-container");
-      if (!m) return;
-      /* measure the WHOLE equation: mjx-math wraps all glyphs (the top level is
-         not always an mjx-mrow, so querying mrow alone can hit a nested fragment) */
-      var line = m.querySelector("mjx-math") || m.querySelector("mjx-mrow") || m;
-      m.style.transform = "";
-      m.style.height = "";
+      var ms = Array.prototype.slice.call(box.querySelectorAll("mjx-container"));
+      if (!ms.length) return;
+      /* reset any previous fit before re-measuring (resize / theme change) */
+      ms.forEach(function (m) { m.style.transform = ""; m.style.height = ""; });
       var avail = box.clientWidth - 46;                 /* horizontal padding + slack */
-      var w = line.offsetWidth;
-      if (w > 0 && avail > 0 && w > avail) {
+      if (avail <= 0) return;
+      var centered = getComputedStyle(box).textAlign === "center";
+      /* fit EVERY equation in the box, not just the first — dashboard cards
+         stack two inline equations and either one may be the wide one */
+      ms.forEach(function (m) {
+        /* measure the WHOLE equation: mjx-math wraps all glyphs (the top level is
+           not always an mjx-mrow, so querying mrow alone can hit a nested fragment) */
+        var line = m.querySelector("mjx-math") || m.querySelector("mjx-mrow") || m;
+        var w = line.offsetWidth;
+        if (!(w > 0 && w > avail)) return;              /* fits as-is */
         var s = avail / w;
         var h = m.offsetHeight;
         /* CSS transforms are ignored on plain inline elements (MathJax inline
            containers are display:inline), so make it inline-block first */
         if (getComputedStyle(m).display === "inline") m.style.display = "inline-block";
-        /* wide equations sit at the container's left edge and overflow right,
-           so scale from the top-left corner to keep the result inside the box */
-        m.style.transformOrigin = "top left";
+        /* a left-aligned equation overflows to the right, so scale from the
+           top-left corner; a centered one (dashboard cards) overflows both
+           sides, so scale from top-center to keep the line centered in the box */
+        m.style.transformOrigin = centered ? "center top" : "top left";
         m.style.transform = "scale(" + s + ")";
         m.style.height = Math.round(h * s) + "px";
-      }
+      });
     });
   }
   if (document.querySelectorAll(".formula").length) {
