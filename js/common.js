@@ -263,6 +263,72 @@
     });
   }
 
+  /* ---------- lecture jump (burger menu) — jump to any lecture from anywhere ---------- */
+  (function buildJumpMenu() {
+    var topbar = document.querySelector("header.topbar");
+    if (!topbar) return;
+    var LECT = [
+      { file: "index.html",                    num: "00", title: "Home · Overview & quick reference" },
+      { file: "02-capacitors-inductors.html",  num: "02", title: "Capacitors & Inductors" },
+      { file: "03-first-order-part1.html",     num: "03", title: "First-Order Circuits · Part 1" },
+      { file: "04-first-order-part2.html",     num: "04", title: "First-Order Circuits · Part 2" },
+      { file: "05-linear-waveshaping.html",    num: "05", title: "Linear Waveshaping" },
+      { file: "06-second-order-circuits.html", num: "06", title: "Second-Order Circuits · Part 1" }
+    ];
+    var cur = location.pathname.split("/").pop() || "index.html";
+
+    var btn = document.createElement("button");
+    btn.className = "icon-btn";
+    btn.id = "jumpBtn";
+    btn.type = "button";
+    btn.title = "Jump to another lecture";
+    btn.setAttribute("aria-label", "Jump to another lecture");
+    btn.setAttribute("aria-expanded", "false");
+    btn.textContent = "\u2630";  /* ☰ */
+
+    var overlay = document.createElement("div");
+    overlay.className = "jump-overlay";
+    overlay.id = "jumpOverlay";
+
+    var drawer = document.createElement("nav");
+    drawer.className = "jump-drawer";
+    drawer.id = "jumpDrawer";
+    drawer.setAttribute("aria-label", "Lecture navigation");
+    var title = document.createElement("p");
+    title.className = "jump-title";
+    title.textContent = "Jump to lecture";
+    drawer.appendChild(title);
+    LECT.forEach(function (l) {
+      var a = document.createElement("a");
+      a.className = "jump-item" + (l.file === cur ? " current" : "");
+      a.href = l.file;
+      if (l.file === cur) a.setAttribute("aria-current", "page");
+      var n = document.createElement("span");
+      n.className = "jnum";
+      n.textContent = l.num;
+      a.appendChild(n);
+      a.appendChild(document.createTextNode(l.title));
+      drawer.appendChild(a);
+    });
+    document.body.appendChild(overlay);
+    document.body.appendChild(drawer);
+    topbar.insertBefore(btn, document.getElementById("themeBtn") || null);
+
+    function setOpen(o) {
+      drawer.classList.toggle("open", o);
+      overlay.classList.toggle("open", o);
+      btn.classList.toggle("active", o);
+      btn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+    btn.addEventListener("click", function () {
+      setOpen(!drawer.classList.contains("open"));
+    });
+    overlay.addEventListener("click", function () { setOpen(false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+  })();
+
   /* ---------- expose redraw registry ---------- */
   window.E133 = {
     onRedraw: function (fn) { (window.__e133Redraw = window.__e133Redraw || []).push(fn); },

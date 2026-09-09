@@ -533,8 +533,58 @@ canvas.plot { width: 100%; height: auto; display: block; background: var(--surfa
 }
 @media (max-width: 700px) { .foot { padding: 22px 20px 36px; } }
 
+/* narrow phones: drop the "· Circuit Theory" crumb so the burger + theme
+   buttons fit the topbar without squeezing the progress pill */
+@media (max-width: 640px) {
+  .topbar { gap: 10px; padding: 0 14px; }
+  .topbar .crumb { display: none; }
+}
+
+/* ---------- Lecture jump (burger) menu — injected by common.js ---------- */
+.jump-overlay {
+  position: fixed; inset: 0; z-index: 190;
+  background: rgba(8, 11, 20, .5);
+  opacity: 0; pointer-events: none; transition: opacity .18s ease;
+}
+.jump-overlay.open { opacity: 1; pointer-events: auto; }
+.jump-drawer {
+  position: fixed; top: 0; bottom: 0; left: 0; z-index: 200;
+  width: min(320px, 86vw);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  box-shadow: 10px 0 30px rgba(0,0,0,.18);
+  transform: translateX(-103%);
+  transition: transform .2s ease;
+  display: flex; flex-direction: column;
+  padding: calc(var(--topbar-h) + 14px) 14px 18px;
+  overflow-y: auto;
+}
+.jump-drawer.open { transform: translateX(0); }
+.jump-title {
+  font-size: 12px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--faint); padding: 0 10px 10px; margin: 0;
+}
+.jump-item {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 10px 12px; border-radius: 10px;
+  color: var(--text); text-decoration: none;
+  font-size: 14.5px; font-weight: 600;
+  border: 1px solid transparent;
+}
+.jump-item:hover { background: var(--surface-2); }
+.jump-item .jnum {
+  flex: 0 0 auto; font-size: 12px; font-weight: 800; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.jump-item.current {
+  background: var(--blue-50); border-color: var(--border); color: var(--blue-700);
+}
+.jump-item.current .jnum { color: var(--blue-600); }
+.icon-btn.active { color: var(--text); border-color: var(--blue-500); }
+
 @media print {
-  .topbar, .toc, .lab, .quiz, .pager, .icon-btn, .pdf-strip { display: none !important; }
+  .topbar, .toc, .lab, .quiz, .pager, .icon-btn, .pdf-strip,
+  .jump-overlay, .jump-drawer { display: none !important; }
   .page { padding-top: 0; }
   body { background: #fff; }
   .hero { box-shadow: none; }
