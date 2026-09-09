@@ -19,6 +19,8 @@ progress, quiz scores and completion state are saved in `localStorage`.
 | 06 | (PDF only, in `Lectures/`) | Second-order circuits, characteristic roots, damping, step response | — |
 
 The original slide PDFs live in `Lectures/` and are linked from the dashboard.
+They are **excluded from the GitHub Pages build** (see `_config.yml`) and the
+site links to them through `github.com` blob URLs.
 Lecture 06 has no interactive page yet — its dashboard card and the Lecture 05
 "next" pointer both link to the PDF deck directly.
 
@@ -34,7 +36,8 @@ js/common.js                window.E133 — theme, TOC scrollspy, reading depth,
                             quizzes, flashcards, mark-complete, dashboard refresh
 js/lecture0X.js             Per-lecture labs (IIFE, guarded, registered via
                             window.E133.onRedraw)
-Lectures/*.pdf              Original slide decks
+Lectures/*.pdf              Original slide decks (excluded from the Pages
+                            build via _config.yml; linked via github.com)
 ```
 
 ## Development
@@ -70,4 +73,7 @@ Then in the repo settings: **Settings → Pages → Build and deployment →
 Source: "Deploy from a branch" → Branch: `main`, / (root) → Save.**
 The site goes live at `https://<USER>.github.io/eee133/`.
 
-`.nojekyll` is included so GitHub Pages serves the folder as-is.
+Jekyll runs on the Pages build (no `.nojekyll`), with `_config.yml` excluding
+the `Lectures/` folder so the original slide decks are **not** published on the
+Pages site. The site's deck links therefore point to the GitHub blob URLs
+(`https://github.com/jblagana/eee133/blob/main/Lectures/…pdf`).
