@@ -16,8 +16,11 @@ progress, quiz scores and completion state are saved in `localStorage`.
 | 03 | `03-first-order-part1.html` | DE origins, natural vs forced response, τ, source-free RL & RC | 3 |
 | 04 | `04-first-order-part2.html` | 4-step procedure, Thévenin R, unit step, pulsed excitation | 3 |
 | 05 | `05-linear-waveshaping.html` | HP/LP waveshaping, 3-dB cutoff, tilt, differentiator/integrator | 2 |
+| 06 | (PDF only, in `Lectures/`) | Second-order circuits, characteristic roots, damping, step response | — |
 
 The original slide PDFs live in `Lectures/` and are linked from the dashboard.
+Lecture 06 has no interactive page yet — its dashboard card and the Lecture 05
+"next" pointer both link to the PDF deck directly.
 
 ## Structure
 
