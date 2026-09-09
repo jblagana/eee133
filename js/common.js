@@ -197,7 +197,8 @@
       { key: "02", el: "lcard-02" },
       { key: "03", el: "lcard-03" },
       { key: "04", el: "lcard-04" },
-      { key: "05", el: "lcard-05" }
+      { key: "05", el: "lcard-05" },
+      { key: "06", el: "lcard-06" }
     ];
     CARDS.forEach(function (c) {
       var card = document.getElementById(c.el);

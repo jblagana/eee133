@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EEE 133 · Circuit Theory — Interactive Lectures</title>
-<meta name="description" content="Interactive companion to the EEE 133 (Circuit Theory) lecture decks: capacitors & inductors, first-order circuits, and linear waveshaping — with live simulations, worked examples, and quizzes.">
+<meta name="description" content="Interactive companion to the EEE 133 (Circuit Theory) lecture decks: capacitors & inductors, first-order circuits, linear waveshaping, and second-order circuits — with live simulations, worked examples, and quizzes.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232453d6'/%3E%3Cpath d='M14 24h36M14 40h36' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css">
 <script>
@@ -34,20 +34,21 @@ window.MathJax = {
       </svg>
       <p class="kicker">University of the Philippines Diliman · College of Engineering · EEE Institute</p>
       <h1>EEE 133 — Circuit Theory<br>Interactive Lecture Companion</h1>
-      <p class="lede">1st Semester, A.Y. 2026–2027 · Lectures 2–5. Don't just read the slides —
+      <p class="lede">1st Semester, A.Y. 2026–2027 · Lectures 2–6. Don't just read the slides —
       run the circuits: adjust \(R\), \(L\) and \(C\) live, watch transients unfold, and test yourself
       after every concept.</p>
       <div class="dash-hero-stats">
-        <div class="dash-stat"><div class="n">4</div><div class="l">Lectures</div></div>
-        <div class="dash-stat"><div class="n">146</div><div class="l">Slides covered</div></div>
-        <div class="dash-stat"><div class="n">13</div><div class="l">Interactive labs</div></div>
-        <div class="dash-stat"><div class="n">51</div><div class="l">Quiz + flashcard items</div></div>
+        <div class="dash-stat"><div class="n">5</div><div class="l">Lectures</div></div>
+        <div class="dash-stat"><div class="n">200</div><div class="l">Slides covered</div></div>
+        <div class="dash-stat"><div class="n">16</div><div class="l">Interactive labs</div></div>
+        <div class="dash-stat"><div class="n">64</div><div class="l">Quiz + flashcard items</div></div>
       </div>
       <div class="hero-meta">
         <span class="chip">🎯 Lecture 02 · Capacitors &amp; Inductors</span>
         <span class="chip">⚡ Lecture 03 · First-Order Circuits I</span>
         <span class="chip">🔁 Lecture 04 · First-Order Circuits II</span>
         <span class="chip">📈 Lecture 05 · Linear Waveshaping</span>
+        <span class="chip">🌀 Lecture 06 · Second-Order Circuits</span>
       </div>
     </div>
 
@@ -57,7 +58,7 @@ window.MathJax = {
       <div class="grid grid-3">
         <div class="card">
           <h3>📖 Read</h3>
-          <p>The full content of each deck, rebuilt as structured notes with the original equations rendered live and the slide PDFs available for download.</p>
+          <p>The full content of each deck, rebuilt as structured notes with the original equations rendered live in your browser.</p>
           <p class="kbd-note">Use the sidebar table of contents to jump between sections.</p>
         </div>
         <div class="card">
@@ -134,12 +135,26 @@ window.MathJax = {
           </div>
         </a>
 
+        <a class="lcard" id="lcard-06" href="06-second-order-circuits.html">
+          <span class="done-badge" style="display:none">✓ Completed</span>
+          <span class="num">06</span>
+          <span class="tag">Natural response</span> <span class="tag green">54 slides</span>
+          <div class="lt">Second-Order Circuits · Part 1</div>
+          <div class="ld">Two energy-storage elements change everything: the characteristic equation, the damping factor α, and three families of transients — overdamped, critically damped, and underdamped.</div>
+          <div class="bar-track"><div class="bar-fill"></div></div>
+          <div class="lmeta">
+            <span class="tag">s = −α ± √(α²−ω₀²)</span>
+            <span class="tag">Series &amp; parallel RLC</span>
+            <span class="tag amber">3 interactive labs</span>
+          </div>
+        </a>
+
       </div>
     </section>
 
     <section class="block" id="reference">
       <h2 class="sec"><span class="sec-num">2</span> Formula quick-reference</h2>
-      <p class="lede-note">The eight formulas that recur across all four lectures. Keep this page open while you study.</p>
+      <p class="lede-note">The ten formulas that recur across all five lectures. Keep this page open while you study.</p>
       <div class="grid grid-4">
         <div class="card"><span class="tag">Capacitor V-I</span><div class="formula center" style="margin-top:12px"><span>\( i(t) = C\,\dfrac{dv(t)}{dt} \)</span></div><p class="kbd-note" style="text-align:center">Current follows the <em>rate of change</em> of voltage.</p></div>
         <div class="card"><span class="tag">Inductor V-I</span><div class="formula center" style="margin-top:12px"><span>\( v(t) = L\,\dfrac{di(t)}{dt} \)</span></div><p class="kbd-note" style="text-align:center">Voltage follows the <em>rate of change</em> of current.</p></div>
@@ -149,6 +164,8 @@ window.MathJax = {
         <div class="card"><span class="tag">General response</span><div class="formula center" style="margin-top:12px"><span>\( x(t) = x(\infty) + \big[x(0^+) - x(\infty)\big]\,e^{-t/\tau} \)</span></div><p class="kbd-note" style="text-align:center">The single most important formula of Lectures 3–4.</p></div>
         <div class="card"><span class="tag">Unit step</span><div class="formula center" style="margin-top:12px"><span>\( u(t) = 0 \ (t&lt;0),\; 1 \ (t \ge 0) \)</span></div><p class="kbd-note" style="text-align:center">Models abrupt switching; pulses = shifted steps.</p></div>
         <div class="card"><span class="tag">3-dB cutoff</span><div class="formula center" style="margin-top:12px"><span>\( \omega_c = \dfrac{1}{RC} \)<br>\(f_c = \dfrac{1}{2\pi RC}\)</span></div><p class="kbd-note" style="text-align:center">Same formula for HP and LP — different sides of the band.</p></div>
+        <div class="card"><span class="tag">Damping factor</span><div class="formula center" style="margin-top:12px"><span>\( \alpha_{ser} = \tfrac{R}{2L} \), &nbsp; \( \alpha_{par} = \dfrac{1}{2RC} \)</span></div><p class="kbd-note" style="text-align:center">Series: more R damps more. Parallel: more R damps less.</p></div>
+        <div class="card"><span class="tag">Natural frequencies</span><div class="formula center" style="margin-top:12px"><span>\( \omega_0 = \dfrac{1}{\sqrt{LC}} \)<br>\( s_{1,2} = -\alpha \pm \sqrt{\alpha^2 - \omega_0^2} \)</span></div><p class="kbd-note" style="text-align:center">The roots set the regime: real, equal, or complex.</p></div>
       </div>
     </section>
 

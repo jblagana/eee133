@@ -16,6 +16,7 @@ progress, quiz scores and completion state are saved in `localStorage`.
 | 03 | `03-first-order-part1.html` | DE origins, natural vs forced response, τ, source-free RL & RC | 3 |
 | 04 | `04-first-order-part2.html` | 4-step procedure, Thévenin R, unit step, pulsed excitation | 3 |
 | 05 | `05-linear-waveshaping.html` | HP/LP waveshaping, 3-dB cutoff, tilt, differentiator/integrator | 2 |
+| 06 | `06-second-order-circuits.html` | Natural response, characteristic equation, α/ω₀, the three damping regimes, ringing, six-step procedure | 3 |
 
 The original slide PDFs are intentionally **not included in this repository** —
 the site is self-contained (all content, formulas, examples and quizzes are
@@ -24,8 +25,8 @@ re-created interactively in the pages themselves).
 ## Structure
 
 ```
-index.html                  Dashboard (progress, PDF downloads, formula reference)
-02-….html … 05-….html       Lecture pages (MathJax via CDN)
+index.html                  Dashboard (progress, formula reference)
+02-….html … 06-….html       Lecture pages (MathJax via CDN)
 css/style.css               Shared theme (light/dark), layout, labs, quizzes
 js/plot.js                  window.Plot — tiny canvas plotter (series, fill, dash,
                             points, vLines/hLines, regions, legend)
@@ -56,7 +57,7 @@ Lectures 03–04 labs use concrete SI values (kΩ, µF, H → τ in ms/s).
 ```sh
 git init                          # already done in this folder
 git add -A
-git commit -m "EEE 133 interactive lecture companion (Lectures 2–5)"
+git commit -m "EEE 133 interactive lecture companion (Lectures 2–6)"
 
 # create the remote (e.g. via https://github.com/new or the gh CLI), then:
 git remote add origin git@github.com:<USER>/eee133.git

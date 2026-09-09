@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 06 · Second-Order Circuits — EEE 133</title>
+<meta name="description" content="EEE 133 Lecture 6: natural response of second-order circuits — undriven LC, series & parallel RLC, the characteristic equation, damping factor α, overdamped / critically-damped / underdamped responses, ringing, the six-step procedure, and worked examples. With interactive labs and quiz.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232453d6'/%3E%3Cpath d='M14 24h36M14 40h36' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body data-lecture="06" data-lecture-name="Second-Order Circuits · Natural Response">
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">E133</span> EEE&nbsp;133 <span class="crumb">· Circuit Theory</span></a>
+  <div class="spacer"></div>
+  <span class="progress-pill" id="progPill">Read 0%</span>
+  <button class="icon-btn" id="themeBtn" title="Toggle light/dark theme">🌙</button>
+</header>
+
+<div class="page">
+  <div class="layout">
+
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">Lecture 06 · Second-Order Circuits</p>
+      <a href="#so-def">1 · What is second-order?</a>
+      <a href="#lc">2 · Undriven LC circuit</a>
+      <a href="#why-r">3 · Why add resistance?</a>
+      <a href="#series">4 · Series RLC · KVL → ODE</a>
+      <a href="#ce">5 · Characteristic equation</a>
+      <a href="#types">6 · Three response types</a>
+      <a href="#over">7 · Overdamped</a>
+      <a href="#crit">8 · Critically damped</a>
+      <a href="#under">9 · Underdamped</a>
+      <a href="#parallel">10 · Parallel RLC</a>
+      <a href="#ringing">11 · Ringing</a>
+      <a href="#procedure">12 · Six-step procedure</a>
+      <a href="#ex1">13 · Example 1 · series</a>
+      <a href="#ex2">14 · Example 2 · parallel</a>
+      <a href="#labs">🧪 Labs · damping &amp; energy</a>
+      <a href="#summary">15 · Summary</a>
+      <a href="#quiz">16 · Self-test quiz</a>
+    </nav>
+
+    <main class="content">
+
+      <div class="hero">
+        <svg class="wave" viewBox="0 0 380 120" fill="none">
+          <path d="M0 60 C 14 60, 20 8, 38 8 S 62 112, 80 112 S 102 24, 120 24 S 140 94, 158 94 S 176 40, 194 40 S 210 78, 228 78 S 244 54, 262 54 S 282 62, 300 62 L 380 62" stroke="#7ea2ff" stroke-width="3"/>
+          <path d="M0 62 L 380 62" stroke="#f5b84d" stroke-width="2" opacity=".55" stroke-dasharray="5 5"/>
+        </svg>
+        <p class="kicker">Lecture 06 · 1st Semester A.Y. 2026–2027</p>
+        <h1>Second-Order Circuits<br>Natural Response</h1>
+        <p class="lede">Two energy-storage elements change the story: the governing equation is now
+        <em>second-order</em>, its roots come in pairs, and the transient can decay fast, decay just fast enough,
+        or ring. This lecture covers the undriven series and parallel RLC — the characteristic equation,
+        \(\alpha\), \(\omega_0\), and the three damping regimes — closed out by the deck's two worked examples.</p>
+        <div class="hero-meta">
+          <span class="chip">🎯 Natural response of series &amp; parallel RLC</span>
+          <span class="chip">✏️ Classify overdamped / critical / underdamped</span>
+          <span class="chip">📐 Six-step solution procedure</span>
+        </div>
+      </div>
+
+      <!-- ============ 1. DEFINITION ============ -->
+      <section class="block" id="so-def">
+        <h2 class="sec"><span class="sec-num">1</span> What is a second-order circuit?</h2>
+        <p>A <strong>second-order circuit</strong> contains <strong>two energy-storage elements with independent
+        states</strong> — for example a capacitor and an inductor whose initial voltage and initial current can be
+        set separately. Its behavior is described by a <strong>second-order differential equation</strong>, so the
+        natural response is built from <em>two</em> roots instead of one, and two initial conditions are needed to
+        pin down the answer.</p>
+        <div class="grid grid-3">
+          <div class="card"><h3>🕰️ Clock pendulums</h3>
+            <p>Mass, spring and damper — the mechanical archetype every RLC lab re-enacts.</p></div>
+          <div class="card"><h3>🚗 Automobile suspensions</h3>
+            <p>Engineers tune \(\alpha\) so the body settles quickly <em>without</em> bouncing — critical damping in action.</p></div>
+          <div class="card"><h3>📻 Tuned radio filters</h3>
+            <p>LC “tanks” select a station; poorly damped inter-chip digital interconnections ring instead.</p></div>
+        </div>
+        <div class="callout co-key"><span class="ico">🎯</span>
+          <span class="co-title">Student outcomes (slide)</span>
+          <p>• Determine the <strong>natural response</strong> of series and parallel RLC circuits.<br>
+          • <strong>Classify</strong> the response of second-order circuits.</p>
+        </div>
+        <p class="lede-note">Lecture outline: characteristics of second-order circuits → undriven series RLC →
+        characteristic equation and its roots → the three types of response (overdamped, critically-damped,
+        underdamped) → undriven parallel RLC → examples.</p>
+      </section>
+      <!-- ============ 2. UNDRIVEN LC ============ -->
+      <section class="block" id="lc">
+        <h2 class="sec"><span class="sec-num">2</span> The undriven LC circuit</h2>
+        <div class="grid grid-2">
+          <div class="fig">
+            <svg viewBox="0 0 420 210" width="400" role="img" aria-label="Undriven parallel LC tank">
+              <line x1="120" y1="40" x2="300" y2="40" class="cwire"/>
+              <line x1="120" y1="150" x2="300" y2="150" class="cwire"/>
+              <line x1="150" y1="40" x2="150" y2="70" class="cwire"/>
+              <line x1="125" y1="70" x2="175" y2="70" class="cpart" stroke-width="5"/>
+              <line x1="125" y1="84" x2="175" y2="84" class="cpart" stroke-width="5"/>
+              <line x1="150" y1="84" x2="150" y2="150" class="cwire"/>
+              <path d="M270 40 v20 a10 10 0 0 1 0 20 a10 10 0 0 1 0 20 a10 10 0 0 1 0 20 v30" class="cpart" fill="none" stroke-width="2.4"/>
+              <text x="108" y="80" class="clab">C</text>
+              <text x="288" y="90" class="clab">L</text>
+              <text x="188" y="30" class="clab">v(t) = v_C = v_L</text>
+              <text x="60" y="190" class="cnote">lossless tank — the simplest second-order circuit</text>
+            </svg>
+            <div class="figcap">Undriven LC: no source, no resistance — internal (homogeneous) behavior only.</div>
+          </div>
+          <div>
+            <p>Before \(t = 0\) something energized the circuit; from then on it is <strong>undriven</strong> (no
+            external stimuli) and <strong>lossless</strong>, so it is the cleanest place to see what a second-order
+            system does on its own. The two elements share one voltage, and KCL at the top node says the currents
+            cancel:</p>
+            <div class="formula center"><span>integrated form (KCL)</span>
+              \[ C\,\frac{dv(t)}{dt} + \frac{1}{L}\int_{-\infty}^{t} v(\lambda)\,d\lambda = 0 \]
+            </div>
+            <p>Differentiate once with respect to \(t\) and divide by \(C\) — the same move that killed the integral
+            in the first-order lecture:</p>
+            <div class="formula center">
+              <span class="fnum">(6.1)</span>
+              \[ \boxed{\;\frac{d^{2}v(t)}{dt^{2}} + \frac{1}{LC}\,v(t) = 0\;} \]
+              <span class="flabel">A second-order ODE with constant coefficients. Now solve for v(t).</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout co-violet"><span class="ico">🔁</span>
+          <span class="co-title">Recall before we go on</span>
+          <p>The complete solution of any differential equation is homogeneous + particular:
+          \(x(t) = x_h(t) + x_p(t)\). With no source, \(x_p = 0\) and only the natural response survives — for a
+          first-order circuit that was the exponential \(x_h = k\,e^{-t/\tau}\). Maybe a second-order circuit admits
+          a similar guess…</p>
+        </div>
+
+        <p>Assume the exponential form \(v(t) = A e^{st}\). Substituting into (6.1):</p>
+        <div class="formula center">
+          \[ A s^{2} e^{st} + A\,\frac{1}{LC}\,e^{st} = 0
+             \quad\Longrightarrow\quad A e^{st}\left(s^{2} + \frac{1}{LC}\right) = 0 \]
+          <span class="flabel">Either A = 0 (which forces v ≡ 0 — impossible for an energized circuit) or the factor vanishes.</span>
+        </div>
+        <div class="formula-row" style="grid-template-columns:1fr 1fr">
+          <div class="formula center"><span>characteristic equation</span>
+            \[ s^{2} + \frac{1}{LC} = 0 \]
+          </div>
+          <div class="formula center"><span>its roots</span>
+            \[ s_{1,2} = \pm\, j\,\omega_{0}, \qquad \omega_{0} = \frac{1}{\sqrt{LC}} \]
+            <span class="flabel">Purely imaginary — ω₀ is the <strong>natural frequency</strong> (a.k.a. undamped natural frequency).</span>
+          </div>
+        </div>
+
+        <p>Superpose the two exponential solutions and apply <strong>Euler's identity</strong>
+        \(e^{\pm j\theta} = \cos\theta \pm j\sin\theta\):</p>
+        <div class="formula center">
+          \[ v(t) = A_{1}e^{j\omega_{0}t} + A_{2}e^{-j\omega_{0}t}
+             = (A_{1}+A_{2})\cos\omega_{0}t + j(A_{1}-A_{2})\sin\omega_{0}t
+             = K_{1}\cos\omega_{0}t + K_{2}\sin\omega_{0}t \]
+        </div>
+        <p>The two constants are fixed by the initial conditions. Since \(v(0) = v_C(0^+)\) and
+        \(\dfrac{dv(0)}{dt} = \dfrac{i_C(0^+)}{C} = -\dfrac{i_L(0^+)}{C}\) (KCL), matching the equation to the
+        circuit at \(t=0\) gives \(K_1 = v_C(0^+)\) and \(K_2 = -\dfrac{i_L(0^+)}{\omega_0 C}
+        = -\sqrt{\dfrac{L}{C}}\,i_L(0^+)\):</p>
+        <div class="formula center">
+          <span class="fnum">(6.2)</span>
+          \[ \boxed{\;v(t) = v_C(0^+)\,\cos\omega_{0}t \;-\; \sqrt{\frac{L}{C}}\; i_L(0^+)\,\sin\omega_{0}t\;} \]
+          <span class="flabel">The whole undriven LC response from two initial conditions and one frequency.</span>
+        </div>
+        <div class="callout co-tip"><span class="ico">👀</span>
+          <span class="co-title">Remarks (slide)</span>
+          <p>• The capacitor voltage <em>and</em> the inductor current are both <strong>sinusoidal</strong>.<br>
+          • The frequency is the magnitude of the natural frequency, \(\omega_0\).<br>
+          • \(v_C\) <strong>leads</strong> \(i_L\) by <strong>90°</strong> — and with no R to bleed energy, the
+          oscillation never dies. Run Lab 3 and watch the energy juggle forever.</p>
+        </div>
+      </section>
+
+      <!-- ============ 3. WHY RESISTORS ============ -->
+      <section class="block" id="why-r">
+        <h2 class="sec"><span class="sec-num">3</span> Why add a resistor at all?</h2>
+        <p>Real tanks are never lossless. Resistance is <strong>naturally occurring</strong> — dielectric leakage in
+        capacitors, winding resistance in inductors — and engineers <strong>add it on purpose</strong> when they want
+        the oscillations to <em>decay</em> instead of ringing forever. The two typical models we will derive are the
+        <strong>series</strong> and <strong>parallel</strong> RLC circuits:</p>
+        <div class="grid grid-2">
+          <div class="fig">
+            <svg viewBox="0 0 420 210" width="400" role="img" aria-label="Series RLC loop">
+              <line x1="60" y1="40" x2="360" y2="40" class="cwire"/>
+              <line x1="60" y1="40" x2="60" y2="72" class="cwire"/>
+              <line x1="46" y1="72" x2="74" y2="72" class="cpart" stroke-width="5"/>
+              <line x1="46" y1="86" x2="74" y2="86" class="cpart" stroke-width="5"/>
+              <line x1="60" y1="86" x2="60" y2="170" class="cwire"/>
+              <line x1="360" y1="40" x2="360" y2="70" class="cwire"/>
+              <path d="M360 70 a10 10 0 0 1 0 20 a10 10 0 0 1 0 20 a10 10 0 0 1 0 20 v40" class="cpart" fill="none" stroke-width="2.4"/>
+              <line x1="60" y1="170" x2="170" y2="170" class="cwire"/>
+              <rect x="170" y="156" width="60" height="28" class="cpart" style="fill:none"/>
+              <line x1="230" y1="170" x2="360" y2="170" class="cwire"/>
+              <text x="30" y="82" class="clab">C</text>
+              <text x="372" y="100" class="clab">L</text>
+              <text x="196" y="148" class="clab">R</text>
+              <text x="150" y="200" class="cnote">one loop — KVL around the series RLC</text>
+            </svg>
+            <div class="figcap">Series RLC — \(\alpha = R/2L\): more R means more damping.</div>
+          </div>
+          <div class="fig">
+            <svg viewBox="0 0 420 210" width="400" role="img" aria-label="Parallel RLC">
+              <line x1="100" y1="40" x2="320" y2="40" class="cwire"/>
+              <line x1="100" y1="150" x2="320" y2="150" class="cwire"/>
+              <line x1="140" y1="40" x2="140" y2="70" class="cwire"/>
+              <rect x="126" y="70" width="28" height="60" class="cpart" style="fill:none"/>
+              <line x1="140" y1="130" x2="140" y2="150" class="cwire"/>
+              <path d="M210 40 v20 a10 10 0 0 1 0 20 a10 10 0 0 1 0 20 a10 10 0 0 1 0 20 v50" class="cpart" fill="none" stroke-width="2.4"/>
+              <line x1="280" y1="40" x2="280" y2="70" class="cwire"/>
+              <line x1="258" y1="70" x2="302" y2="70" class="cpart" stroke-width="5"/>
+              <line x1="258" y1="84" x2="302" y2="84" class="cpart" stroke-width="5"/>
+              <line x1="280" y1="84" x2="280" y2="150" class="cwire"/>
+              <text x="150" y="105" class="clab">R</text>
+              <text x="222" y="105" class="clab">L</text>
+              <text x="308" y="82" class="clab">C</text>
+              <text x="150" y="200" class="cnote">one node pair — KCL at the top of the parallel RLC</text>
+            </svg>
+            <div class="figcap">Parallel RLC — \(\alpha = 1/2RC\): more R means <em>less</em> damping.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 4. SERIES RLC ============ -->
+      <section class="block" id="series">
+        <h2 class="sec"><span class="sec-num">4</span> Undriven series RLC — from KVL to the ODE</h2>
+        <p>With the elements in one loop, all of them carry the same current \(i(t)\). KVL around the loop (the deck's
+        derivation, slide by slide):</p>
+        <div class="formula center"><span>KVL, in element relations</span>
+          \[ v_C + v_R + v_L = 0
+          \quad\Longrightarrow\quad
+          \frac{1}{C}\int_{-\infty}^{t} i\,d\lambda \;+\; R\,i(t) \;+\; L\,\frac{di(t)}{dt} = 0 \]
+        </div>
+        <p>Differentiate both sides with respect to \(t\) and divide by \(L\):</p>
+        <div class="formula center">
+          <span class="fnum">(6.3)</span>
+          \[ \boxed{\;\frac{d^{2}i(t)}{dt^{2}} + \frac{R}{L}\,\frac{di(t)}{dt} + \frac{1}{LC}\,i(t) = 0\;} \]
+          <span class="flabel">The ODE governing the loop current i(t).</span>
+        </div>
+        <p>Now the same exponential trick as the LC tank — assume \(i(t) = A e^{st}\) and substitute:</p>
+        <div class="formula center">
+          \[ A e^{st}\,s^{2} + \frac{R}{L}\,A s\, e^{st} + \frac{1}{LC}\,A e^{st} = 0
+             \quad\Longrightarrow\quad A e^{st}\left(s^{2} + \frac{R}{L}\,s + \frac{1}{LC}\right) = 0 \]
+          \[ \Longrightarrow\qquad \boxed{\;s^{2} + \frac{R}{L}\,s + \frac{1}{LC} = 0\;} \]
+          <span class="flabel">Characteristic equation of the undriven series RLC.</span>
+        </div>
+      </section>
+
+      <!-- ============ 5. CHARACTERISTIC EQUATION ============ -->
+      <section class="block" id="ce">
+        <h2 class="sec"><span class="sec-num">5</span> The characteristic equation and its roots</h2>
+        <p>Quadratic formula with \(a = 1\), \(b = R/L\), \(c = 1/LC\):</p>
+        <div class="formula center">
+          \[ s_{1,2} = -\frac{R}{2L} \pm \sqrt{\left(\frac{R}{2L}\right)^{2} - \frac{1}{LC}} \]
+        </div>
+        <p>The slide names the pieces that appear here — these three quantities decide everything that follows:</p>
+        <div class="grid grid-3">
+          <div class="card"><span class="tag">damping factor</span>
+            <div class="formula center" style="margin-top:10px">\[ \alpha = \frac{R}{2L}\;\Big[\tfrac{\text{Np}}{\text{s}}\Big] \]</div>
+            <p class="kbd-note" style="text-align:center">How fast the transients die out.</p></div>
+          <div class="card"><span class="tag">undamped natural frequency</span>
+            <div class="formula center" style="margin-top:10px">\[ \omega_{0} = \frac{1}{\sqrt{LC}}\;\Big[\tfrac{\text{rad}}{\text{s}}\Big] \]</div>
+            <p class="kbd-note" style="text-align:center">Also called the undamped resonant frequency.</p></div>
+          <div class="card"><span class="tag">natural frequencies</span>
+            <div class="formula center" style="margin-top:10px">\[ s_{1,2} = -\alpha \pm \sqrt{\alpha^{2} - \omega_{0}^{2}} \]</div>
+            <p class="kbd-note" style="text-align:center">The roots — measured in Np/s.</p></div>
+        </div>
+        <div class="formula center"><span>standard form</span>
+          \[ s^{2} + 2\alpha\, s + \omega_{0}^{2} = 0 \qquad\Longrightarrow\qquad s_{1,2} = -\alpha \pm \sqrt{\alpha^{2} - \omega_{0}^{2}} \]
+        </div>
+        <p>So the natural response is always built from the two roots:</p>
+        <div class="formula center">
+          \[ i(t) = A_{1}e^{s_{1}t} + A_{2}e^{s_{2}t}
+             = e^{-\alpha t}\left( A_{1}\,e^{\sqrt{\alpha^{2}-\omega_{0}^{2}}\,t} + A_{2}\,e^{-\sqrt{\alpha^{2}-\omega_{0}^{2}}\,t} \right) \]
+          <span class="flabel">A₁ and A₂ are still unknown — the initial conditions fix them (procedure steps 5–6).</span>
+        </div>
+      </section>
+
+      <!-- ============ 6. THREE TYPES ============ -->
+      <section class="block" id="types">
+        <h2 class="sec"><span class="sec-num">6</span> Three response types</h2>
+        <p>The responses of \(v_C\) and \(i_L\) depend entirely on the relation between \(\alpha\) and
+        \(\omega_0\) — that is, on the sign of \(\alpha^{2} - \omega_{0}^{2}\):</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead>
+              <tr><th>Regime</th><th>Condition</th><th>Roots s₁,₂</th><th>Form of the response</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Overdamped</strong></td>
+                <td>\( \alpha > \omega_{0} \)</td>
+                <td>two real, distinct</td>
+                <td>\( x(t) = A_1 e^{s_1 t} + A_2 e^{s_2 t} \)</td>
+              </tr>
+              <tr>
+                <td><strong>Critically damped</strong></td>
+                <td>\( \alpha = \omega_{0} \)</td>
+                <td>two real, equal</td>
+                <td>\( x(t) = \left(A_1\,t + A_2\right) e^{-\alpha t} \)</td>
+              </tr>
+              <tr>
+                <td><strong>Underdamped</strong></td>
+                <td>\( \alpha < \omega_{0} \)</td>
+                <td>complex conjugate: \( -\alpha \pm j\omega_d \)</td>
+                <td>\( x(t) = e^{-\alpha t}\big( B_1 \cos\omega_d t + B_2 \sin\omega_d t \big) \)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout co-tip"><span class="ico">🧭</span>
+          <span class="co-title">How to read the table</span>
+          <p>Compare \(\alpha\) and \(\omega_0\) <em>before</em> you write anything down. The inequality picks the row;
+          the row gives you the form; the initial conditions give you the coefficients. Lab 1 sweeps all three rows
+          live — drag R and watch the regime flip.</p>
+        </div>
+      </section>
+
+      <!-- ============ 7. OVERDAMPED ============ -->
+      <section class="block" id="over">
+        <h2 class="sec"><span class="sec-num">7</span> Overdamped — \(\alpha &gt; \omega_0\)</h2>
+        <p>Here \(\alpha^{2} - \omega_{0}^{2} &gt; 0\), so the two roots are <strong>real and distinct</strong> — two
+        pure exponentials, no oscillation anywhere:</p>
+        <div class="formula center">
+          \[ \boxed{\;x(t) = A_{1}e^{s_{1}t} + A_{2}e^{s_{2}t}\;} \qquad s_{1,2} = -\alpha \pm \sqrt{\alpha^{2} - \omega_{0}^{2}} \]
+        </div>
+        <div class="callout co-tip"><span class="ico">🔗</span>
+          <span class="co-title">The large-R limit (slide) — a bridge to Lectures 3–4</span>
+          <p>When \(R\) becomes very large, the roots become the <strong>reciprocals of first-order time
+          constants</strong>:</p>
+          \[ s_{1} = -\alpha\!\left(1 + \sqrt{1 - \tfrac{\omega_{0}^{2}}{\alpha^{2}}}\right) \approx -2\alpha = -\frac{R}{L} = -\frac{1}{\tau_{L}}, \qquad
+             s_{2} = -\alpha\!\left(1 - \sqrt{1 - \tfrac{\omega_{0}^{2}}{\alpha^{2}}}\right) \approx -\alpha\,\frac{\omega_{0}^{2}}{2\alpha^{2}} = -\frac{1}{RC} = -\frac{1}{\tau_{C}} \]
+          <p>Heavy damping quietly degenerates into the two first-order circuits you already know, acting one after
+          the other — the inductor’s \(\tau_L = L/R\) pass, then the capacitor’s \(\tau_C = RC\) pass.</p>
+        </div>
+      </section>
+
+      <!-- ============ 8. CRITICALLY DAMPED ============ -->
+      <section class="block" id="crit">
+        <h2 class="sec"><span class="sec-num">8</span> Critically damped — \(\alpha = \omega_0\)</h2>
+        <p>Now the two roots are <strong>real and equal</strong>: \(e^{s_1 t}\) and \(e^{s_2 t}\) are the <em>same</em>
+        function, no longer independent — so the second linearly-independent solution picks up a factor of \(t\):</p>
+        <div class="formula center">
+          \[ \boxed{\;x(t) = \left(A_{1}\,t + A_{2}\right) e^{s\,t}\;} \qquad \left(s_{1} = s_{2} = -\alpha = -\omega_0\right) \]
+          <span class="flabel">Returns to zero in the shortest possible time <em>without oscillating</em>.</span>
+        </div>
+        <div class="callout co-violet"><span class="ico">🚗</span>
+          <span class="co-title">Why “critical” matters in practice</span>
+          <p>Underdamped is the fastest-looking but it overshoots and rings; overdamped is safe but sluggish. Critical
+          damping is the fastest response that never crosses zero — which is exactly why suspension (and speaker, and
+          op-amp) designers aim for it.</p>
+        </div>
+      </section>
+
+      <!-- ============ 9. UNDERDAMPED ============ -->
+      <section class="block" id="under">
+        <h2 class="sec"><span class="sec-num">9</span> Underdamped — \(\alpha &lt; \omega_0\)</h2>
+        <p>Finally \(\alpha^{2} - \omega_{0}^{2} &lt; 0\), so the square root is imaginary. Noting that
+        \(j = \sqrt{-1}\) and defining the <strong>damped natural frequency</strong>:</p>
+        <div class="formula center">
+          \[ \omega_{d} = \sqrt{\omega_{0}^{2} - \alpha^{2}} \qquad\Longrightarrow\qquad s_{1,2} = -\alpha \pm j\,\omega_{d} \]
+        </div>
+        <p>Back through Euler — the LC-tank move, this time with the decay factor carried along for the ride:</p>
+        <div class="formula center">
+          \[ x(t) = e^{-\alpha t}\left( A_{1}e^{j\omega_d t} + A_{2}e^{-j\omega_d t} \right)
+             = e^{-\alpha t}\left[ (A_{1}+A_{2})\cos\omega_d t + j(A_{1}-A_{2})\sin\omega_d t \right] \]
+          <span class="fnum">(6.4)</span>
+          \[ \boxed{\;x(t) = e^{-\alpha t}\left( B_{1}\cos\omega_{d} t + B_{2}\sin\omega_{d} t \right)\;} \]
+          <span class="flabel">A sinusoid at ω_d wrapped in the envelope ±e^{−αt}. Note ω_d &lt; ω₀ — damping slows the ringing.</span>
+        </div>
+      </section>
+
+      <!-- ============ 10. PARALLEL RLC ============ -->
+      <section class="block" id="parallel">
+        <h2 class="sec"><span class="sec-num">10</span> The undriven parallel RLC</h2>
+        <p>Same game from the other side: all three elements share one node voltage \(v(t)\), and KCL at the top node
+        gives the mirror image of the series derivation:</p>
+        <div class="formula center"><span>KCL, in element relations</span>
+          \[ i_R + i_L + i_C = 0
+          \quad\Longrightarrow\quad
+          \frac{v(t)}{R} + \frac{1}{L}\int_{-\infty}^{t} v(\lambda)\,d\lambda + C\,\frac{dv(t)}{dt} = 0 \]
+        </div>
+        <p>Differentiate both sides, divide by \(C\), and run the \(A e^{st}\) substitution — the parallel ODE and
+        characteristic equation fall out immediately:</p>
+        <div class="formula-row" style="grid-template-columns:1fr 1fr">
+          <div class="formula center"><span>parallel RLC ODE</span>
+            \[ \frac{d^{2}v}{dt^{2}} + \frac{1}{RC}\,\frac{dv}{dt} + \frac{1}{LC}\,v = 0 \]
+          </div>
+          <div class="formula center"><span>standard form, again</span>
+            \[ s^{2} + 2\alpha s + \omega_{0}^{2} = 0 \]
+            \[ \alpha = \frac{1}{2RC}, \qquad \omega_{0} = \frac{1}{\sqrt{LC}}, \qquad s_{1,2} = -\alpha \pm \sqrt{\alpha^{2} - \omega_{0}^{2}} \]
+          </div>
+        </div>
+        <div class="callout co-warn"><span class="ico">⚠️</span>
+          <span class="co-title">The one asymmetry to memorize</span>
+          <p>\(\omega_0\) is <strong>identical</strong> for series and parallel RLC — but \(\alpha\) flips its
+          dependence on \(R\): \(\alpha_{series} = R/2L\) (more \(R\) → <em>more</em> damping) versus
+          \(\alpha_{parallel} = 1/2RC\) (more \(R\) → <em>less</em> damping, because in parallel the resistor is a
+          leak that <em>removes</em> energy from the node).</p>
+        </div>
+        <p>And the response categorizes into exactly the same three types — now for the node voltage \(v(t)\):</p>
+        <div class="grid grid-3">
+          <div class="card"><span class="tag">overdamped · α &gt; ω₀</span>
+            <div class="formula center" style="margin-top:10px">\[ v(t) = A_{1}e^{s_{1}t} + A_{2}e^{s_{2}t} \]</div></div>
+          <div class="card"><span class="tag">critical · α = ω₀</span>
+            <div class="formula center" style="margin-top:10px">\[ v(t) = \left(A_{1}t + A_{2}\right)e^{-\alpha t} \]</div></div>
+          <div class="card"><span class="tag">underdamped · α &lt; ω₀</span>
+            <div class="formula center" style="margin-top:10px">\[ v(t) = e^{-\alpha t}\big(B_{1}\cos\omega_d t + B_{2}\sin\omega_d t\big) \]</div>
+            <p class="kbd-note" style="text-align:center">with \(s_{1,2} = -\alpha \pm j\omega_d\), \(\omega_d = \sqrt{\omega_0^{2}-\alpha^{2}}\).</p></div>
+        </div>
+      </section>
+
+      <!-- ============ 11. RINGING ============ -->
+      <section class="block" id="ringing">
+        <h2 class="sec"><span class="sec-num">11</span> Ringing — underdamping in the real world</h2>
+        <p>The oscillatory underdamped response is physically the two storage elements <strong>juggling energy
+        back and forth</strong>. In real hardware this shows up as <strong>ringing</strong> — the wobble after the
+        edge of a signal — exhibited by poorly designed amplifiers and by semiconductor devices carrying lots of
+        parasitic inductances and capacitances.</p>
+        <div class="callout co-danger"><span class="ico">🐛</span>
+          <span class="co-title">Why designers hate it (slide)</span>
+          <p>Ringing increases the <strong>rise time or fall time</strong> of the output waveform — in digital terms it
+          inflates what we call the <em>propagation delay</em>. Too little damping and every edge wobbles; too much
+          and the signal is sluggish. Second-order design is the art of choosing \(\alpha\).</p>
+        </div>
+      </section>
+
+      <!-- ============ 12. PROCEDURE ============ -->
+      <section class="block" id="procedure">
+        <h2 class="sec"><span class="sec-num">12</span> The six-step procedure</h2>
+        <p class="lede-note">Every natural-response RLC problem in the deck — and on the exam — runs through this exact
+        sequence. The two worked examples below are nothing but these six steps executed.</p>
+        <div class="steps">
+          <div class="step open">
+            <button class="step-head"><span class="step-idx">1</span> Redraw the circuit at t = 0⁻ and t = 0⁺<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Before switching: the old steady state (capacitor → open, inductor → short). After switching: a new
+              circuit to analyze. And recall the <strong>continuity properties</strong>:
+              \(v_C(0^+) = v_C(0^-)\) and \(i_L(0^+) = i_L(0^-)\) — energy can’t teleport.</p>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">2</span> Solve the initial conditions<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Find the four quantities: \(v_C(0^+)\), \(\dfrac{dv_C(0^+)}{dt}\), \(i_L(0^+)\),
+              \(\dfrac{di_L(0^+)}{dt}\). One comes straight from continuity; the derivative follows from a
+              KVL/KCL snapshot at \(t = 0^+\) using \(\dfrac{dv_C}{dt} = \dfrac{i_C}{C}\) and
+              \(\dfrac{di_L}{dt} = \dfrac{v_L}{L}\).</p>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">3</span> Reduce to series or parallel — find α and ω₀<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ \alpha_{series} = \frac{R}{2L}, \qquad \alpha_{parallel} = \frac{1}{2RC}, \qquad \omega_{0} = \frac{1}{\sqrt{LC}} \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">4</span> Classify the response<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Compare \(\alpha\) and \(\omega_0\) and pick the form: <strong>overdamped</strong>
+              \(A_1e^{s_1t} + A_2e^{s_2t}\) · <strong>critically damped</strong> \((A_1t + A_2)e^{-\alpha t}\) ·
+              <strong>underdamped</strong> \(e^{-\alpha t}(B_1\cos\omega_d t + B_2\sin\omega_d t)\).</p>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">5</span> Fix the unknown coefficients from the ICs<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Match the equation to the circuit at \(t = 0^+\): the value in the equation equals the value in the
+              circuit, <em>and</em> the derivative in the equation equals the derivative in the circuit. Two equations,
+              two unknowns.</p>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">6</span> Write the complete response<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Substitute all values into the determined response type, valid for \(t \ge 0\).</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 13. EXAMPLE 1 ============ -->
+      <section class="block" id="ex1">
+        <h2 class="sec"><span class="sec-num">13</span> Example 1 — series RLC, underdamped</h2>
+        <p>The capacitor is charged to <strong>100 V</strong> and at \(t = 0\) the switch closes. Find \(i(t)\) for
+        \(t \ge 0\), with \(R = 560\ \Omega\), \(L = 0.1\ \text{H}\), \(C = 0.1\ \mu\text{F}\).</p>
+        <div class="grid grid-2">
+          <div class="fig">
+            <svg viewBox="0 0 420 210" width="400" role="img" aria-label="Example 1 circuit">
+              <line x1="60" y1="40" x2="150" y2="40" class="cwire"/>
+              <circle cx="150" cy="40" r="3" class="cheav"/>
+              <line x1="153" y1="38" x2="215" y2="24" class="cpart" stroke-width="2.4"/>
+              <line x1="220" y1="40" x2="360" y2="40" class="cwire"/>
+              <line x1="60" y1="40" x2="60" y2="72" class="cwire"/>
+              <line x1="46" y1="72" x2="74" y2="72" class="cpart" stroke-width="5"/>
+              <line x1="46" y1="86" x2="74" y2="86" class="cpart" stroke-width="5"/>
+              <line x1="60" y1="86" x2="60" y2="170" class="cwire"/>
+              <line x1="360" y1="40" x2="360" y2="70" class="cwire"/>
+              <path d="M360 70 a10 10 0 0 1 0 20 a10 10 0 0 1 0 20 a10 10 0 0 1 0 20 v40" class="cpart" fill="none" stroke-width="2.4"/>
+              <line x1="60" y1="170" x2="170" y2="170" class="cwire"/>
+              <rect x="170" y="156" width="60" height="28" class="cpart" style="fill:none"/>
+              <line x1="230" y1="170" x2="360" y2="170" class="cwire"/>
+              <text x="28" y="82" class="clab">C</text>
+              <text x="372" y="100" class="clab">L</text>
+              <text x="196" y="148" class="clab">R</text>
+              <text x="238" y="34" class="clab">t = 0</text>
+              <text x="120" y="200" class="cnote">v_C(0⁻) = 100 V, i_L(0⁻) = 0 — switch closes at t = 0</text>
+            </svg>
+            <div class="figcap">Charged C, un-energized L — the switch hands the energy to the loop.</div>
+          </div>
+          <div>
+            <p>One loop after switching, so it is a <strong>series RLC</strong>. Note the initial inductor current is
+            zero: at \(t = 0^+\) the whole capacitor voltage sits across the inductor, since \(v_R = Ri = 0\).</p>
+            <div class="callout co-tip"><span class="ico">🧪</span>
+              <span class="co-title">Follow along live</span>
+              <p>Lab 1 opens on exactly these values — \(R = 560\ \Omega\), \(L = 100\ \text{mH}\),
+              \(C = 100\ \text{nF}\), \(v_C(0^+) = 100\ \text{V}\), \(i_L(0^+) = 0\). When you reach the answer, the
+              plotted \(i(t)\) is this very curve.</p>
+            </div>
+          </div>
+        </div>
+        <div class="steps">
+          <div class="step open">
+            <button class="step-head"><span class="step-idx">1</span> Initial conditions<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ v_C(0^+) = 100\ \text{V}, \qquad i_L(0^+) = 0\ \text{A} \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">2</span> α and ω₀ — classify<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ \alpha = \frac{R}{2L} = \frac{560}{2(0.1)} = 2800\ \tfrac{\text{Np}}{\text{s}}, \qquad
+                   \omega_{0} = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0.1 \times 0.1\mu}} = 10{,}000\ \tfrac{\text{rad}}{\text{s}} \]
+              </div>
+              <p>\(\alpha &lt; \omega_0\) ⇒ <strong>underdamped</strong>.</p>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">3</span> Damped frequency & response form<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ \omega_{d} = \sqrt{\omega_{0}^{2} - \alpha^{2}} = \sqrt{10{,}000^{2} - 2{,}800^{2}} = 9{,}600\ \tfrac{\text{rad}}{\text{s}} \]
+                \[ i(t) = e^{-2800t}\left( B_{1}\cos 9600t + B_{2}\sin 9600t \right) \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">4</span> First coefficient — match the value<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>\(i(0)\) in the equation must equal \(i_L(0^+)\) in the circuit:</p>
+              <div class="formula center">
+                \[ i(0) = B_{1} = i_L(0^+) = 0 \quad\Longrightarrow\quad B_{1} = 0 \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">5</span> Second coefficient — match the derivative<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Differentiate the equation and match it to \(\dfrac{di_L(0^+)}{dt} = \dfrac{v_L(0^+)}{L}\) in the
+              circuit — and \(v_L(0^+) = v_C(0^+) - Ri(0^+) = 100\ \text{V}\):</p>
+              <div class="formula center">
+                \[ \frac{di(0)}{dt} = -\alpha B_{1} + \omega_{d} B_{2} = \frac{v_L(0^+)}{L} = \frac{100}{0.1} = 1000 \]
+                \[ -2800(0) + 9600\,B_{2} = 1000 \quad\Longrightarrow\quad B_{2} = 0.1042 \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">6</span> Complete response<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ \boxed{\;i(t) = 0.1042\, e^{-2800 t}\, \sin(9600 t)\ \ \text{A}, \qquad t \ge 0\;} \]
+              </div>
+              <p class="kbd-note">A decaying sinusoid: the energy sloshes between C and L while R slowly bleeds it
+              off — about four rings before the loop settles.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 14. EXAMPLE 2 ============ -->
+      <section class="block" id="ex2">
+        <h2 class="sec"><span class="sec-num">14</span> Example 2 — parallel RLC, overdamped</h2>
+        <p>Given \(v(0^+) = V_0 = 12\ \text{V}\) and \(i_L(0^+) = I_0 = 30\ \text{mA}\), find \(v(t)\) for
+        \(t \ge 0\), with \(R = 200\ \Omega\), \(L = 0.05\ \text{H}\), \(C = 0.2\ \mu\text{F}\).</p>
+        <div class="steps">
+          <div class="step open">
+            <button class="step-head"><span class="step-idx">1</span> Initial conditions<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ v_C(0^+) = 12\ \text{V}, \qquad i_L(0^+) = 30\ \text{mA} \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">2</span> α and ω₀ — classify<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ \alpha = \frac{1}{2RC} = \frac{1}{2(200)(0.2\mu)} = 12{,}500\ \tfrac{\text{Np}}{\text{s}}, \qquad
+                   \omega_{0} = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0.05 \times 0.2\mu}} = 10{,}000\ \tfrac{\text{rad}}{\text{s}} \]
+              </div>
+              <p>\(\alpha &gt; \omega_0\) ⇒ <strong>overdamped</strong>.</p>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">3</span> Roots & response form<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ s_{1,2} = -\alpha \pm \sqrt{\alpha^{2} - \omega_{0}^{2}} = -12{,}500 \pm \sqrt{12{,}500^{2} - 10{,}000^{2}} = -12{,}500 \pm 7{,}500 \]
+                \[ s_{1} = -5{,}000\ \tfrac{\text{rad}}{\text{s}}, \qquad s_{2} = -20{,}000\ \tfrac{\text{rad}}{\text{s}} \]
+                \[ v(t) = A_{1}e^{-5000t} + A_{2}e^{-20000t} \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">4</span> First equation — match the value<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>\(v(0)\) in the equation must equal \(v(0^+)\) in the circuit:</p>
+              <div class="formula center">
+                \[ v(0) = A_{1}e^{0} + A_{2}e^{0} = A_{1} + A_{2} = V_{0} = 12 \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">5</span> Second equation — match the derivative<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <p>Differentiate the equation and match it to \(\dfrac{dv(0^+)}{dt} = \dfrac{i_C(0^+)}{C}\) in the
+              circuit. KCL at \(t=0^+\) gives \(i_C(0^+) = -\big(i_L(0^+) + i_R(0^+)\big)\), with
+              \(i_R(0^+) = v(0^+)/R\):</p>
+              <div class="formula center">
+                \[ -5000A_{1} - 20000A_{2} = -\frac{i_L(0^+) + i_R(0^+)}{C} = -\frac{0.03 + \frac{12}{200}}{0.2\mu} = -450{,}000 \]
+              </div>
+            </div></div>
+          </div>
+          <div class="step">
+            <button class="step-head"><span class="step-idx">6</span> Solve & complete response<span class="chev">▸</span></button>
+            <div class="step-body"><div class="step-inner">
+              <div class="formula center">
+                \[ A_{1} + A_{2} = 12, \qquad -5000A_{1} - 20000A_{2} = -450{,}000 \quad\Longrightarrow\quad A_{1} = -14, \quad A_{2} = 26 \]
+                \[ \boxed{\;v(t) = -14\,e^{-5000 t} + 26\,e^{-20000 t}\ \ \text{V}, \qquad t \ge 0\;} \]
+              </div>
+              <p class="kbd-note">Check: \(v(0^+) = -14 + 26 = 12\ \text{V}\) ✓. The curve starts at 12 V and bleeds
+              off as two overlapping exponentials — no oscillation, because the roots are real. Lab 2 opens on exactly
+              these values.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LABS ============ -->
+      <section class="block" id="labs">
+        <h2 class="sec"><span class="sec-num">🧪</span> Labs · damping, roots &amp; energy</h2>
+        <p class="lede-note">Three live circuits: sweep R, L, C and the initial conditions — the regime, the roots,
+        and the waveform all update instantly. Each lab opens on the deck's own worked-example values.</p>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">🌀</div>
+            <div><div class="t">Damping explorer · series RLC natural response</div>
+            <div class="s">i(t) from v_C(0⁺) and i_L(0⁺) — with the roots plotted on the s-plane against the ω₀ circle
+            and the −α line. Defaults = Example 1 (underdamped).</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="dr_R">Resistance R</label><span class="val" id="dr_Rv"></span></div>
+                <input type="range" id="dr_R" min="50" max="4000" step="10" value="560"></div>
+              <div class="ctl"><div class="ctl-top"><label for="dr_L">Inductance L (mH)</label><span class="val" id="dr_Lv"></span></div>
+                <input type="range" id="dr_L" min="10" max="500" step="5" value="100"></div>
+              <div class="ctl"><div class="ctl-top"><label for="dr_C">Capacitance C (nF)</label><span class="val" id="dr_Cv"></span></div>
+                <input type="range" id="dr_C" min="10" max="1000" step="10" value="100"></div>
+              <div class="ctl"><div class="ctl-top"><label for="dr_V">v_C(0⁺)</label><span class="val" id="dr_Vv"></span></div>
+                <input type="range" id="dr_V" min="0" max="200" step="5" value="100"></div>
+              <div class="ctl"><div class="ctl-top"><label for="dr_I">i_L(0⁺)</label><span class="val" id="dr_Iv"></span></div>
+                <input type="range" id="dr_I" min="-10" max="10" step="0.1" value="0"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">regime</div><div class="v" id="dr_regime"></div></div>
+                <div class="readout"><div class="k">α</div><div class="v" id="dr_alpha"></div></div>
+                <div class="readout"><div class="k">ω₀</div><div class="v" id="dr_omega0"></div></div>
+                <div class="readout"><div class="k">ω_d</div><div class="v" id="dr_omegad"></div></div>
+                <div class="readout"><div class="k">s₁ , s₂</div><div class="v" id="dr_roots"></div></div>
+              </div>
+            </div>
+            <div class="stage">
+              <canvas class="plot" id="drTime" aria-label="Series RLC loop current versus time"></canvas>
+              <canvas class="plot" id="drPlane" aria-label="Roots on the complex s-plane" style="margin-top:12px"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">🧮</div>
+            <div><div class="t">Worked-example solver · parallel RLC</div>
+            <div class="s">v(t) from V₀ and I₀ — the six-step procedure computed live, coefficients included.
+            Defaults = Example 2: A₁ = −14, A₂ = 26.</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="pr_R">Resistance R</label><span class="val" id="pr_Rv"></span></div>
+                <input type="range" id="pr_R" min="10" max="2000" step="10" value="200"></div>
+              <div class="ctl"><div class="ctl-top"><label for="pr_L">Inductance L (mH)</label><span class="val" id="pr_Lv"></span></div>
+                <input type="range" id="pr_L" min="10" max="500" step="5" value="50"></div>
+              <div class="ctl"><div class="ctl-top"><label for="pr_C">Capacitance C (nF)</label><span class="val" id="pr_Cv"></span></div>
+                <input type="range" id="pr_C" min="10" max="1000" step="10" value="200"></div>
+              <div class="ctl"><div class="ctl-top"><label for="pr_V">v(0⁺) = V₀</label><span class="val" id="pr_Vv"></span></div>
+                <input type="range" id="pr_V" min="0" max="50" step="1" value="12"></div>
+              <div class="ctl"><div class="ctl-top"><label for="pr_I">i_L(0⁺) = I₀ (mA)</label><span class="val" id="pr_Iv"></span></div>
+                <input type="range" id="pr_I" min="-200" max="200" step="5" value="30"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">regime</div><div class="v" id="pr_regime"></div></div>
+                <div class="readout"><div class="k">α , ω₀</div><div class="v" id="pr_aw"></div></div>
+                <div class="readout"><div class="k">s₁ , s₂</div><div class="v" id="pr_roots"></div></div>
+                <div class="readout"><div class="k">coefficient 1</div><div class="v" id="pr_A1"></div></div>
+                <div class="readout"><div class="k">coefficient 2</div><div class="v" id="pr_A2"></div></div>
+              </div>
+            </div>
+            <div class="stage"><canvas class="plot" id="prTime" aria-label="Parallel RLC node voltage versus time"></canvas></div>
+          </div>
+        </div>
+
+        <div class="lab">
+          <div class="lab-head"><div class="lab-ico">⚡</div>
+            <div><div class="t">Undriven LC tank · the energy juggle</div>
+            <div class="s">v_C(t) and i_L(t) oscillating at ω₀ — 90° apart — while w_C and w_L trade energy and the
+            total never changes (no R to bleed it off).</div></div>
+          </div>
+          <div class="lab-body lab-cols">
+            <div class="controls">
+              <div class="ctl"><div class="ctl-top"><label for="lc_L">Inductance L (mH)</label><span class="val" id="lc_Lv"></span></div>
+                <input type="range" id="lc_L" min="10" max="500" step="5" value="100"></div>
+              <div class="ctl"><div class="ctl-top"><label for="lc_C">Capacitance C (nF)</label><span class="val" id="lc_Cv"></span></div>
+                <input type="range" id="lc_C" min="10" max="1000" step="10" value="100"></div>
+              <div class="ctl"><div class="ctl-top"><label for="lc_V">v_C(0⁺)</label><span class="val" id="lc_Vv"></span></div>
+                <input type="range" id="lc_V" min="0" max="200" step="5" value="100"></div>
+              <div class="ctl"><div class="ctl-top"><label for="lc_I">i_L(0⁺)</label><span class="val" id="lc_Iv"></span></div>
+                <input type="range" id="lc_I" min="-10" max="10" step="0.1" value="0"></div>
+              <div class="readouts" style="margin-top:0">
+                <div class="readout hl"><div class="k">ω₀ = 1/√LC</div><div class="v" id="lc_w"></div></div>
+                <div class="readout"><div class="k">T = 2π/ω₀</div><div class="v" id="lc_T"></div></div>
+                <div class="readout"><div class="k">W total</div><div class="v" id="lc_W"></div></div>
+              </div>
+            </div>
+            <div class="stage">
+              <canvas class="plot" id="lcVI" aria-label="Capacitor voltage and inductor current"></canvas>
+              <canvas class="plot" id="lcEnergy" aria-label="Stored energy in C and L" style="margin-top:12px"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 15. SUMMARY ============ -->
+      <section class="block" id="summary">
+        <h2 class="sec"><span class="sec-num">15</span> Summary</h2>
+        <div class="callout co-key"><span class="ico">📌</span>
+          <p>• A <strong>second-order circuit</strong> contains two independent energy-storage elements, and its natural
+          response obeys a second-order differential equation.</p>
+          <p>• The roots of the characteristic equation (the natural frequencies) are set by the <strong>damping
+          factor</strong> \(\alpha\) and the <strong>undamped natural frequency</strong> \(\omega_0\):
+          \(s_{1,2} = -\alpha \pm \sqrt{\alpha^2 - \omega_0^2}\).</p>
+          <p>• <strong>Overdamped</strong> (\(\alpha > \omega_0\)): two real, distinct roots — the response decays
+          without oscillating.</p>
+          <p>• <strong>Critically damped</strong> (\(\alpha = \omega_0\)): two real, equal roots — the response returns
+          to zero in the shortest time without oscillating.</p>
+          <p>• <strong>Underdamped</strong> (\(\alpha < \omega_0\)): complex conjugate roots — the response oscillates
+          at the damped natural frequency \(\omega_d\) while decaying (ringing).</p>
+          <p>• Solve by the <strong>six-step procedure</strong>: initial conditions → damping factor &amp; natural
+          frequency → response type → unknown coefficients → complete response.</p>
+        </div>
+
+        <h3>Flashcards — test yourself</h3>
+        <div class="grid grid-2">
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Damping factor, series RLC<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ \alpha = \frac{R}{2L} \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Damping factor, parallel RLC<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ \alpha = \frac{1}{2RC} \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Undamped natural frequency (both RLCs)<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ \omega_{0} = \frac{1}{\sqrt{LC}} \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Natural frequencies (roots)<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ s_{1,2} = -\alpha \pm \sqrt{\alpha^{2} - \omega_{0}^{2}} \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Underdamped response form<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ e^{-\alpha t}\big(B_1\cos\omega_d t + B_2\sin\omega_d t\big),\quad \omega_d = \sqrt{\omega_0^{2}-\alpha^{2}} \]<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+          <div class="flashcard"><div class="fc-inner">
+            <div class="fc-face fc-front">Critically damped response form<span class="fc-hint">CLICK TO FLIP</span></div>
+            <div class="fc-face fc-back">\[ \left(A_1 t + A_2\right) e^{-\alpha t} \] Fastest return to zero with no overshoot<span class="fc-hint">CLICK TO FLIP</span></div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- ============ 16. QUIZ ============ -->
+      <section class="block" id="quiz">
+        <h2 class="sec"><span class="sec-num">16</span> Self-test quiz</h2>
+        <p class="lede-note">The characteristic equation, the three regimes, and the deck's two examples.</p>
+        <div class="quiz" data-quiz="l06">
+          <div class="quiz-q" data-answer="0" data-expl="KVL around the series loop gives (1/C)∫i dt + Ri + L di/dt = 0; differentiate and divide by L. The 1/RC version belongs to the parallel RLC.">
+            <div class="q"><span class="qn">Q1.</span>The characteristic equation of the source-free <strong>series</strong> RLC circuit is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>s² + (R/L)s + 1/(LC) = 0</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>s² + (1/RC)s + 1/(LC) = 0</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>s² + 2αs = 0</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>s + R/L = 0</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="2" data-expl="Parallel RLC: α = 1/(2RC). In parallel, a larger R shunts more current away, so it damps LESS. R/2L is the series circuit.">
+            <div class="q"><span class="qn">Q2.</span>For a <strong>parallel</strong> RLC circuit, the damping factor α is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>R/(2L)</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>1/√(LC)</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>1/(2RC)</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>R/(LC)</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="2" data-expl="α = 15000 > ω₀ = 10000 ⇒ α² − ω₀² > 0 ⇒ two real, distinct roots ⇒ overdamped.">
+            <div class="q"><span class="qn">Q3.</span>A circuit has α = 15 000 Np/s and ω₀ = 10 000 rad/s. Its natural response is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>Underdamped</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>Critically damped</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>Overdamped</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Cannot be determined</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="2" data-expl="ω_d = √(ω₀² − α²) = √(10000² − 2800²) = √(92 160 000) = 9600 rad/s — exactly Example 1.">
+            <div class="q"><span class="qn">Q4.</span>With ω₀ = 10 000 rad/s and α = 2 800 Np/s, the damped natural frequency ω_d is:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>12 800 rad/s</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>7 200 rad/s</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>9 600 rad/s</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>2 800 rad/s</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="1" data-expl="Equal real roots make e^{s₁t} and e^{s₂t} the same function, so the second solution picks up a factor of t: (A₁t + A₂)e^{−αt}.">
+            <div class="q"><span class="qn">Q5.</span>The critically damped response has the form:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>A₁e^{s₁t} + A₂e^{s₂t} with distinct real s₁, s₂</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>(A₁t + A₂)e^{−αt}</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>e^{−αt}(B₁cos ω_d t + B₂sin ω_d t)</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Ae^{−t/τ}</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="1" data-expl="Example 2: s₁,₂ = −12500 ± √(12500² − 10000²) = −12500 ± 7500 → −5000 and −20000. The ±7500 is REAL, so the response is overdamped.">
+            <div class="q"><span class="qn">Q6.</span>Example 2 has α = 12 500 Np/s and ω₀ = 10 000 rad/s. The roots s₁,₂ are:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>−12 500 ± 7 500j</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>−5 000 and −20 000</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>−2 500 and −22 500</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>−7 500 and −17 500</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <div class="quiz-q" data-answer="1" data-expl="In the undriven LC, v_C and i_L are both sinusoids at ω₀, and v_C leads i_L by 90° — see Lab 3’s two curves.">
+            <div class="q"><span class="qn">Q7.</span>In the undriven LC circuit, the capacitor voltage v_C:</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt"><span class="opt-key">A</span>Lags i_L by 90°</button>
+              <button class="quiz-opt"><span class="opt-key">B</span>Leads i_L by 90°</button>
+              <button class="quiz-opt"><span class="opt-key">C</span>Is in phase with i_L</button>
+              <button class="quiz-opt"><span class="opt-key">D</span>Is 180° out of phase with i_L</button>
+            </div>
+            <div class="quiz-expl"></div>
+          </div>
+          <span class="quiz-score"></span>
+        </div>
+      </section>
+
+      <div class="pager">
+        <a href="05-linear-waveshaping.html"><div class="dir">← Previous lecture</div><div class="ti">05 · Linear Waveshaping</div></a>
+        <a class="next ghost" href="index.html"><div class="dir">Back to →</div><div class="ti">Dashboard &amp; all lectures</div></a>
+      </div>
+
+      <div style="text-align:center; margin-top:26px">
+        <button class="btn" data-mark-complete="06">Mark lecture complete</button>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="foot">
+    <span>EEE 133 · Circuit Theory — Lecture 06: Second-Order Circuits (Natural Response)</span>
+    <span>UP Diliman · College of Engineering · EEE Institute</span>
+  </div>
+</div>
+
+<script src="js/plot.js"></script>
+<script src="js/common.js"></script>
+<script src="js/lecture06.js"></script>
+</body>
+</html>
