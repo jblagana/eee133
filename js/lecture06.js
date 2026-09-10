@@ -266,3 +266,145 @@
   })();
 
 })();
+
+/* ============================================================
+   Live circuit sims (Falstad-style) — powered by circsim.js
+   ============================================================ */
+(function () {
+  "use strict";
+  var CS = window.CircSim;
+  if (!CS) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var TOP = 76, BOT = 268;
+  function HW(y, x1, x2, id) { return { pts: [[x1, y], [x2, y]], id: id }; }
+  function VW(x, y1, y2, id) { return { pts: [[x, y1], [x, y2]], id: id }; }
+  function fV(x) { return x.toFixed(1) + " V"; }
+
+  /* ---- S13 · lc: undriven LC tank — energy juggling ---- */
+  (function () {
+    var root = $("sim-lc");
+    if (!root) return;
+    CS.mount(root, {
+      id: "lc", icon: "♾️",
+      title: "Live circuit · the undriven LC tank",
+      sub: "No source, no resistor — the energy juggles between the two fields, forever.",
+      note: "v_C and i_L are both sinusoids at ω₀ = 1/√(LC), 90° apart. Watch w_C and w_L: one rises as the other falls while the total stays flat (a real integrator loses a hair per cycle — a real tank would too, eventually). Change L or C and ω₀ follows 1/√(LC). Press ↺ to recharge the tank.",
+      w: 720, h: 340, dt: 1e-6, spf: 8, flow: 4000, speed0: 2,
+      init: function (c) { return { C: { C: c.V0 } }; },
+      controls: [
+        { type: "range", id: "V0", label: "Initial v_C = V₀", min: 1, max: 20, step: 1, value: 10, fmt: fV },
+        { type: "range", id: "L", label: "Inductance L", min: 1, max: 100, step: 1, value: 5, fmt: function (x) { return x.toFixed(0) + " mH"; } },
+        { type: "range", id: "C", label: "Capacitance C", min: 1, max: 100, step: 1, value: 10, fmt: function (x) { return x.toFixed(0) + " µF"; } }
+      ],
+      build: function (c) {
+        return {
+          branches: [
+            { id: "C", type: "C", a: "a", b: "g", c: c.C * 1e-6 },
+            { id: "L", type: "L", a: "a", b: "g", l: c.L * 1e-3 }
+          ],
+          wires: [
+            HW(TOP, 300, 480, "L"),
+            VW(300, TOP, 163, "C"), VW(300, 181, BOT, "C"),
+            VW(480, TOP, 150, "L"), VW(480, 194, BOT, "L"),
+            HW(BOT, 300, 480, "L")
+          ],
+          comps: [
+            { type: "C", id: "C", x: 300, y: 172, o: "v", label: "C", ls: c.C.toFixed(0) + " µF", lx: 228, ly: 166 },
+            { type: "L", id: "L", x: 480, y: 172, o: "v", label: "L", ls: c.L.toFixed(0) + " mH", lx: 556, ly: 166 }
+          ],
+          gnds: [[390, BOT]],
+          probes: [
+            { x: 300, y: 238, label: "v_C", get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } },
+            { x: 480, y: 238, label: "i_L", get: function (s) { return CS.fmtSI((s.branches.L || {}).i || 0, "A"); } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "vc", label: "v_C (live)", get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } },
+        { id: "il", label: "i_L (live)", get: function (s) { return CS.fmtSI((s.branches.L || {}).i || 0, "A"); } },
+        { id: "wc", label: "w_C = ½Cv²", hl: true, get: function (s) { return CS.fmtSI(0.5 * (s.ctrl.C * 1e-6) * (s.V.a || 0) * (s.V.a || 0), "J"); } },
+        { id: "wl", label: "w_L = ½Li²", hl: true, get: function (s) { var i = (s.branches.L || {}).i || 0; return CS.fmtSI(0.5 * (s.ctrl.L * 1e-3) * i * i, "J"); } },
+        { id: "w", label: "w total (≈ const)", get: function (s) {
+            var vc = s.V.a || 0, i = (s.branches.L || {}).i || 0;
+            return CS.fmtSI(0.5 * (s.ctrl.C * 1e-6) * vc * vc + 0.5 * (s.ctrl.L * 1e-3) * i * i, "J"); } },
+        { id: "f0", label: "f₀ = 1/2π√(LC)", get: function (s, c) { return CS.fmtSI(1 / (2 * Math.PI * Math.sqrt(c.L * 1e-3 * c.C * 1e-6)), "Hz"); } }
+      ]
+    });
+  })();
+
+  /* ---- S14 · types: series RLC — watch the regime flip ---- */
+  (function () {
+    var root = $("sim-rlc");
+    if (!root) return;
+    function alpha(c) { return c.R / (2 * c.L * 1e-3); }
+    function w0(c) { return 1 / Math.sqrt(c.L * 1e-3 * c.C * 1e-6); }
+    CS.mount(root, {
+      id: "rlc", icon: "🎢",
+      title: "Live circuit · series RLC — the three regimes in motion",
+      sub: "One precharged capacitor, one loop: drag R and watch the response type change.",
+      note: "The inequality α vs ω₀ picks the row of the table above: underdamped (α < ω₀) rings, critically damped (α = ω₀) returns to zero as fast as possible without ringing, overdamped (α > ω₀) creeps. The presets set R to ¼·Rc, Rc, 3·Rc with Rc = 2√(L/C). Press ↺ to re-charge and re-watch.",
+      w: 720, h: 340, dt: 1e-6, spf: 8, flow: 150, speed0: 2,
+      init: function (c) { return { C: { C: c.V0 } }; },
+      onChange: function (id, v, refs) {
+        if (id !== "regime") return;
+        var L = parseFloat(refs.inputs.L.value), C = parseFloat(refs.inputs.C.value);
+        var Rc = 2 * Math.sqrt(L * 1e-3 / (C * 1e-6));
+        var R = v === "under" ? 0.25 * Rc : v === "crit" ? Rc : 3 * Rc;
+        refs.inputs.R.value = R;
+        refs.vals.R.textContent = CS.fmtSI(R, "Ω");
+      },
+      controls: [
+        { type: "seg", id: "regime", label: "Regime preset", value: "under",
+          options: [{ v: "under", label: "Underdamped" }, { v: "crit", label: "Critical" }, { v: "over", label: "Overdamped" }] },
+        { type: "range", id: "R", label: "Resistance R", min: 0, max: 500, step: 1, value: 10, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "L", label: "Inductance L", min: 0.5, max: 100, step: 0.5, value: 5, fmt: function (x) { return x.toFixed(1) + " mH"; } },
+        { type: "range", id: "C", label: "Capacitance C", min: 1, max: 100, step: 1, value: 10, fmt: function (x) { return x.toFixed(0) + " µF"; } },
+        { type: "range", id: "V0", label: "Initial v_C = V₀", min: 2, max: 20, step: 1, value: 10, fmt: fV }
+      ],
+      build: function (c) {
+        return {
+          branches: [
+            { id: "C", type: "C", a: "a", b: "g", c: c.C * 1e-6 },
+            { id: "R", type: "R", a: "a", b: "b", r: Math.max(c.R, 1e-6) },
+            { id: "L", type: "L", a: "b", b: "g", l: c.L * 1e-3 }
+          ],
+          wires: [
+            HW(TOP, 300, 408, "C"), HW(TOP, 452, 560, "C"),
+            VW(300, TOP, 163, "C"), VW(300, 181, BOT, "C"),
+            VW(560, TOP, 150, "L"), VW(560, 194, BOT, "L"),
+            HW(BOT, 300, 560, "L")
+          ],
+          comps: [
+            { type: "C", id: "C", x: 300, y: 172, o: "v", label: "C", ls: c.C.toFixed(0) + " µF", lx: 230, ly: 166 },
+            { type: "R", id: "R", x: 430, y: TOP, o: "h", label: "R", ls: CS.fmtSI(c.R, "Ω"), ly: 40 },
+            { type: "L", id: "L", x: 560, y: 172, o: "v", label: "L", ls: c.L.toFixed(1) + " mH", lx: 634, ly: 166 }
+          ],
+          gnds: [[430, BOT]],
+          probes: [
+            { x: 300, y: 238, label: "v_C", get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } },
+            { x: 560, y: 238, label: "i_L", get: function (s) { return CS.fmtSI((s.branches.L || {}).i || 0, "A"); } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "a", label: "α = R/2L", get: function (s, c) { return alpha(c).toFixed(0) + " Np/s"; } },
+        { id: "w0", label: "ω₀ = 1/√(LC)", get: function (s, c) { return w0(c).toFixed(0) + " rad/s"; } },
+        { id: "reg", label: "regime", hl: true, get: function (s, c) {
+            var d = alpha(c) * alpha(c) - w0(c) * w0(c);
+            return d > 1e-6 ? "overdamped" : d < -1e-6 ? "underdamped" : "critical"; } },
+        { id: "roots", label: "roots s₁, s₂", get: function (s, c) {
+            var a = alpha(c), w = w0(c), d = a * a - w * w;
+            if (d > 1e-6) {
+              var r1 = -a + Math.sqrt(d), r2 = -a - Math.sqrt(d);
+              return r1.toFixed(0) + ", " + r2.toFixed(0);
+            }
+            if (d < -1e-6) {
+              return "−" + a.toFixed(0) + " ± j" + Math.sqrt(-d).toFixed(0);
+            }
+            return "−" + a.toFixed(0) + " (double)"; } },
+        { id: "vc", label: "v_C (live)", get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } }
+      ]
+    });
+  })();
+
+})();

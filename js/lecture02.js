@@ -255,3 +255,311 @@
   })();
 
 })();
+
+/* ============================================================
+   Live circuit sims (Falstad-style) — powered by circsim.js
+   ============================================================ */
+(function () {
+  "use strict";
+  var CS = window.CircSim;
+  if (!CS) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var TOP = 76, BOT = 268;
+  function HW(y, x1, x2, id) { return { pts: [[x1, y], [x2, y]], id: id }; }
+  function VW(x, y1, y2, id) { return { pts: [[x, y1], [x, y2]], id: id }; }
+  function fV(x) { return x.toFixed(1) + " V"; }
+
+  /* ---- S1 · cap-vi: charge a capacitor, i = C dv/dt ---- */
+  (function () {
+    var root = $("sim-capcharge");
+    if (!root) return;
+    CS.mount(root, {
+      id: "capcharge", icon: "🔋",
+      title: "Live circuit · charging a capacitor",
+      sub: "Close S: current rushes in while v_C changes, then fades as v_C → Vs.",
+      note: "The dots are the current i = C·dv/dt. Biggest at t = 0⁺ (fastest dv/dt), zero once the capacitor is full. Open S — the stored charge just sits there. Drag R or C to change τ = RC.",
+      w: 720, h: 340, dt: 1e-5, spf: 8, flow: 12000, speed0: 2,
+      controls: [
+        { type: "range", id: "Vs", label: "Source Vs", min: 2, max: 20, step: 1, value: 12, fmt: fV },
+        { type: "range", id: "R", label: "Resistance R", min: 100, max: 10000, step: 100, value: 1000, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "C", label: "Capacitance C", min: 0.1, max: 50, step: 0.5, value: 10, fmt: function (x) { return x.toFixed(1) + " µF"; } },
+        { type: "seg", id: "on", label: "Switch S", value: 1, options: [{ v: 1, label: "Closed" }, { v: 0, label: "Open" }] }
+      ],
+      build: function (c) {
+        return {
+          branches: [
+            { id: "Vs", type: "V", a: "s", b: "g", v: c.Vs },
+            { id: "sw", type: "SW", a: "s", b: "n", closed: !!c.on },
+            { id: "R", type: "R", a: "n", b: "a", r: c.R },
+            { id: "C", type: "C", a: "a", b: "g", c: c.C * 1e-6 }
+          ],
+          wires: [
+            VW(110, BOT, 192, "C"), VW(110, 52, TOP, "C"),
+            HW(TOP, 110, 192, "C"), HW(TOP, 228, 298, "C"),
+            HW(TOP, 342, 470, "C"), VW(470, TOP, 163, "C"),
+            VW(470, 181, BOT, "C"), HW(BOT, 110, 620, "C")
+          ],
+          comps: [
+            { type: "V", id: "Vs", x: 110, y: 172, o: "v", label: "Vs", ls: fV(c.Vs), lx: 60, ly: 172 },
+            { type: "SW", id: "sw", x: 210, y: TOP, o: "h", closed: !!c.on, label: "S", ly: 40 },
+            { type: "R", id: "R", x: 320, y: TOP, o: "h", label: "R", ls: CS.fmtSI(c.R, "Ω"), ly: 40 },
+            { type: "C", id: "C", x: 470, y: 172, o: "v", label: "C", ls: c.C.toFixed(1) + " µF", lx: 548, ly: 166 }
+          ],
+          gnds: [[300, BOT]],
+          probes: [
+            { x: 470, y: 238, label: "v_C", get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } },
+            { x: 320, y: 112, label: "i", get: function (s) { return CS.fmtSI((s.branches.C || {}).i || 0, "A"); } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "vc", label: "v_C", hl: true, get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } },
+        { id: "i", label: "i = C dv/dt", get: function (s) { return CS.fmtSI((s.branches.C || {}).i || 0, "A"); } },
+        { id: "tau", label: "τ = RC", get: function (s, c) { return CS.fmtSI(c.R * c.C * 1e-6, "s"); } },
+        { id: "w", label: "w = ½Cv²", get: function (s) { return CS.fmtSI(0.5 * (s.ctrl.C * 1e-6) * (s.V.a || 0) * (s.V.a || 0), "J"); } }
+      ]
+    });
+  })();
+
+  /* ---- S2 · cap-dc: capacitors in DC circuits (C = open) ---- */
+  (function () {
+    var root = $("sim-cdc");
+    if (!root) return;
+    CS.mount(root, {
+      id: "cdc", icon: "🧱",
+      title: "Live circuit · a capacitor in a DC circuit",
+      sub: "Close S: current flows only while C charges — then it stops completely. C becomes an open.",
+      note: "At steady state no DC current crosses the gap, so v_C lands exactly on the divider answer Vs·R2/(R1+R2) — the “replace C by an open” recipe from the worked example. τ = (R1∥R2)·C.",
+      w: 720, h: 340, dt: 1e-5, spf: 8, flow: 8000, speed0: 2,
+      controls: [
+        { type: "range", id: "Vs", label: "Source Vs", min: 2, max: 20, step: 1, value: 12, fmt: fV },
+        { type: "range", id: "R1", label: "R1 (series)", min: 100, max: 10000, step: 100, value: 2000, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "R2", label: "R2 (to gnd)", min: 100, max: 10000, step: 100, value: 2000, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "C", label: "Capacitance C", min: 0.1, max: 50, step: 0.5, value: 10, fmt: function (x) { return x.toFixed(1) + " µF"; } },
+        { type: "seg", id: "on", label: "Switch S", value: 1, options: [{ v: 1, label: "Closed" }, { v: 0, label: "Open" }] }
+      ],
+      build: function (c) {
+        return {
+          branches: [
+            { id: "Vs", type: "V", a: "s", b: "g", v: c.Vs },
+            { id: "sw", type: "SW", a: "s", b: "n", closed: !!c.on },
+            { id: "R1", type: "R", a: "n", b: "a", r: c.R1 },
+            { id: "R2", type: "R", a: "a", b: "g", r: c.R2 },
+            { id: "C", type: "C", a: "a", b: "g", c: c.C * 1e-6 }
+          ],
+          wires: [
+            VW(110, BOT, 192, "R1"), VW(110, 52, TOP, "R1"),
+            HW(TOP, 110, 192, "R1"), HW(TOP, 228, 298, "R1"),
+            HW(TOP, 342, 590, "R1"),
+            VW(470, TOP, 163, "R2"), VW(470, 181, BOT, "R2"),
+            VW(590, TOP, 163, "C"), VW(590, 181, BOT, "C"),
+            HW(BOT, 110, 640, "C")
+          ],
+          comps: [
+            { type: "V", id: "Vs", x: 110, y: 172, o: "v", label: "Vs", ls: fV(c.Vs), lx: 60, ly: 172 },
+            { type: "SW", id: "sw", x: 210, y: TOP, o: "h", closed: !!c.on, label: "S", ly: 40 },
+            { type: "R", id: "R1", x: 320, y: TOP, o: "h", label: "R1", ls: CS.fmtSI(c.R1, "Ω"), ly: 40 },
+            { type: "R", id: "R2", x: 470, y: 172, o: "v", label: "R2", ls: CS.fmtSI(c.R2, "Ω"), lx: 402, ly: 166 },
+            { type: "C", id: "C", x: 590, y: 172, o: "v", label: "C", ls: c.C.toFixed(1) + " µF", lx: 660, ly: 166 }
+          ],
+          gnds: [[300, BOT]],
+          probes: [
+            { x: 590, y: 238, label: "v_C", get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } },
+            { x: 320, y: 112, label: "i", get: function (s) { return CS.fmtSI((s.branches.R1 || {}).i || 0, "A"); } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "vc", label: "v_C (live)", hl: true, get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } },
+        { id: "vfin", label: "v_C(∞) divider", get: function (s, c) { return (c.Vs * c.R2 / (c.R1 + c.R2)).toFixed(2) + " V"; } },
+        { id: "i", label: "i (total)", get: function (s) { return CS.fmtSI((s.branches.R1 || {}).i || 0, "A"); } },
+        { id: "tau", label: "τ = (R1∥R2)C", get: function (s, c) { return CS.fmtSI(c.R1 * c.R2 / (c.R1 + c.R2) * c.C * 1e-6, "s"); } }
+      ]
+    });
+  })();
+
+  /* ---- S3 · cap-comb: two capacitors, series vs parallel ---- */
+  (function () {
+    var root = $("sim-capcomb");
+    if (!root) return;
+    CS.mount(root, {
+      id: "capcomb", icon: "🔀",
+      title: "Live circuit · two capacitors — series vs parallel",
+      sub: "Flip the topology: parallel shares voltage, series shares charge.",
+      note: "Parallel: same v on both, charges add (q ∝ C). Series: the same charge flows through both, so voltages split inversely to C — the smaller capacitor takes the bigger share. Watch q1/q2 and C_eq while you toggle.",
+      w: 720, h: 340, dt: 1e-5, spf: 8, flow: 8000, speed0: 2,
+      controls: [
+        { type: "seg", id: "top", label: "Topology", value: "parallel", options: [{ v: "parallel", label: "Parallel" }, { v: "series", label: "Series" }] },
+        { type: "range", id: "C1", label: "Capacitance C1", min: 0.5, max: 20, step: 0.5, value: 8, fmt: function (x) { return x.toFixed(1) + " µF"; } },
+        { type: "range", id: "C2", label: "Capacitance C2", min: 0.5, max: 20, step: 0.5, value: 4, fmt: function (x) { return x.toFixed(1) + " µF"; } },
+        { type: "range", id: "Vs", label: "Source Vs", min: 2, max: 20, step: 1, value: 12, fmt: fV },
+        { type: "seg", id: "on", label: "Switch S", value: 1, options: [{ v: 1, label: "Closed" }, { v: 0, label: "Open" }] }
+      ],
+      build: function (c) {
+        var ser = c.top === "series";
+        return {
+          branches: [
+            { id: "Vs", type: "V", a: "s", b: "g", v: c.Vs },
+            { id: "sw", type: "SW", a: "s", b: "n", closed: !!c.on },
+            { id: "R", type: "R", a: "n", b: "a", r: 1000 },
+            { id: "C1", type: "C", a: "a", b: ser ? "m" : "g", c: c.C1 * 1e-6 },
+            { id: "C2", type: "C", a: ser ? "m" : "a", b: "g", c: c.C2 * 1e-6 }
+          ],
+          wires: ser
+            ? [VW(110, BOT, 192, "C1"), VW(110, 52, TOP, "C1"),
+               HW(TOP, 110, 192, "C1"), HW(TOP, 228, 298, "C1"),
+               HW(TOP, 342, 470, "C1"), VW(470, TOP, 119, "C1"),
+               VW(470, 137, 207, "C1"), VW(470, 225, BOT, "C2"),
+               HW(BOT, 110, 560, "C2")]
+            : [VW(110, BOT, 192, "C1"), VW(110, 52, TOP, "C1"),
+               HW(TOP, 110, 192, "C1"), HW(TOP, 228, 298, "C1"),
+               HW(TOP, 342, 590, "C1"), VW(470, TOP, 163, "C1"),
+               VW(470, 181, BOT, "C1"), VW(590, TOP, 163, "C2"),
+               VW(590, 181, BOT, "C2"), HW(BOT, 110, 640, "C2")],
+          comps: [
+            { type: "V", id: "Vs", x: 110, y: 172, o: "v", label: "Vs", ls: fV(c.Vs), lx: 60, ly: 172 },
+            { type: "SW", id: "sw", x: 210, y: TOP, o: "h", closed: !!c.on, label: "S", ly: 40 },
+            { type: "R", id: "R", x: 320, y: TOP, o: "h", label: "R", ls: "1 kΩ", ly: 40 }
+          ].concat(ser
+            ? [{ type: "C", id: "C1", x: 470, y: 128, o: "v", label: "C1", ls: c.C1.toFixed(1) + " µF", lx: 552, ly: 122 },
+               { type: "C", id: "C2", x: 470, y: 216, o: "v", label: "C2", ls: c.C2.toFixed(1) + " µF", lx: 552, ly: 210 }]
+            : [{ type: "C", id: "C1", x: 470, y: 172, o: "v", label: "C1", ls: c.C1.toFixed(1) + " µF", lx: 400, ly: 166 },
+               { type: "C", id: "C2", x: 590, y: 172, o: "v", label: "C2", ls: c.C2.toFixed(1) + " µF", lx: 662, ly: 166 }]),
+          gnds: [[300, BOT]],
+          probes: [
+            { x: ser ? 470 : 470, y: ser ? 84 : 238, label: "v1",
+              get: function (s) { var b = s.branches.C1; return b ? ((b.va || 0) - (b.vb || 0)).toFixed(2) + " V" : "—"; } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "v1", label: "v1 across C1", get: function (s) { var b = s.branches.C1; return b ? ((b.va || 0) - (b.vb || 0)).toFixed(2) + " V" : "—"; } },
+        { id: "v2", label: "v2 across C2", get: function (s) { var b = s.branches.C2; return b ? ((b.va || 0) - (b.vb || 0)).toFixed(2) + " V" : "—"; } },
+        { id: "q1", label: "q1 = C1v1", hl: true, get: function (s) { var b = s.branches.C1; return b ? CS.fmtSI(s.ctrl.C1 * 1e-6 * ((b.va || 0) - (b.vb || 0)), "C") : "—"; } },
+        { id: "q2", label: "q2 = C2v2", hl: true, get: function (s) { var b = s.branches.C2; return b ? CS.fmtSI(s.ctrl.C2 * 1e-6 * ((b.va || 0) - (b.vb || 0)), "C") : "—"; } },
+        { id: "ceq", label: "C_eq", get: function (s, c) {
+            var v = c.top === "series" ? c.C1 * c.C2 / (c.C1 + c.C2) : c.C1 + c.C2;
+            return v.toFixed(1) + " µF"; } }
+      ]
+    });
+  })();
+
+  /* ---- S4 · ind-vi: build up inductor current, v = L di/dt ---- */
+  (function () {
+    var root = $("sim-indcharge");
+    if (!root) return;
+    CS.mount(root, {
+      id: "indcharge", icon: "🧲",
+      title: "Live circuit · building up inductor current",
+      sub: "Close S: current starts at 0 and creeps up — v_L is biggest while di/dt is biggest.",
+      note: "Mirror image of the capacitor: i(0⁺) = 0 because current through an inductor cannot jump. The inductor voltage is maximal at t = 0⁺ and decays to zero as i → Vs/R (inductor = short at DC steady state). τ = L/R.",
+      w: 720, h: 340, dt: 1e-5, spf: 8, flow: 12000, speed0: 2,
+      controls: [
+        { type: "range", id: "Vs", label: "Source Vs", min: 2, max: 20, step: 1, value: 12, fmt: fV },
+        { type: "range", id: "R", label: "Resistance R", min: 100, max: 10000, step: 100, value: 1000, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "L", label: "Inductance L", min: 1, max: 100, step: 1, value: 10, fmt: function (x) { return x.toFixed(0) + " mH"; } },
+        { type: "seg", id: "on", label: "Switch S", value: 1, options: [{ v: 1, label: "Closed" }, { v: 0, label: "Open" }] }
+      ],
+      build: function (c) {
+        return {
+          branches: [
+            { id: "Vs", type: "V", a: "s", b: "g", v: c.Vs },
+            { id: "sw", type: "SW", a: "s", b: "n", closed: !!c.on },
+            { id: "R", type: "R", a: "n", b: "a", r: c.R },
+            { id: "L", type: "L", a: "a", b: "g", l: c.L * 1e-3 }
+          ],
+          wires: [
+            VW(110, BOT, 192, "L"), VW(110, 52, TOP, "L"),
+            HW(TOP, 110, 192, "L"), HW(TOP, 228, 298, "L"),
+            HW(TOP, 342, 470, "L"), VW(470, TOP, 150, "L"),
+            VW(470, 194, BOT, "L"), HW(BOT, 110, 620, "L")
+          ],
+          comps: [
+            { type: "V", id: "Vs", x: 110, y: 172, o: "v", label: "Vs", ls: fV(c.Vs), lx: 60, ly: 172 },
+            { type: "SW", id: "sw", x: 210, y: TOP, o: "h", closed: !!c.on, label: "S", ly: 40 },
+            { type: "R", id: "R", x: 320, y: TOP, o: "h", label: "R", ls: CS.fmtSI(c.R, "Ω"), ly: 40 },
+            { type: "L", id: "L", x: 470, y: 172, o: "v", label: "L", ls: c.L.toFixed(0) + " mH", lx: 548, ly: 166 }
+          ],
+          gnds: [[300, BOT]],
+          probes: [
+            { x: 470, y: 238, label: "i_L", get: function (s) { return CS.fmtSI((s.branches.L || {}).i || 0, "A"); } },
+            { x: 320, y: 112, label: "v_L", get: function (s) { var b = s.branches.L; return b ? ((b.va || 0) - (b.vb || 0)).toFixed(2) + " V" : "—"; } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "il", label: "i_L", hl: true, get: function (s) { return CS.fmtSI((s.branches.L || {}).i || 0, "A"); } },
+        { id: "vl", label: "v_L = L di/dt", get: function (s) { var b = s.branches.L; return b ? ((b.va || 0) - (b.vb || 0)).toFixed(2) + " V" : "—"; } },
+        { id: "if", label: "i(∞) = Vs/R", get: function (s, c) { return CS.fmtSI(c.Vs / c.R, "A"); } },
+        { id: "tau", label: "τ = L/R", get: function (s, c) { return CS.fmtSI(c.L * 1e-3 / c.R, "s"); } }
+      ]
+    });
+  })();
+
+  /* ---- S5 · ind-comb: two inductors, series vs parallel ---- */
+  (function () {
+    var root = $("sim-indcomb");
+    if (!root) return;
+    CS.mount(root, {
+      id: "indcomb", icon: "🧮",
+      title: "Live circuit · two inductors — series vs parallel",
+      sub: "Flip the topology: series adds like resistors, parallel mirrors resistors too.",
+      note: "Series: same current through both, voltages split in proportion to L. Parallel: same voltage, currents split inversely to L (the smaller L takes the bigger share). L_eq adds in series and combines like a reciprocal sum in parallel — just like R.",
+      w: 720, h: 340, dt: 1e-5, spf: 8, flow: 8000, speed0: 2,
+      controls: [
+        { type: "seg", id: "top", label: "Topology", value: "series", options: [{ v: "series", label: "Series" }, { v: "parallel", label: "Parallel" }] },
+        { type: "range", id: "L1", label: "Inductance L1", min: 0.5, max: 50, step: 0.5, value: 10, fmt: function (x) { return x.toFixed(1) + " mH"; } },
+        { type: "range", id: "L2", label: "Inductance L2", min: 0.5, max: 50, step: 0.5, value: 20, fmt: function (x) { return x.toFixed(1) + " mH"; } },
+        { type: "range", id: "R", label: "Resistance R", min: 100, max: 10000, step: 100, value: 1000, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "Vs", label: "Source Vs", min: 2, max: 20, step: 1, value: 12, fmt: fV },
+        { type: "seg", id: "on", label: "Switch S", value: 1, options: [{ v: 1, label: "Closed" }, { v: 0, label: "Open" }] }
+      ],
+      build: function (c) {
+        var ser = c.top === "series";
+        return {
+          branches: [
+            { id: "Vs", type: "V", a: "s", b: "g", v: c.Vs },
+            { id: "sw", type: "SW", a: "s", b: "n", closed: !!c.on },
+            { id: "R", type: "R", a: "n", b: "a", r: c.R },
+            { id: "L1", type: "L", a: "a", b: ser ? "m" : "g", l: c.L1 * 1e-3 },
+            { id: "L2", type: "L", a: ser ? "m" : "a", b: "g", l: c.L2 * 1e-3 }
+          ],
+          wires: ser
+            ? [VW(110, BOT, 192, "L1"), VW(110, 52, TOP, "L1"),
+               HW(TOP, 110, 192, "L1"), HW(TOP, 228, 298, "L1"),
+               HW(TOP, 342, 470, "L1"), VW(470, TOP, 106, "L1"),
+               VW(470, 150, 194, "L1"), VW(470, 238, BOT, "L2"),
+               HW(BOT, 110, 560, "L2")]
+            : [VW(110, BOT, 192, "L1"), VW(110, 52, TOP, "L1"),
+               HW(TOP, 110, 192, "L1"), HW(TOP, 228, 298, "L1"),
+               HW(TOP, 342, 590, "L1"), VW(470, TOP, 150, "L1"),
+               VW(470, 194, BOT, "L1"), VW(590, TOP, 150, "L2"),
+               VW(590, 194, BOT, "L2"), HW(BOT, 110, 640, "L2")],
+          comps: [
+            { type: "V", id: "Vs", x: 110, y: 172, o: "v", label: "Vs", ls: fV(c.Vs), lx: 60, ly: 172 },
+            { type: "SW", id: "sw", x: 210, y: TOP, o: "h", closed: !!c.on, label: "S", ly: 40 },
+            { type: "R", id: "R", x: 320, y: TOP, o: "h", label: "R", ls: CS.fmtSI(c.R, "Ω"), ly: 40 }
+          ].concat(ser
+            ? [{ type: "L", id: "L1", x: 470, y: 128, o: "v", label: "L1", ls: c.L1.toFixed(1) + " mH", lx: 556, ly: 122 },
+               { type: "L", id: "L2", x: 470, y: 216, o: "v", label: "L2", ls: c.L2.toFixed(1) + " mH", lx: 556, ly: 210 }]
+            : [{ type: "L", id: "L1", x: 470, y: 172, o: "v", label: "L1", ls: c.L1.toFixed(1) + " mH", lx: 398, ly: 166 },
+               { type: "L", id: "L2", x: 590, y: 172, o: "v", label: "L2", ls: c.L2.toFixed(1) + " mH", lx: 664, ly: 166 }]),
+          gnds: [[300, BOT]],
+          probes: [
+            { x: 320, y: 112, label: "i (total)", get: function (s) { return CS.fmtSI((s.branches.R || {}).i || 0, "A"); } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "i1", label: "i1 through L1", hl: true, get: function (s) { return CS.fmtSI((s.branches.L1 || {}).i || 0, "A"); } },
+        { id: "i2", label: "i2 through L2", hl: true, get: function (s) { return CS.fmtSI((s.branches.L2 || {}).i || 0, "A"); } },
+        { id: "v1", label: "v1 across L1", get: function (s) { var b = s.branches.L1; return b ? ((b.va || 0) - (b.vb || 0)).toFixed(2) + " V" : "—"; } },
+        { id: "v2", label: "v2 across L2", get: function (s) { var b = s.branches.L2; return b ? ((b.va || 0) - (b.vb || 0)).toFixed(2) + " V" : "—"; } },
+        { id: "leq", label: "L_eq", get: function (s, c) {
+            var v = c.top === "series" ? c.L1 + c.L2 : c.L1 * c.L2 / (c.L1 + c.L2);
+            return v.toFixed(1) + " mH"; } }
+      ]
+    });
+  })();
+
+})();

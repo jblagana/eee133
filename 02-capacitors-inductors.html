@@ -58,7 +58,7 @@ window.MathJax = {
         </svg>
         <p class="kicker">Lecture 02 · EEE 133</p>
         <h1>Capacitors and Inductors</h1>
-        <p class="lede">The two energy-storage elements of circuit theory. The capacitor hoards charge in an
+        <p class="lede">The two well-known energy-storage elements in circuits. The capacitor hoards charge in an
         electric field; the inductor hoards current in a magnetic field. Together they explain every
         transient you will meet in Lectures 3–5.</p>
         <div class="hero-meta">
@@ -146,6 +146,8 @@ window.MathJax = {
           Steady voltage → zero current (acts like an <strong>open circuit</strong>).
           Abruptly changing voltage → enormous current. A capacitor <em>opposes changes in voltage</em>.
         </div>
+
+        <div class="sim" id="sim-capcharge"></div>
       </section>
 
       <!-- ============ 4. CAP POWER & ENERGY ============ -->
@@ -306,6 +308,8 @@ window.MathJax = {
             </div></div>
           </div>
         </div>
+
+        <div class="sim" id="sim-cdc"></div>
       </section>
 
       <!-- ============ 8. CAP SERIES/PARALLEL ============ -->
@@ -329,6 +333,8 @@ window.MathJax = {
           is found by superposing \( v_k = \sum q/C_k \). Don’t assume the series string starts “discharged” unless every
           member is.</p>
         </div>
+
+        <div class="sim" id="sim-capcomb"></div>
       </section>
 
       <!-- ============ 9. IND OVERVIEW ============ -->
@@ -403,6 +409,8 @@ window.MathJax = {
           Abruptly changing current → enormous voltage. An inductor <em>opposes changes in current</em> —
           spark plugs and relay snubbers exist because of this very equation.
         </div>
+
+        <div class="sim" id="sim-indcharge"></div>
       </section>
 
       <!-- ============ 12. IND POWER & ENERGY ============ -->
@@ -581,6 +589,8 @@ window.MathJax = {
             </div>
           </div>
         </div>
+
+        <div class="sim" id="sim-indcomb"></div>
       </section>
 
       <!-- ============ 16. ELEMENT TABLE ============ -->
@@ -762,6 +772,7 @@ window.MathJax = {
 
 <script src="js/plot.js"></script>
 <script src="js/common.js"></script>
+<script src="js/circsim.js"></script>
 <script src="js/lecture02.js"></script>
 </body>
 </html>

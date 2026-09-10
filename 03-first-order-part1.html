@@ -264,6 +264,8 @@ window.MathJax = {
           <p>All energy the capacitor started with, \( \tfrac12 C V_0^2 \), ends up as heat in R:
           \( \int_0^\infty R i^2 dt = \tfrac12 C V_0^2 \). The exponential is just the bookkeeping of that hand-off.</p>
         </div>
+
+        <div class="sim" id="sim-rffree"></div>
       </section>
 
       <!-- ============ 8. SOURCE-FREE RL ============ -->
@@ -276,6 +278,8 @@ window.MathJax = {
         </div>
         <p class="lede-note">Same shape, different element: where RC decays its <em>voltage</em>, RL decays its
         <em>current</em> — the continuous quantity of each element.</p>
+
+        <div class="sim" id="sim-rlfree"></div>
       </section>
 
       <!-- ============ 9. STEP RESPONSE ============ -->
@@ -298,6 +302,8 @@ window.MathJax = {
           \[ i(t) = \frac{V}{R} + A\,e^{-Rt/L} \quad\xrightarrow{\;i(0)=0\;}\quad \boxed{\,i(t) = \frac{V}{R}\left(1 - e^{-t/\tau}\right)\,},\quad \tau = \frac{L}{R} \]
           <span class="flabel">Rises from 0 toward V/R. At t = τ the current has covered 63.2% of its total swing; at 5τ it is in steady state.</span>
         </div>
+
+        <div class="sim" id="sim-rlstep"></div>
       </section>
 
       <!-- ============ 10. NON-HOMOGENEOUS ============ -->
@@ -582,6 +588,7 @@ window.MathJax = {
 
 <script src="js/plot.js"></script>
 <script src="js/common.js"></script>
+<script src="js/circsim.js"></script>
 <script src="js/lecture03.js"></script>
 </body>
 </html>

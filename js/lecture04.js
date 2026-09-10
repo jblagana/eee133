@@ -155,3 +155,145 @@
   })();
 
 })();
+
+/* ============================================================
+   Live circuit sims (Falstad-style) — powered by circsim.js
+   ============================================================ */
+(function () {
+  "use strict";
+  var CS = window.CircSim;
+  if (!CS) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var TOP = 76, BOT = 268;
+  function HW(y, x1, x2, id) { return { pts: [[x1, y], [x2, y]], id: id }; }
+  function VW(x, y1, y2, id) { return { pts: [[x, y1], [x, y2]], id: id }; }
+  function fV(x) { return x.toFixed(1) + " V"; }
+
+  /* ---- S9 · tau-thev: τ via the Thévenin resistance ---- */
+  (function () {
+    var root = $("sim-thev");
+    if (!root) return;
+    CS.mount(root, {
+      id: "thev", icon: "🕵️",
+      title: "Live circuit · τ via the Thévenin resistance",
+      sub: "v_C chases Vth with τ = Rth·C — watch the readouts match the figure above.",
+      note: "Deactivate the source (short it) and reduce the network: Rth = R1∥R2, Vth = Vs·R2/(R1+R2). The capacitor sees exactly that one source + one resistor — so it charges with τ = Rth·C. The defaults (12 V, 4 kΩ, 2 kΩ) reproduce the SVG figure: Vth = 4 V, Rth = 1.33 kΩ.",
+      w: 720, h: 340, dt: 1e-5, spf: 20, flow: 6000, speed0: 2,
+      controls: [
+        { type: "range", id: "Vs", label: "Source Vs", min: 5, max: 20, step: 1, value: 12, fmt: fV },
+        { type: "range", id: "R1", label: "R1 (series)", min: 1000, max: 10000, step: 100, value: 4000, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "R2", label: "R2 (to gnd)", min: 1000, max: 10000, step: 100, value: 2000, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "C", label: "Capacitance C", min: 0.5, max: 20, step: 0.5, value: 3, fmt: function (x) { return x.toFixed(1) + " µF"; } },
+        { type: "seg", id: "on", label: "Switch S", value: 1, options: [{ v: 1, label: "Closed" }, { v: 0, label: "Open" }] }
+      ],
+      build: function (c) {
+        return {
+          branches: [
+            { id: "Vs", type: "V", a: "s", b: "g", v: c.Vs },
+            { id: "sw", type: "SW", a: "s", b: "n", closed: !!c.on },
+            { id: "R1", type: "R", a: "n", b: "m", r: c.R1 },
+            { id: "R2", type: "R", a: "m", b: "g", r: c.R2 },
+            { id: "C", type: "C", a: "m", b: "g", c: c.C * 1e-6 }
+          ],
+          wires: [
+            VW(110, BOT, 192, "C"), VW(110, 52, TOP, "C"),
+            HW(TOP, 110, 192, "R1"), HW(TOP, 228, 298, "R1"),
+            HW(TOP, 342, 590, "R1"),
+            VW(470, TOP, 163, "R2"), VW(470, 181, BOT, "R2"),
+            VW(590, TOP, 163, "C"), VW(590, 181, BOT, "C"),
+            HW(BOT, 110, 640, "C")
+          ],
+          comps: [
+            { type: "V", id: "Vs", x: 110, y: 172, o: "v", label: "Vs", ls: fV(c.Vs), lx: 60, ly: 172 },
+            { type: "SW", id: "sw", x: 210, y: TOP, o: "h", closed: !!c.on, label: "S", ly: 40 },
+            { type: "R", id: "R1", x: 320, y: TOP, o: "h", label: "R1", ls: CS.fmtSI(c.R1, "Ω"), ly: 40 },
+            { type: "R", id: "R2", x: 470, y: 172, o: "v", label: "R2", ls: CS.fmtSI(c.R2, "Ω"), lx: 402, ly: 166 },
+            { type: "C", id: "C", x: 590, y: 172, o: "v", label: "C", ls: c.C.toFixed(1) + " µF", lx: 660, ly: 166 }
+          ],
+          gnds: [[300, BOT]],
+          probes: [
+            { x: 590, y: 238, label: "v_C", get: function (s) { return (s.V.m || 0).toFixed(2) + " V"; } },
+            { x: 320, y: 112, label: "Vth", get: function (s, c) { return (c.Vs * c.R2 / (c.R1 + c.R2)).toFixed(2) + " V"; } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "vth", label: "Vth = Vs·R2/(R1+R2)", get: function (s, c) { return (c.Vs * c.R2 / (c.R1 + c.R2)).toFixed(2) + " V"; } },
+        { id: "rth", label: "Rth = R1∥R2", get: function (s, c) { return CS.fmtSI(c.R1 * c.R2 / (c.R1 + c.R2), "Ω"); } },
+        { id: "tau", label: "τ = Rth·C", hl: true, get: function (s, c) { return CS.fmtSI(c.R1 * c.R2 / (c.R1 + c.R2) * c.C * 1e-6, "s"); } },
+        { id: "vc", label: "v_C (live)", get: function (s) { return (s.V.m || 0).toFixed(2) + " V"; } }
+      ]
+    });
+  })();
+
+  /* ---- S10 · pulse: pulse excitation, two intervals, live scope ---- */
+  (function () {
+    var root = $("sim-pulse");
+    if (!root) return;
+    function tauOf(c) { return c.R * c.C * 1e-6; }
+    CS.mount(root, {
+      id: "pulse", icon: "📶",
+      title: "Live circuit · pulse excitation, two intervals",
+      sub: "A pulse is a step up and a later step down — the response comes in two intervals.",
+      note: "Interval 1 (pulse on): v_C chases Vp. Interval 2 (pulse off): it chases 0 — starting from the state the first interval left behind (continuity!). The scope shows v_in (dashed) and v_C (solid) over the last two periods. Try tₚ ≈ τ and tₚ ≈ 8τ and compare the handoff value.",
+      w: 720, h: 340, dt: 1e-5, spf: 40, flow: 6000, speed0: 1,
+      controls: [
+        { type: "range", id: "Vp", label: "Pulse amplitude Vₚ", min: 2, max: 20, step: 1, value: 10, fmt: fV },
+        { type: "range", id: "tp", label: "Pulse width tₚ (× τ)", min: 0.5, max: 8, step: 0.5, value: 3, fmt: function (x) { return x.toFixed(1) + " τ"; } },
+        { type: "range", id: "T", label: "Period T (× τ)", min: 2, max: 16, step: 1, value: 8, fmt: function (x) { return x.toFixed(0) + " τ"; } },
+        { type: "range", id: "R", label: "Resistance R", min: 1000, max: 10000, step: 100, value: 5000, fmt: function (x) { return CS.fmtSI(x, "Ω"); } },
+        { type: "range", id: "C", label: "Capacitance C", min: 0.1, max: 10, step: 0.1, value: 1, fmt: function (x) { return x.toFixed(1) + " µF"; } }
+      ],
+      build: function (c) {
+        function vin(t) {
+          var T = c.T * tauOf(c), tp = c.tp * tauOf(c);
+          return (t % T) < tp ? c.Vp : 0;
+        }
+        return {
+          branches: [
+            { id: "Vs", type: "V", a: "s", b: "g", v: vin },
+            { id: "R", type: "R", a: "s", b: "a", r: c.R },
+            { id: "C", type: "C", a: "a", b: "g", c: c.C * 1e-6 }
+          ],
+          wires: [
+            VW(110, BOT, 192, "C"), VW(110, 52, TOP, "C"),
+            HW(TOP, 110, 298, "C"), HW(TOP, 342, 470, "C"),
+            VW(470, TOP, 163, "C"), VW(470, 181, BOT, "C"),
+            HW(BOT, 110, 600, "C")
+          ],
+          comps: [
+            { type: "V", id: "Vs", x: 110, y: 172, o: "v", label: "Vₚ·u(t)−u(t−tₚ)", lx: 210, ly: 130 },
+            { type: "R", id: "R", x: 320, y: TOP, o: "h", label: "R", ls: CS.fmtSI(c.R, "Ω"), ly: 40 },
+            { type: "C", id: "C", x: 470, y: 172, o: "v", label: "C", ls: c.C.toFixed(1) + " µF", lx: 548, ly: 166 }
+          ],
+          gnds: [[300, BOT]],
+          probes: [
+            { x: 110, y: 240, label: "v_in", get: function (s) { return vin(s.t).toFixed(1) + " V"; } },
+            { x: 470, y: 238, label: "v_C", get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } }
+          ]
+        };
+      },
+      readouts: [
+        { id: "tau", label: "τ = RC", get: function (s, c) { return CS.fmtSI(tauOf(c), "s"); } },
+        { id: "ratio", label: "tₚ/τ", hl: true, get: function (s, c) { return c.tp.toFixed(1); } },
+        { id: "vc", label: "v_C (live)", get: function (s) { return (s.V.a || 0).toFixed(2) + " V"; } },
+        { id: "int", label: "interval", get: function (s, c) {
+            var T = c.T * tauOf(c), tp = c.tp * tauOf(c);
+            return (s.t % T) < tp ? "1 · pulse ON" : "2 · pulse OFF"; } }
+      ],
+      scope: {
+        window: 0.08,
+        amp: function (s) { return s.ctrl.Vp; },
+        traces: [
+          { label: "v_in", color: "#d97706", dim: true,
+            get: function (s) {
+              var c = s.ctrl, T = c.T * tauOf(c), tp = c.tp * tauOf(c);
+              return (s.t % T) < tp ? c.Vp : 0; } },
+          { label: "v_C", color: "#2453d6",
+            get: function (s) { return s.V.a || 0; } }
+        ]
+      }
+    });
+  })();
+
+})();

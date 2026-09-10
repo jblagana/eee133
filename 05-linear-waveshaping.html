@@ -338,6 +338,8 @@ window.MathJax = {
         </div>
         <p class="lede-note">In hertz: \( f_c = \dfrac{1}{2\pi RC} \). At exactly ω<sub>c</sub>, |v<sub>o</sub>/v<sub>i</sub>| = 1/√2,
         i.e. the output power is half the input power — hence “3 dB”.</p>
+
+        <div class="sim" id="sim-cutoff"></div>
       </section>
 
       <!-- ============ 12. LABS ============ -->
@@ -345,6 +347,8 @@ window.MathJax = {
         <h2 class="sec"><span class="sec-num">12</span> 🧪 Interactive · the RC waveshaper</h2>
         <p class="lede-note">One lab, both circuits, every waveform of the lecture. Flip HP/LP, pick an input,
         drag R and C — the output, the tilt and the cutoff follow.</p>
+
+        <div class="sim" id="sim-waveshaper"></div>
 
         <div class="lab">
           <div class="lab-head"><div class="lab-ico">🌊</div>
@@ -546,6 +550,7 @@ window.MathJax = {
 
 <script src="js/plot.js"></script>
 <script src="js/common.js"></script>
+<script src="js/circsim.js"></script>
 <script src="js/lecture05.js"></script>
 </body>
 </html>
