@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EEE 133 · Circuits and Electronics II — Interactive Lectures</title>
-<meta name="description" content="Interactive companion to the EEE 133 (Circuits and Electronics II) lecture decks: capacitors & inductors, first-order circuits, linear waveshaping, and second-order circuits — with live simulations, worked examples, and quizzes.">
+<title>EEE 133 · Circuits and Electronics II — Practice Hub</title>
+<meta name="description" content="Practice hub for EEE 133 (Circuits and Electronics II): conceptual questions and circuit problems with worked solutions for all five chapters.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23eef4ff'/%3E%3Cpath d='M8 32 C 10 10 14 10 16 32 C 18 54 22 54 24 32 C 26 18 29 18 31 32 C 33 46 36 46 38 32 C 40 24 42 24 44 32 C 46 38 48 38 50 32 C 51.5 29 52.5 29 54 32' stroke='%235b8bf0' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css">
 <script>
 window.MathJax = {
   tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
-  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
 };
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -20,154 +20,100 @@ window.MathJax = {
 <header class="topbar">
   <a class="brand" href="index.html"><span class="brand-mark">E133</span> EEE&nbsp;133 <span class="crumb">· Circuits and Electronics II</span></a>
   <div class="spacer"></div>
-  <span class="progress-pill">Overall: <span id="overallPct">0%</span></span>
-  <button class="icon-btn" id="themeBtn" title="Toggle light/dark theme">🌙</button>
+  <button class="icon-btn" id="themeBtn" title="Toggle light/dark">🌙</button>
 </header>
 
 <div class="page">
-  <div class="content" style="padding-top:34px">
+  <div class="content" style="padding-top:34px;max-width:960px;margin:0 auto;">
 
     <div class="hero">
       <svg class="wave" viewBox="0 0 380 120" fill="none">
         <path d="M0 90 C 40 90, 55 30, 90 30 S 140 90, 180 90 S 230 30, 270 30 S 330 90, 380 90" stroke="#7ea2ff" stroke-width="3"/>
         <path d="M0 60 L 40 60 L 40 25 L 110 25 L 110 60 L 180 60 L 180 95 L 250 95 L 250 60 L 320 60 L 320 25 L 380 25" stroke="#f5b84d" stroke-width="2.4" opacity=".8"/>
       </svg>
-      <h1>EEE 133 — Circuits and Electronics II<br>Interactive Lecture Companion</h1>
-      <p class="lede">Don't just read the slides —
-      run the circuits: adjust \(R\), \(L\) and \(C\) live, watch transients unfold, and test yourself
-      after every concept.</p>
+      <h1>EEE 133 — Circuits and Electronics II<br>Practice Hub</h1>
+      <p class="lede">Master the material by doing. Each chapter offers a bank of conceptual
+      questions and circuit problems with step-by-step worked solutions and circuit diagrams.</p>
       <div class="dash-hero-stats">
-        <div class="dash-stat"><div class="n">16</div><div class="l">Interactive labs</div></div>
-        <div class="dash-stat"><div class="n">64</div><div class="l">Quiz + flashcard items</div></div>
+        <div class="dash-stat"><div class="n">0</div><div class="l">Conceptual questions</div></div>
+        <div class="dash-stat"><div class="n">0</div><div class="l">Circuit problems</div></div>
+        <div class="dash-stat"><div class="n">5</div><div class="l">Chapters</div></div>
       </div>
     </div>
 
     <section class="block">
-      <h2 class="sec"><span class="sec-num">▸</span> How to use this site</h2>
-      <p class="lede-note">Every lecture page mirrors the slide flow: concept → theory → worked example → hands-on lab → self-test.</p>
-      <div class="grid grid-3">
-        <div class="card">
-          <h3>📖 Read</h3>
-          <p>The full content of each deck, rebuilt as structured notes with the original equations rendered live in your browser.</p>
-          <p class="kbd-note">Use the sidebar table of contents to jump between sections.</p>
+      <h2 class="sec"><span class="sec-num">▸</span> Choose a chapter</h2>
+      <div class="chapter-grid">
+
+        <div class="chapter-card">
+          <div class="ch-num">Chapter 02</div>
+          <h3>Capacitors and Inductors</h3>
+          <div class="ch-stats">0 conceptual · 0 problems</div>
+          <a href="practice-02.html">Start Practice →</a>
         </div>
-        <div class="card">
-          <h3>🧪 Experiment</h3>
-          <p>Every lab is a live circuit. Drag the sliders to change component values and initial conditions — the waveforms, time constants, and readouts update instantly.</p>
-          <p class="kbd-note">Start every lab with the “Reset” button to recover the lecture values.</p>
+
+        <div class="chapter-card">
+          <div class="ch-num">Chapter 03</div>
+          <h3>First-Order Circuits · Part 1</h3>
+          <div class="ch-stats">0 conceptual · 0 problems</div>
+          <a href="practice-03.html">Start Practice →</a>
         </div>
-        <div class="card">
-          <h3>✅ Test yourself</h3>
-          <p>Instant-feedback quizzes at the end of each lecture check the high-yield facts: V-I relations, continuity, time constants, tilt, and the general response formula.</p>
-          <p class="kbd-note">Your progress and scores are saved in your browser.</p>
+
+        <div class="chapter-card">
+          <div class="ch-num">Chapter 04</div>
+          <h3>First-Order Circuits · Part 2</h3>
+          <div class="ch-stats">0 conceptual · 0 problems</div>
+          <a href="practice-04.html">Start Practice →</a>
+        </div>
+
+        <div class="chapter-card">
+          <div class="ch-num">Chapter 05</div>
+          <h3>Linear Waveshaping</h3>
+          <div class="ch-stats">0 conceptual · 0 problems</div>
+          <a href="practice-05.html">Start Practice →</a>
+        </div>
+
+        <div class="chapter-card">
+          <div class="ch-num">Chapter 06</div>
+          <h3>Second-Order Circuits · Natural Response</h3>
+          <div class="ch-stats">0 conceptual · 0 problems</div>
+          <a href="practice-06.html">Start Practice →</a>
         </div>
       </div>
     </section>
 
-    <section class="block" id="lectures">
-      <h2 class="sec"><span class="sec-num">1</span> Lectures</h2>
-      <p class="lede-note">Work top to bottom — each lecture builds on the previous one.</p>
-      <div class="grid grid-2">
-
-        <a class="lcard" id="lcard-02" href="02-capacitors-inductors.html">
-          <span class="done-badge" style="display:none">✓ Completed</span>
-          <span class="num">02</span>
-          <span class="tag">Energy storage</span>
-          <div class="lt">Capacitors and Inductors</div>
-          <div class="ld">Two-plate energy in electric fields, two coils in magnetic fields — V-I relations, power, stored energy, and series/parallel reduction.</div>
-          <div class="bar-track"><div class="bar-fill"></div></div>
-          <div class="lmeta">
-            <span class="tag">i = C dv/dt</span>
-            <span class="tag">v = L di/dt</span>
-            <span class="tag amber">5 interactive labs</span>
-          </div>
-        </a>
-
-        <a class="lcard" id="lcard-03" href="03-first-order-part1.html">
-          <span class="done-badge" style="display:none">✓ Completed</span>
-          <span class="num">03</span>
-          <span class="tag">Transients</span>
-          <div class="lt">First-Order Circuits · Part 1</div>
-          <div class="ld">Where the exponential comes from: differential equations, natural vs forced response, the time constant, and source-free RL &amp; RC networks.</div>
-          <div class="bar-track"><div class="bar-fill"></div></div>
-          <div class="lmeta">
-            <span class="tag">τ = RC, τ = L/R</span>
-            <span class="tag">5τ rule</span>
-            <span class="tag amber">3 interactive labs</span>
-          </div>
-        </a>
-
-        <a class="lcard" id="lcard-04" href="04-first-order-part2.html">
-          <span class="done-badge" style="display:none">✓ Completed</span>
-          <span class="num">04</span>
-          <span class="tag">Method</span>
-          <div class="lt">First-Order Circuits · Part 2</div>
-          <div class="ld">The 4-step procedure for every first-order problem, Thévenin resistance, switching, the unit step function, and pulsed excitation in two intervals.</div>
-          <div class="bar-track"><div class="bar-fill"></div></div>
-          <div class="lmeta">
-            <span class="tag">x(∞)+[x(0)−x(∞)]e<sup>−t/τ</sup></span>
-            <span class="tag">u(t)</span>
-            <span class="tag amber">3 interactive labs</span>
-          </div>
-        </a>
-
-        <a class="lcard" id="lcard-05" href="05-linear-waveshaping.html">
-          <span class="done-badge" style="display:none">✓ Completed</span>
-          <span class="num">05</span>
-          <span class="tag">Filters</span>
-          <div class="lt">Linear Waveshaping</div>
-          <div class="ld">What RC networks do to steps, pulses and square waves: high-pass &amp; low-pass response, 3-dB cutoff, tilt, and differentiator/integrator action.</div>
-          <div class="bar-track"><div class="bar-fill"></div></div>
-          <div class="lmeta">
-            <span class="tag">ω<sub>c</sub> = 1/RC</span>
-            <span class="tag">Tilt</span>
-            <span class="tag amber">2 interactive labs</span>
-          </div>
-        </a>
-
-        <a class="lcard" id="lcard-06" href="06-second-order-circuits.html">
-          <span class="done-badge" style="display:none">✓ Completed</span>
-          <span class="num">06</span>
-          <span class="tag">Natural response</span>
-          <div class="lt">Second-Order Circuits · Part 1</div>
-          <div class="ld">Two energy-storage elements change everything: the characteristic equation, the damping factor α, and three families of transients — overdamped, critically damped, and underdamped.</div>
-          <div class="bar-track"><div class="bar-fill"></div></div>
-          <div class="lmeta">
-            <span class="tag">s = −α ± √(α²−ω₀²)</span>
-            <span class="tag">Series &amp; parallel RLC</span>
-            <span class="tag amber">3 interactive labs</span>
-          </div>
-        </a>
-
+    <section class="block">
+      <h2 class="sec"><span class="sec-num">▸</span> Archived lessons</h2>
+      <p class="lede-note">The original interactive lecture pages (with live simulations and quizzes) are preserved in <code>archive/lessons/</code>.</p>
+      <div class="archive-list">
+<a href="archive/lessons/02-capacitors-inductors.html">Ch 02 · Capacitors and Inductors</a>
+<a href="archive/lessons/03-first-order-part1.html">Ch 03 · First-Order Circuits · Part 1</a>
+<a href="archive/lessons/04-first-order-part2.html">Ch 04 · First-Order Circuits · Part 2</a>
+<a href="archive/lessons/05-linear-waveshaping.html">Ch 05 · Linear Waveshaping</a>
+<a href="archive/lessons/06-second-order-circuits.html">Ch 06 · Second-Order Circuits · Natural Response</a>
       </div>
     </section>
 
-    <section class="block" id="reference">
-      <h2 class="sec"><span class="sec-num">2</span> Formula quick-reference</h2>
-      <p class="lede-note">The ten formulas that recur across all five lectures. Keep this page open while you study.</p>
-      <div class="grid grid-4">
-        <div class="card"><span class="tag">Capacitor V-I</span><div class="formula center" style="margin-top:12px"><span>\( i(t) = C\,\dfrac{dv(t)}{dt} \)</span></div><p class="kbd-note" style="text-align:center">Current follows the <em>rate of change</em> of voltage.</p></div>
-        <div class="card"><span class="tag">Inductor V-I</span><div class="formula center" style="margin-top:12px"><span>\( v(t) = L\,\dfrac{di(t)}{dt} \)</span></div><p class="kbd-note" style="text-align:center">Voltage follows the <em>rate of change</em> of current.</p></div>
-        <div class="card"><span class="tag">Stored energy</span><div class="formula center" style="margin-top:12px"><span>\( w_C = \tfrac{1}{2}CV^2 \), &nbsp; \( w_L = \tfrac{1}{2}Li^2 \)</span></div><p class="kbd-note" style="text-align:center">Always positive — energy is stored, never burned.</p></div>
-        <div class="card"><span class="tag">Combinations</span><div class="formula center" style="margin-top:12px"><span>\(C\): \(\tfrac{1}{C_{eq}}=\textstyle\sum \tfrac{1}{C_k}\) (ser.)<br>\(L\): \(L_{eq}=\textstyle\sum L_k\) (ser.)</span></div><p class="kbd-note" style="text-align:center">Capacitors and inductors combine <em>oppositely</em>.</p></div>
-        <div class="card"><span class="tag">Time constant</span><div class="formula center" style="margin-top:12px"><span>\( \tau_{RC} = RC \), &nbsp; \( \tau_{RL} = \dfrac{L}{R} \)</span></div><p class="kbd-note" style="text-align:center">\(R\) = Thévenin resistance seen by the element. Practically done at \(5\tau\).</p></div>
-        <div class="card"><span class="tag">General response</span><div class="formula center" style="margin-top:12px"><span>\( x(t) = x(\infty) + \big[x(0^+) - x(\infty)\big]\,e^{-t/\tau} \)</span></div><div class="formula center" style="margin:10px 0 0"><span class="flabel" style="margin-top:0;margin-bottom:4px">switching at t = t₀</span><span>\( x(t) = x(\infty) + \big[x(t_0^+) - x(\infty)\big]\,e^{-(t-t_0)/\tau} \)</span></div><p class="kbd-note" style="text-align:center">The single most important formula of Lectures 3–4. If the switch fires at \(t_0\), restart the clock there: \(0^+ \to t_0^+\), \(t \to t - t_0\).</p></div>
-        <div class="card"><span class="tag">Unit step</span><div class="formula center" style="margin-top:12px"><span>\( u(t) = 0 \ (t&lt;0),\; 1 \ (t \ge 0) \)</span></div><p class="kbd-note" style="text-align:center">Models abrupt switching; pulses = shifted steps.</p></div>
-        <div class="card"><span class="tag">3-dB cutoff</span><div class="formula center" style="margin-top:12px"><span>\( \omega_c = \dfrac{1}{RC} \)<br>\(f_c = \dfrac{1}{2\pi RC}\)</span></div><p class="kbd-note" style="text-align:center">Same formula for HP and LP — different sides of the band.</p></div>
-        <div class="card"><span class="tag">Damping factor</span><div class="formula center" style="margin-top:12px"><span>\( \alpha_{ser} = \tfrac{R}{2L} \), &nbsp; \( \alpha_{par} = \dfrac{1}{2RC} \)</span></div><p class="kbd-note" style="text-align:center">Series: more R damps more. Parallel: more R damps less.</p></div>
-        <div class="card"><span class="tag">Natural frequencies</span><div class="formula center" style="margin-top:12px"><span>\( \omega_0 = \dfrac{1}{\sqrt{LC}} \)<br>\( s_{1,2} = -\alpha \pm \sqrt{\alpha^2 - \omega_0^2} \)</span></div><p class="kbd-note" style="text-align:center">The roots set the regime: real, equal, or complex.</p></div>
-      </div>
-    </section>
+    <footer class="site-footer">
+      <p>EEE 133 · Circuits and Electronics II · Practice Hub · 2026</p>
+    </footer>
 
-  </div>
-
-  <div class="foot">
-    <span>EEE 133 · Circuits and Electronics II — Interactive Lecture Companion</span>
-    <span>Lectures 2–6</span>
   </div>
 </div>
 
-<script src="js/common.js"></script>
+<script>
+(function(){
+  var btn=document.getElementById('themeBtn');
+  var saved=localStorage.getItem('eee133-theme');
+  if(saved){document.documentElement.setAttribute('data-theme',saved);btn.textContent=saved==='dark'?'☀️':'🌙';}
+  btn.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var nxt=cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',nxt);
+    localStorage.setItem('eee133-theme',nxt);
+    btn.textContent=nxt==='dark'?'☀️':'🌙';
+  });
+})();
+</script>
 </body>
 </html>
-
