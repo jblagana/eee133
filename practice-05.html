@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05 · Linear Waveshaping — Practice | EEE 133</title>
+<meta name="description" content="Practice questions for Linear Waveshaping — EEE 133 Circuits and Electronics II.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23eef4ff'/%3E%3Cpath d='M8 32 C 10 10 14 10 16 32 C 18 54 22 54 24 32 C 26 18 29 18 31 32 C 33 46 36 46 38 32 C 40 24 42 24 44 32 C 46 38 48 38 50 32 C 51.5 29 52.5 29 54 32' stroke='%235b8bf0' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">E133</span> EEE&nbsp;133 <span class="crumb">· Practice</span></a>
+  <div class="spacer"></div>
+  <span class="progress-pill">Ch 05 · 30 questions</span>
+  <button class="icon-btn" id="themeBtn" title="Toggle light/dark">🌙</button>
+</header>
+
+<div class="page">
+<div class="practice-wrap">
+
+  <div class="practice-hero">
+    <div class="practice-ch-badge">Chapter 05</div>
+    <h1>Linear Waveshaping</h1>
+    <p class="practice-lede">15 conceptual questions · 15 circuit problems with worked solutions</p>
+    <div class="practice-nav">
+      <a href="index.html" class="practice-nav-link">← All chapters</a>
+      <a href="practice-04.html" class="practice-nav-link">← Ch 04</a>
+      <a href="practice-06.html" class="practice-nav-link">Ch 06 →</a>
+    </div>
+  </div>
+
+  <section class="practice-section">
+    <h2 class="practice-sec-title"><span class="sec-num">A</span> Conceptual Questions</h2>
+    <p class="practice-sec-note">Select an answer, then click <strong>Check</strong>. Explanations appear after checking.</p>
+    
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="The high-pass configuration takes the output across the resistor (shunt R), while the capacitor is in series.">
+  <div class="q-id">C01 · Multiple Choice</div>
+  <p class="q-text">In a high-pass RC circuit, where is the output voltage taken?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">Across the capacitor</button><button class="opt-btn" data-val="B">Across the resistor</button><button class="opt-btn" data-val="C">In series with the source</button><button class="opt-btn" data-val="D">At the node between the source and capacitor</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="At DC steady state, the capacitor acts as an open circuit, so no current flows through the resistor, resulting in zero voltage drop across it.">
+  <div class="q-id">C02 · Multiple Choice</div>
+  <p class="q-text">What is the steady-state (DC) output voltage of a high-pass RC circuit when a DC step input is applied?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">Equal to the input voltage</button><button class="opt-btn" data-val="B">Zero</button><button class="opt-btn" data-val="C">Half the input voltage</button><button class="opt-btn" data-val="D">Indeterminate</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="C" data-expl="The low-pass configuration takes the output across the capacitor (shunt C), while the resistor is in series.">
+  <div class="q-id">C03 · Multiple Choice</div>
+  <p class="q-text">For a low-pass RC circuit, the output voltage is taken across which component?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">The resistor</button><button class="opt-btn" data-val="B">The source</button><button class="opt-btn" data-val="C">The capacitor</button><button class="opt-btn" data-val="D">The switch</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="tf" data-answer="False" data-expl="A high-pass circuit blocks DC (zero frequency) completely. It passes high-frequency components.">
+  <div class="q-id">C04 · True / False</div>
+  <p class="q-text">True or False: The high-pass RC circuit allows DC signals to pass through without attenuation.</p>
+  <div class="opt-grid tf-grid">
+    <button class="opt-btn" data-val="True">True</button><button class="opt-btn" data-val="False">False</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="At $t=0^+$, the uncharged capacitor acts as a short circuit, so the entire input voltage appears across the resistor.">
+  <div class="q-id">C05 · Multiple Choice</div>
+  <p class="q-text">When a step input is applied to a high-pass RC circuit, the initial output voltage $v_o(0^+)$ is equal to:</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">0 V</button><button class="opt-btn" data-val="B">The input step voltage $V$</button><button class="opt-btn" data-val="C">$V/2$</button><button class="opt-btn" data-val="D">$-V$</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="Since capacitor voltage cannot change instantaneously, any discontinuous change in input voltage appears entirely across the resistor (output) at that instant.">
+  <div class="q-id">C06 · Multiple Choice</div>
+  <p class="q-text">In the context of linear waveshaping, what does the 'edge copying' rule for a high-pass circuit state?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">The output edge is half the size of the input edge</button><button class="opt-btn" data-val="B">The output edge is the same size and direction as the input edge</button><button class="opt-btn" data-val="C">The output edge is inverted relative to the input edge</button><button class="opt-btn" data-val="D">The output edge is delayed by one time constant</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="When the time constant $\tau = RC$ is much smaller than the signal period $T$, the capacitor voltage remains small, and the output approximates $RC \frac{dv_{in}}{dt}$.">
+  <div class="q-id">C07 · Multiple Choice</div>
+  <p class="q-text">Under what condition does a high-pass RC circuit act as a differentiator?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">$RC \gg T/2$</button><button class="opt-btn" data-val="B">$RC \ll T/2$</button><button class="opt-btn" data-val="C">$RC = T/2$</button><button class="opt-btn" data-val="D">$R = C$</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="tf" data-answer="False" data-expl="A low-pass circuit acts as an integrator when $\tau \gg T/2$ (large time constant), allowing the capacitor voltage to change slowly.">
+  <div class="q-id">C08 · True / False</div>
+  <p class="q-text">True or False: The low-pass RC circuit acts as an integrator when the time constant $\tau$ is much smaller than the signal period $T$.</p>
+  <div class="opt-grid tf-grid">
+    <button class="opt-btn" data-val="True">True</button><button class="opt-btn" data-val="False">False</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="The corner frequency where the gain drops to $1/\sqrt{2}$ of the maximum is given by $\omega_c = 1/(RC)$ for both configurations.">
+  <div class="q-id">C09 · Multiple Choice</div>
+  <p class="q-text">What is the 3-dB cutoff frequency $\omega_c$ for both high-pass and low-pass RC circuits?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">$\omega_c = RC$</button><button class="opt-btn" data-val="B">$\omega_c = 1/(RC)$</button><button class="opt-btn" data-val="C">$\omega_c = 2\pi RC$</button><button class="opt-btn" data-val="D">$\omega_c = \sqrt{RC}$</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="The capacitor charges from 0 to $V$ with the exponential charging curve $V(1 - e^{-t/\tau})$.">
+  <div class="q-id">C10 · Multiple Choice</div>
+  <p class="q-text">For a low-pass RC circuit with a step input, the output voltage $v_o(t)$ for $t \ge 0$ is:</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">$V e^{-t/RC}$</button><button class="opt-btn" data-val="B">$V (1 - e^{-t/RC})$</button><button class="opt-btn" data-val="C">$V e^{t/RC}$</button><button class="opt-btn" data-val="D">$V (1 + e^{-t/RC})$</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="The capacitor charges towards the input level, reducing the voltage difference across the resistor until it reaches zero (DC block).">
+  <div class="q-id">C11 · Multiple Choice</div>
+  <p class="q-text">In a high-pass circuit, during a constant input interval, the output voltage decays towards:</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">The input voltage level</button><button class="opt-btn" data-val="B">Zero</button><button class="opt-btn" data-val="C">Negative input voltage</button><button class="opt-btn" data-val="D">The initial capacitor voltage</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="tf" data-answer="False" data-expl="In a high-pass circuit, the output leads the input. In a low-pass circuit, the output lags the input.">
+  <div class="q-id">C12 · True / False</div>
+  <p class="q-text">True or False: The phase of the output in a high-pass RC circuit lags the input phase.</p>
+  <div class="opt-grid tf-grid">
+    <button class="opt-btn" data-val="True">True</button><button class="opt-btn" data-val="False">False</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="Tilt quantifies the distortion (sag) of the rectangular output, calculated as the ratio of the voltage drop during the high period to the average voltage.">
+  <div class="q-id">C13 · Multiple Choice</div>
+  <p class="q-text">What is the 'tilt' in the context of a low-pass RC circuit processing a rectangular wave?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">The phase shift between input and output</button><button class="opt-btn" data-val="B">The percentage sag of the output waveform during the high interval</button><button class="opt-btn" data-val="C">The frequency at which gain is -3 dB</button><button class="opt-btn" data-val="D">The time constant of the circuit</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="If $\tau \gg t_p$, the capacitor charges very little during the pulse, preserving the rectangular shape. If $\tau \ll t_p$, the output rises to the input level, distorting the pulse into a step.">
+  <div class="q-id">C14 · Multiple Choice</div>
+  <p class="q-text">To pass a pulse with minimal distortion through a low-pass RC circuit, the time constant $\tau$ should be:</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">Much smaller than the pulse width $t_p$</button><button class="opt-btn" data-val="B">Much larger than the pulse width $t_p$</button><button class="opt-btn" data-val="C">Equal to the pulse width $t_p$</button><button class="opt-btn" data-val="D">Independent of the pulse width</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="At high frequencies, the capacitor acts as a short, so the output (across R) equals the input. Gain approaches 1 (0 dB).">
+  <div class="q-id">C15 · Multiple Choice</div>
+  <p class="q-text">The transfer function magnitude of a high-pass RC circuit at very high frequencies ($\omega \to \infty$) approaches:</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">0</button><button class="opt-btn" data-val="B">1</button><button class="opt-btn" data-val="C">$\infty$</button><button class="opt-btn" data-val="D">$1/\sqrt{2}$</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+  </section>
+
+  <section class="practice-section">
+    <h2 class="practice-sec-title"><span class="sec-num">B</span> Problem Solving</h2>
+    <p class="practice-sec-note">Each problem includes a circuit diagram. Click <strong>Show Solution</strong> to reveal the worked solution.</p>
+    
+<div class="prob-card">
+  <div class="q-id">P01 · Circuit Problem</div>
+  <p class="q-text">A high-pass RC circuit has $R = 10 \, \text{k}\Omega$ and $C = 100 \, \text{nF}$. Calculate the 3-dB cutoff frequency $f_c$ in Hz.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">v_in</text><line x1="254.0" y1="70.0" x2="274.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="274.0" y1="57.0" x2="274.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="57.0" x2="286.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="70.0" x2="306.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">100 nF</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 kΩ</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across R)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">High-pass configuration</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">The cutoff frequency is given by $f_c = \frac{1}{2\pi RC}$. <br>Substituting values: $R = 10 \times 10^3 \, \Omega$, $C = 100 \times 10^{-9} \, \text{F}$. <br>$RC = 10^4 \times 10^{-7} = 10^{-3} \, \text{s}$. <br>$f_c = \frac{1}{2\pi (10^{-3})} = \frac{1000}{2\pi} \approx 159.15 \, \text{Hz}$.</div>
+    <div class="prob-answer">Answer: 159.15 Hz</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P02 · Circuit Problem</div>
+  <p class="q-text">A low-pass RC circuit has $R = 1 \, \text{k}\Omega$ and $C = 1 \, \mu\text{F}$. Determine the time constant $\tau$ and the 3-dB cutoff frequency $f_c$.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">v_in</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">1 kΩ</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">1 µF</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across C)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Low-pass configuration</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">Time constant $\tau = RC = (1000 \, \Omega)(1 \times 10^{-6} \, \text{F}) = 1 \, \text{ms}$. <br>Cutoff frequency $f_c = \frac{1}{2\pi \tau} = \frac{1}{2\pi (10^{-3})} \approx 159.15 \, \text{Hz}$.</div>
+    <div class="prob-answer">Answer: τ = 1 ms, f_c ≈ 159.15 Hz</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P03 · Circuit Problem</div>
+  <p class="q-text">A step voltage $v_{in}(t) = 10 \, u(t) \, \text{V}$ is applied to a high-pass RC circuit with $\tau = 5 \, \text{ms}$. Find the output voltage $v_o(t)$ at $t = 5 \, \text{ms}$.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="131.2" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">+</text><text x="149.7" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">−</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 V (step)</text><line x1="254.0" y1="70.0" x2="274.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="274.0" y1="57.0" x2="274.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="57.0" x2="286.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="70.0" x2="306.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across R)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">HP step response</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">For a high-pass circuit with step input $V$, $v_o(t) = V e^{-t/\tau}$. <br>Given $V = 10 \, \text{V}$, $\tau = 5 \, \text{ms}$, and $t = 5 \, \text{ms}$. <br>$v_o(5\text{ms}) = 10 e^{-5/5} = 10 e^{-1}$. <br>$e^{-1} \approx 0.3679$. <br>$v_o(5\text{ms}) = 10 \times 0.3679 = 3.679 \, \text{V}$.</div>
+    <div class="prob-answer">Answer: 3.68 V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P04 · Circuit Problem</div>
+  <p class="q-text">A step voltage $v_{in}(t) = 5 \, u(t) \, \text{V}$ is applied to a low-pass RC circuit with $\tau = 2 \, \text{ms}$. Find the output voltage $v_o(t)$ at $t = 2 \, \text{ms}$.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="131.2" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">+</text><text x="149.7" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">−</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">5 V (step)</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across C)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">LP step response</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">For a low-pass circuit with step input $V$, $v_o(t) = V (1 - e^{-t/\tau})$. <br>Given $V = 5 \, \text{V}$, $\tau = 2 \, \text{ms}$, and $t = 2 \, \text{ms}$. <br>$v_o(2\text{ms}) = 5 (1 - e^{-2/2}) = 5 (1 - e^{-1})$. <br>$e^{-1} \approx 0.3679$. <br>$v_o(2\text{ms}) = 5 (1 - 0.3679) = 5 (0.6321) = 3.1605 \, \text{V}$.</div>
+    <div class="prob-answer">Answer: 3.16 V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P05 · Circuit Problem</div>
+  <p class="q-text">A high-pass RC circuit with $\tau = 1 \, \text{ms}$ receives a pulse input $v_{in}(t) = 10 [u(t) - u(t-2)] \, \text{V}$. Calculate the output voltage $v_o(t)$ just before the falling edge at $t = 2 \, \text{ms}^-$.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Pulse 10V, 2ms width</text><line x1="254.0" y1="70.0" x2="274.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="274.0" y1="57.0" x2="274.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="57.0" x2="286.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="70.0" x2="306.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across R)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">HP pulse response</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">During the pulse ($0 &lt; t &lt; 2$), $v_o(t) = V_p e^{-t/\tau}$. <br>At $t = 2 \, \text{ms}^-$, $t = 2\tau$. <br>$v_o(2\tau) = 10 e^{-2}$. <br>$e^{-2} \approx 0.1353$. <br>$v_o(2\text{ms}^-) = 10 \times 0.1353 = 1.353 \, \text{V}$.</div>
+    <div class="prob-answer">Answer: 1.35 V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P06 · Circuit Problem</div>
+  <p class="q-text">Using the same circuit as P05, calculate the output voltage $v_o(t)$ just after the falling edge at $t = 2 \, \text{ms}^+$.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Pulse 10V, 2ms width</text><line x1="254.0" y1="70.0" x2="274.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="274.0" y1="57.0" x2="274.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="57.0" x2="286.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="70.0" x2="306.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across R)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">HP pulse response</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">At the falling edge, the input drops by $\Delta V = -10 \, \text{V}$. <br>The capacitor voltage $v_C$ cannot change instantaneously. <br>$v_o(t) = v_{in}(t) - v_C(t)$. <br>Just before the edge, $v_o(2^-) = 1.353 \, \text{V}$ and $v_{in}(2^-) = 10 \, \text{V}$. <br>So $v_C(2^-) = 10 - 1.353 = 8.647 \, \text{V}$. <br>Just after the edge, $v_{in}(2^+) = 0 \, \text{V}$ and $v_C(2^+) = 8.647 \, \text{V}$. <br>$v_o(2^+) = 0 - 8.647 = -8.647 \, \text{V}$. <br>Alternatively, using the rule: $v_o(2^+) = v_o(2^-) - V_p = 1.353 - 10 = -8.647 \, \text{V}$.</div>
+    <div class="prob-answer">Answer: -8.65 V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P07 · Circuit Problem</div>
+  <p class="q-text">A low-pass RC circuit with $\tau = 10 \, \text{ms}$ receives a pulse input $v_{in}(t) = 5 [u(t) - u(t-5)] \, \text{V}$. Calculate the output voltage $v_o(t)$ at the end of the pulse, $t = 5 \, \text{ms}$.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Pulse 5V, 5ms width</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across C)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">LP pulse response</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">During the pulse ($0 &lt; t &lt; 5$), $v_o(t) = V_p (1 - e^{-t/\tau})$. <br>At $t = 5 \, \text{ms}$, $t = 0.5 \tau$. <br>$v_o(5\text{ms}) = 5 (1 - e^{-0.5})$. <br>$e^{-0.5} \approx 0.6065$. <br>$v_o(5\text{ms}) = 5 (1 - 0.6065) = 5 (0.3935) = 1.9675 \, \text{V}$.</div>
+    <div class="prob-answer">Answer: 1.97 V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P08 · Circuit Problem</div>
+  <p class="q-text">A high-pass RC circuit is designed to act as a differentiator for a square wave with period $T = 10 \, \text{ms}$. What is the maximum allowable time constant $\tau$ to satisfy the condition $\tau \ll T/2$? (Assume 'much less than' means at least 10 times smaller).</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Square wave</text><line x1="254.0" y1="70.0" x2="274.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="274.0" y1="57.0" x2="274.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="57.0" x2="286.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="70.0" x2="306.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across R)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Differentiator condition</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">Condition for differentiator: $\tau \ll T/2$. <br>$T/2 = 10 \, \text{ms} / 2 = 5 \, \text{ms}$. <br>Assuming $\tau \le (T/2) / 10$: <br>$\tau \le 5 \, \text{ms} / 10 = 0.5 \, \text{ms}$. <br>Thus, the maximum allowable $\tau$ is $0.5 \, \text{ms}$.</div>
+    <div class="prob-answer">Answer: 0.5 ms</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P09 · Circuit Problem</div>
+  <p class="q-text">A low-pass RC circuit is designed to act as an integrator for a square wave with period $T = 20 \, \text{ms}$. What is the minimum required time constant $\tau$ to satisfy the condition $\tau \gg T/2$? (Assume 'much greater than' means at least 10 times larger).</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Square wave</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across C)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Integrator condition</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">Condition for integrator: $\tau \gg T/2$. <br>$T/2 = 20 \, \text{ms} / 2 = 10 \, \text{ms}$. <br>Assuming $\tau \ge (T/2) \times 10$: <br>$\tau \ge 10 \, \text{ms} \times 10 = 100 \, \text{ms}$. <br>Thus, the minimum required $\tau$ is $100 \, \text{ms}$.</div>
+    <div class="prob-answer">Answer: 100 ms</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P10 · Circuit Problem</div>
+  <p class="q-text">A low-pass RC circuit processes a 50% duty cycle rectangular wave with amplitude $V = 10 \, \text{V}$ and period $T = 100 \, \text{ms}$. The time constant is $\tau = 10 \, \text{ms}$. Calculate the tilt of the output waveform.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Rect 10V, 100ms</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across C)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">LP rectangular wave tilt</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">Tilt formula: $\text{Tilt} = \frac{2(1-a)}{1+a}$, where $a = e^{-(T/2)/\tau}$. <br>$T/2 = 50 \, \text{ms}$. <br>$a = e^{-50/10} = e^{-5} \approx 0.006738$. <br>$1 - a = 1 - 0.006738 = 0.993262$. <br>$1 + a = 1 + 0.006738 = 1.006738$. <br>$\text{Tilt} = \frac{2(0.993262)}{1.006738} \approx \frac{1.986524}{1.006738} \approx 1.973$. <br>Tilt is often expressed as a percentage: $197.3\%$. However, tilt is typically defined for small distortions. Let's re-evaluate the formula context. The formula provided in the lecture is $\frac{2(1-a)}{1+a}$. <br>Wait, if $a$ is small, tilt is large. This indicates significant distortion. <br>Calculation: $2(0.99326)/1.00674 = 1.973$. <br>As a percentage: $197.3\%$. <br>(Note: In some contexts, tilt is defined as $(V_{max}-V_{min})/V_{avg}$. Here $V_{avg} = V/2 = 5$. $V_{max}-V_{min} = 2(1-a)V/(1+a)$. Ratio is $2(1-a)/(1+a)$. Correct.)</div>
+    <div class="prob-answer">Answer: 1.97 (or 197%)</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P11 · Circuit Problem</div>
+  <p class="q-text">For the circuit in P10, calculate the maximum and minimum output voltages in steady state.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Rect 10V, 100ms</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across C)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">LP rectangular wave levels</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">Formulas: $v_{o,max} = \frac{V}{1+a}$ and $v_{o,min} = \frac{aV}{1+a}$. <br>$V = 10 \, \text{V}$, $a = e^{-5} \approx 0.006738$. <br>$1+a = 1.006738$. <br>$v_{o,max} = \frac{10}{1.006738} \approx 9.933 \, \text{V}$. <br>$v_{o,min} = \frac{0.006738 \times 10}{1.006738} \approx \frac{0.06738}{1.006738} \approx 0.0669 \, \text{V}$.</div>
+    <div class="prob-answer">Answer: V_max ≈ 9.93 V, V_min ≈ 0.067 V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P12 · Circuit Problem</div>
+  <p class="q-text">A high-pass RC circuit has $R = 5 \, \text{k}\Omega$. It is required to have a cutoff frequency of $1 \, \text{kHz}$. Calculate the required capacitance $C$.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">v_in</text><line x1="254.0" y1="70.0" x2="274.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="274.0" y1="57.0" x2="274.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="57.0" x2="286.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="70.0" x2="306.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">5 kΩ</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across R)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Design HP</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">$f_c = \frac{1}{2\pi RC} \implies C = \frac{1}{2\pi R f_c}$. <br>$R = 5000 \, \Omega$, $f_c = 1000 \, \text{Hz}$. <br>$C = \frac{1}{2\pi (5000)(1000)} = \frac{1}{10^7 \pi} \approx \frac{1}{3.1416 \times 10^7}$. <br>$C \approx 3.183 \times 10^{-8} \, \text{F} = 31.83 \, \text{nF}$.</div>
+    <div class="prob-answer">Answer: 31.83 nF</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P13 · Circuit Problem</div>
+  <p class="q-text">A low-pass RC circuit has $C = 10 \, \text{nF}$. It is required to have a cutoff frequency of $100 \, \text{kHz}$. Calculate the required resistance $R$.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">v_in</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 nF</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across C)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Design LP</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">$f_c = \frac{1}{2\pi RC} \implies R = \frac{1}{2\pi C f_c}$. <br>$C = 10 \times 10^{-9} \, \text{F}$, $f_c = 100 \times 10^3 \, \text{Hz}$. <br>$R = \frac{1}{2\pi (10^{-8})(10^5)} = \frac{1}{2\pi (10^{-3})} = \frac{1000}{2\pi}$. <br>$R \approx 159.15 \, \Omega$.</div>
+    <div class="prob-answer">Answer: 159.15 Ω</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P14 · Circuit Problem</div>
+  <p class="q-text">A high-pass RC circuit with $\tau = 1 \, \text{ms}$ is driven by a triangular wave with peak-to-peak voltage $20 \, \text{V}$ and period $T = 10 \, \text{ms}$. Estimate the peak output voltage if the circuit acts as a differentiator. (Assume the slope of the triangular wave is constant during the rising/falling edges).</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Tri 20Vpp, 10ms</text><line x1="254.0" y1="70.0" x2="274.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="274.0" y1="57.0" x2="274.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="57.0" x2="286.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="286.0" y1="70.0" x2="306.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across R)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">HP differentiator approx</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">Differentiator output: $v_o(t) \approx RC \frac{dv_{in}}{dt}$. <br>Triangular wave: Peak-to-peak $20 \, \text{V}$, Period $10 \, \text{ms}$. <br>Half-period $T/2 = 5 \, \text{ms}$. Voltage change $\Delta V = 20 \, \text{V}$ (from -10 to +10 or vice versa). <br>Slope $m = \frac{\Delta V}{\Delta t} = \frac{20 \, \text{V}}{5 \, \text{ms}} = 4000 \, \text{V/s}$. <br>$RC = \tau = 1 \, \text{ms} = 10^{-3} \, \text{s}$. <br>$v_{o,peak} = \tau \times m = 10^{-3} \times 4000 = 4 \, \text{V}$. <br>(Note: This is an approximation valid for $\tau \ll T/2$. Here $1 \, \text{ms} \ll 5 \, \text{ms}$, so it is reasonable.)</div>
+    <div class="prob-answer">Answer: 4 V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P15 · Circuit Problem</div>
+  <p class="q-text">A low-pass RC circuit with $\tau = 10 \, \text{ms}$ is driven by a triangular wave with peak-to-peak voltage $20 \, \text{V}$ and period $T = 10 \, \text{ms}$. Estimate the peak output voltage if the circuit acts as an integrator. (Assume the input is centered at 0V).</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="140.0" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Tri 20Vpp, 10ms</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">R</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">C</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">v_o (across C)</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">LP integrator approx</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">Integrator output: $v_o(t) \approx \frac{1}{RC} \int v_{in}(t) dt$. <br>Triangular wave: $v_{in}(t)$ goes from $-10$ to $10$ in $5 \, \text{ms}$. <br>Slope $m = 4000 \, \text{V/s}$. <br>$v_{in}(t) = m t$ for $0 &lt; t &lt; 5 \, \text{ms}$ (starting from -10V? No, let's define from 0 to T/2). <br>Let's integrate over half period. The output will be a parabolic shape. <br>Peak output occurs at the end of the half-cycle (maximum area under the curve). <br>$v_{o,peak} \approx \frac{1}{\tau} \int_{0}^{T/2} v_{in}(t) dt$. <br>Assume $v_{in}(t)$ starts at 0 and goes to 10V? No, triangular is symmetric. <br>Let's assume $v_{in}(t)$ is a ramp from $-10$ to $10$ over $5 \, \text{ms}$. <br>Average value over this interval is 0. This would result in 0 net change? <br>Wait, the integrator condition implies $v_o$ is the integral. If the input has zero average, the output is bounded. <br>Let's look at the area. <br>$v_{in}(t) = 4000 t - 10$ for $0 \le t \le 5 \, \text{ms}$? <br>At $t=0, v=-10$. At $t=5, v=10$. <br>Integral $\int_{0}^{5} (4000 t - 10) dt = [2000 t^2 - 10 t]_0^5 = 2000(25) - 50 = 50000 - 50 = 49950 \, \text{V}\cdot\text{ms}$. <br>$v_{o,peak} = \frac{1}{\tau} \times \text{Area} = \frac{1}{10 \, \text{ms}} \times 49950 \, \text{V}\cdot\text{ms} = 4995 \, \text{V}$. <br>This is extremely large, indicating the integrator approximation might be pushing limits or the gain is high. <br>However, strictly following the formula: <br>$v_o \approx \frac{1}{RC} \int v_{in} dt$. <br>$1/RC = 1/\tau = 100 \, \text{s}^{-1}$. <br>Area $\approx 50 \, \text{V} \times 5 \, \text{ms} = 250 \, \text{V}\cdot\text{ms}$ (approx triangle area). <br>$v_o \approx 100 \times 0.025 = 2.5 \, \text{V}$. <br>Let's re-calculate area precisely. <br>Triangle base $5 \, \text{ms}$, height $20 \, \text{V}$ (from -10 to 10). Area = $0.5 \times 5 \times 20 = 50 \, \text{V}\cdot\text{ms}$. <br>$v_{o,peak} = \frac{1}{10 \, \text{ms}} \times 50 \, \text{V}\cdot\text{ms} = 5 \, \text{V}$.</div>
+    <div class="prob-answer">Answer: 5 V</div>
+  </div>
+</div>
+  </section>
+
+  <div class="practice-footer">
+    <a href="index.html">← Back to all chapters</a>
+    <span class="practice-footer-note">EEE 133 · Circuits and Electronics II · Practice Hub</span>
+  </div>
+
+</div>
+</div>
+
+<script>
+// Theme toggle
+(function(){
+  var btn=document.getElementById('themeBtn');
+  var saved=localStorage.getItem('eee133-theme');
+  if(saved){document.documentElement.setAttribute('data-theme',saved);btn.textContent=saved==='dark'?'☀️':'🌙';}
+  btn.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var nxt=cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',nxt);
+    localStorage.setItem('eee133-theme',nxt);
+    btn.textContent=nxt==='dark'?'☀️':'🌙';
+  });
+})();
+
+// MCQ / TF check
+document.querySelectorAll('.q-card[data-type]').forEach(function(card){
+  var type=card.dataset.type;
+  var selected=null;
+  var opts=card.querySelectorAll('.opt-btn');
+  opts.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      opts.forEach(function(b){b.classList.remove('selected');});
+      btn.classList.add('selected');
+      selected=btn.dataset.val;
+      card.querySelector('.check-btn').disabled=false;
+    });
+  });
+  var checkBtn=card.querySelector('.check-btn');
+  checkBtn.addEventListener('click',function(){
+    if(!selected)return;
+    var correct=card.dataset.answer;
+    var fb=card.querySelector('.q-feedback');
+    var isCorrect=selected===correct;
+    fb.classList.add('show');
+    fb.classList.add(isCorrect?'correct':'incorrect');
+    fb.innerHTML='<strong>'+(isCorrect?'✓ Correct':'✗ Incorrect')+'</strong><br>'+esc(card.dataset.expl||'');
+    opts.forEach(function(b){
+      b.disabled=true;
+      if(b.dataset.val===correct)b.classList.add('correct-opt');
+      if(b.dataset.val===selected&&!isCorrect)b.classList.add('wrong-opt');
+    });
+    checkBtn.disabled=true;
+    checkBtn.textContent='Checked';
+  });
+});
+
+// Problem solution reveal
+document.querySelectorAll('.prob-card').forEach(function(card){
+  var btn=card.querySelector('.reveal-btn');
+  var sol=card.querySelector('.prob-solution');
+  btn.addEventListener('click',function(){
+    sol.classList.toggle('show');
+    btn.textContent=sol.classList.contains('show')?'Hide Solution':'Show Solution';
+    if(sol.classList.contains('show')&&window.MathJax&&MathJax.typesetPromise){
+      MathJax.typesetPromise([sol]).catch(function(){});
+    }
+  });
+});
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+</script>
+</body>
+</html>

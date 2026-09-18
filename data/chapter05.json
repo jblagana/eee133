@@ -1,0 +1,587 @@
+{
+  "chapter": "05",
+  "title": "Linear Waveshaping",
+  "conceptual": [
+    {
+      "id": "C01",
+      "question": "In a high-pass RC circuit, where is the output voltage taken?",
+      "type": "mcq",
+      "options": [
+        "Across the capacitor",
+        "Across the resistor",
+        "In series with the source",
+        "At the node between the source and capacitor"
+      ],
+      "answer": "B",
+      "explanation": "The high-pass configuration takes the output across the resistor (shunt R), while the capacitor is in series."
+    },
+    {
+      "id": "C02",
+      "question": "What is the steady-state (DC) output voltage of a high-pass RC circuit when a DC step input is applied?",
+      "type": "mcq",
+      "options": [
+        "Equal to the input voltage",
+        "Zero",
+        "Half the input voltage",
+        "Indeterminate"
+      ],
+      "answer": "B",
+      "explanation": "At DC steady state, the capacitor acts as an open circuit, so no current flows through the resistor, resulting in zero voltage drop across it."
+    },
+    {
+      "id": "C03",
+      "question": "For a low-pass RC circuit, the output voltage is taken across which component?",
+      "type": "mcq",
+      "options": [
+        "The resistor",
+        "The source",
+        "The capacitor",
+        "The switch"
+      ],
+      "answer": "C",
+      "explanation": "The low-pass configuration takes the output across the capacitor (shunt C), while the resistor is in series."
+    },
+    {
+      "id": "C04",
+      "question": "True or False: The high-pass RC circuit allows DC signals to pass through without attenuation.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "A high-pass circuit blocks DC (zero frequency) completely. It passes high-frequency components."
+    },
+    {
+      "id": "C05",
+      "question": "When a step input is applied to a high-pass RC circuit, the initial output voltage $v_o(0^+)$ is equal to:",
+      "type": "mcq",
+      "options": [
+        "0 V",
+        "The input step voltage $V$",
+        "$V/2$",
+        "$-V$"
+      ],
+      "answer": "B",
+      "explanation": "At $t=0^+$, the uncharged capacitor acts as a short circuit, so the entire input voltage appears across the resistor."
+    },
+    {
+      "id": "C06",
+      "question": "In the context of linear waveshaping, what does the 'edge copying' rule for a high-pass circuit state?",
+      "type": "mcq",
+      "options": [
+        "The output edge is half the size of the input edge",
+        "The output edge is the same size and direction as the input edge",
+        "The output edge is inverted relative to the input edge",
+        "The output edge is delayed by one time constant"
+      ],
+      "answer": "B",
+      "explanation": "Since capacitor voltage cannot change instantaneously, any discontinuous change in input voltage appears entirely across the resistor (output) at that instant."
+    },
+    {
+      "id": "C07",
+      "question": "Under what condition does a high-pass RC circuit act as a differentiator?",
+      "type": "mcq",
+      "options": [
+        "$RC \\gg T/2$",
+        "$RC \\ll T/2$",
+        "$RC = T/2$",
+        "$R = C$"
+      ],
+      "answer": "B",
+      "explanation": "When the time constant $\\tau = RC$ is much smaller than the signal period $T$, the capacitor voltage remains small, and the output approximates $RC \\frac{dv_{in}}{dt}$."
+    },
+    {
+      "id": "C08",
+      "question": "True or False: The low-pass RC circuit acts as an integrator when the time constant $\\tau$ is much smaller than the signal period $T$.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "A low-pass circuit acts as an integrator when $\\tau \\gg T/2$ (large time constant), allowing the capacitor voltage to change slowly."
+    },
+    {
+      "id": "C09",
+      "question": "What is the 3-dB cutoff frequency $\\omega_c$ for both high-pass and low-pass RC circuits?",
+      "type": "mcq",
+      "options": [
+        "$\\omega_c = RC$",
+        "$\\omega_c = 1/(RC)$",
+        "$\\omega_c = 2\\pi RC$",
+        "$\\omega_c = \\sqrt{RC}$"
+      ],
+      "answer": "B",
+      "explanation": "The corner frequency where the gain drops to $1/\\sqrt{2}$ of the maximum is given by $\\omega_c = 1/(RC)$ for both configurations."
+    },
+    {
+      "id": "C10",
+      "question": "For a low-pass RC circuit with a step input, the output voltage $v_o(t)$ for $t \\ge 0$ is:",
+      "type": "mcq",
+      "options": [
+        "$V e^{-t/RC}$",
+        "$V (1 - e^{-t/RC})$",
+        "$V e^{t/RC}$",
+        "$V (1 + e^{-t/RC})$"
+      ],
+      "answer": "B",
+      "explanation": "The capacitor charges from 0 to $V$ with the exponential charging curve $V(1 - e^{-t/\\tau})$."
+    },
+    {
+      "id": "C11",
+      "question": "In a high-pass circuit, during a constant input interval, the output voltage decays towards:",
+      "type": "mcq",
+      "options": [
+        "The input voltage level",
+        "Zero",
+        "Negative input voltage",
+        "The initial capacitor voltage"
+      ],
+      "answer": "B",
+      "explanation": "The capacitor charges towards the input level, reducing the voltage difference across the resistor until it reaches zero (DC block)."
+    },
+    {
+      "id": "C12",
+      "question": "True or False: The phase of the output in a high-pass RC circuit lags the input phase.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "In a high-pass circuit, the output leads the input. In a low-pass circuit, the output lags the input."
+    },
+    {
+      "id": "C13",
+      "question": "What is the 'tilt' in the context of a low-pass RC circuit processing a rectangular wave?",
+      "type": "mcq",
+      "options": [
+        "The phase shift between input and output",
+        "The percentage sag of the output waveform during the high interval",
+        "The frequency at which gain is -3 dB",
+        "The time constant of the circuit"
+      ],
+      "answer": "B",
+      "explanation": "Tilt quantifies the distortion (sag) of the rectangular output, calculated as the ratio of the voltage drop during the high period to the average voltage."
+    },
+    {
+      "id": "C14",
+      "question": "To pass a pulse with minimal distortion through a low-pass RC circuit, the time constant $\\tau$ should be:",
+      "type": "mcq",
+      "options": [
+        "Much smaller than the pulse width $t_p$",
+        "Much larger than the pulse width $t_p$",
+        "Equal to the pulse width $t_p$",
+        "Independent of the pulse width"
+      ],
+      "answer": "B",
+      "explanation": "If $\\tau \\gg t_p$, the capacitor charges very little during the pulse, preserving the rectangular shape. If $\\tau \\ll t_p$, the output rises to the input level, distorting the pulse into a step."
+    },
+    {
+      "id": "C15",
+      "question": "The transfer function magnitude of a high-pass RC circuit at very high frequencies ($\\omega \\to \\infty$) approaches:",
+      "type": "mcq",
+      "options": [
+        "0",
+        "1",
+        "$\\infty$",
+        "$1/\\sqrt{2}$"
+      ],
+      "answer": "B",
+      "explanation": "At high frequencies, the capacitor acts as a short, so the output (across R) equals the input. Gain approaches 1 (0 dB)."
+    }
+  ],
+  "problems": [
+    {
+      "id": "P01",
+      "question": "A high-pass RC circuit has $R = 10 \\, \\text{k}\\Omega$ and $C = 100 \\, \\text{nF}$. Calculate the 3-dB cutoff frequency $f_c$ in Hz.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "v_in"
+          },
+          {
+            "kind": "C",
+            "value": "100 nF"
+          },
+          {
+            "kind": "R",
+            "value": "10 kΩ"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across R)",
+        "note": "High-pass configuration"
+      },
+      "solution": "The cutoff frequency is given by $f_c = \\frac{1}{2\\pi RC}$. \nSubstituting values: $R = 10 \\times 10^3 \\, \\Omega$, $C = 100 \\times 10^{-9} \\, \\text{F}$. \n$RC = 10^4 \\times 10^{-7} = 10^{-3} \\, \\text{s}$. \n$f_c = \\frac{1}{2\\pi (10^{-3})} = \\frac{1000}{2\\pi} \\approx 159.15 \\, \\text{Hz}$.",
+      "answer": "159.15 Hz"
+    },
+    {
+      "id": "P02",
+      "question": "A low-pass RC circuit has $R = 1 \\, \\text{k}\\Omega$ and $C = 1 \\, \\mu\\text{F}$. Determine the time constant $\\tau$ and the 3-dB cutoff frequency $f_c$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "v_in"
+          },
+          {
+            "kind": "R",
+            "value": "1 kΩ"
+          },
+          {
+            "kind": "C",
+            "value": "1 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across C)",
+        "note": "Low-pass configuration"
+      },
+      "solution": "Time constant $\\tau = RC = (1000 \\, \\Omega)(1 \\times 10^{-6} \\, \\text{F}) = 1 \\, \\text{ms}$. \nCutoff frequency $f_c = \\frac{1}{2\\pi \\tau} = \\frac{1}{2\\pi (10^{-3})} \\approx 159.15 \\, \\text{Hz}$.",
+      "answer": "τ = 1 ms, f_c ≈ 159.15 Hz"
+    },
+    {
+      "id": "P03",
+      "question": "A step voltage $v_{in}(t) = 10 \\, u(t) \\, \\text{V}$ is applied to a high-pass RC circuit with $\\tau = 5 \\, \\text{ms}$. Find the output voltage $v_o(t)$ at $t = 5 \\, \\text{ms}$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "10 V (step)"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across R)",
+        "note": "HP step response"
+      },
+      "solution": "For a high-pass circuit with step input $V$, $v_o(t) = V e^{-t/\\tau}$. \nGiven $V = 10 \\, \\text{V}$, $\\tau = 5 \\, \\text{ms}$, and $t = 5 \\, \\text{ms}$. \n$v_o(5\\text{ms}) = 10 e^{-5/5} = 10 e^{-1}$. \n$e^{-1} \\approx 0.3679$. \n$v_o(5\\text{ms}) = 10 \\times 0.3679 = 3.679 \\, \\text{V}$.",
+      "answer": "3.68 V"
+    },
+    {
+      "id": "P04",
+      "question": "A step voltage $v_{in}(t) = 5 \\, u(t) \\, \\text{V}$ is applied to a low-pass RC circuit with $\\tau = 2 \\, \\text{ms}$. Find the output voltage $v_o(t)$ at $t = 2 \\, \\text{ms}$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "5 V (step)"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across C)",
+        "note": "LP step response"
+      },
+      "solution": "For a low-pass circuit with step input $V$, $v_o(t) = V (1 - e^{-t/\\tau})$. \nGiven $V = 5 \\, \\text{V}$, $\\tau = 2 \\, \\text{ms}$, and $t = 2 \\, \\text{ms}$. \n$v_o(2\\text{ms}) = 5 (1 - e^{-2/2}) = 5 (1 - e^{-1})$. \n$e^{-1} \\approx 0.3679$. \n$v_o(2\\text{ms}) = 5 (1 - 0.3679) = 5 (0.6321) = 3.1605 \\, \\text{V}$.",
+      "answer": "3.16 V"
+    },
+    {
+      "id": "P05",
+      "question": "A high-pass RC circuit with $\\tau = 1 \\, \\text{ms}$ receives a pulse input $v_{in}(t) = 10 [u(t) - u(t-2)] \\, \\text{V}$. Calculate the output voltage $v_o(t)$ just before the falling edge at $t = 2 \\, \\text{ms}^-$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Pulse 10V, 2ms width"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across R)",
+        "note": "HP pulse response"
+      },
+      "solution": "During the pulse ($0 < t < 2$), $v_o(t) = V_p e^{-t/\\tau}$. \nAt $t = 2 \\, \\text{ms}^-$, $t = 2\\tau$. \n$v_o(2\\tau) = 10 e^{-2}$. \n$e^{-2} \\approx 0.1353$. \n$v_o(2\\text{ms}^-) = 10 \\times 0.1353 = 1.353 \\, \\text{V}$.",
+      "answer": "1.35 V"
+    },
+    {
+      "id": "P06",
+      "question": "Using the same circuit as P05, calculate the output voltage $v_o(t)$ just after the falling edge at $t = 2 \\, \\text{ms}^+$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Pulse 10V, 2ms width"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across R)",
+        "note": "HP pulse response"
+      },
+      "solution": "At the falling edge, the input drops by $\\Delta V = -10 \\, \\text{V}$. \nThe capacitor voltage $v_C$ cannot change instantaneously. \n$v_o(t) = v_{in}(t) - v_C(t)$. \nJust before the edge, $v_o(2^-) = 1.353 \\, \\text{V}$ and $v_{in}(2^-) = 10 \\, \\text{V}$. \nSo $v_C(2^-) = 10 - 1.353 = 8.647 \\, \\text{V}$. \nJust after the edge, $v_{in}(2^+) = 0 \\, \\text{V}$ and $v_C(2^+) = 8.647 \\, \\text{V}$. \n$v_o(2^+) = 0 - 8.647 = -8.647 \\, \\text{V}$. \nAlternatively, using the rule: $v_o(2^+) = v_o(2^-) - V_p = 1.353 - 10 = -8.647 \\, \\text{V}$.",
+      "answer": "-8.65 V"
+    },
+    {
+      "id": "P07",
+      "question": "A low-pass RC circuit with $\\tau = 10 \\, \\text{ms}$ receives a pulse input $v_{in}(t) = 5 [u(t) - u(t-5)] \\, \\text{V}$. Calculate the output voltage $v_o(t)$ at the end of the pulse, $t = 5 \\, \\text{ms}$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Pulse 5V, 5ms width"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across C)",
+        "note": "LP pulse response"
+      },
+      "solution": "During the pulse ($0 < t < 5$), $v_o(t) = V_p (1 - e^{-t/\\tau})$. \nAt $t = 5 \\, \\text{ms}$, $t = 0.5 \\tau$. \n$v_o(5\\text{ms}) = 5 (1 - e^{-0.5})$. \n$e^{-0.5} \\approx 0.6065$. \n$v_o(5\\text{ms}) = 5 (1 - 0.6065) = 5 (0.3935) = 1.9675 \\, \\text{V}$.",
+      "answer": "1.97 V"
+    },
+    {
+      "id": "P08",
+      "question": "A high-pass RC circuit is designed to act as a differentiator for a square wave with period $T = 10 \\, \\text{ms}$. What is the maximum allowable time constant $\\tau$ to satisfy the condition $\\tau \\ll T/2$? (Assume 'much less than' means at least 10 times smaller).",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Square wave"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across R)",
+        "note": "Differentiator condition"
+      },
+      "solution": "Condition for differentiator: $\\tau \\ll T/2$. \n$T/2 = 10 \\, \\text{ms} / 2 = 5 \\, \\text{ms}$. \nAssuming $\\tau \\le (T/2) / 10$: \n$\\tau \\le 5 \\, \\text{ms} / 10 = 0.5 \\, \\text{ms}$. \nThus, the maximum allowable $\\tau$ is $0.5 \\, \\text{ms}$.",
+      "answer": "0.5 ms"
+    },
+    {
+      "id": "P09",
+      "question": "A low-pass RC circuit is designed to act as an integrator for a square wave with period $T = 20 \\, \\text{ms}$. What is the minimum required time constant $\\tau$ to satisfy the condition $\\tau \\gg T/2$? (Assume 'much greater than' means at least 10 times larger).",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Square wave"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across C)",
+        "note": "Integrator condition"
+      },
+      "solution": "Condition for integrator: $\\tau \\gg T/2$. \n$T/2 = 20 \\, \\text{ms} / 2 = 10 \\, \\text{ms}$. \nAssuming $\\tau \\ge (T/2) \\times 10$: \n$\\tau \\ge 10 \\, \\text{ms} \\times 10 = 100 \\, \\text{ms}$. \nThus, the minimum required $\\tau$ is $100 \\, \\text{ms}$.",
+      "answer": "100 ms"
+    },
+    {
+      "id": "P10",
+      "question": "A low-pass RC circuit processes a 50% duty cycle rectangular wave with amplitude $V = 10 \\, \\text{V}$ and period $T = 100 \\, \\text{ms}$. The time constant is $\\tau = 10 \\, \\text{ms}$. Calculate the tilt of the output waveform.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Rect 10V, 100ms"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across C)",
+        "note": "LP rectangular wave tilt"
+      },
+      "solution": "Tilt formula: $\\text{Tilt} = \\frac{2(1-a)}{1+a}$, where $a = e^{-(T/2)/\\tau}$. \n$T/2 = 50 \\, \\text{ms}$. \n$a = e^{-50/10} = e^{-5} \\approx 0.006738$. \n$1 - a = 1 - 0.006738 = 0.993262$. \n$1 + a = 1 + 0.006738 = 1.006738$. \n$\\text{Tilt} = \\frac{2(0.993262)}{1.006738} \\approx \\frac{1.986524}{1.006738} \\approx 1.973$. \nTilt is often expressed as a percentage: $197.3\\%$. However, tilt is typically defined for small distortions. Let's re-evaluate the formula context. The formula provided in the lecture is $\\frac{2(1-a)}{1+a}$. \nWait, if $a$ is small, tilt is large. This indicates significant distortion. \nCalculation: $2(0.99326)/1.00674 = 1.973$. \nAs a percentage: $197.3\\%$. \n(Note: In some contexts, tilt is defined as $(V_{max}-V_{min})/V_{avg}$. Here $V_{avg} = V/2 = 5$. $V_{max}-V_{min} = 2(1-a)V/(1+a)$. Ratio is $2(1-a)/(1+a)$. Correct.)",
+      "answer": "1.97 (or 197%)"
+    },
+    {
+      "id": "P11",
+      "question": "For the circuit in P10, calculate the maximum and minimum output voltages in steady state.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Rect 10V, 100ms"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across C)",
+        "note": "LP rectangular wave levels"
+      },
+      "solution": "Formulas: $v_{o,max} = \\frac{V}{1+a}$ and $v_{o,min} = \\frac{aV}{1+a}$. \n$V = 10 \\, \\text{V}$, $a = e^{-5} \\approx 0.006738$. \n$1+a = 1.006738$. \n$v_{o,max} = \\frac{10}{1.006738} \\approx 9.933 \\, \\text{V}$. \n$v_{o,min} = \\frac{0.006738 \\times 10}{1.006738} \\approx \\frac{0.06738}{1.006738} \\approx 0.0669 \\, \\text{V}$.",
+      "answer": "V_max ≈ 9.93 V, V_min ≈ 0.067 V"
+    },
+    {
+      "id": "P12",
+      "question": "A high-pass RC circuit has $R = 5 \\, \\text{k}\\Omega$. It is required to have a cutoff frequency of $1 \\, \\text{kHz}$. Calculate the required capacitance $C$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "v_in"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          },
+          {
+            "kind": "R",
+            "value": "5 kΩ"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across R)",
+        "note": "Design HP"
+      },
+      "solution": "$f_c = \\frac{1}{2\\pi RC} \\implies C = \\frac{1}{2\\pi R f_c}$. \n$R = 5000 \\, \\Omega$, $f_c = 1000 \\, \\text{Hz}$. \n$C = \\frac{1}{2\\pi (5000)(1000)} = \\frac{1}{10^7 \\pi} \\approx \\frac{1}{3.1416 \\times 10^7}$. \n$C \\approx 3.183 \\times 10^{-8} \\, \\text{F} = 31.83 \\, \\text{nF}$.",
+      "answer": "31.83 nF"
+    },
+    {
+      "id": "P13",
+      "question": "A low-pass RC circuit has $C = 10 \\, \\text{nF}$. It is required to have a cutoff frequency of $100 \\, \\text{kHz}$. Calculate the required resistance $R$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "v_in"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "C",
+            "value": "10 nF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across C)",
+        "note": "Design LP"
+      },
+      "solution": "$f_c = \\frac{1}{2\\pi RC} \\implies R = \\frac{1}{2\\pi C f_c}$. \n$C = 10 \\times 10^{-9} \\, \\text{F}$, $f_c = 100 \\times 10^3 \\, \\text{Hz}$. \n$R = \\frac{1}{2\\pi (10^{-8})(10^5)} = \\frac{1}{2\\pi (10^{-3})} = \\frac{1000}{2\\pi}$. \n$R \\approx 159.15 \\, \\Omega$.",
+      "answer": "159.15 Ω"
+    },
+    {
+      "id": "P14",
+      "question": "A high-pass RC circuit with $\\tau = 1 \\, \\text{ms}$ is driven by a triangular wave with peak-to-peak voltage $20 \\, \\text{V}$ and period $T = 10 \\, \\text{ms}$. Estimate the peak output voltage if the circuit acts as a differentiator. (Assume the slope of the triangular wave is constant during the rising/falling edges).",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Tri 20Vpp, 10ms"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across R)",
+        "note": "HP differentiator approx"
+      },
+      "solution": "Differentiator output: $v_o(t) \\approx RC \\frac{dv_{in}}{dt}$. \nTriangular wave: Peak-to-peak $20 \\, \\text{V}$, Period $10 \\, \\text{ms}$. \nHalf-period $T/2 = 5 \\, \\text{ms}$. Voltage change $\\Delta V = 20 \\, \\text{V}$ (from -10 to +10 or vice versa). \nSlope $m = \\frac{\\Delta V}{\\Delta t} = \\frac{20 \\, \\text{V}}{5 \\, \\text{ms}} = 4000 \\, \\text{V/s}$. \n$RC = \\tau = 1 \\, \\text{ms} = 10^{-3} \\, \\text{s}$. \n$v_{o,peak} = \\tau \\times m = 10^{-3} \\times 4000 = 4 \\, \\text{V}$. \n(Note: This is an approximation valid for $\\tau \\ll T/2$. Here $1 \\, \\text{ms} \\ll 5 \\, \\text{ms}$, so it is reasonable.)",
+      "answer": "4 V"
+    },
+    {
+      "id": "P15",
+      "question": "A low-pass RC circuit with $\\tau = 10 \\, \\text{ms}$ is driven by a triangular wave with peak-to-peak voltage $20 \\, \\text{V}$ and period $T = 10 \\, \\text{ms}$. Estimate the peak output voltage if the circuit acts as an integrator. (Assume the input is centered at 0V).",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "Tri 20Vpp, 10ms"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "v_o (across C)",
+        "note": "LP integrator approx"
+      },
+      "solution": "Integrator output: $v_o(t) \\approx \\frac{1}{RC} \\int v_{in}(t) dt$. \nTriangular wave: $v_{in}(t)$ goes from $-10$ to $10$ in $5 \\, \\text{ms}$. \nSlope $m = 4000 \\, \\text{V/s}$. \n$v_{in}(t) = m t$ for $0 < t < 5 \\, \\text{ms}$ (starting from -10V? No, let's define from 0 to T/2). \nLet's integrate over half period. The output will be a parabolic shape. \nPeak output occurs at the end of the half-cycle (maximum area under the curve). \n$v_{o,peak} \\approx \\frac{1}{\\tau} \\int_{0}^{T/2} v_{in}(t) dt$. \nAssume $v_{in}(t)$ starts at 0 and goes to 10V? No, triangular is symmetric. \nLet's assume $v_{in}(t)$ is a ramp from $-10$ to $10$ over $5 \\, \\text{ms}$. \nAverage value over this interval is 0. This would result in 0 net change? \nWait, the integrator condition implies $v_o$ is the integral. If the input has zero average, the output is bounded. \nLet's look at the area. \n$v_{in}(t) = 4000 t - 10$ for $0 \\le t \\le 5 \\, \\text{ms}$? \nAt $t=0, v=-10$. At $t=5, v=10$. \nIntegral $\\int_{0}^{5} (4000 t - 10) dt = [2000 t^2 - 10 t]_0^5 = 2000(25) - 50 = 50000 - 50 = 49950 \\, \\text{V}\\cdot\\text{ms}$. \n$v_{o,peak} = \\frac{1}{\\tau} \\times \\text{Area} = \\frac{1}{10 \\, \\text{ms}} \\times 49950 \\, \\text{V}\\cdot\\text{ms} = 4995 \\, \\text{V}$. \nThis is extremely large, indicating the integrator approximation might be pushing limits or the gain is high. \nHowever, strictly following the formula: \n$v_o \\approx \\frac{1}{RC} \\int v_{in} dt$. \n$1/RC = 1/\\tau = 100 \\, \\text{s}^{-1}$. \nArea $\\approx 50 \\, \\text{V} \\times 5 \\, \\text{ms} = 250 \\, \\text{V}\\cdot\\text{ms}$ (approx triangle area). \n$v_o \\approx 100 \\times 0.025 = 2.5 \\, \\text{V}$. \nLet's re-calculate area precisely. \nTriangle base $5 \\, \\text{ms}$, height $20 \\, \\text{V}$ (from -10 to 10). Area = $0.5 \\times 5 \\times 20 = 50 \\, \\text{V}\\cdot\\text{ms}$. \n$v_{o,peak} = \\frac{1}{10 \\, \\text{ms}} \\times 50 \\, \\text{V}\\cdot\\text{ms} = 5 \\, \\text{V}$.",
+      "answer": "5 V"
+    }
+  ]
+}

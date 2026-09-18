@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 · First-Order Circuits · Part 2 — Practice | EEE 133</title>
+<meta name="description" content="Practice questions for First-Order Circuits · Part 2 — EEE 133 Circuits and Electronics II.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23eef4ff'/%3E%3Cpath d='M8 32 C 10 10 14 10 16 32 C 18 54 22 54 24 32 C 26 18 29 18 31 32 C 33 46 36 46 38 32 C 40 24 42 24 44 32 C 46 38 48 38 50 32 C 51.5 29 52.5 29 54 32' stroke='%235b8bf0' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">E133</span> EEE&nbsp;133 <span class="crumb">· Practice</span></a>
+  <div class="spacer"></div>
+  <span class="progress-pill">Ch 04 · 30 questions</span>
+  <button class="icon-btn" id="themeBtn" title="Toggle light/dark">🌙</button>
+</header>
+
+<div class="page">
+<div class="practice-wrap">
+
+  <div class="practice-hero">
+    <div class="practice-ch-badge">Chapter 04</div>
+    <h1>First-Order Circuits · Part 2</h1>
+    <p class="practice-lede">15 conceptual questions · 15 circuit problems with worked solutions</p>
+    <div class="practice-nav">
+      <a href="index.html" class="practice-nav-link">← All chapters</a>
+      <a href="practice-03.html" class="practice-nav-link">← Ch 03</a>
+      <a href="practice-05.html" class="practice-nav-link">Ch 05 →</a>
+    </div>
+  </div>
+
+  <section class="practice-section">
+    <h2 class="practice-sec-title"><span class="sec-num">A</span> Conceptual Questions</h2>
+    <p class="practice-sec-note">Select an answer, then click <strong>Check</strong>. Explanations appear after checking.</p>
+    
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="At DC steady state, current is constant, so $v_L = L \frac{di}{dt} = 0$. A component with zero voltage drop across it acts as a short circuit.">
+  <div class="q-id">C01 · Multiple Choice</div>
+  <p class="q-text">In a DC steady-state circuit, how is an inductor modeled?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">Open circuit</button><button class="opt-btn" data-val="B">Short circuit</button><button class="opt-btn" data-val="C">Dependent voltage source</button><button class="opt-btn" data-val="D">Resistor with infinite resistance</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="At DC steady state, voltage is constant, so $i_C = C \frac{dv}{dt} = 0$. A component with zero current flowing through it acts as an open circuit.">
+  <div class="q-id">C02 · Multiple Choice</div>
+  <p class="q-text">In a DC steady-state circuit, how is a capacitor modeled?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">Short circuit</button><button class="opt-btn" data-val="B">Open circuit</button><button class="opt-btn" data-val="C">Dependent current source</button><button class="opt-btn" data-val="D">Resistor with zero resistance</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="Step 1 involves analyzing the $t &lt; 0$ circuit at steady state to find the state variable just before switching, which equals $x(0^+)$ due to continuity.">
+  <div class="q-id">C03 · Multiple Choice</div>
+  <p class="q-text">What is the primary purpose of Step 1 in the 4-step procedure for first-order circuits?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">To find the time constant $\tau$</button><button class="opt-btn" data-val="B">To determine the initial value $x(0^+)$ using continuity</button><button class="opt-btn" data-val="C">To find the final value $x(\infty)$</button><button class="opt-btn" data-val="D">To write the differential equation</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="To find the equivalent resistance seen by the storage element, independent sources are deactivated: voltage sources become shorts and current sources become opens.">
+  <div class="q-id">C04 · Multiple Choice</div>
+  <p class="q-text">To find the Thévenin resistance $R_{th}$ for the time constant calculation, what must be done to independent voltage sources?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">Replaced by open circuits</button><button class="opt-btn" data-val="B">Replaced by short circuits</button><button class="opt-btn" data-val="C">Left unchanged</button><button class="opt-btn" data-val="D">Replaced by dependent sources</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="C" data-expl="$x(\infty)$ is the value the variable settles to after a long time, representing the forced response or DC steady state of the final circuit.">
+  <div class="q-id">C05 · Multiple Choice</div>
+  <p class="q-text">The general solution for a first-order response is given by $x(t) = x(\infty) + [x(0^+) - x(\infty)]e^{-t/\tau}$. What does the term $x(\infty)$ represent?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">The initial condition</button><button class="opt-btn" data-val="B">The natural response</button><button class="opt-btn" data-val="C">The forced (steady-state) response</button><button class="opt-btn" data-val="D">The time constant</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="tf" data-answer="False" data-expl="Capacitor voltage is continuous, meaning $v_C(0^+) = v_C(0^-)$. It cannot jump unless there is an infinite current impulse, which is not the case in standard first-order circuits.">
+  <div class="q-id">C06 · True / False</div>
+  <p class="q-text">True or False: The voltage across a capacitor can change instantaneously at $t=0$.</p>
+  <div class="opt-grid tf-grid">
+    <button class="opt-btn" data-val="True">True</button><button class="opt-btn" data-val="False">False</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="tf" data-answer="False" data-expl="Inductor current is continuous, meaning $i_L(0^+) = i_L(0^-)$. It cannot jump unless there is an infinite voltage impulse.">
+  <div class="q-id">C07 · True / False</div>
+  <p class="q-text">True or False: The current through an inductor can change instantaneously at $t=0$.</p>
+  <div class="opt-grid tf-grid">
+    <button class="opt-btn" data-val="True">True</button><button class="opt-btn" data-val="False">False</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="The unit step function $u(t)$ is defined as 0 for $t &lt; 0$ and 1 for $t &gt; 0$.">
+  <div class="q-id">C08 · Multiple Choice</div>
+  <p class="q-text">What is the mathematical definition of the unit step function $u(t)$ for $t &lt; 0$?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">1</button><button class="opt-btn" data-val="B">0</button><button class="opt-btn" data-val="C">$\infty$</button><button class="opt-btn" data-val="D">Undefined</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="A pulse is created by turning a source on at $t=0$ ($u(t)$) and turning it off at $t=t_p$ ($-u(t-t_p)$).">
+  <div class="q-id">C09 · Multiple Choice</div>
+  <p class="q-text">How is a rectangular pulse of amplitude $V_p$ and width $t_p$ starting at $t=0$ expressed using unit step functions?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">$V_p u(t)$</button><button class="opt-btn" data-val="B">$V_p [u(t) - u(t - t_p)]$</button><button class="opt-btn" data-val="C">$V_p [u(t) + u(t - t_p)]$</button><button class="opt-btn" data-val="D">$V_p u(t - t_p)$</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="The response is analyzed in two intervals: $0 &lt; t &lt; t_p$ (pulse on) and $t &gt; t_p$ (pulse off). The state at $t_p$ serves as the initial condition for the second interval.">
+  <div class="q-id">C10 · Multiple Choice</div>
+  <p class="q-text">When analyzing a circuit with a pulse excitation, how many distinct time intervals typically require separate application of the 4-step procedure?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">One</button><button class="opt-btn" data-val="B">Two</button><button class="opt-btn" data-val="C">Three</button><button class="opt-btn" data-val="D">Four</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="For a first-order RC circuit, the time constant is the product of the Thévenin resistance seen by the capacitor and the capacitance: $\tau = R_{th}C$.">
+  <div class="q-id">C11 · Multiple Choice</div>
+  <p class="q-text">In the 4-step procedure, Step 3 involves finding the time constant $\tau$. For an RC circuit, how is $\tau$ calculated?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">$\tau = L/R_{th}$</button><button class="opt-btn" data-val="B">$\tau = R_{th}C$</button><button class="opt-btn" data-val="C">$\tau = 1/(R_{th}C)$</button><button class="opt-btn" data-val="D">$\tau = R_{th}/C$</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="tf" data-answer="False" data-expl="Only independent sources are deactivated. Dependent sources remain in the circuit, and $R_{th}$ is often found using a test source method ($v_{test}/i_{test}$) if dependent sources are present.">
+  <div class="q-id">C12 · True / False</div>
+  <p class="q-text">True or False: Dependent sources are deactivated when calculating the Thévenin resistance $R_{th}$.</p>
+  <div class="opt-grid tf-grid">
+    <button class="opt-btn" data-val="True">True</button><button class="opt-btn" data-val="False">False</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="C" data-expl="At $t=\tau$, the exponential term is $e^{-1} \approx 0.368$. Thus, the response has completed 63.2% of its transition from the initial value to the final value, leaving 36.8% of the difference remaining.">
+  <div class="q-id">C13 · Multiple Choice</div>
+  <p class="q-text">What is the value of the response $x(t)$ at $t = \tau$?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">$x(0^+)$</button><button class="opt-btn" data-val="B">$x(\infty)$</button><button class="opt-btn" data-val="C">$x(\infty) + 0.368[x(0^+) - x(\infty)]$</button><button class="opt-btn" data-val="D">$x(\infty) + 0.632[x(0^+) - x(\infty)]$</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="mcq" data-answer="B" data-expl="In a discharge scenario with no active sources, the steady-state voltage across the capacitor will eventually drop to 0 V.">
+  <div class="q-id">C14 · Multiple Choice</div>
+  <p class="q-text">If a capacitor is initially charged to 10 V and is discharged through a resistor, what is the final voltage $v_C(\infty)$?</p>
+  <div class="opt-grid">
+    <button class="opt-btn" data-val="A">10 V</button><button class="opt-btn" data-val="B">0 V</button><button class="opt-btn" data-val="C">5 V</button><button class="opt-btn" data-val="D">Depends on the resistance</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+
+<div class="q-card" data-type="tf" data-answer="False" data-expl="The 4-step procedure is an algebraic method that avoids explicit differential equation solving by using the known form of the first-order response and determining the constants via initial and final conditions.">
+  <div class="q-id">C15 · True / False</div>
+  <p class="q-text">True or False: The 4-step procedure requires solving a differential equation to find the response.</p>
+  <div class="opt-grid tf-grid">
+    <button class="opt-btn" data-val="True">True</button><button class="opt-btn" data-val="False">False</button>
+  </div>
+  <button class="check-btn" disabled>Check Answer</button>
+  <div class="q-feedback"></div>
+</div>
+  </section>
+
+  <section class="practice-section">
+    <h2 class="practice-sec-title"><span class="sec-num">B</span> Problem Solving</h2>
+    <p class="practice-sec-note">Each problem includes a circuit diagram. Click <strong>Show Solution</strong> to reveal the worked solution.</p>
+    
+<div class="prob-card">
+  <div class="q-id">P01 · Circuit Problem</div>
+  <p class="q-text">A 100 µF capacitor is connected in series with a 5 kΩ resistor to a 12 V DC source. The switch closes at t=0. If the capacitor is initially uncharged, find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="131.2" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">+</text><text x="149.7" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">−</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">12 V</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">5 kΩ</text><line x1="394.0" y1="70.0" x2="414.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="414.0" y1="57.0" x2="414.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="57.0" x2="426.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="426.0" y1="70.0" x2="446.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">100 µF</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">V_C</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Simple RC charging circuit</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $v_C(0^+) = v_C(0^-) = 0$ V.<br>2. Final condition: At steady state, C is open, so $v_C(\infty) = 12$ V.<br>3. Time constant: $R_{th} = 5$ kΩ. $\tau = R_{th}C = (5 \times 10^3)(100 \times 10^{-6}) = 0.5$ s.<br>4. Response: $v_C(t) = 12 + (0 - 12)e^{-t/0.5} = 12(1 - e^{-2t})$ V.</div>
+    <div class="prob-answer">Answer: τ = 0.5 s, v_C(t) = 12(1 - e^{-2t}) V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P02 · Circuit Problem</div>
+  <p class="q-text">A 2 H inductor is connected in series with a 4 Ω resistor to a 20 V DC source. The switch closes at t=0. If the inductor current is initially zero, find the time constant τ and the inductor current i_L(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="122.3" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="157.7" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="140.0" cy="70.0" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="131.2" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">+</text><text x="149.7" y="75.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">−</text><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">20 V</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">4 Ω</text><path d="M 404.4 70.0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 H</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I_L</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">V</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">Simple RL charging circuit</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $i_L(0^+) = i_L(0^-) = 0$ A.<br>2. Final condition: At steady state, L is short, so $i_L(\infty) = 20/4 = 5$ A.<br>3. Time constant: $R_{th} = 4$ Ω. $\tau = L/R_{th} = 2/4 = 0.5$ s.<br>4. Response: $i_L(t) = 5 + (0 - 5)e^{-t/0.5} = 5(1 - e^{-2t})$ A.</div>
+    <div class="prob-answer">Answer: τ = 0.5 s, i_L(t) = 5(1 - e^{-2t}) A</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P03 · Circuit Problem</div>
+  <p class="q-text">A 10 µF capacitor is charged to 20 V. At t=0, it is disconnected from the source and connected to a 2 kΩ resistor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="149.0" y1="70.0" x2="169.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="169.0" y1="57.0" x2="169.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="181.0" y1="57.0" x2="181.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="181.0" y1="70.0" x2="201.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="175.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 µF</text><polyline points="369.4,70.0 372.0,63.0 377.2,77.0 382.4,63.0 387.6,77.0 392.8,63.0 398.0,77.0 400.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="385.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 kΩ</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">V_C</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RC discharge circuit</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $v_C(0^+) = 20$ V.<br>2. Final condition: No source, so $v_C(\infty) = 0$ V.<br>3. Time constant: $R_{th} = 2$ kΩ. $\tau = (2 \times 10^3)(10 \times 10^{-6}) = 0.02$ s.<br>4. Response: $v_C(t) = 0 + (20 - 0)e^{-t/0.02} = 20e^{-50t}$ V.</div>
+    <div class="prob-answer">Answer: τ = 0.02 s, v_C(t) = 20e^{-50t} V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P04 · Circuit Problem</div>
+  <p class="q-text">A 4 H inductor carries a current of 3 A. At t=0, it is disconnected from the source and connected to a 6 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 159.4 70.0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="175.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">4 H</text><polyline points="369.4,70.0 372.0,63.0 377.2,77.0 382.4,63.0 387.6,77.0 392.8,63.0 398.0,77.0 400.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="385.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">6 Ω</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I_L</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">V</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RL discharge circuit</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $i_L(0^+) = 3$ A.<br>2. Final condition: No source, so $i_L(\infty) = 0$ A.<br>3. Time constant: $R_{th} = 6$ Ω. $\tau = 4/6 = 0.667$ s.<br>4. Response: $i_L(t) = 0 + (3 - 0)e^{-t/0.667} = 3e^{-1.5t}$ A.</div>
+    <div class="prob-answer">Answer: τ = 0.667 s, i_L(t) = 3e^{-1.5t} A</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P05 · Circuit Problem</div>
+  <p class="q-text">A circuit consists of a 12 V source in series with a 4 kΩ resistor, connected to a node. From this node, a 2 kΩ resistor goes to ground, and a 0.5 µF capacitor goes to ground. The switch closes at t=0. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0, assuming the capacitor is initially uncharged.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><line x1="100.0" y1="44.0" x2="100.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><g transform="rotate(90 100.0 115.0)"><line x1="73.0" y1="115.0" x2="81.6" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="118.4" y1="115.0" x2="127.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="100.0" cy="115.0" r="18.4" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="90.8" y="120.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">+</text><text x="110.1" y="120.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">−</text></g><text x="74.7" y="119.0" text-anchor="end" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">12 V</text><line x1="100.0" y1="44.0" x2="470.0" y2="44.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="186.0" x2="470.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="79.5" x2="470.0" y2="79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,79.5 272.0,72.5 277.2,86.5 282.4,72.5 287.6,86.5 292.8,72.5 298.0,86.5 300.6,79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="53.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">4 kΩ</text><circle cx="100.0" cy="79.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="79.5" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="150.5" x2="470.0" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="176.9,150.5 179.5,143.5 184.7,157.5 189.9,143.5 195.1,157.5 200.3,143.5 205.5,157.5 208.1,150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="192.5" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 kΩ</text><line x1="351.5" y1="150.5" x2="371.5" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="371.5" y1="137.5" x2="371.5" y2="163.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="383.5" y1="137.5" x2="383.5" y2="163.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="383.5" y1="150.5" x2="403.5" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="377.5" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">0.5 µF</text><circle cx="100.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="186.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="186.0" r="3.2" style="fill:#1f2933"/><text x="86.0" y="119.0" text-anchor="end" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="285.0" y="226.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RC circuit with parallel resistor for Rth calculation</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $v_C(0^+) = 0$ V.<br>2. Final condition: At steady state, C is open. The circuit is a voltage divider: $v_C(\infty) = 12 \times \frac{2}{4+2} = 4$ V.<br>3. Time constant: Deactivate source (short). $R_{th}$ seen by C is $4$ kΩ in parallel with $2$ kΩ: $R_{th} = \frac{4 \times 2}{4 + 2} = 1.333$ kΩ. $\tau = (1.333 \times 10^3)(0.5 \times 10^{-6}) = 0.667$ ms.<br>4. Response: $v_C(t) = 4 + (0 - 4)e^{-t/0.667ms} = 4(1 - e^{-1500t})$ V.</div>
+    <div class="prob-answer">Answer: τ = 0.667 ms, v_C(t) = 4(1 - e^{-1500t}) V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P06 · Circuit Problem</div>
+  <p class="q-text">A 12 V source is in series with a 6 Ω resistor, connected to an inductor L=12 H to ground. A 2 A current source is also connected in parallel with the inductor, both switched on at t=0. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><line x1="100.0" y1="44.0" x2="100.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><g transform="rotate(90 100.0 115.0)"><line x1="73.0" y1="115.0" x2="81.6" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="118.4" y1="115.0" x2="127.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="100.0" cy="115.0" r="18.4" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="90.8" y="120.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">+</text><text x="110.1" y="120.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">−</text></g><text x="74.7" y="119.0" text-anchor="end" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">12 V</text><line x1="100.0" y1="44.0" x2="470.0" y2="44.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="186.0" x2="470.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="67.7" x2="470.0" y2="67.7" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,67.7 272.0,60.7 277.2,74.7 282.4,60.7 287.6,74.7 292.8,60.7 298.0,74.7 300.6,67.7" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="42.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">6 Ω</text><circle cx="100.0" cy="67.7" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="67.7" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="115.0" x2="470.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 269.4 115.0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="89.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">12 H</text><circle cx="100.0" cy="115.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="115.0" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="162.3" x2="470.0" y2="162.3" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="259.0" y1="162.3" x2="267.3" y2="162.3" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="302.7" y1="162.3" x2="311.0" y2="162.3" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="285.0" cy="162.3" r="17.7" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="285.0" y="167.3" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">~</text><text x="285.0" y="136.7" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 A</text><circle cx="100.0" cy="162.3" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="162.3" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="186.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="186.0" r="3.2" style="fill:#1f2933"/><text x="86.0" y="119.0" text-anchor="end" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I_L</text><text x="285.0" y="226.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RL circuit with parallel current source</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $i_L(0^+) = 0$ A.<br>2. Final condition: L is short. KCL at node: $i_L(\infty) = \frac{12}{6} + 2 = 4$ A.<br>3. Time constant: Deactivate sources (V short, I open). $R_{th} = 6$ Ω. $\tau = L/R_{th} = 12/6 = 2$ s.<br>4. Response: $i_L(t) = 4 + (0 - 4)e^{-t/2} = 4(1 - e^{-0.5t})$ A.</div>
+    <div class="prob-answer">Answer: τ = 2 s, i_L(t) = 4(1 - e^{-0.5t}) A</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P07 · Circuit Problem</div>
+  <p class="q-text">A capacitor C=1 µF is initially charged to 10 V. At t=0, it is connected to a circuit consisting of a 5 kΩ resistor in parallel with a 10 kΩ resistor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><line x1="100.0" y1="44.0" x2="100.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><g transform="rotate(90 100.0 115.0)"><line x1="73.0" y1="115.0" x2="94.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="94.0" y1="101.5" x2="94.0" y2="128.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="106.0" y1="101.5" x2="106.0" y2="128.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="106.0" y1="115.0" x2="127.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/></g><text x="74.7" y="119.0" text-anchor="end" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">1 µF</text><line x1="100.0" y1="44.0" x2="470.0" y2="44.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="186.0" x2="470.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="79.5" x2="470.0" y2="79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,79.5 272.0,72.5 277.2,86.5 282.4,72.5 287.6,86.5 292.8,72.5 298.0,86.5 300.6,79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="53.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">5 kΩ</text><circle cx="100.0" cy="79.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="79.5" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="150.5" x2="470.0" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,150.5 272.0,143.5 277.2,157.5 282.4,143.5 287.6,157.5 292.8,143.5 298.0,157.5 300.6,150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 kΩ</text><circle cx="100.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="186.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="186.0" r="3.2" style="fill:#1f2933"/><text x="86.0" y="119.0" text-anchor="end" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="285.0" y="226.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RC discharge with parallel resistors</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $v_C(0^+) = 10$ V.<br>2. Final condition: $v_C(\infty) = 0$ V.<br>3. Time constant: $R_{th} = 5 \parallel 10 = \frac{50}{15} = 3.333$ kΩ. $\tau = (3.333 \times 10^3)(1 \times 10^{-6}) = 3.333$ ms.<br>4. Response: $v_C(t) = 0 + (10 - 0)e^{-t/3.333ms} = 10e^{-300t}$ V.</div>
+    <div class="prob-answer">Answer: τ = 3.333 ms, v_C(t) = 10e^{-300t} V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P08 · Circuit Problem</div>
+  <p class="q-text">An inductor L=2 H is initially carrying 4 A. At t=0, it is connected to a circuit with a 2 Ω resistor in series with a 4 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 124.4 70.0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 H</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 Ω</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">4 Ω</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I_L</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">V</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RL discharge with series resistors</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $i_L(0^+) = 4$ A.<br>2. Final condition: $i_L(\infty) = 0$ A.<br>3. Time constant: $R_{th} = 2 + 4 = 6$ Ω. $\tau = 2/6 = 0.333$ s.<br>4. Response: $i_L(t) = 0 + (4 - 0)e^{-t/0.333} = 4e^{-3t}$ A.</div>
+    <div class="prob-answer">Answer: τ = 0.333 s, i_L(t) = 4e^{-3t} A</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P09 · Circuit Problem</div>
+  <p class="q-text">A 10 µF capacitor is initially uncharged. At t=0, it is connected to a 24 V source through a 1 kΩ resistor. However, there is also a 2 kΩ resistor in parallel with the capacitor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><line x1="100.0" y1="44.0" x2="100.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><g transform="rotate(90 100.0 115.0)"><line x1="73.0" y1="115.0" x2="81.6" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="118.4" y1="115.0" x2="127.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="100.0" cy="115.0" r="18.4" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="90.8" y="120.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">+</text><text x="110.1" y="120.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">−</text></g><text x="74.7" y="119.0" text-anchor="end" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">24 V</text><line x1="100.0" y1="44.0" x2="470.0" y2="44.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="186.0" x2="470.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="79.5" x2="470.0" y2="79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,79.5 272.0,72.5 277.2,86.5 282.4,72.5 287.6,86.5 292.8,72.5 298.0,86.5 300.6,79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="53.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">1 kΩ</text><circle cx="100.0" cy="79.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="79.5" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="150.5" x2="470.0" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="176.9,150.5 179.5,143.5 184.7,157.5 189.9,143.5 195.1,157.5 200.3,143.5 205.5,157.5 208.1,150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="192.5" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 kΩ</text><line x1="351.5" y1="150.5" x2="371.5" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="371.5" y1="137.5" x2="371.5" y2="163.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="383.5" y1="137.5" x2="383.5" y2="163.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="383.5" y1="150.5" x2="403.5" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="377.5" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 µF</text><circle cx="100.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="186.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="186.0" r="3.2" style="fill:#1f2933"/><text x="86.0" y="119.0" text-anchor="end" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="285.0" y="226.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RC charging with parallel load</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $v_C(0^+) = 0$ V.<br>2. Final condition: C open. Voltage divider: $v_C(\infty) = 24 \times \frac{2}{1+2} = 16$ V.<br>3. Time constant: Deactivate source. $R_{th} = 1 \parallel 2 = 0.667$ kΩ. $\tau = (667)(10 \times 10^{-6}) = 6.67$ ms.<br>4. Response: $v_C(t) = 16 + (0 - 16)e^{-t/6.67ms} = 16(1 - e^{-150t})$ V.</div>
+    <div class="prob-answer">Answer: τ = 6.67 ms, v_C(t) = 16(1 - e^{-150t}) V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P10 · Circuit Problem</div>
+  <p class="q-text">A 4 H inductor is initially uncharged. At t=0, it is connected to a 10 A current source in parallel with a 5 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><line x1="100.0" y1="44.0" x2="100.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><g transform="rotate(90 100.0 115.0)"><line x1="73.0" y1="115.0" x2="81.6" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="118.4" y1="115.0" x2="127.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="100.0" cy="115.0" r="18.4" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><line x1="100.0" y1="124.2" x2="100.0" y2="105.8" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 97.0 108.8 L 100.0 105.8 L 103.0 108.8" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/></g><text x="74.7" y="119.0" text-anchor="end" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 A</text><line x1="100.0" y1="44.0" x2="470.0" y2="44.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="186.0" x2="470.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="79.5" x2="470.0" y2="79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,79.5 272.0,72.5 277.2,86.5 282.4,72.5 287.6,86.5 292.8,72.5 298.0,86.5 300.6,79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="53.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">5 Ω</text><circle cx="100.0" cy="79.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="79.5" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="150.5" x2="470.0" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 269.4 150.5 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">4 H</text><circle cx="100.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="186.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="186.0" r="3.2" style="fill:#1f2933"/><text x="86.0" y="119.0" text-anchor="end" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I_L</text><text x="285.0" y="226.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RL charging with parallel resistor</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $i_L(0^+) = 0$ A.<br>2. Final condition: L short. All current goes through L: $i_L(\infty) = 10$ A.<br>3. Time constant: Deactivate source (open). $R_{th} = 5$ Ω. $\tau = 4/5 = 0.8$ s.<br>4. Response: $i_L(t) = 10 + (0 - 10)e^{-t/0.8} = 10(1 - e^{-1.25t})$ A.</div>
+    <div class="prob-answer">Answer: τ = 0.8 s, i_L(t) = 10(1 - e^{-1.25t}) A</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P11 · Circuit Problem</div>
+  <p class="q-text">A 5 µF capacitor is charged to 20 V. At t=0, it is connected to a circuit with a 1 kΩ resistor in series with a 3 kΩ resistor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="134.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="134.0" y1="57.0" x2="134.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="146.0" y1="57.0" x2="146.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="146.0" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">5 µF</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">1 kΩ</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">3 kΩ</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">V_C</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RC discharge with series resistors</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $v_C(0^+) = 20$ V.<br>2. Final condition: $v_C(\infty) = 0$ V.<br>3. Time constant: $R_{th} = 1 + 3 = 4$ kΩ. $\tau = (4000)(5 \times 10^{-6}) = 0.02$ s.<br>4. Response: $v_C(t) = 0 + (20 - 0)e^{-t/0.02} = 20e^{-50t}$ V.</div>
+    <div class="prob-answer">Answer: τ = 0.02 s, v_C(t) = 20e^{-50t} V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P12 · Circuit Problem</div>
+  <p class="q-text">A 1 H inductor is initially carrying 2 A. At t=0, it is connected to a circuit with a 2 Ω resistor in parallel with a 6 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><line x1="100.0" y1="44.0" x2="100.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><g transform="rotate(90 100.0 115.0)"><path d="M 83.8 115.0 a 4.1 5 0 0 1 8.1 0 a 4.1 5 0 0 1 8.1 0 a 4.1 5 0 0 1 8.1 0 a 4.1 5 0 0 1 8.1 0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/></g><text x="74.7" y="119.0" text-anchor="end" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">1 H</text><line x1="100.0" y1="44.0" x2="470.0" y2="44.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="186.0" x2="470.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="79.5" x2="470.0" y2="79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,79.5 272.0,72.5 277.2,86.5 282.4,72.5 287.6,86.5 292.8,72.5 298.0,86.5 300.6,79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="53.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 Ω</text><circle cx="100.0" cy="79.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="79.5" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="150.5" x2="470.0" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,150.5 272.0,143.5 277.2,157.5 282.4,143.5 287.6,157.5 292.8,143.5 298.0,157.5 300.6,150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">6 Ω</text><circle cx="100.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="186.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="186.0" r="3.2" style="fill:#1f2933"/><text x="86.0" y="119.0" text-anchor="end" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I_L</text><text x="285.0" y="226.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RL discharge with parallel resistors</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $i_L(0^+) = 2$ A.<br>2. Final condition: $i_L(\infty) = 0$ A.<br>3. Time constant: $R_{th} = 2 \parallel 6 = 1.5$ Ω. $\tau = 1/1.5 = 0.667$ s.<br>4. Response: $i_L(t) = 0 + (2 - 0)e^{-t/0.667} = 2e^{-1.5t}$ A.</div>
+    <div class="prob-answer">Answer: τ = 0.667 s, i_L(t) = 2e^{-1.5t} A</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P13 · Circuit Problem</div>
+  <p class="q-text">A 10 µF capacitor is initially uncharged. At t=0, a 12 V source is applied through a 2 kΩ resistor. Additionally, a 4 kΩ resistor is connected in parallel with the capacitor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><line x1="100.0" y1="44.0" x2="100.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><g transform="rotate(90 100.0 115.0)"><line x1="73.0" y1="115.0" x2="81.6" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="118.4" y1="115.0" x2="127.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="100.0" cy="115.0" r="18.4" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><text x="90.8" y="120.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">+</text><text x="110.1" y="120.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">−</text></g><text x="74.7" y="119.0" text-anchor="end" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">12 V</text><line x1="100.0" y1="44.0" x2="470.0" y2="44.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="186.0" x2="470.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="79.5" x2="470.0" y2="79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,79.5 272.0,72.5 277.2,86.5 282.4,72.5 287.6,86.5 292.8,72.5 298.0,86.5 300.6,79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="53.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 kΩ</text><circle cx="100.0" cy="79.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="79.5" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="150.5" x2="470.0" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="176.9,150.5 179.5,143.5 184.7,157.5 189.9,143.5 195.1,157.5 200.3,143.5 205.5,157.5 208.1,150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="192.5" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">4 kΩ</text><line x1="351.5" y1="150.5" x2="371.5" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="371.5" y1="137.5" x2="371.5" y2="163.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="383.5" y1="137.5" x2="383.5" y2="163.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="383.5" y1="150.5" x2="403.5" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="377.5" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 µF</text><circle cx="100.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="186.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="186.0" r="3.2" style="fill:#1f2933"/><text x="86.0" y="119.0" text-anchor="end" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="285.0" y="226.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RC charging with parallel load</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $v_C(0^+) = 0$ V.<br>2. Final condition: C open. Voltage divider: $v_C(\infty) = 12 \times \frac{4}{2+4} = 8$ V.<br>3. Time constant: Deactivate source. $R_{th} = 2 \parallel 4 = 1.333$ kΩ. $\tau = (1333)(10 \times 10^{-6}) = 13.33$ ms.<br>4. Response: $v_C(t) = 8 + (0 - 8)e^{-t/13.33ms} = 8(1 - e^{-75t})$ V.</div>
+    <div class="prob-answer">Answer: τ = 13.33 ms, v_C(t) = 8(1 - e^{-75t}) V</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P14 · Circuit Problem</div>
+  <p class="q-text">A 2 H inductor is initially uncharged. At t=0, a 5 A current source is applied in parallel with a 10 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><line x1="100.0" y1="44.0" x2="100.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><g transform="rotate(90 100.0 115.0)"><line x1="73.0" y1="115.0" x2="81.6" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="118.4" y1="115.0" x2="127.0" y2="115.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><circle cx="100.0" cy="115.0" r="18.4" style="stroke:#1f2933;stroke-width:2;fill:#ffffff"/><line x1="100.0" y1="124.2" x2="100.0" y2="105.8" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 97.0 108.8 L 100.0 105.8 L 103.0 108.8" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/></g><text x="74.7" y="119.0" text-anchor="end" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">5 A</text><line x1="100.0" y1="44.0" x2="470.0" y2="44.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="186.0" x2="470.0" y2="186.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="100.0" y1="79.5" x2="470.0" y2="79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><polyline points="269.4,79.5 272.0,72.5 277.2,86.5 282.4,72.5 287.6,86.5 292.8,72.5 298.0,86.5 300.6,79.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="53.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">10 Ω</text><circle cx="100.0" cy="79.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="79.5" r="3.2" style="fill:#1f2933"/><line x1="100.0" y1="150.5" x2="470.0" y2="150.5" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 269.4 150.5 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0 a 3.9 5 0 0 1 7.8 0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="285.0" y="124.9" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">2 H</text><circle cx="100.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="150.5" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="44.0" r="3.2" style="fill:#1f2933"/><circle cx="100.0" cy="186.0" r="3.2" style="fill:#1f2933"/><circle cx="470.0" cy="186.0" r="3.2" style="fill:#1f2933"/><text x="86.0" y="119.0" text-anchor="end" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I_L</text><text x="285.0" y="226.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RL charging with parallel resistor</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $i_L(0^+) = 0$ A.<br>2. Final condition: L short. $i_L(\infty) = 5$ A.<br>3. Time constant: Deactivate source. $R_{th} = 10$ Ω. $\tau = 2/10 = 0.2$ s.<br>4. Response: $i_L(t) = 5 + (0 - 5)e^{-t/0.2} = 5(1 - e^{-5t})$ A.</div>
+    <div class="prob-answer">Answer: τ = 0.2 s, i_L(t) = 5(1 - e^{-5t}) A</div>
+  </div>
+</div>
+
+<div class="prob-card">
+  <div class="q-id">P15 · Circuit Problem</div>
+  <p class="q-text">A 1 µF capacitor is charged to 15 V. At t=0, it is connected to a circuit consisting of a 500 Ω resistor in series with a 1500 Ω resistor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.</p>
+  <div class="prob-circuit"><svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto;"><rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/><rect x="70" y="70" width="420" height="80" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="114.0" y1="70.0" x2="134.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="134.0" y1="57.0" x2="134.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="146.0" y1="57.0" x2="146.0" y2="83.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><line x1="146.0" y1="70.0" x2="166.0" y2="70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="140.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">1 µF</text><polyline points="264.4,70.0 267.0,63.0 272.2,77.0 277.4,63.0 282.6,77.0 287.8,63.0 293.0,77.0 295.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="280.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">500 Ω</text><polyline points="404.4,70.0 407.0,63.0 412.2,77.0 417.4,63.0 422.6,77.0 427.8,63.0 433.0,77.0 435.6,70.0" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="420.0" y="44.4" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">1500 Ω</text><circle cx="70.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="70.0" r="3.2" style="fill:#1f2933"/><circle cx="490.0" cy="150.0" r="3.2" style="fill:#1f2933"/><circle cx="70.0" cy="150.0" r="3.2" style="fill:#1f2933"/><path d="M 100 150 L 128 150" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><path d="M 122 146 L 130 150 L 122 154" style="stroke:#1f2933;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"/><text x="114.0" y="172.0" text-anchor="middle" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">I</text><text x="76.0" y="62.0" text-anchor="start" style="font-family:Georgia,serif;font-size:14px;font-style:italic;fill:#1f2933">V_C</text><text x="280.0" y="194.0" text-anchor="middle" style="font-family:Georgia,'Times New Roman',serif;font-size:14px;fill:#1f2933">RC discharge with series resistors</text></svg></div>
+  <button class="reveal-btn">Show Solution</button>
+  <div class="prob-solution">
+    <div class="sol-steps">1. Initial condition: $v_C(0^+) = 15$ V.<br>2. Final condition: $v_C(\infty) = 0$ V.<br>3. Time constant: $R_{th} = 500 + 1500 = 2000$ Ω. $\tau = (2000)(1 \times 10^{-6}) = 0.002$ s.<br>4. Response: $v_C(t) = 0 + (15 - 0)e^{-t/0.002} = 15e^{-500t}$ V.</div>
+    <div class="prob-answer">Answer: τ = 0.002 s, v_C(t) = 15e^{-500t} V</div>
+  </div>
+</div>
+  </section>
+
+  <div class="practice-footer">
+    <a href="index.html">← Back to all chapters</a>
+    <span class="practice-footer-note">EEE 133 · Circuits and Electronics II · Practice Hub</span>
+  </div>
+
+</div>
+</div>
+
+<script>
+// Theme toggle
+(function(){
+  var btn=document.getElementById('themeBtn');
+  var saved=localStorage.getItem('eee133-theme');
+  if(saved){document.documentElement.setAttribute('data-theme',saved);btn.textContent=saved==='dark'?'☀️':'🌙';}
+  btn.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var nxt=cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',nxt);
+    localStorage.setItem('eee133-theme',nxt);
+    btn.textContent=nxt==='dark'?'☀️':'🌙';
+  });
+})();
+
+// MCQ / TF check
+document.querySelectorAll('.q-card[data-type]').forEach(function(card){
+  var type=card.dataset.type;
+  var selected=null;
+  var opts=card.querySelectorAll('.opt-btn');
+  opts.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      opts.forEach(function(b){b.classList.remove('selected');});
+      btn.classList.add('selected');
+      selected=btn.dataset.val;
+      card.querySelector('.check-btn').disabled=false;
+    });
+  });
+  var checkBtn=card.querySelector('.check-btn');
+  checkBtn.addEventListener('click',function(){
+    if(!selected)return;
+    var correct=card.dataset.answer;
+    var fb=card.querySelector('.q-feedback');
+    var isCorrect=selected===correct;
+    fb.classList.add('show');
+    fb.classList.add(isCorrect?'correct':'incorrect');
+    fb.innerHTML='<strong>'+(isCorrect?'✓ Correct':'✗ Incorrect')+'</strong><br>'+esc(card.dataset.expl||'');
+    opts.forEach(function(b){
+      b.disabled=true;
+      if(b.dataset.val===correct)b.classList.add('correct-opt');
+      if(b.dataset.val===selected&&!isCorrect)b.classList.add('wrong-opt');
+    });
+    checkBtn.disabled=true;
+    checkBtn.textContent='Checked';
+  });
+});
+
+// Problem solution reveal
+document.querySelectorAll('.prob-card').forEach(function(card){
+  var btn=card.querySelector('.reveal-btn');
+  var sol=card.querySelector('.prob-solution');
+  btn.addEventListener('click',function(){
+    sol.classList.toggle('show');
+    btn.textContent=sol.classList.contains('show')?'Hide Solution':'Show Solution';
+    if(sol.classList.contains('show')&&window.MathJax&&MathJax.typesetPromise){
+      MathJax.typesetPromise([sol]).catch(function(){});
+    }
+  });
+});
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+</script>
+</body>
+</html>

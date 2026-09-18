@@ -1,0 +1,577 @@
+{
+  "chapter": "03",
+  "title": "First-Order Circuits · Part 1",
+  "conceptual": [
+    {
+      "id": "C01",
+      "question": "What defines a first-order circuit in terms of energy storage elements?",
+      "type": "mcq",
+      "options": [
+        "It contains exactly one resistor and one source.",
+        "It contains exactly one independent energy-storage element (single L or single C) after reductions.",
+        "It contains at least one inductor and one capacitor.",
+        "It contains no energy-storage elements."
+      ],
+      "answer": "B",
+      "explanation": "A first-order circuit is defined by having exactly one independent energy-storage element (either a single inductor or a single capacitor) after all series/parallel combinations are reduced."
+    },
+    {
+      "id": "C02",
+      "question": "In DC steady state, an inductor behaves as a:",
+      "type": "mcq",
+      "options": [
+        "Open circuit",
+        "Short circuit",
+        "Resistor with infinite resistance",
+        "Capacitor"
+      ],
+      "answer": "B",
+      "explanation": "In DC steady state, the current through an inductor is constant, so $di/dt = 0$. Since $v = L(di/dt)$, the voltage across the inductor is 0, making it behave as a short circuit."
+    },
+    {
+      "id": "C03",
+      "question": "In DC steady state, a capacitor behaves as a:",
+      "type": "mcq",
+      "options": [
+        "Short circuit",
+        "Open circuit",
+        "Resistor with zero resistance",
+        "Inductor"
+      ],
+      "answer": "B",
+      "explanation": "In DC steady state, the voltage across a capacitor is constant, so $dv/dt = 0$. Since $i = C(dv/dt)$, the current through the capacitor is 0, making it behave as an open circuit."
+    },
+    {
+      "id": "C04",
+      "question": "The time constant $\\tau$ for a source-free RC circuit is given by:",
+      "type": "mcq",
+      "options": [
+        "$\\tau = R/C$",
+        "$\\tau = C/R$",
+        "$\\tau = RC$",
+        "$\\tau = 1/RC$"
+      ],
+      "answer": "C",
+      "explanation": "For an RC circuit, the time constant is the product of resistance and capacitance: $\\tau = RC$."
+    },
+    {
+      "id": "C05",
+      "question": "The time constant $\\tau$ for a source-free RL circuit is given by:",
+      "type": "mcq",
+      "options": [
+        "$\\tau = RL$",
+        "$\\tau = L/R$",
+        "$\\tau = R/L$",
+        "$\\tau = 1/LR$"
+      ],
+      "answer": "B",
+      "explanation": "For an RL circuit, the time constant is the ratio of inductance to resistance: $\\tau = L/R$."
+    },
+    {
+      "id": "C06",
+      "question": "Which quantity is continuous across a switching event in a capacitor circuit?",
+      "type": "mcq",
+      "options": [
+        "Current",
+        "Voltage",
+        "Power",
+        "Charge"
+      ],
+      "answer": "B",
+      "explanation": "Capacitor voltage cannot change instantaneously because that would require infinite current. Therefore, $v(0^+) = v(0^-)$."
+    },
+    {
+      "id": "C07",
+      "question": "Which quantity is continuous across a switching event in an inductor circuit?",
+      "type": "mcq",
+      "options": [
+        "Voltage",
+        "Current",
+        "Power",
+        "Flux linkage"
+      ],
+      "answer": "B",
+      "explanation": "Inductor current cannot change instantaneously because that would require infinite voltage. Therefore, $i(0^+) = i(0^-)$."
+    },
+    {
+      "id": "C08",
+      "question": "The natural response of a first-order circuit is determined by:",
+      "type": "mcq",
+      "options": [
+        "The sources in the circuit",
+        "The initial conditions only",
+        "The circuit parameters (R, L, or C) and the homogeneous differential equation",
+        "The load resistance only"
+      ],
+      "answer": "C",
+      "explanation": "The natural response is the solution to the homogeneous differential equation (sources set to zero). Its shape (exponential decay) is determined by the circuit parameters, while the amplitude is set by initial conditions."
+    },
+    {
+      "id": "C09",
+      "question": "After one time constant ($t = \\tau$), what percentage of the initial value remains in a decaying exponential?",
+      "type": "mcq",
+      "options": [
+        "63.2%",
+        "36.8%",
+        "50%",
+        "13.5%"
+      ],
+      "answer": "B",
+      "explanation": "For a decay $e^{-t/\\tau}$, at $t=\\tau$, the value is $e^{-1} \\approx 0.368$, or 36.8% of the initial value."
+    },
+    {
+      "id": "C10",
+      "question": "After one time constant ($t = \\tau$), what percentage of the final value has been reached in a rising exponential (step response)?",
+      "type": "mcq",
+      "options": [
+        "36.8%",
+        "63.2%",
+        "50%",
+        "86.5%"
+      ],
+      "answer": "B",
+      "explanation": "For a rise $1 - e^{-t/\\tau}$, at $t=\\tau$, the value is $1 - e^{-1} \\approx 1 - 0.368 = 0.632$, or 63.2% of the final value."
+    },
+    {
+      "id": "C11",
+      "question": "The '5τ rule' states that the transient response is considered to have reached steady state after:",
+      "type": "mcq",
+      "options": [
+        "$t = 2\\tau$",
+        "$t = 3\\tau$",
+        "$t = 5\\tau$",
+        "$t = 10\\tau$"
+      ],
+      "answer": "C",
+      "explanation": "By $t = 5\\tau$, the transient component is less than 1% of its initial value ($e^{-5} \\approx 0.0067$), which is generally considered steady state for engineering purposes."
+    },
+    {
+      "id": "C12",
+      "question": "In a source-free RC circuit, the energy stored in the capacitor is eventually dissipated as:",
+      "type": "mcq",
+      "options": [
+        "Magnetic energy in an inductor",
+        "Heat in the resistor",
+        "Radiated electromagnetic waves",
+        "Kinetic energy"
+      ],
+      "answer": "B",
+      "explanation": "The energy initially stored in the electric field of the capacitor ($\\frac{1}{2}CV_0^2$) is dissipated as thermal energy (heat) in the resistor as the capacitor discharges."
+    },
+    {
+      "id": "C13",
+      "question": "The general solution to a first-order linear differential equation is the sum of:",
+      "type": "mcq",
+      "options": [
+        "The transient response and the AC response",
+        "The natural response and the forced response",
+        "The DC response and the AC response",
+        "The initial condition and the final condition"
+      ],
+      "answer": "B",
+      "explanation": "The complete solution is $i(t) = i_{\\text{natural}}(t) + i_{\\text{forced}}(t)$. The natural response comes from the homogeneous equation, and the forced response comes from the particular solution driven by the sources."
+    },
+    {
+      "id": "C14",
+      "question": "True or False: The current through a capacitor can change instantaneously at a switching instant.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "A",
+      "explanation": "True. While capacitor voltage is continuous, the current $i = C(dv/dt)$ can jump if the slope of the voltage changes abruptly, such as when a charged capacitor is connected to a resistor."
+    },
+    {
+      "id": "C15",
+      "question": "True or False: The natural response of a first-order circuit depends on the value of the DC source connected to it.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "B",
+      "explanation": "False. The natural response is the solution to the homogeneous differential equation, which is derived by setting the independent sources to zero. It depends only on the circuit parameters (R, L, C) and initial conditions, not on the source values."
+    }
+  ],
+  "problems": [
+    {
+      "id": "P01",
+      "question": "A 100 µF capacitor is charged to 10 V. It is then disconnected from the source and connected to a 5 kΩ resistor. Calculate the time constant $\\tau$ and the voltage across the capacitor at $t = 2\\tau$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "100 µF"
+          },
+          {
+            "kind": "R",
+            "value": "5 kΩ"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "Source-free RC discharge"
+      },
+      "solution": "1. Identify parameters: $C = 100 \\, \\mu\\text{F} = 100 \\times 10^{-6} \\, \\text{F}$, $R = 5 \\, \\text{k}\\Omega = 5000 \\, \\Omega$.\n2. Calculate time constant: $\\tau = RC = (5000)(100 \\times 10^{-6}) = 0.5 \\, \\text{s}$.\n3. The voltage equation for source-free RC is $v(t) = V_0 e^{-t/\\tau}$, with $V_0 = 10 \\, \\text{V}$.\n4. At $t = 2\\tau$: $v(2\\tau) = 10 \\cdot e^{-2} \\approx 10 \\cdot 0.1353 = 1.353 \\, \\text{V}$.",
+      "answer": "\\tau = 0.5 \\, \\text{s}, \\, v(2\\tau) \\approx 1.35 \\, \\text{V}"
+    },
+    {
+      "id": "P02",
+      "question": "An inductor of 2 H carries a current of 4 A. It is then disconnected from the source and connected to a 10 Ω resistor. Find the initial voltage across the inductor and the time constant.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "L",
+            "value": "2 H"
+          },
+          {
+            "kind": "R",
+            "value": "10 Ω"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V_L",
+        "note": "Source-free RL decay"
+      },
+      "solution": "1. Identify parameters: $L = 2 \\, \\text{H}$, $R = 10 \\, \\Omega$, $I_0 = 4 \\, \\text{A}$.\n2. Calculate time constant: $\\tau = L/R = 2/10 = 0.2 \\, \\text{s}$.\n3. The current equation is $i(t) = I_0 e^{-t/\\tau} = 4 e^{-5t}$.\n4. The voltage across the inductor is $v_L(t) = L \\frac{di}{dt}$. Alternatively, using KVL for the loop: $v_L + v_R = 0 \\Rightarrow v_L = -v_R = -iR$.\n5. At $t=0^+$, $i(0^+) = 4 \\, \\text{A}$. So $v_L(0^+) = -(4)(10) = -40 \\, \\text{V}$.",
+      "answer": "v_L(0^+) = -40 \\, \\text{V}, \\, \\tau = 0.2 \\, \\text{s}"
+    },
+    {
+      "id": "P03",
+      "question": "A series RC circuit consists of a 12 V DC source, a 1 kΩ resistor, and a 10 µF capacitor. The switch closes at $t=0$ and the capacitor is initially uncharged. Find the voltage across the capacitor at $t = 5 \\, \\text{ms}$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "1 kΩ"
+          },
+          {
+            "kind": "C",
+            "value": "10 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "Step response RC charging"
+      },
+      "solution": "1. Identify parameters: $V_s = 12 \\, \\text{V}$, $R = 1000 \\, \\Omega$, $C = 10 \\, \\mu\\text{F} = 10 \\times 10^{-6} \\, \\text{F}$.\n2. Initial condition: $v(0) = 0 \\, \\text{V}$.\n3. Final value (steady state): $v(\\infty) = V_s = 12 \\, \\text{V}$ (capacitor acts as open circuit).\n4. Time constant: $\\tau = RC = (1000)(10 \\times 10^{-6}) = 0.01 \\, \\text{s} = 10 \\, \\text{ms}$.\n5. Step response formula: $v(t) = v(\\infty) + [v(0) - v(\\infty)]e^{-t/\\tau} = 12 + (0 - 12)e^{-t/0.01} = 12(1 - e^{-100t})$.\n6. At $t = 5 \\, \\text{ms} = 0.005 \\, \\text{s}$: $v(0.005) = 12(1 - e^{-100(0.005)}) = 12(1 - e^{-0.5})$.\n7. $e^{-0.5} \\approx 0.6065$. $v(0.005) = 12(1 - 0.6065) = 12(0.3935) \\approx 4.72 \\, \\text{V}$.",
+      "answer": "v(5 ms) \\approx 4.72 \\, \\text{V}"
+    },
+    {
+      "id": "P04",
+      "question": "A series RL circuit consists of a 20 V DC source, a 5 Ω resistor, and a 1 H inductor. The switch closes at $t=0$ and the inductor current is initially zero. Find the current through the inductor at $t = 1 \\, \\text{s}$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "20 V"
+          },
+          {
+            "kind": "R",
+            "value": "5 Ω"
+          },
+          {
+            "kind": "L",
+            "value": "1 H"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V_L",
+        "note": "Step response RL charging"
+      },
+      "solution": "1. Identify parameters: $V_s = 20 \\, \\text{V}$, $R = 5 \\, \\Omega$, $L = 1 \\, \\text{H}$.\n2. Initial condition: $i(0) = 0 \\, \\text{A}$.\n3. Final value (steady state): $i(\\infty) = V_s/R = 20/5 = 4 \\, \\text{A}$ (inductor acts as short circuit).\n4. Time constant: $\\tau = L/R = 1/5 = 0.2 \\, \\text{s}$.\n5. Step response formula: $i(t) = i(\\infty) + [i(0) - i(\\infty)]e^{-t/\\tau} = 4 + (0 - 4)e^{-t/0.2} = 4(1 - e^{-5t})$.\n6. At $t = 1 \\, \\text{s}$: $i(1) = 4(1 - e^{-5})$.\n7. $e^{-5} \\approx 0.0067$. $i(1) = 4(1 - 0.0067) = 4(0.9933) \\approx 3.97 \\, \\text{A}$.",
+      "answer": "i(1 s) \\approx 3.97 \\, \\text{A}"
+    },
+    {
+      "id": "P05",
+      "question": "In the circuit shown, the switch has been in position 1 for a long time. At $t=0$, it moves to position 2. Find $v(0^+)$ and $i(0^+)$ for the capacitor branch. Position 1 connects a 10 V source to a 2 kΩ resistor and a 5 µF capacitor. Position 2 connects the capacitor to a 5 kΩ resistor.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "10 V"
+          },
+          {
+            "kind": "R",
+            "value": "2 kΩ"
+          },
+          {
+            "kind": "C",
+            "value": "5 µF"
+          },
+          {
+            "kind": "R",
+            "value": "5 kΩ"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "Switched RC circuit, find initial conditions"
+      },
+      "solution": "1. For $t < 0$ (Position 1): DC steady state. Capacitor is open circuit. No current flows through the 2 kΩ resistor.\n2. Voltage across capacitor: $v(0^-) = 10 \\, \\text{V}$ (full source voltage).\n3. Continuity: $v(0^+) = v(0^-) = 10 \\, \\text{V}$.\n4. For $t > 0$ (Position 2): The capacitor is connected to the 5 kΩ resistor. The source is disconnected.\n5. The circuit is a source-free RC loop. The voltage across the resistor is equal to the capacitor voltage (with opposite polarity if defined by passive sign convention for discharge current, but magnitude is $V_C$).\n6. Current $i(0^+)$ flows from the positive plate of the capacitor through the resistor. $i(0^+) = v(0^+) / R_{discharge} = 10 \\, \\text{V} / 5 \\, \\text{k}\\Omega = 2 \\, \\text{mA}$.\n7. Direction: If $i$ is defined as flowing out of the positive terminal, $i(0^+) = 2 \\, \\text{mA}$. If defined as entering the positive terminal (charging convention), it would be $-2 \\, \\text{mA}$. Assuming standard discharge current direction out of +: $2 \\, \\text{mA}$.",
+      "answer": "v(0^+) = 10 \\, \\text{V}, \\, i(0^+) = 2 \\, \\text{mA}"
+    },
+    {
+      "id": "P06",
+      "question": "A 1 H inductor carries a current of 5 A. At $t=0$, it is connected to a parallel combination of a 10 Ω resistor and a 5 Ω resistor. Find the time constant of the circuit and the current at $t = 0.5 \\, \\text{s}$.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "L",
+          "value": "1 H"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "10 Ω"
+            }
+          ],
+          [
+            {
+              "kind": "R",
+              "value": "5 Ω"
+            }
+          ]
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V",
+        "note": "Source-free RL with parallel resistors"
+      },
+      "solution": "1. Identify parameters: $L = 1 \\, \\text{H}$, $I_0 = 5 \\, \\text{A}$.\n2. Equivalent resistance: The inductor sees the two resistors in parallel. $R_{eq} = (10 \\times 5) / (10 + 5) = 50/15 = 10/3 \\, \\Omega \\approx 3.33 \\, \\Omega$.\n3. Time constant: $\\tau = L / R_{eq} = 1 / (10/3) = 0.3 \\, \\text{s}$.\n4. Current equation: $i(t) = I_0 e^{-t/\\tau} = 5 e^{-t/0.3} = 5 e^{-3.33t}$.\n5. At $t = 0.5 \\, \\text{s}$: $i(0.5) = 5 e^{-0.5/0.3} = 5 e^{-1.667}$.\n6. $e^{-1.667} \\approx 0.1889$.\n7. $i(0.5) = 5 \\times 0.1889 \\approx 0.945 \\, \\text{A}$.",
+      "answer": "\\tau = 0.3 \\, \\text{s}, \\, i(0.5) \\approx 0.945 \\, \\text{A}"
+    },
+    {
+      "id": "P07",
+      "question": "A series RC circuit has a 15 V source, a 2 kΩ resistor, and a 2 µF capacitor. The capacitor is initially charged to 5 V with polarity opposing the source. Find the expression for $v(t)$ for $t \\ge 0$ and the time when $v(t) = 10 \\, \\text{V}$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "15 V"
+          },
+          {
+            "kind": "R",
+            "value": "2 kΩ"
+          },
+          {
+            "kind": "C",
+            "value": "2 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "RC charging with non-zero initial voltage"
+      },
+      "solution": "1. Parameters: $V_s = 15 \\, \\text{V}$, $R = 2000 \\, \\Omega$, $C = 2 \\, \\mu\\text{F} = 2 \\times 10^{-6} \\, \\text{F}$.\n2. Initial condition: $v(0) = -5 \\, \\text{V}$ (opposing polarity).\n3. Final value: $v(\\infty) = 15 \\, \\text{V}$.\n4. Time constant: $\\tau = RC = (2000)(2 \\times 10^{-6}) = 0.004 \\, \\text{s} = 4 \\, \\text{ms}$.\n5. General solution: $v(t) = v(\\infty) + [v(0) - v(\\infty)]e^{-t/\\tau} = 15 + [-5 - 15]e^{-t/0.004} = 15 - 20e^{-250t}$.\n6. Find $t$ when $v(t) = 10 \\, \\text{V}$:\n   $10 = 15 - 20e^{-250t}$\n   $20e^{-250t} = 5$\n   $e^{-250t} = 0.25$\n   $-250t = \\ln(0.25) = -1.3863$\n   $t = 1.3863 / 250 \\approx 0.005545 \\, \\text{s} = 5.55 \\, \\text{ms}$.",
+      "answer": "v(t) = 15 - 20e^{-250t} \\, \\text{V}, \\, t \\approx 5.55 \\, \\text{ms}"
+    },
+    {
+      "id": "P08",
+      "question": "An RL circuit consists of a 10 V source, a 4 Ω resistor, and a 0.5 H inductor in series. The switch closes at $t=0$. Find the voltage across the inductor at $t = 0^+$ and at $t = \\tau$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "10 V"
+          },
+          {
+            "kind": "R",
+            "value": "4 Ω"
+          },
+          {
+            "kind": "L",
+            "value": "0.5 H"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V_L",
+        "note": "RL step response, find inductor voltage"
+      },
+      "solution": "1. Parameters: $V_s = 10 \\, \\text{V}$, $R = 4 \\, \\Omega$, $L = 0.5 \\, \\text{H}$.\n2. Time constant: $\\tau = L/R = 0.5/4 = 0.125 \\, \\text{s}$.\n3. Current equation: $i(t) = \\frac{V_s}{R}(1 - e^{-t/\\tau}) = 2.5(1 - e^{-8t})$.\n4. Inductor voltage: $v_L(t) = L \\frac{di}{dt}$.\n   $\\frac{di}{dt} = 2.5 \\cdot (-e^{-8t}) \\cdot (-8) = 20 e^{-8t}$.\n   $v_L(t) = 0.5 \\cdot 20 e^{-8t} = 10 e^{-8t} \\, \\text{V}$.\n   Alternatively, KVL: $v_L(t) = V_s - v_R(t) = 10 - i(t)R = 10 - 2.5(1 - e^{-8t})(4) = 10 - 10(1 - e^{-8t}) = 10e^{-8t}$.\n5. At $t = 0^+$: $v_L(0^+) = 10 e^0 = 10 \\, \\text{V}$.\n6. At $t = \\tau = 0.125 \\, \\text{s}$: $v_L(\\tau) = 10 e^{-8(0.125)} = 10 e^{-1} \\approx 10(0.3679) = 3.68 \\, \\text{V}$.",
+      "answer": "v_L(0^+) = 10 \\, \\text{V}, \\, v_L(\\tau) \\approx 3.68 \\, \\text{V}"
+    },
+    {
+      "id": "P09",
+      "question": "A capacitor of 100 µF is charged to 20 V. It is discharged through a resistor. If the voltage drops to 7.36 V after 0.5 seconds, find the value of the resistor.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "100 µF"
+          },
+          {
+            "kind": "R",
+            "value": "R"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "Find R from decay data"
+      },
+      "solution": "1. Source-free RC equation: $v(t) = V_0 e^{-t/\\tau}$.\n2. Given: $V_0 = 20 \\, \\text{V}$, $v(0.5) = 7.36 \\, \\text{V}$, $t = 0.5 \\, \\text{s}$, $C = 100 \\, \\mu\\text{F} = 10^{-4} \\, \\text{F}$.\n3. Substitute values: $7.36 = 20 e^{-0.5/\\tau}$.\n4. $e^{-0.5/\\tau} = 7.36 / 20 = 0.368$.\n5. Take natural log: $-0.5/\\tau = \\ln(0.368) \\approx -1.0$.\n6. $0.5/\\tau = 1 \\Rightarrow \\tau = 0.5 \\, \\text{s}$.\n7. Since $\\tau = RC$, $R = \\tau / C = 0.5 / 10^{-4} = 5000 \\, \\Omega = 5 \\, \\text{k}\\Omega$.",
+      "answer": "R = 5 kΩ"
+    },
+    {
+      "id": "P10",
+      "question": "In a series RL circuit, the current rises from 0 to 63.2% of its final value in 0.2 seconds. If the resistance is 10 Ω, find the inductance.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "V"
+          },
+          {
+            "kind": "R",
+            "value": "10 Ω"
+          },
+          {
+            "kind": "L",
+            "value": "L"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V_L",
+        "note": "Find L from time constant"
+      },
+      "solution": "1. The current reaches 63.2% of its final value at $t = \\tau$.\n2. Given $t = 0.2 \\, \\text{s}$ corresponds to $\\tau$, so $\\tau = 0.2 \\, \\text{s}$.\n3. For an RL circuit, $\\tau = L/R$.\n4. Given $R = 10 \\, \\Omega$.\n5. $L = \\tau \\cdot R = 0.2 \\cdot 10 = 2 \\, \\text{H}$.",
+      "answer": "L = 2 H"
+    },
+    {
+      "id": "P11",
+      "question": "A circuit has a 12 V source, a 3 kΩ resistor, and a 4 µF capacitor in series. The switch closes at $t=0$. Determine the time required for the capacitor voltage to reach 9 V.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "3 kΩ"
+          },
+          {
+            "kind": "C",
+            "value": "4 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "Time to reach specific voltage"
+      },
+      "solution": "1. Parameters: $V_s = 12 \\, \\text{V}$, $R = 3000 \\, \\Omega$, $C = 4 \\, \\mu\\text{F} = 4 \\times 10^{-6} \\, \\text{F}$.\n2. $v(0) = 0$, $v(\\infty) = 12 \\, \\text{V}$.\n3. $\\tau = RC = 3000 \\times 4 \\times 10^{-6} = 0.012 \\, \\text{s} = 12 \\, \\text{ms}$.\n4. Equation: $v(t) = 12(1 - e^{-t/0.012})$.\n5. Set $v(t) = 9 \\, \\text{V}$:\n   $9 = 12(1 - e^{-t/0.012})$\n   $9/12 = 1 - e^{-t/0.012}$\n   $0.75 = 1 - e^{-t/0.012}$\n   $e^{-t/0.012} = 0.25$\n   $-t/0.012 = \\ln(0.25) \\approx -1.3863$\n   $t = 0.012 \\times 1.3863 \\approx 0.01664 \\, \\text{s} = 16.64 \\, \\text{ms}$.",
+      "answer": "t \\approx 16.64 ms"
+    },
+    {
+      "id": "P12",
+      "question": "An inductor of 4 H is connected to a 20 Ω resistor. The initial current is 8 A. Find the energy dissipated in the resistor during the first time constant.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "L",
+            "value": "4 H"
+          },
+          {
+            "kind": "R",
+            "value": "20 Ω"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V_L",
+        "note": "Energy dissipation in RL circuit"
+      },
+      "solution": "1. Parameters: $L = 4 \\, \\text{H}$, $R = 20 \\, \\Omega$, $I_0 = 8 \\, \\text{A}$.\n2. $\\tau = L/R = 4/20 = 0.2 \\, \\text{s}$.\n3. Current: $i(t) = 8 e^{-t/0.2} = 8 e^{-5t}$.\n4. Power in resistor: $p(t) = i^2(t) R = (8 e^{-5t})^2 (20) = 64 e^{-10t} \\cdot 20 = 1280 e^{-10t} \\, \\text{W}$.\n5. Energy dissipated from $t=0$ to $t=\\tau=0.2$:\n   $W = \\int_0^{0.2} 1280 e^{-10t} dt$\n   $W = 1280 \\left[ \\frac{e^{-10t}}{-10} \\right]_0^{0.2}$\n   $W = -128 \\left[ e^{-2} - e^0 \\right] = 128 (1 - e^{-2})$.\n6. $e^{-2} \\approx 0.1353$.\n   $W = 128 (1 - 0.1353) = 128 (0.8647) \\approx 110.7 \\, \\text{J}$.",
+      "answer": "W \\approx 110.7 J"
+    },
+    {
+      "id": "P13",
+      "question": "A 50 µF capacitor is charged to 100 V. It is connected to a 20 kΩ resistor. Calculate the current at $t = 0^+$ and the power dissipated in the resistor at $t = \\tau$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "50 µF"
+          },
+          {
+            "kind": "R",
+            "value": "20 kΩ"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "Source-free RC current and power"
+      },
+      "solution": "1. Parameters: $C = 50 \\, \\mu\\text{F} = 50 \\times 10^{-6} \\, \\text{F}$, $R = 20 \\, \\text{k}\\Omega = 20000 \\, \\Omega$, $V_0 = 100 \\, \\text{V}$.\n2. $\\tau = RC = 20000 \\times 50 \\times 10^{-6} = 1 \\, \\text{s}$.\n3. Current equation: $i(t) = -\\frac{V_0}{R} e^{-t/\\tau} = -\\frac{100}{20000} e^{-t} = -0.005 e^{-t} \\, \\text{A} = -5 e^{-t} \\, \\text{mA}$.\n4. At $t = 0^+$: $i(0^+) = -5 \\, \\text{mA}$.\n5. Power at $t = \\tau = 1 \\, \\text{s}$:\n   $i(1) = -5 e^{-1} \\approx -5(0.3679) = -1.8395 \\, \\text{mA}$.\n   $P = i^2 R = (-1.8395 \\times 10^{-3})^2 \\times 20000$.\n   $P = (3.384 \\times 10^{-6}) \\times 20000 \\approx 0.0677 \\, \\text{W} = 67.7 \\, \\text{mW}$.",
+      "answer": "i(0^+) = -5 mA, P(\\tau) \\approx 67.7 mW"
+    },
+    {
+      "id": "P14",
+      "question": "A series RL circuit has a 10 V source, 5 Ω resistor, and 2 H inductor. The switch closes at $t=0$. Find the total energy stored in the inductor at $t = 0.5 \\, \\text{s}$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "10 V"
+          },
+          {
+            "kind": "R",
+            "value": "5 Ω"
+          },
+          {
+            "kind": "L",
+            "value": "2 H"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V_L",
+        "note": "Energy in inductor at specific time"
+      },
+      "solution": "1. Parameters: $V_s = 10 \\, \\text{V}$, $R = 5 \\, \\Omega$, $L = 2 \\, \\text{H}$.\n2. $\\tau = L/R = 2/5 = 0.4 \\, \\text{s}$.\n3. Final current $i(\\infty) = 10/5 = 2 \\, \\text{A}$.\n4. Current equation: $i(t) = 2(1 - e^{-t/0.4}) = 2(1 - e^{-2.5t})$.\n5. At $t = 0.5 \\, \\text{s}$:\n   $i(0.5) = 2(1 - e^{-2.5(0.5)}) = 2(1 - e^{-1.25})$.\n   $e^{-1.25} \\approx 0.2865$.\n   $i(0.5) = 2(1 - 0.2865) = 2(0.7135) = 1.427 \\, \\text{A}$.\n6. Energy stored: $W_L = \\frac{1}{2} L i^2 = 0.5 \\times 2 \\times (1.427)^2 = 1 \\times 2.036 = 2.036 \\, \\text{J}$.",
+      "answer": "W_L \\approx 2.04 J"
+    },
+    {
+      "id": "P15",
+      "question": "Two capacitors, $C_1 = 10 \\, \\mu\\text{F}$ and $C_2 = 20 \\, \\mu\\text{F}$, are connected in series with a 5 kΩ resistor. The combination is initially charged to 30 V across the series pair. Find the time constant of the discharge circuit.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "10 µF"
+          },
+          {
+            "kind": "C",
+            "value": "20 µF"
+          },
+          {
+            "kind": "R",
+            "value": "5 kΩ"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_total",
+        "note": "Series capacitors in RC circuit"
+      },
+      "solution": "1. The capacitors are in series. The equivalent capacitance $C_{eq}$ is given by:\n   $\\frac{1}{C_{eq}} = \\frac{1}{C_1} + \\frac{1}{C_2} = \\frac{1}{10} + \\frac{1}{20} = \\frac{2}{20} + \\frac{1}{20} = \\frac{3}{20} \\, \\mu\\text{F}^{-1}$.\n   $C_{eq} = \\frac{20}{3} \\, \\mu\\text{F} \\approx 6.67 \\, \\mu\\text{F}$.\n2. The circuit is a first-order RC circuit with $C_{eq}$ and $R$.\n3. $R = 5 \\, \\text{k}\\Omega = 5000 \\, \\Omega$.\n4. Time constant $\\tau = R C_{eq} = 5000 \\times \\frac{20}{3} \\times 10^{-6}$.\n   $\\tau = \\frac{100000}{3} \\times 10^{-6} = \\frac{0.1}{3} \\approx 0.0333 \\, \\text{s} = 33.3 \\, \\text{ms}$.",
+      "answer": "\\tau \\approx 33.3 ms"
+    }
+  ]
+}

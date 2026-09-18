@@ -1,0 +1,627 @@
+{
+  "chapter": "04",
+  "title": "First-Order Circuits · Part 2",
+  "conceptual": [
+    {
+      "id": "C01",
+      "question": "In a DC steady-state circuit, how is an inductor modeled?",
+      "type": "mcq",
+      "options": [
+        "Open circuit",
+        "Short circuit",
+        "Dependent voltage source",
+        "Resistor with infinite resistance"
+      ],
+      "answer": "B",
+      "explanation": "At DC steady state, current is constant, so $v_L = L \\frac{di}{dt} = 0$. A component with zero voltage drop across it acts as a short circuit."
+    },
+    {
+      "id": "C02",
+      "question": "In a DC steady-state circuit, how is a capacitor modeled?",
+      "type": "mcq",
+      "options": [
+        "Short circuit",
+        "Open circuit",
+        "Dependent current source",
+        "Resistor with zero resistance"
+      ],
+      "answer": "B",
+      "explanation": "At DC steady state, voltage is constant, so $i_C = C \\frac{dv}{dt} = 0$. A component with zero current flowing through it acts as an open circuit."
+    },
+    {
+      "id": "C03",
+      "question": "What is the primary purpose of Step 1 in the 4-step procedure for first-order circuits?",
+      "type": "mcq",
+      "options": [
+        "To find the time constant $\\tau$",
+        "To determine the initial value $x(0^+)$ using continuity",
+        "To find the final value $x(\\infty)$",
+        "To write the differential equation"
+      ],
+      "answer": "B",
+      "explanation": "Step 1 involves analyzing the $t < 0$ circuit at steady state to find the state variable just before switching, which equals $x(0^+)$ due to continuity."
+    },
+    {
+      "id": "C04",
+      "question": "To find the Thévenin resistance $R_{th}$ for the time constant calculation, what must be done to independent voltage sources?",
+      "type": "mcq",
+      "options": [
+        "Replaced by open circuits",
+        "Replaced by short circuits",
+        "Left unchanged",
+        "Replaced by dependent sources"
+      ],
+      "answer": "B",
+      "explanation": "To find the equivalent resistance seen by the storage element, independent sources are deactivated: voltage sources become shorts and current sources become opens."
+    },
+    {
+      "id": "C05",
+      "question": "The general solution for a first-order response is given by $x(t) = x(\\infty) + [x(0^+) - x(\\infty)]e^{-t/\\tau}$. What does the term $x(\\infty)$ represent?",
+      "type": "mcq",
+      "options": [
+        "The initial condition",
+        "The natural response",
+        "The forced (steady-state) response",
+        "The time constant"
+      ],
+      "answer": "C",
+      "explanation": "$x(\\infty)$ is the value the variable settles to after a long time, representing the forced response or DC steady state of the final circuit."
+    },
+    {
+      "id": "C06",
+      "question": "True or False: The voltage across a capacitor can change instantaneously at $t=0$.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Capacitor voltage is continuous, meaning $v_C(0^+) = v_C(0^-)$. It cannot jump unless there is an infinite current impulse, which is not the case in standard first-order circuits."
+    },
+    {
+      "id": "C07",
+      "question": "True or False: The current through an inductor can change instantaneously at $t=0$.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Inductor current is continuous, meaning $i_L(0^+) = i_L(0^-)$. It cannot jump unless there is an infinite voltage impulse."
+    },
+    {
+      "id": "C08",
+      "question": "What is the mathematical definition of the unit step function $u(t)$ for $t < 0$?",
+      "type": "mcq",
+      "options": [
+        "1",
+        "0",
+        "$\\infty$",
+        "Undefined"
+      ],
+      "answer": "B",
+      "explanation": "The unit step function $u(t)$ is defined as 0 for $t < 0$ and 1 for $t > 0$."
+    },
+    {
+      "id": "C09",
+      "question": "How is a rectangular pulse of amplitude $V_p$ and width $t_p$ starting at $t=0$ expressed using unit step functions?",
+      "type": "mcq",
+      "options": [
+        "$V_p u(t)$",
+        "$V_p [u(t) - u(t - t_p)]$",
+        "$V_p [u(t) + u(t - t_p)]$",
+        "$V_p u(t - t_p)$"
+      ],
+      "answer": "B",
+      "explanation": "A pulse is created by turning a source on at $t=0$ ($u(t)$) and turning it off at $t=t_p$ ($-u(t-t_p)$)."
+    },
+    {
+      "id": "C10",
+      "question": "When analyzing a circuit with a pulse excitation, how many distinct time intervals typically require separate application of the 4-step procedure?",
+      "type": "mcq",
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "Four"
+      ],
+      "answer": "B",
+      "explanation": "The response is analyzed in two intervals: $0 < t < t_p$ (pulse on) and $t > t_p$ (pulse off). The state at $t_p$ serves as the initial condition for the second interval."
+    },
+    {
+      "id": "C11",
+      "question": "In the 4-step procedure, Step 3 involves finding the time constant $\\tau$. For an RC circuit, how is $\\tau$ calculated?",
+      "type": "mcq",
+      "options": [
+        "$\\tau = L/R_{th}$",
+        "$\\tau = R_{th}C$",
+        "$\\tau = 1/(R_{th}C)$",
+        "$\\tau = R_{th}/C$"
+      ],
+      "answer": "B",
+      "explanation": "For a first-order RC circuit, the time constant is the product of the Thévenin resistance seen by the capacitor and the capacitance: $\\tau = R_{th}C$."
+    },
+    {
+      "id": "C12",
+      "question": "True or False: Dependent sources are deactivated when calculating the Thévenin resistance $R_{th}$.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Only independent sources are deactivated. Dependent sources remain in the circuit, and $R_{th}$ is often found using a test source method ($v_{test}/i_{test}$) if dependent sources are present."
+    },
+    {
+      "id": "C13",
+      "question": "What is the value of the response $x(t)$ at $t = \\tau$?",
+      "type": "mcq",
+      "options": [
+        "$x(0^+)$",
+        "$x(\\infty)$",
+        "$x(\\infty) + 0.368[x(0^+) - x(\\infty)]$",
+        "$x(\\infty) + 0.632[x(0^+) - x(\\infty)]$"
+      ],
+      "answer": "C",
+      "explanation": "At $t=\\tau$, the exponential term is $e^{-1} \\approx 0.368$. Thus, the response has completed 63.2% of its transition from the initial value to the final value, leaving 36.8% of the difference remaining."
+    },
+    {
+      "id": "C14",
+      "question": "If a capacitor is initially charged to 10 V and is discharged through a resistor, what is the final voltage $v_C(\\infty)$?",
+      "type": "mcq",
+      "options": [
+        "10 V",
+        "0 V",
+        "5 V",
+        "Depends on the resistance"
+      ],
+      "answer": "B",
+      "explanation": "In a discharge scenario with no active sources, the steady-state voltage across the capacitor will eventually drop to 0 V."
+    },
+    {
+      "id": "C15",
+      "question": "True or False: The 4-step procedure requires solving a differential equation to find the response.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "The 4-step procedure is an algebraic method that avoids explicit differential equation solving by using the known form of the first-order response and determining the constants via initial and final conditions."
+    }
+  ],
+  "problems": [
+    {
+      "id": "P01",
+      "question": "A 100 µF capacitor is connected in series with a 5 kΩ resistor to a 12 V DC source. The switch closes at t=0. If the capacitor is initially uncharged, find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "5 kΩ"
+          },
+          {
+            "kind": "C",
+            "value": "100 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "Simple RC charging circuit"
+      },
+      "solution": "1. Initial condition: $v_C(0^+) = v_C(0^-) = 0$ V.\n2. Final condition: At steady state, C is open, so $v_C(\\infty) = 12$ V.\n3. Time constant: $R_{th} = 5$ kΩ. $\\tau = R_{th}C = (5 \\times 10^3)(100 \\times 10^{-6}) = 0.5$ s.\n4. Response: $v_C(t) = 12 + (0 - 12)e^{-t/0.5} = 12(1 - e^{-2t})$ V.",
+      "answer": "τ = 0.5 s, v_C(t) = 12(1 - e^{-2t}) V"
+    },
+    {
+      "id": "P02",
+      "question": "A 2 H inductor is connected in series with a 4 Ω resistor to a 20 V DC source. The switch closes at t=0. If the inductor current is initially zero, find the time constant τ and the inductor current i_L(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "20 V"
+          },
+          {
+            "kind": "R",
+            "value": "4 Ω"
+          },
+          {
+            "kind": "L",
+            "value": "2 H"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V",
+        "note": "Simple RL charging circuit"
+      },
+      "solution": "1. Initial condition: $i_L(0^+) = i_L(0^-) = 0$ A.\n2. Final condition: At steady state, L is short, so $i_L(\\infty) = 20/4 = 5$ A.\n3. Time constant: $R_{th} = 4$ Ω. $\\tau = L/R_{th} = 2/4 = 0.5$ s.\n4. Response: $i_L(t) = 5 + (0 - 5)e^{-t/0.5} = 5(1 - e^{-2t})$ A.",
+      "answer": "τ = 0.5 s, i_L(t) = 5(1 - e^{-2t}) A"
+    },
+    {
+      "id": "P03",
+      "question": "A 10 µF capacitor is charged to 20 V. At t=0, it is disconnected from the source and connected to a 2 kΩ resistor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "10 µF"
+          },
+          {
+            "kind": "R",
+            "value": "2 kΩ"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "RC discharge circuit"
+      },
+      "solution": "1. Initial condition: $v_C(0^+) = 20$ V.\n2. Final condition: No source, so $v_C(\\infty) = 0$ V.\n3. Time constant: $R_{th} = 2$ kΩ. $\\tau = (2 \\times 10^3)(10 \\times 10^{-6}) = 0.02$ s.\n4. Response: $v_C(t) = 0 + (20 - 0)e^{-t/0.02} = 20e^{-50t}$ V.",
+      "answer": "τ = 0.02 s, v_C(t) = 20e^{-50t} V"
+    },
+    {
+      "id": "P04",
+      "question": "A 4 H inductor carries a current of 3 A. At t=0, it is disconnected from the source and connected to a 6 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "L",
+            "value": "4 H"
+          },
+          {
+            "kind": "R",
+            "value": "6 Ω"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V",
+        "note": "RL discharge circuit"
+      },
+      "solution": "1. Initial condition: $i_L(0^+) = 3$ A.\n2. Final condition: No source, so $i_L(\\infty) = 0$ A.\n3. Time constant: $R_{th} = 6$ Ω. $\\tau = 4/6 = 0.667$ s.\n4. Response: $i_L(t) = 0 + (3 - 0)e^{-t/0.667} = 3e^{-1.5t}$ A.",
+      "answer": "τ = 0.667 s, i_L(t) = 3e^{-1.5t} A"
+    },
+    {
+      "id": "P05",
+      "question": "A circuit consists of a 12 V source in series with a 4 kΩ resistor, connected to a node. From this node, a 2 kΩ resistor goes to ground, and a 0.5 µF capacitor goes to ground. The switch closes at t=0. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0, assuming the capacitor is initially uncharged.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "12 V"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "4 kΩ"
+            }
+          ],
+          [
+            {
+              "kind": "R",
+              "value": "2 kΩ"
+            },
+            {
+              "kind": "C",
+              "value": "0.5 µF"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "RC circuit with parallel resistor for Rth calculation"
+      },
+      "solution": "1. Initial condition: $v_C(0^+) = 0$ V.\n2. Final condition: At steady state, C is open. The circuit is a voltage divider: $v_C(\\infty) = 12 \\times \\frac{2}{4+2} = 4$ V.\n3. Time constant: Deactivate source (short). $R_{th}$ seen by C is $4$ kΩ in parallel with $2$ kΩ: $R_{th} = \\frac{4 \\times 2}{4 + 2} = 1.333$ kΩ. $\\tau = (1.333 \\times 10^3)(0.5 \\times 10^{-6}) = 0.667$ ms.\n4. Response: $v_C(t) = 4 + (0 - 4)e^{-t/0.667ms} = 4(1 - e^{-1500t})$ V.",
+      "answer": "τ = 0.667 ms, v_C(t) = 4(1 - e^{-1500t}) V"
+    },
+    {
+      "id": "P06",
+      "question": "A 12 V source is in series with a 6 Ω resistor, connected to an inductor L=12 H to ground. A 2 A current source is also connected in parallel with the inductor, both switched on at t=0. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "12 V"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "6 Ω"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "12 H"
+            }
+          ],
+          [
+            {
+              "kind": "Iac",
+              "value": "2 A"
+            }
+          ]
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V",
+        "note": "RL circuit with parallel current source"
+      },
+      "solution": "1. Initial condition: $i_L(0^+) = 0$ A.\n2. Final condition: L is short. KCL at node: $i_L(\\infty) = \\frac{12}{6} + 2 = 4$ A.\n3. Time constant: Deactivate sources (V short, I open). $R_{th} = 6$ Ω. $\\tau = L/R_{th} = 12/6 = 2$ s.\n4. Response: $i_L(t) = 4 + (0 - 4)e^{-t/2} = 4(1 - e^{-0.5t})$ A.",
+      "answer": "τ = 2 s, i_L(t) = 4(1 - e^{-0.5t}) A"
+    },
+    {
+      "id": "P07",
+      "question": "A capacitor C=1 µF is initially charged to 10 V. At t=0, it is connected to a circuit consisting of a 5 kΩ resistor in parallel with a 10 kΩ resistor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "C",
+          "value": "1 µF"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "5 kΩ"
+            }
+          ],
+          [
+            {
+              "kind": "R",
+              "value": "10 kΩ"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "RC discharge with parallel resistors"
+      },
+      "solution": "1. Initial condition: $v_C(0^+) = 10$ V.\n2. Final condition: $v_C(\\infty) = 0$ V.\n3. Time constant: $R_{th} = 5 \\parallel 10 = \\frac{50}{15} = 3.333$ kΩ. $\\tau = (3.333 \\times 10^3)(1 \\times 10^{-6}) = 3.333$ ms.\n4. Response: $v_C(t) = 0 + (10 - 0)e^{-t/3.333ms} = 10e^{-300t}$ V.",
+      "answer": "τ = 3.333 ms, v_C(t) = 10e^{-300t} V"
+    },
+    {
+      "id": "P08",
+      "question": "An inductor L=2 H is initially carrying 4 A. At t=0, it is connected to a circuit with a 2 Ω resistor in series with a 4 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "L",
+            "value": "2 H"
+          },
+          {
+            "kind": "R",
+            "value": "2 Ω"
+          },
+          {
+            "kind": "R",
+            "value": "4 Ω"
+          }
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V",
+        "note": "RL discharge with series resistors"
+      },
+      "solution": "1. Initial condition: $i_L(0^+) = 4$ A.\n2. Final condition: $i_L(\\infty) = 0$ A.\n3. Time constant: $R_{th} = 2 + 4 = 6$ Ω. $\\tau = 2/6 = 0.333$ s.\n4. Response: $i_L(t) = 0 + (4 - 0)e^{-t/0.333} = 4e^{-3t}$ A.",
+      "answer": "τ = 0.333 s, i_L(t) = 4e^{-3t} A"
+    },
+    {
+      "id": "P09",
+      "question": "A 10 µF capacitor is initially uncharged. At t=0, it is connected to a 24 V source through a 1 kΩ resistor. However, there is also a 2 kΩ resistor in parallel with the capacitor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "24 V"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "1 kΩ"
+            }
+          ],
+          [
+            {
+              "kind": "R",
+              "value": "2 kΩ"
+            },
+            {
+              "kind": "C",
+              "value": "10 µF"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "RC charging with parallel load"
+      },
+      "solution": "1. Initial condition: $v_C(0^+) = 0$ V.\n2. Final condition: C open. Voltage divider: $v_C(\\infty) = 24 \\times \\frac{2}{1+2} = 16$ V.\n3. Time constant: Deactivate source. $R_{th} = 1 \\parallel 2 = 0.667$ kΩ. $\\tau = (667)(10 \\times 10^{-6}) = 6.67$ ms.\n4. Response: $v_C(t) = 16 + (0 - 16)e^{-t/6.67ms} = 16(1 - e^{-150t})$ V.",
+      "answer": "τ = 6.67 ms, v_C(t) = 16(1 - e^{-150t}) V"
+    },
+    {
+      "id": "P10",
+      "question": "A 4 H inductor is initially uncharged. At t=0, it is connected to a 10 A current source in parallel with a 5 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "10 A"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "5 Ω"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "4 H"
+            }
+          ]
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V",
+        "note": "RL charging with parallel resistor"
+      },
+      "solution": "1. Initial condition: $i_L(0^+) = 0$ A.\n2. Final condition: L short. All current goes through L: $i_L(\\infty) = 10$ A.\n3. Time constant: Deactivate source (open). $R_{th} = 5$ Ω. $\\tau = 4/5 = 0.8$ s.\n4. Response: $i_L(t) = 10 + (0 - 10)e^{-t/0.8} = 10(1 - e^{-1.25t})$ A.",
+      "answer": "τ = 0.8 s, i_L(t) = 10(1 - e^{-1.25t}) A"
+    },
+    {
+      "id": "P11",
+      "question": "A 5 µF capacitor is charged to 20 V. At t=0, it is connected to a circuit with a 1 kΩ resistor in series with a 3 kΩ resistor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "5 µF"
+          },
+          {
+            "kind": "R",
+            "value": "1 kΩ"
+          },
+          {
+            "kind": "R",
+            "value": "3 kΩ"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "RC discharge with series resistors"
+      },
+      "solution": "1. Initial condition: $v_C(0^+) = 20$ V.\n2. Final condition: $v_C(\\infty) = 0$ V.\n3. Time constant: $R_{th} = 1 + 3 = 4$ kΩ. $\\tau = (4000)(5 \\times 10^{-6}) = 0.02$ s.\n4. Response: $v_C(t) = 0 + (20 - 0)e^{-t/0.02} = 20e^{-50t}$ V.",
+      "answer": "τ = 0.02 s, v_C(t) = 20e^{-50t} V"
+    },
+    {
+      "id": "P12",
+      "question": "A 1 H inductor is initially carrying 2 A. At t=0, it is connected to a circuit with a 2 Ω resistor in parallel with a 6 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "L",
+          "value": "1 H"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "2 Ω"
+            }
+          ],
+          [
+            {
+              "kind": "R",
+              "value": "6 Ω"
+            }
+          ]
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V",
+        "note": "RL discharge with parallel resistors"
+      },
+      "solution": "1. Initial condition: $i_L(0^+) = 2$ A.\n2. Final condition: $i_L(\\infty) = 0$ A.\n3. Time constant: $R_{th} = 2 \\parallel 6 = 1.5$ Ω. $\\tau = 1/1.5 = 0.667$ s.\n4. Response: $i_L(t) = 0 + (2 - 0)e^{-t/0.667} = 2e^{-1.5t}$ A.",
+      "answer": "τ = 0.667 s, i_L(t) = 2e^{-1.5t} A"
+    },
+    {
+      "id": "P13",
+      "question": "A 10 µF capacitor is initially uncharged. At t=0, a 12 V source is applied through a 2 kΩ resistor. Additionally, a 4 kΩ resistor is connected in parallel with the capacitor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "12 V"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "2 kΩ"
+            }
+          ],
+          [
+            {
+              "kind": "R",
+              "value": "4 kΩ"
+            },
+            {
+              "kind": "C",
+              "value": "10 µF"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "RC charging with parallel load"
+      },
+      "solution": "1. Initial condition: $v_C(0^+) = 0$ V.\n2. Final condition: C open. Voltage divider: $v_C(\\infty) = 12 \\times \\frac{4}{2+4} = 8$ V.\n3. Time constant: Deactivate source. $R_{th} = 2 \\parallel 4 = 1.333$ kΩ. $\\tau = (1333)(10 \\times 10^{-6}) = 13.33$ ms.\n4. Response: $v_C(t) = 8 + (0 - 8)e^{-t/13.33ms} = 8(1 - e^{-75t})$ V.",
+      "answer": "τ = 13.33 ms, v_C(t) = 8(1 - e^{-75t}) V"
+    },
+    {
+      "id": "P14",
+      "question": "A 2 H inductor is initially uncharged. At t=0, a 5 A current source is applied in parallel with a 10 Ω resistor. Find the time constant τ and the inductor current i_L(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "5 A"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "10 Ω"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "2 H"
+            }
+          ]
+        ],
+        "current_label": "I_L",
+        "voltage_label": "V",
+        "note": "RL charging with parallel resistor"
+      },
+      "solution": "1. Initial condition: $i_L(0^+) = 0$ A.\n2. Final condition: L short. $i_L(\\infty) = 5$ A.\n3. Time constant: Deactivate source. $R_{th} = 10$ Ω. $\\tau = 2/10 = 0.2$ s.\n4. Response: $i_L(t) = 5 + (0 - 5)e^{-t/0.2} = 5(1 - e^{-5t})$ A.",
+      "answer": "τ = 0.2 s, i_L(t) = 5(1 - e^{-5t}) A"
+    },
+    {
+      "id": "P15",
+      "question": "A 1 µF capacitor is charged to 15 V. At t=0, it is connected to a circuit consisting of a 500 Ω resistor in series with a 1500 Ω resistor. Find the time constant τ and the capacitor voltage v_C(t) for t ≥ 0.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "1 µF"
+          },
+          {
+            "kind": "R",
+            "value": "500 Ω"
+          },
+          {
+            "kind": "R",
+            "value": "1500 Ω"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V_C",
+        "note": "RC discharge with series resistors"
+      },
+      "solution": "1. Initial condition: $v_C(0^+) = 15$ V.\n2. Final condition: $v_C(\\infty) = 0$ V.\n3. Time constant: $R_{th} = 500 + 1500 = 2000$ Ω. $\\tau = (2000)(1 \\times 10^{-6}) = 0.002$ s.\n4. Response: $v_C(t) = 0 + (15 - 0)e^{-t/0.002} = 15e^{-500t}$ V.",
+      "answer": "τ = 0.002 s, v_C(t) = 15e^{-500t} V"
+    }
+  ]
+}
