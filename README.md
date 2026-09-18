@@ -8,7 +8,7 @@ with step-by-step worked solutions and circuit diagrams.
 
 | # | Title | Conceptual | Problems |
 |---|-------|-----------|----------|
-| 02 | Capacitors and Inductors | 0 | 0 |
+| 02 | Capacitors and Inductors | 15 | 15 |
 | 03 | First-Order Circuits · Part 1 | 0 | 0 |
 | 04 | First-Order Circuits · Part 2 | 0 | 0 |
 | 05 | Linear Waveshaping | 0 | 0 |

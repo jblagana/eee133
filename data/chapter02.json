@@ -1,0 +1,597 @@
+{
+  "chapter": "02",
+  "title": "Capacitors and Inductors",
+  "conceptual": [
+    {
+      "id": "C01",
+      "question": "What physical quantity does a capacitor store energy in?",
+      "type": "mcq",
+      "options": [
+        "Magnetic field",
+        "Electric field",
+        "Kinetic energy",
+        "Thermal energy"
+      ],
+      "answer": "B",
+      "explanation": "A capacitor stores energy in the electric field established between its two plates."
+    },
+    {
+      "id": "C02",
+      "question": "What physical quantity does an inductor store energy in?",
+      "type": "mcq",
+      "options": [
+        "Electric field",
+        "Magnetic field",
+        "Chemical energy",
+        "Gravitational potential"
+      ],
+      "answer": "B",
+      "explanation": "An inductor stores energy in the magnetic field surrounding the coil when current flows through it."
+    },
+    {
+      "id": "C03",
+      "question": "What is the current-voltage relationship for an ideal capacitor?",
+      "type": "mcq",
+      "options": [
+        "$i(t) = C v(t)$",
+        "$i(t) = C \\frac{dv(t)}{dt}$",
+        "$v(t) = L \\frac{di(t)}{dt}$",
+        "$i(t) = \\frac{1}{C} \\int v(t) dt$"
+      ],
+      "answer": "B",
+      "explanation": "The current through a capacitor is proportional to the rate of change of voltage across it: $i = C \\frac{dv}{dt}$."
+    },
+    {
+      "id": "C04",
+      "question": "What is the current-voltage relationship for an ideal inductor?",
+      "type": "mcq",
+      "options": [
+        "$v(t) = L i(t)$",
+        "$v(t) = L \\frac{di(t)}{dt}$",
+        "$i(t) = L \\frac{dv(t)}{dt}$",
+        "$v(t) = \\frac{1}{L} \\int i(t) dt$"
+      ],
+      "answer": "B",
+      "explanation": "The voltage across an inductor is proportional to the rate of change of current through it: $v = L \\frac{di}{dt}$."
+    },
+    {
+      "id": "C05",
+      "question": "In a DC steady-state circuit, how does an ideal capacitor behave?",
+      "type": "mcq",
+      "options": [
+        "As a short circuit",
+        "As an open circuit",
+        "As a resistor",
+        "As a dependent source"
+      ],
+      "answer": "B",
+      "explanation": "In DC steady state, voltage is constant, so $\\frac{dv}{dt} = 0$, which implies $i = 0$. Thus, it acts as an open circuit."
+    },
+    {
+      "id": "C06",
+      "question": "In a DC steady-state circuit, how does an ideal inductor behave?",
+      "type": "mcq",
+      "options": [
+        "As a short circuit",
+        "As an open circuit",
+        "As a resistor",
+        "As a dependent source"
+      ],
+      "answer": "A",
+      "explanation": "In DC steady state, current is constant, so $\\frac{di}{dt} = 0$, which implies $v = 0$. Thus, it acts as a short circuit."
+    },
+    {
+      "id": "C07",
+      "question": "Can the voltage across an ideal capacitor change instantaneously?",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "B",
+      "explanation": "False. An instantaneous change in voltage would require infinite current ($i = C \\frac{dv}{dt}$), which is physically impossible in a finite circuit."
+    },
+    {
+      "id": "C08",
+      "question": "Can the current through an ideal inductor change instantaneously?",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "B",
+      "explanation": "False. An instantaneous change in current would require infinite voltage ($v = L \\frac{di}{dt}$), which is physically impossible in a finite circuit."
+    },
+    {
+      "id": "C09",
+      "question": "How do capacitors combine in parallel?",
+      "type": "mcq",
+      "options": [
+        "Like resistors in series ($\\frac{1}{C_{eq}} = \\sum \\frac{1}{C_k}$)",
+        "Like resistors in parallel ($C_{eq} = \\sum C_k$)",
+        "Like inductors in series ($L_{eq} = \\sum L_k$)",
+        "They cannot be combined"
+      ],
+      "answer": "B",
+      "explanation": "Capacitors in parallel add directly: $C_{eq} = C_1 + C_2 + \\dots$. This is because they share the same voltage and their charges add."
+    },
+    {
+      "id": "C10",
+      "question": "How do inductors combine in parallel?",
+      "type": "mcq",
+      "options": [
+        "Like resistors in series ($\\frac{1}{L_{eq}} = \\sum \\frac{1}{L_k}$)",
+        "Like resistors in parallel ($L_{eq} = \\sum L_k$)",
+        "Like capacitors in series ($\\frac{1}{C_{eq}} = \\sum \\frac{1}{C_k}$)",
+        "They cannot be combined"
+      ],
+      "answer": "A",
+      "explanation": "Inductors in parallel combine like resistors in parallel: $\\frac{1}{L_{eq}} = \\frac{1}{L_1} + \\frac{1}{L_2} + \\dots$. This is because they share the same voltage and their flux linkages add."
+    },
+    {
+      "id": "C11",
+      "question": "What is the formula for the energy stored in a capacitor?",
+      "type": "mcq",
+      "options": [
+        "$w = \\frac{1}{2} C v^2$",
+        "$w = \\frac{1}{2} L i^2$",
+        "$w = C v^2$",
+        "$w = \\frac{1}{2} C i^2$"
+      ],
+      "answer": "A",
+      "explanation": "The energy stored in the electric field of a capacitor is given by $w = \\frac{1}{2} C v^2$."
+    },
+    {
+      "id": "C12",
+      "question": "What is the formula for the energy stored in an inductor?",
+      "type": "mcq",
+      "options": [
+        "$w = \\frac{1}{2} C v^2$",
+        "$w = \\frac{1}{2} L i^2$",
+        "$w = L i^2$",
+        "$w = \\frac{1}{2} L v^2$"
+      ],
+      "answer": "B",
+      "explanation": "The energy stored in the magnetic field of an inductor is given by $w = \\frac{1}{2} L i^2$."
+    },
+    {
+      "id": "C13",
+      "question": "If the voltage across a capacitor is constant, what is the current flowing through it?",
+      "type": "mcq",
+      "options": [
+        "Infinite",
+        "Zero",
+        "Depends on capacitance",
+        "Equal to the voltage"
+      ],
+      "answer": "B",
+      "explanation": "Since $i = C \\frac{dv}{dt}$, if $v$ is constant, $\\frac{dv}{dt} = 0$, so $i = 0$."
+    },
+    {
+      "id": "C14",
+      "question": "If the current through an inductor is constant, what is the voltage across it?",
+      "type": "mcq",
+      "options": [
+        "Infinite",
+        "Zero",
+        "Depends on inductance",
+        "Equal to the current"
+      ],
+      "answer": "B",
+      "explanation": "Since $v = L \\frac{di}{dt}$, if $i$ is constant, $\\frac{di}{dt} = 0$, so $v = 0$."
+    },
+    {
+      "id": "C15",
+      "question": "Does an ideal capacitor dissipate energy?",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "B",
+      "explanation": "False. Ideal capacitors are lossless elements; they store and return energy but do not dissipate it as heat."
+    }
+  ],
+  "problems": [
+    {
+      "id": "P01",
+      "question": "A 100 µF capacitor has a voltage across it given by $v(t) = 5t$ V for $t \\ge 0$. Find the current $i(t)$ flowing through the capacitor.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "v(t)=5t V"
+          },
+          {
+            "kind": "C",
+            "value": "100 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Simple capacitor with linear voltage ramp"
+      },
+      "solution": "Given $C = 100 \\, \\mu\\text{F} = 10^{-4} \\, \\text{F}$ and $v(t) = 5t \\, \\text{V}$. \nUsing the capacitor V-I relation: \n$i(t) = C \\frac{dv(t)}{dt}$ \n$i(t) = 10^{-4} \\cdot \\frac{d}{dt}(5t)$ \n$i(t) = 10^{-4} \\cdot 5 = 5 \\times 10^{-4} \\, \\text{A}$ \n$i(t) = 0.5 \\, \\text{mA}$",
+      "answer": "0.5 mA"
+    },
+    {
+      "id": "P02",
+      "question": "A 2 H inductor has a current through it given by $i(t) = 3t^2$ A for $t \\ge 0$. Find the voltage $v(t)$ across the inductor.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Iac",
+            "value": "i(t)=3t^2 A"
+          },
+          {
+            "kind": "L",
+            "value": "2 H"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Simple inductor with quadratic current"
+      },
+      "solution": "Given $L = 2 \\, \\text{H}$ and $i(t) = 3t^2 \\, \\text{A}$. \nUsing the inductor V-I relation: \n$v(t) = L \\frac{di(t)}{dt}$ \n$v(t) = 2 \\cdot \\frac{d}{dt}(3t^2)$ \n$v(t) = 2 \\cdot (6t) = 12t \\, \\text{V}$",
+      "answer": "12t V"
+    },
+    {
+      "id": "P03",
+      "question": "Calculate the energy stored in a 4 µF capacitor charged to 10 V.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "10 V"
+          },
+          {
+            "kind": "C",
+            "value": "4 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Energy calculation for a single capacitor"
+      },
+      "solution": "Given $C = 4 \\, \\mu\\text{F} = 4 \\times 10^{-6} \\, \\text{F}$ and $v = 10 \\, \\text{V}$. \nUsing the energy formula: \n$w = \\frac{1}{2} C v^2$ \n$w = \\frac{1}{2} (4 \\times 10^{-6}) (10)^2$ \n$w = \\frac{1}{2} (4 \\times 10^{-6}) (100)$ \n$w = 2 \\times 10^{-4} \\, \\text{J}$ \n$w = 200 \\, \\mu\\text{J}$",
+      "answer": "200 µJ"
+    },
+    {
+      "id": "P04",
+      "question": "Calculate the energy stored in a 5 mH inductor carrying a current of 2 A.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Idc",
+            "value": "2 A"
+          },
+          {
+            "kind": "L",
+            "value": "5 mH"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Energy calculation for a single inductor"
+      },
+      "solution": "Given $L = 5 \\, \\text{mH} = 5 \\times 10^{-3} \\, \\text{H}$ and $i = 2 \\, \\text{A}$. \nUsing the energy formula: \n$w = \\frac{1}{2} L i^2$ \n$w = \\frac{1}{2} (5 \\times 10^{-3}) (2)^2$ \n$w = \\frac{1}{2} (5 \\times 10^{-3}) (4)$ \n$w = 10 \\times 10^{-3} \\, \\text{J}$ \n$w = 10 \\, \\text{mJ}$",
+      "answer": "10 mJ"
+    },
+    {
+      "id": "P05",
+      "question": "Find the equivalent capacitance of three capacitors connected in parallel: $C_1 = 10 \\, \\mu\\text{F}$, $C_2 = 20 \\, \\mu\\text{F}$, and $C_3 = 30 \\, \\mu\\text{F}$.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "V_s"
+        },
+        "branches": [
+          [
+            {
+              "kind": "C",
+              "value": "10 µF"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "20 µF"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "30 µF"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Parallel combination of capacitors"
+      },
+      "solution": "For capacitors in parallel, the equivalent capacitance is the sum of individual capacitances: \n$C_{eq} = C_1 + C_2 + C_3$ \n$C_{eq} = 10 \\, \\mu\\text{F} + 20 \\, \\mu\\text{F} + 30 \\, \\mu\\text{F}$ \n$C_{eq} = 60 \\, \\mu\\text{F}$",
+      "answer": "60 µF"
+    },
+    {
+      "id": "P06",
+      "question": "Find the equivalent inductance of two inductors connected in series: $L_1 = 4 \\, \\text{H}$ and $L_2 = 6 \\, \\text{H}$ (assume no mutual coupling).",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Idc",
+            "value": "I_s"
+          },
+          {
+            "kind": "L",
+            "value": "4 H"
+          },
+          {
+            "kind": "L",
+            "value": "6 H"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Series combination of inductors"
+      },
+      "solution": "For inductors in series (uncoupled), the equivalent inductance is the sum of individual inductances: \n$L_{eq} = L_1 + L_2$ \n$L_{eq} = 4 \\, \\text{H} + 6 \\, \\text{H}$ \n$L_{eq} = 10 \\, \\text{H}$",
+      "answer": "10 H"
+    },
+    {
+      "id": "P07",
+      "question": "Find the equivalent capacitance of two capacitors connected in series: $C_1 = 10 \\, \\mu\\text{F}$ and $C_2 = 20 \\, \\mu\\text{F}$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "V_s"
+          },
+          {
+            "kind": "C",
+            "value": "10 µF"
+          },
+          {
+            "kind": "C",
+            "value": "20 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Series combination of capacitors"
+      },
+      "solution": "For capacitors in series, the reciprocal of the equivalent capacitance is the sum of the reciprocals: \n$\\frac{1}{C_{eq}} = \\frac{1}{C_1} + \\frac{1}{C_2}$ \n$\\frac{1}{C_{eq}} = \\frac{1}{10} + \\frac{1}{20} = \\frac{2}{20} + \\frac{1}{20} = \\frac{3}{20}$ \n$C_{eq} = \\frac{20}{3} \\, \\mu\\text{F} \\approx 6.67 \\, \\mu\\text{F}$",
+      "answer": "6.67 µF"
+    },
+    {
+      "id": "P08",
+      "question": "Find the equivalent inductance of two inductors connected in parallel: $L_1 = 4 \\, \\text{H}$ and $L_2 = 6 \\, \\text{H}$ (assume no mutual coupling).",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "I_s"
+        },
+        "branches": [
+          [
+            {
+              "kind": "L",
+              "value": "4 H"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "6 H"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Parallel combination of inductors"
+      },
+      "solution": "For inductors in parallel (uncoupled), the reciprocal of the equivalent inductance is the sum of the reciprocals: \n$\\frac{1}{L_{eq}} = \\frac{1}{L_1} + \\frac{1}{L_2}$ \n$\\frac{1}{L_{eq}} = \\frac{1}{4} + \\frac{1}{6} = \\frac{3}{12} + \\frac{2}{12} = \\frac{5}{12}$ \n$L_{eq} = \\frac{12}{5} \\, \\text{H} = 2.4 \\, \\text{H}$",
+      "answer": "2.4 H"
+    },
+    {
+      "id": "P09",
+      "question": "A 100 µF capacitor is connected in a DC circuit. After a long time, the voltage across it is found to be 12 V. Calculate the energy stored in the capacitor.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "1 kΩ"
+          },
+          {
+            "kind": "C",
+            "value": "100 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "DC steady state energy calculation"
+      },
+      "solution": "In DC steady state, the capacitor acts as an open circuit, but it holds a constant voltage. \nGiven $C = 100 \\, \\mu\\text{F} = 10^{-4} \\, \\text{F}$ and $v = 12 \\, \\text{V}$. \n$w = \\frac{1}{2} C v^2$ \n$w = \\frac{1}{2} (10^{-4}) (12)^2$ \n$w = \\frac{1}{2} (10^{-4}) (144)$ \n$w = 72 \\times 10^{-4} \\, \\text{J}$ \n$w = 7.2 \\, \\text{mJ}$",
+      "answer": "7.2 mJ"
+    },
+    {
+      "id": "P10",
+      "question": "An inductor with $L = 2 \\, \\text{H}$ has a current $i(t) = 2 \\sin(100t)$ A. Find the instantaneous power $p(t)$ absorbed by the inductor at $t = \\frac{\\pi}{200}$ s.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Iac",
+            "value": "i(t)=2sin(100t) A"
+          },
+          {
+            "kind": "L",
+            "value": "2 H"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Instantaneous power calculation"
+      },
+      "solution": "First, find the voltage $v(t)$: \n$v(t) = L \\frac{di}{dt} = 2 \\cdot \\frac{d}{dt}(2 \\sin(100t)) = 2 \\cdot (200 \\cos(100t)) = 400 \\cos(100t) \\, \\text{V}$. \nNow, calculate power $p(t) = v(t) i(t)$: \n$p(t) = [400 \\cos(100t)] \\cdot [2 \\sin(100t)] = 800 \\sin(100t) \\cos(100t)$. \nUsing the identity $\\sin(2\\theta) = 2 \\sin\\theta \\cos\\theta$, we get $p(t) = 400 \\sin(200t) \\, \\text{W}$. \nAt $t = \\frac{\\pi}{200}$: \n$p(\\frac{\\pi}{200}) = 400 \\sin(200 \\cdot \\frac{\\pi}{200}) = 400 \\sin(\\pi) = 0 \\, \\text{W}$.",
+      "answer": "0 W"
+    },
+    {
+      "id": "P11",
+      "question": "Two capacitors $C_1 = 10 \\, \\mu\\text{F}$ and $C_2 = 20 \\, \\mu\\text{F}$ are connected in series. If the total voltage across the combination is 30 V, find the voltage across each capacitor.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "30 V"
+          },
+          {
+            "kind": "C",
+            "value": "10 µF"
+          },
+          {
+            "kind": "C",
+            "value": "20 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Voltage division in series capacitors"
+      },
+      "solution": "First, find $C_{eq}$: \n$\\frac{1}{C_{eq}} = \\frac{1}{10} + \\frac{1}{20} = \\frac{3}{20} \\implies C_{eq} = \\frac{20}{3} \\, \\mu\\text{F}$. \nTotal charge $Q = C_{eq} V_{total} = \\frac{20}{3} \\, \\mu\\text{F} \\cdot 30 \\, \\text{V} = 200 \\, \\mu\\text{C}$. \nIn series, charge is the same on all capacitors. \n$V_1 = \\frac{Q}{C_1} = \\frac{200 \\, \\mu\\text{C}}{10 \\, \\mu\\text{F}} = 20 \\, \\text{V}$. \n$V_2 = \\frac{Q}{C_2} = \\frac{200 \\, \\mu\\text{C}}{20 \\, \\mu\\text{F}} = 10 \\, \\text{V}$. \nCheck: $V_1 + V_2 = 20 + 10 = 30 \\, \\text{V}$. Correct.",
+      "answer": "V1 = 20 V, V2 = 10 V"
+    },
+    {
+      "id": "P12",
+      "question": "Two inductors $L_1 = 2 \\, \\text{H}$ and $L_2 = 4 \\, \\text{H}$ are connected in parallel. If the total current entering the combination is 6 A, find the current through each inductor.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "6 A"
+        },
+        "branches": [
+          [
+            {
+              "kind": "L",
+              "value": "2 H"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "4 H"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Current division in parallel inductors"
+      },
+      "solution": "First, find $L_{eq}$: \n$\\frac{1}{L_{eq}} = \\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4} \\implies L_{eq} = \\frac{4}{3} \\, \\text{H}$. \nVoltage across parallel combination $V = L_{eq} \\frac{di_{total}}{dt}$. \nSince $V_1 = V_2$, we have $L_1 \\frac{di_1}{dt} = L_2 \\frac{di_2}{dt}$. \nThus, $\\frac{di_1}{dt} = \\frac{L_2}{L_1} \\frac{di_2}{dt}$. \nAlso $i_{total} = i_1 + i_2 \\implies \\frac{di_{total}}{dt} = \\frac{di_1}{dt} + \\frac{di_2}{dt}$. \nSubstituting: $\\frac{di_{total}}{dt} = \\frac{L_2}{L_1} \\frac{di_2}{dt} + \\frac{di_2}{dt} = \\frac{di_2}{dt} (\\frac{L_2 + L_1}{L_1})$. \nSo, $\\frac{di_2}{dt} = \\frac{L_1}{L_1 + L_2} \\frac{di_{total}}{dt}$. \nIntegrating (assuming zero initial current): $i_2 = \\frac{L_1}{L_1 + L_2} i_{total}$. \n$i_2 = \\frac{2}{2 + 4} (6) = \\frac{2}{6} (6) = 2 \\, \\text{A}$. \n$i_1 = i_{total} - i_2 = 6 - 2 = 4 \\, \\text{A}$. \nNote: Current divides inversely proportional to inductance.",
+      "answer": "I1 = 4 A, I2 = 2 A"
+    },
+    {
+      "id": "P13",
+      "question": "A circuit consists of a 12 V DC source connected to a series combination of a 4 kΩ resistor and a 100 µF capacitor. Find the energy stored in the capacitor at $t = \\infty$.",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "4 kΩ"
+          },
+          {
+            "kind": "C",
+            "value": "100 µF"
+          }
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "RC circuit steady state energy"
+      },
+      "solution": "At $t = \\infty$, the capacitor is fully charged and acts as an open circuit. \nNo current flows through the resistor, so there is no voltage drop across the resistor. \nTherefore, the entire source voltage appears across the capacitor: $v_C(\\infty) = 12 \\, \\text{V}$. \nEnergy stored: \n$w = \\frac{1}{2} C v^2 = \\frac{1}{2} (100 \\times 10^{-6}) (12)^2$ \n$w = \\frac{1}{2} (10^{-4}) (144) = 72 \\times 10^{-4} \\, \\text{J} = 7.2 \\, \\text{mJ}$.",
+      "answer": "7.2 mJ"
+    },
+    {
+      "id": "P14",
+      "question": "A circuit consists of a 10 A DC source connected to a parallel combination of a 5 Ω resistor and a 2 H inductor. Find the energy stored in the inductor at $t = \\infty$.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "10 A"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "5 Ω"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "2 H"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "RL circuit steady state energy"
+      },
+      "solution": "At $t = \\infty$, the inductor acts as a short circuit. \nAll the current from the source will flow through the short circuit (inductor) because it offers zero resistance, while the resistor is in parallel. \nThus, $i_L(\\infty) = 10 \\, \\text{A}$. \nEnergy stored: \n$w = \\frac{1}{2} L i^2 = \\frac{1}{2} (2) (10)^2$ \n$w = 1 \\cdot 100 = 100 \\, \\text{J}$.",
+      "answer": "100 J"
+    },
+    {
+      "id": "P15",
+      "question": "Find the equivalent capacitance of a network where $C_1 = 6 \\, \\mu\\text{F}$ and $C_2 = 3 \\, \\mu\\text{F}$ are in series, and this combination is in parallel with $C_3 = 2 \\, \\mu\\text{F}$.",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "V_s"
+        },
+        "branches": [
+          [
+            {
+              "kind": "C",
+              "value": "6 µF"
+            },
+            {
+              "kind": "C",
+              "value": "3 µF"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "2 µF"
+            }
+          ]
+        ],
+        "current_label": "I",
+        "voltage_label": "V",
+        "note": "Mixed series-parallel capacitor network"
+      },
+      "solution": "Step 1: Find equivalent capacitance of the series branch ($C_{12}$). \n$\\frac{1}{C_{12}} = \\frac{1}{C_1} + \\frac{1}{C_2} = \\frac{1}{6} + \\frac{1}{3} = \\frac{1}{6} + \\frac{2}{6} = \\frac{3}{6} = \\frac{1}{2}$. \n$C_{12} = 2 \\, \\mu\\text{F}$. \nStep 2: Find total equivalent capacitance ($C_{eq}$) of $C_{12}$ in parallel with $C_3$. \n$C_{eq} = C_{12} + C_3 = 2 \\, \\mu\\text{F} + 2 \\, \\mu\\text{F} = 4 \\, \\mu\\text{F}$.",
+      "answer": "4 µF"
+    }
+  ]
+}
