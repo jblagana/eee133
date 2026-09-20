@@ -944,3 +944,15 @@ canvas.plot { width: 100%; height: auto; display: block; background: var(--surfa
   font-size: 13px;
   color: var(--faint);
 }
+
+
+/* Set quiz blocks — 6 sets of 5+5 per chapter */
+.set-tag { font-size: 12px; font-weight: 600; color: var(--muted); margin-left: 10px; letter-spacing: .2px; }
+.set-block { margin-top: 44px; }
+.set-block:first-of-type { margin-top: 34px; }
+.set-group { margin-bottom: 22px; }
+.set-group-label {
+  font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px;
+  color: var(--blue-600); margin: 6px 0 12px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}

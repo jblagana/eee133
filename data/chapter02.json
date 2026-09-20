@@ -4,139 +4,262 @@
   "conceptual": [
     {
       "id": "C01",
-      "question": "A 2 F capacitor has a voltage across it that changes linearly from 0 V to 10 V over 5 seconds. What is the magnitude of the current flowing into the positive terminal of the capacitor?",
+      "question": "A 2 F capacitor has a voltage of 5 V at t=0. If a constant current of 4 A flows into the positive terminal for 2 seconds, what is the voltage at t=2 s?",
       "type": "mcq",
       "options": [
-        "1 A",
-        "2 A",
-        "4 A",
-        "10 A"
+        "9 V",
+        "11 V",
+        "13 V",
+        "15 V"
       ],
-      "answer": "C",
-      "explanation": "The current through a capacitor is given by $i(t) = C \\frac{dv}{dt}$. The rate of change of voltage is $\\frac{dv}{dt} = \\frac{10 \\text{ V} - 0 \\text{ V}}{5 \\text{ s}} = 2 \\text{ V/s}$. Therefore, $i = 2 \\text{ F} \\cdot 2 \\text{ V/s} = 4 \\text{ A}$."
+      "answer": "A",
+      "explanation": "Using $v(t) = v(0) + \\frac{1}{C}\\int i \\, dt$, the voltage change is $\\frac{1}{2} \\cdot 4 \\, \\text{A} \\cdot 2 \\, \\text{s} = 4 \\, \\text{V}$, so the final voltage is $5 \\, \\text{V} + 4 \\, \\text{V} = 9 \\, \\text{V}$.",
+      "set": 1
     },
     {
       "id": "C02",
-      "question": "If the current through an inductor is constant, the voltage across the inductor is zero.",
-      "type": "tf",
+      "question": "An inductor with L=1 H carries a current of 3 A. If a voltage of 6 V is applied across it for 1 second, what is the new current?",
+      "type": "mcq",
       "options": [
-        "True",
-        "False"
+        "3 A",
+        "6 A",
+        "9 A",
+        "12 A"
       ],
-      "answer": "True",
-      "explanation": "The voltage across an inductor is defined by $v(t) = L \\frac{di}{dt}$. If the current $i(t)$ is constant, its derivative $\\frac{di}{dt}$ is zero, resulting in $v(t) = 0$. This is why an inductor acts as a short circuit in DC steady state."
+      "answer": "C",
+      "explanation": "Using $i(t) = i(0) + \\frac{1}{L}\\int v \\, dt$, the current change is $\\frac{1}{1} \\cdot 6 \\, \\text{V} \\cdot 1 \\, \\text{s} = 6 \\, \\text{A}$, so the final current is $3 \\, \\text{A} + 6 \\, \\text{A} = 9 \\, \\text{A}$.",
+      "set": 1
     },
     {
       "id": "C03",
-      "question": "Two capacitors, C1 = 4 μF and C2 = 2 μF, are connected in series. What is the equivalent capacitance of the combination?",
-      "type": "mcq",
+      "question": "The energy stored in a 10 \\mu F capacitor charged to 100 V is 0.5 J.",
+      "type": "tf",
       "options": [
-        "6 μF",
-        "4 μF",
-        "2 μF",
-        "1.33 μF"
+        "True",
+        "False"
       ],
-      "answer": "D",
-      "explanation": "For capacitors in series, the reciprocal of the equivalent capacitance is the sum of the reciprocals:\n$$ \\frac{1}{C_{eq}} = \\frac{1}{C_1} + \\frac{1}{C_2} $$\nSubstituting the values,\n$$ \\frac{1}{C_{eq}} = \\frac{1}{4} + \\frac{1}{2} = \\frac{3}{4} \\ \\mu\\text{F}^{-1} $$\nThus,\n$$ C_{eq} = \\frac{4}{3} \\ \\mu\\text{F} \\approx 1.33 \\ \\mu\\text{F} $$"
+      "answer": "False",
+      "explanation": "The energy is $w = \\frac{1}{2} C v^2 = \\frac{1}{2} (10 \\times 10^{-6}) (100)^2 = 0.05 \\text{ J}$, not $0.5 \\text{ J}$.",
+      "set": 1
     },
     {
       "id": "C04",
-      "question": "In a circuit operating in DC steady state, a capacitor behaves as an open circuit.",
+      "question": "If the voltage across a capacitor is constant, the current through it is zero.",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "True",
-      "explanation": "In DC steady state, all voltages and currents are constant. Since $i = C \\frac{dv}{dt}$, a constant voltage implies $\\frac{dv}{dt} = 0$, which means $i = 0$. An element with zero current is equivalent to an open circuit."
+      "explanation": "Since $i = C \\frac{dv}{dt}$, if $v$ is constant, $\\frac{dv}{dt} = 0$, resulting in $i = 0$.",
+      "set": 1
     },
     {
       "id": "C05",
-      "question": "An inductor with inductance L = 2 H carries a current of 3 A. What is the energy stored in the magnetic field of the inductor?",
+      "question": "Two 4 H inductors are connected in parallel. What is the equivalent inductance?",
       "type": "mcq",
       "options": [
-        "3 J",
-        "6 J",
-        "9 J",
-        "12 J"
+        "8 H",
+        "4 H",
+        "2 H",
+        "1 H"
       ],
-      "answer": "B",
-      "explanation": "The energy stored in an inductor is given by the equation:\n$$w_L = \\frac{1}{2} L i^2$$\nSubstituting the given values of $L = 2 \\text{ H}$ and $i = 3 \\text{ A}$:\n$$w_L = \\frac{1}{2} \\cdot 2 \\text{ H} \\cdot (3 \\text{ A})^2$$\n$$w_L = 1 \\cdot 9 \\text{ J}$$\n$$w_L = 9 \\text{ J}$$\nThe correct choice is C."
+      "answer": "C",
+      "explanation": "For parallel inductors, the equivalent inductance is determined by the reciprocal sum of the individual inductances:\n$$ \\frac{1}{L_{\\text{eq}}} = \\frac{1}{L_1} + \\frac{1}{L_2} $$\nSubstituting the given values:\n$$ \\frac{1}{L_{\\text{eq}}} = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2} $$\nSolving for $L_{\\text{eq}}$:\n$$ L_{\\text{eq}} = 2 \\text{ H} $$",
+      "set": 1
     },
     {
       "id": "C06",
-      "question": "The voltage across a capacitor can change instantaneously if a finite current is applied.",
+      "question": "The current through an inductor can change instantaneously if the voltage across it is infinite.",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "False",
-      "explanation": "The relationship $v(t) = \\frac{1}{C} \\int i \\, dt$ implies that for the voltage to change instantaneously (infinite slope), the current would need to be infinite. With finite current, the voltage changes continuously over time."
+      "explanation": "In physical circuits, infinite voltage is not possible; thus, inductor current cannot change instantaneously.",
+      "set": 2
     },
     {
       "id": "C07",
-      "question": "Two inductors, L1 = 10 mH and L2 = 20 mH, are connected in parallel. What is the equivalent inductance?",
-      "type": "mcq",
+      "question": "In a DC steady-state circuit, a capacitor behaves as a short circuit.",
+      "type": "tf",
       "options": [
-        "30 mH",
-        "15 mH",
-        "10 mH",
-        "6.67 mH"
+        "True",
+        "False"
       ],
-      "answer": "D",
-      "explanation": "For inductors in parallel, the reciprocal of the equivalent inductance is the sum of the reciprocals:\n$$ \\frac{1}{L_{eq}} = \\frac{1}{L_1} + \\frac{1}{L_2} $$\nSubstituting the values,\n$$ \\frac{1}{L_{eq}} = \\frac{1}{10} + \\frac{1}{20} = \\frac{3}{20} \\text{ mH}^{-1} $$\nThus,\n$$ L_{eq} = \\frac{20}{3} \\text{ mH} \\approx 6.67 \\text{ mH} $$"
+      "answer": "False",
+      "explanation": "In DC steady state, the capacitor voltage is constant, so current is zero, making it behave as an open circuit.",
+      "set": 2
     },
     {
       "id": "C08",
-      "question": "In an inverting op-amp integrator circuit, the output voltage is proportional to the integral of the input voltage.",
+      "question": "A 2 F capacitor and a 4 F capacitor are connected in series. What is the equivalent capacitance?",
+      "type": "mcq",
+      "options": [
+        "6 F",
+        "3 F",
+        "4/3 F",
+        "1.5 F"
+      ],
+      "answer": "C",
+      "explanation": "For series capacitors, the equivalent capacitance is determined by the reciprocal sum of the individual capacitances:\n$$ \\frac{1}{C_{eq}} = \\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4} $$\nSolving for $C_{eq}$ yields:\n$$ C_{eq} = \\frac{4}{3} \\text{ F} $$",
+      "set": 2
+    },
+    {
+      "id": "C09",
+      "question": "The energy stored in an inductor is proportional to the square of the current.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "explanation": "The formula for inductor energy is $w_L = \\frac{1}{2} L i^2$, which is proportional to $i^2$.",
+      "answer": "True",
+      "set": 2
+    },
+    {
+      "id": "C10",
+      "question": "In an inverting op-amp integrator, the output voltage is proportional to the integral of the input voltage.",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "True",
-      "explanation": "The standard inverting integrator configuration places a capacitor in the feedback path and a resistor at the input. The output voltage is given by $v_{out} = -\\frac{1}{R_1 C_f} \\int v_s \\, dt$, which is the negative integral of the input voltage scaled by the $RC$ time constant."
+      "explanation": "The transfer function is $v_{out} = -\\frac{1}{R_1 C_f} \\int v_s \\, dt$, confirming the output is the integral of the input.",
+      "set": 2
     },
     {
-      "id": "C09",
-      "question": "A 10 μF capacitor is charged to 5 V. What is the energy stored in the electric field of the capacitor?",
-      "type": "mcq",
-      "options": [
-        "125 μJ",
-        "250 μJ",
-        "500 μJ",
-        "1 mJ"
-      ],
-      "answer": "A",
-      "explanation": "The energy stored in a capacitor is given by $w_C = \\frac{1}{2} C v^2$. Substituting the values, $w_C = \\frac{1}{2} \\cdot 10 \\, \\mu\\text{F} \\cdot (5 \\, \\text{V})^2 = 5 \\, \\mu\\text{F} \\cdot 25 \\, \\text{V}^2 = 125 \\, \\mu\\text{J}$."
-    },
-    {
-      "id": "C10",
-      "question": "The current through an inductor can change instantaneously if a finite voltage is applied.",
+      "id": "C11",
+      "question": "If the current through an inductor is zero, the voltage across it must be zero.",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "False",
-      "explanation": "The relationship $i(t) = \\frac{1}{L} \\int v \\, dt$ implies that for the current to change instantaneously, the voltage would need to be infinite. With finite voltage, the current changes continuously over time."
-    },
-    {
-      "id": "C11",
-      "question": "In a series circuit containing a capacitor and an inductor, the total impedance at resonance is purely resistive.",
-      "type": "mcq",
-      "options": [
-        "True, because the reactive parts cancel out",
-        "False, because the reactive parts add up",
-        "True, because the current is zero",
-        "False, because the voltage is zero"
-      ],
-      "answer": "A",
-      "explanation": "At resonance, the inductive reactance (jωL) and capacitive reactance (-j/ωC) are equal in magnitude but opposite in sign. They cancel each other out, leaving only the resistive component of the impedance."
+      "explanation": "Voltage depends on the rate of change of current ($v = L \\frac{di}{dt}$), not the current value itself; a changing current can exist even if the instantaneous current is zero.",
+      "set": 3
     },
     {
       "id": "C12",
+      "question": "Three 6 \\mu F capacitors are connected in parallel. What is the equivalent capacitance?",
+      "type": "mcq",
+      "options": [
+        "2 \\mu F",
+        "6 \\mu F",
+        "12 \\mu F",
+        "18 \\mu F"
+      ],
+      "answer": "D",
+      "explanation": "For parallel capacitors, the equivalent capacitance is given by $C_{eq} = C_1 + C_2 + C_3 = 6 + 6 + 6 = 18 \\, \\mu\\text{F}$.",
+      "set": 3
+    },
+    {
+      "id": "C13",
+      "question": "A capacitor can store energy in a magnetic field.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Capacitors store energy in an electric field between their plates, while inductors store energy in a magnetic field.",
+      "set": 3
+    },
+    {
+      "id": "C14",
+      "question": "In a DC steady-state circuit, an inductor behaves as an open circuit.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "In DC steady state, the inductor current is constant, so voltage is zero, making it behave as a short circuit.",
+      "set": 3
+    },
+    {
+      "id": "C15",
+      "question": "Two 10 H inductors are connected in series. What is the equivalent inductance?",
+      "type": "mcq",
+      "options": [
+        "5 H",
+        "10 H",
+        "20 H",
+        "100 H"
+      ],
+      "answer": "C",
+      "explanation": "For series inductors, $L_{eq} = L_1 + L_2 = 10 + 10 = 20 \\text{ H}$.",
+      "set": 3
+    },
+    {
+      "id": "C16",
+      "question": "The voltage across a capacitor can change instantaneously if the current through it is infinite.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "In physical circuits, infinite current is not possible; thus, capacitor voltage cannot change instantaneously.",
+      "set": 4
+    },
+    {
+      "id": "C17",
+      "question": "A 1 H inductor has a current of 2 A. What is the energy stored in it?",
+      "type": "mcq",
+      "options": [
+        "1 J",
+        "2 J",
+        "4 J",
+        "8 J"
+      ],
+      "answer": "A",
+      "explanation": "The energy stored in the inductor is calculated using the formula $w = \\frac{1}{2} L i^2$. Substituting the given values $L = 1 \\text{ H}$ and $i = 2 \\text{ A}$ yields:\n\n$$\nw = \\frac{1}{2} (1 \\text{ H}) (2 \\text{ A})^2 = \\frac{1}{2} (1) (4) = 2 \\text{ J}\n$$\n\nComparing this result with the provided options, Option A is $1 \\text{ J}$ and Option B is $2 \\text{ J}$. Therefore, the correct choice is B.",
+      "set": 4
+    },
+    {
+      "id": "C18",
+      "question": "In an inverting op-amp differentiator, the output voltage is proportional to the derivative of the input voltage.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The transfer function is $v_{out} = -R_f C_1 \\frac{d(v_s)}{dt}$, confirming the output is the derivative of the input.",
+      "set": 4
+    },
+    {
+      "id": "C19",
+      "question": "If the voltage across an inductor is zero, the current through it must be zero.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Zero voltage implies that the current is constant ($\\frac{di}{dt} = 0$), but the constant value can be non-zero.",
+      "set": 4
+    },
+    {
+      "id": "C20",
+      "question": "A 4 \\mu F capacitor and an 8 \\mu F capacitor are connected in series. What is the equivalent capacitance?",
+      "type": "mcq",
+      "options": [
+        "12 \\mu F",
+        "6 \\mu F",
+        "8/3 \\mu F",
+        "3 \\mu F"
+      ],
+      "answer": "C",
+      "explanation": "For series capacitors, $\\frac{1}{C_{eq}} = \\frac{1}{4} + \\frac{1}{8} = \\frac{3}{8}$, so $C_{eq} = \\frac{8}{3} \\ \\mu\\text{F}$.",
+      "set": 4
+    },
+    {
+      "id": "C21",
       "question": "The power delivered to a capacitor is always positive.",
       "type": "tf",
       "options": [
@@ -144,92 +267,174 @@
         "False"
       ],
       "answer": "False",
-      "explanation": "Instantaneous power is defined as $p = vi$. When a capacitor discharges, the current flows out of the positive terminal, meaning the voltage and current have opposite signs relative to the passive sign convention. This results in negative power, indicating that the capacitor is delivering energy back to the circuit."
+      "explanation": "Instantaneous power $p = vi$ can be negative when the capacitor is discharging and delivering energy back to the circuit.",
+      "set": 5
     },
     {
-      "id": "C13",
-      "question": "If three 6 μF capacitors are connected in parallel, the equivalent capacitance is 18 μF.",
-      "type": "mcq",
-      "options": [
-        "2 μF",
-        "6 μF",
-        "12 μF",
-        "18 μF"
-      ],
-      "answer": "D",
-      "explanation": "For capacitors in parallel, the equivalent capacitance is the sum of the individual capacitances: $C_{eq} = C_1 + C_2 + C_3$. Therefore, $C_{eq} = 6\\ \\mu\\text{F} + 6\\ \\mu\\text{F} + 6\\ \\mu\\text{F} = 18\\ \\mu\\text{F}$."
-    },
-    {
-      "id": "C14",
-      "question": "In a DC steady state circuit, an inductor behaves as a short circuit.",
+      "id": "C22",
+      "question": "In a DC steady-state circuit, the voltage across an inductor is zero.",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "True",
-      "explanation": "In DC steady state, the current through the inductor is constant. Since $v = L \\frac{di}{dt}$, a constant current implies $\\frac{di}{dt} = 0$, which means $v = 0$. An element with zero voltage drop is equivalent to a short circuit."
+      "explanation": "Since the current is constant in DC steady state, $\\frac{di}{dt} = 0$, so $v = L \\frac{di}{dt} = 0$.",
+      "set": 5
     },
     {
-      "id": "C15",
-      "question": "An inverting op-amp differentiator circuit produces an output voltage proportional to the derivative of the input voltage.",
+      "id": "C23",
+      "question": "Two 2 \\mu F capacitors are connected in parallel. What is the equivalent capacitance?",
       "type": "mcq",
       "options": [
-        "True, with a capacitor at the input and resistor in feedback",
-        "False, it requires a resistor at the input and capacitor in feedback",
-        "True, with a resistor at the input and capacitor in feedback",
-        "False, it produces an integral of the input voltage"
+        "1 \\mu F",
+        "2 \\mu F",
+        "4 \\mu F",
+        "8 \\mu F"
+      ],
+      "answer": "C",
+      "explanation": "For parallel capacitors, $C_{eq} = C_1 + C_2 = 2 + 2 = 4 \\, \\mu\\text{F}$.",
+      "set": 5
+    },
+    {
+      "id": "C24",
+      "question": "The current through a capacitor is proportional to the rate of change of voltage across it.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The defining equation is $i(t) = C \\frac{dv(t)}{dt}$, showing direct proportionality to the voltage derivative.",
+      "set": 5
+    },
+    {
+      "id": "C25",
+      "question": "A 5 H inductor has a current of 4 A. What is the energy stored in it?",
+      "type": "mcq",
+      "options": [
+        "10 J",
+        "20 J",
+        "40 J",
+        "80 J"
+      ],
+      "answer": "C",
+      "explanation": "The energy is $w = \\frac{1}{2} L i^2 = \\frac{1}{2} \\cdot 5 \\cdot 4^2 = \\frac{1}{2} \\cdot 5 \\cdot 16 = 40 \\text{ J}$.",
+      "set": 5
+    },
+    {
+      "id": "C26",
+      "question": "In an inverting op-amp integrator, a resistor is typically placed in parallel with the feedback capacitor to prevent saturation.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The resistor provides a DC path to prevent the integrator from saturating due to DC offset or noise.",
+      "set": 6
+    },
+    {
+      "id": "C27",
+      "question": "If the current through a capacitor is zero, the voltage across it must be zero.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Zero current implies that the voltage is constant, as $\\frac{dv}{dt} = 0$, but the constant value may be non-zero.",
+      "set": 6
+    },
+    {
+      "id": "C28",
+      "question": "Three 2 H inductors are connected in parallel. What is the equivalent inductance?",
+      "type": "mcq",
+      "options": [
+        "6 H",
+        "2 H",
+        "2/3 H",
+        "1/6 H"
+      ],
+      "answer": "C",
+      "explanation": "For parallel inductors, $\\frac{1}{L_{\\text{eq}}} = \\frac{1}{2} + \\frac{1}{2} + \\frac{1}{2} = \\frac{3}{2}$, so $L_{\\text{eq}} = \\frac{2}{3} \\text{ H}$.",
+      "set": 6
+    },
+    {
+      "id": "C29",
+      "question": "The energy stored in a capacitor is proportional to the square of the voltage across it.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The formula for capacitor energy is $w_C = \\frac{1}{2} C v^2$, which is proportional to $v^2$.",
+      "set": 6
+    },
+    {
+      "id": "C30",
+      "question": "A 1 \\mu F capacitor has a voltage of 10 V. What is the energy stored in it?",
+      "type": "mcq",
+      "options": [
+        "50 \\mu J",
+        "100 \\mu J",
+        "500 \\mu J",
+        "1000 \\mu J"
       ],
       "answer": "A",
-      "explanation": "The inverting differentiator configuration places a capacitor at the input and a resistor in the feedback path. The output voltage is given by\n$$v_{out} = -R_f C_1 \\frac{d v_s}{dt}$$\nwhich is the negative derivative of the input voltage scaled by the $RC$ time constant."
+      "explanation": "The energy is $w = \\frac{1}{2} C v^2 = \\frac{1}{2} \\cdot 1 \\times 10^{-6} \\cdot 10^2 = \\frac{1}{2} \\cdot 100 \\times 10^{-6} = 50 \\, \\mu\\text{J}$.",
+      "set": 6
     }
   ],
   "problems": [
     {
       "id": "P01",
-      "question": "Consider a single inductor with L = 2 mH. The current through the inductor is given by i(t) = 10(e^{-200t} - e^{-800t}) A for t >= 0, with i(0-) = 0. Determine: (a) the initial voltage across the inductor at t = 0+ in the direction of the current; (b) the time t > 0 when the voltage is zero; (c) the expression for the power p(t) delivered to the inductor; (d) the time at which the power is maximum; (e) the maximum power value; (f) the time at which the stored energy is maximum; (g) the maximum stored energy.",
+      "question": "Consider a single inductor with inductance L = 5 mH. The current through the inductor is given by i(t) = 10(e^{-200t} - e^{-800t}) A for t >= 0, and i(0-) = 0. Determine: (a) the initial voltage v(0+) across the inductor in the direction of the current; (b) the time t > 0 when the voltage is zero; (c) the expression for the power p(t) delivered to the inductor; (d) the time t_p when the power is maximum; (e) the maximum power value; (f) the time t_w when the stored energy is maximum; (g) the maximum stored energy.",
       "source_base": "N1",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "L",
-            "value": "2 mH"
+            "value": "5 mH"
           }
         ],
         "current_label": "i(t)",
         "voltage_label": "v(t)",
         "note": "Single inductor, passive sign convention"
       },
-      "solution": "(a) The voltage is $v(t) = L \\frac{di}{dt}$. Differentiating $i(t)$: $\\frac{di}{dt} = 10(-200e^{-200t} + 800e^{-800t}) = -2000e^{-200t} + 8000e^{-800t} \\text{ A/s}$. At $t=0$, $\\frac{di}{dt} = 6000 \\text{ A/s}$. Thus $v(0^+) = 2 \\times 10^{-3} \\cdot 6000 = 12 \\text{ V}$.\n\n(b) Set $v(t) = 0$:\n$$ -2000e^{-200t} + 8000e^{-800t} = 0 $$\n$$ 4e^{-800t} = e^{-200t} $$\n$$ 4 = e^{600t} $$\n$$ t = \\frac{\\ln(4)}{600} \\approx 2.31 \\text{ ms} $$\n\n(c) $p(t) = v(t)i(t) = 2 \\times 10^{-3}(-2000e^{-200t} + 8000e^{-800t}) \\cdot 10(e^{-200t} - e^{-800t}) = 20(-2e^{-400t} + 5e^{-600t} - 2e^{-1000t}) \\text{ W}$.\n\n(d) To find max $p$, differentiate $p(t)$ with respect to $t$ and set to $0$. Let $u = e^{-200t}$.\n$$ p(u) = 20(-2u^2 + 5u^3 - 2u^5) $$\n$$ \\frac{dp}{du} = 20(-4u + 15u^2 - 10u^4) $$\nSetting $\\frac{dp}{du}=0$ gives $10u^4 - 15u^2 + 4u = 0 \\Rightarrow 5u(2u^3 - 3u + 0.8) = 0$. The relevant root for $u$ in $(0,1)$ is $u \\approx 0.5$.\n$$ e^{-200t} = 0.5 \\Rightarrow t = \\frac{\\ln(2)}{200} \\approx 3.47 \\text{ ms} $$\n\n(e) Substitute $t = \\frac{\\ln(2)}{200}$ into $p(t)$. $u=0.5$.\n$$ p = 20(-2(0.25) + 5(0.125) - 2(0.03125)) = 20(-0.5 + 0.625 - 0.0625) = 20(0.0625) = 1.25 \\text{ W} $$\n\n(f) Energy $w(t) = 0.5 L i^2$. Max energy occurs when $i(t)$ is max. $\\frac{di}{dt} = 0$ at $t = \\frac{\\ln(4)}{600} \\approx 2.31 \\text{ ms}$.\n\n(g) At $t = \\frac{\\ln(4)}{600}$, $e^{-200t} = e^{-\\ln(4)/3} = 4^{-1/3}$. $e^{-800t} = 4^{-4/3}$.\n$$ i_{\\text{max}} = 10(4^{-1/3} - 4^{-4/3}) = 10(4^{-1/3})(1 - \\frac{1}{4}) = 10(4^{-1/3})(0.75) $$\n$$ 4^{-1/3} \\approx 0.63 $$\n$$ i_{\\text{max}} \\approx 10 \\cdot 0.63 \\cdot 0.75 \\approx 4.72 \\text{ A} $$\n$$ w_{\\text{max}} = 0.5 \\cdot 2 \\times 10^{-3} \\cdot (4.72)^2 \\approx 0.001 \\cdot 22.28 \\approx 22.28 \\text{ mJ} $$",
-      "answer": "(a) $12\\text{ V}$; (b) $2.31\\text{ ms}$; (c) $p(t) = 20(-2e^{-400t} + 5e^{-600t} - 2e^{-1000t})\\text{ W}$; (d) $3.47\\text{ ms}$; (e) $1.25\\text{ W}$; (f) $2.31\\text{ ms}$; (g) $22.28\\text{ mJ}$"
+      "solution": "(a) The voltage across an inductor is $v(t) = L \\frac{di}{dt}$. Differentiating $i(t)$:\n$$ \\frac{di}{dt} = 10(-200e^{-200t} + 800e^{-800t}) = -2000e^{-200t} + 8000e^{-800t} \\text{ A/s} $$\nAt $t=0$, $\\frac{di}{dt} = 6000 \\text{ A/s}$. Thus:\n$$ v(0^+) = 5 \\times 10^{-3} \\cdot 6000 = 30 \\text{ V} $$\n\n(b) Set $v(t) = 0$:\n$$ 5 \\times 10^{-3}(-2000e^{-200t} + 8000e^{-800t}) = 0 $$\n$$ 4e^{-800t} = e^{-200t} $$\n$$ 4 = e^{600t} $$\n$$ t = \\frac{\\ln(4)}{600} = 2.31 \\text{ ms} $$\n\n(c)\n$$ p(t) = v(t)i(t) = 5 \\times 10^{-3}(-2000e^{-200t} + 8000e^{-800t}) \\cdot 10(e^{-200t} - e^{-800t}) $$\n$$ p(t) = 50(-2e^{-400t} + 5e^{-600t} - 2e^{-1000t}) \\text{ W} $$\n\n(d) To find max power, differentiate $p(t)$ with respect to $t$ and set to $0$. Let $x = e^{-200t}$.\n$$ p(x) = 50(-2x^2 + 5x^3 - 2x^5) $$\n$$ \\frac{dp}{dx} = 50(-4x + 15x^2 - 10x^4) $$\nSetting $\\frac{dp}{dx}=0$ gives roots. The relevant root for $t>0$ is $x = 0.5$ (approx). Solving $10x^4 - 15x^2 + 4 = 0$, let $y=x^2$, $10y^2 - 15y + 4 = 0$.\n$$ y = \\frac{15 \\pm \\sqrt{225-160}}{20} = \\frac{15 \\pm 8}{20} $$\n$y=1.15$ (invalid) or $y=0.35$.\n$$ x = \\sqrt{0.35} = 0.5916 $$\n$$ t = -\\frac{\\ln(0.5916)}{200} = 2.63 \\text{ ms} $$\n\n(e) Max power:\n$$ p(2.63 \\text{ ms}) = 50(-2(0.35) + 5(0.5916)^3 - 2(0.5916)^5) $$\n$$ p(2.63 \\text{ ms}) = 50(-0.7 + 1.03 - 0.22) = 16.5 \\text{ W} $$\n\n(f) Energy:\n$$ w(t) = 0.5 L i^2 $$\nMax energy occurs when $\\frac{di}{dt} = 0$, which is when $v(t)=0$. From (b), $t_w = 2.31 \\text{ ms}$.\n\n(g)\n$$ i(2.31 \\text{ ms}) = 10(e^{-0.462} - e^{-1.848}) = 10(0.63 - 0.157) = 4.73 \\text{ A} $$\n$$ w_{\\text{max}} = 0.5 \\cdot 5 \\times 10^{-3} \\cdot (4.73)^2 = 0.056 \\text{ J} = 56 \\text{ mJ} $$",
+      "answer": "(a) $30\\text{ V}$; (b) $2.31\\text{ ms}$; (c) $p(t) = 50(-2e^{-400t} + 5e^{-600t} - 2e^{-1000t})\\text{ W}$; (d) $2.63\\text{ ms}$; (e) $16.5\\text{ W}$; (f) $2.31\\text{ ms}$; (g) $56\\text{ mJ}$",
+      "set": 1
     },
     {
       "id": "P02",
-      "question": "An inductor with L = 100 mH is connected to a voltage source v(t) = 100 sin(500t) V for t >= 0. The initial current is i(0) = -2 A. (a) Find the expression for the current i(t) for t >= 0. (b) Determine the subintervals within the first cycle (0 <= t <= 4 ms) where the inductor absorbs power and where it delivers power.",
+      "question": "A 20 mH inductor is connected to a voltage source v(t) = 100 sin(5000t) V. The initial current is i(0) = -2 A. (a) Find the expression for the current i(t) for t >= 0. (b) Determine the subintervals within the first cycle (0 to 0.2 ms) where the inductor is absorbing power and where it is delivering power.",
       "source_base": "N2",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "Vac",
-            "value": "v(t)=100 sin 500t V"
+            "value": "v(t)=100 sin 5000t V"
           },
           {
             "kind": "L",
-            "value": "100 mH"
+            "value": "20 mH"
           }
         ],
-        "current_label": "i",
-        "voltage_label": "v",
+        "current_label": "i(t)",
+        "voltage_label": "v(t)",
         "note": "Series loop with AC source and inductor"
       },
-      "solution": "(a) The relationship is $v(t) = L \\frac{di}{dt}$. Thus $\\frac{di}{dt} = \\frac{v(t)}{L} = \\frac{100 \\sin(500t)}{0.1} = 1000 \\sin(500t) \\text{ A/s}$. Integrating:\n$$ i(t) = \\int 1000 \\sin(500t) \\, dt = -2 \\cos(500t) + K $$\nUsing $i(0) = -2$:\n$$ -2 = -2 \\cos(0) + K \\implies -2 = -2 + K \\implies K = 0 $$\nSo $i(t) = -2 \\cos(500t) \\text{ A}$.\n\n(b) Power $p(t) = v(t)i(t) = 100 \\sin(500t) \\cdot (-2 \\cos(500t)) = -200 \\sin(500t)\\cos(500t) = -100 \\sin(1000t) \\text{ W}$. The inductor absorbs power when $p(t) > 0$, i.e., $-100 \\sin(1000t) > 0 \\implies \\sin(1000t) < 0$. The inductor delivers power when $p(t) < 0$, i.e., $\\sin(1000t) > 0$. The period of $\\sin(1000t)$ is $T = \\frac{2\\pi}{1000} = 2 \\text{ ms}$. One cycle of the original signal is $4 \\text{ ms}$. In the interval $0 \\le t < 1 \\text{ ms}$, $1000t$ is in $[0, \\pi)$, so $\\sin(1000t) > 0$, thus $p(t) < 0$ (delivers power). In the interval $1 \\text{ ms} \\le t < 2 \\text{ ms}$, $1000t$ is in $[\\pi, 2\\pi)$, so $\\sin(1000t) < 0$, thus $p(t) > 0$ (absorbs power). This pattern repeats for $2 \\text{ ms} \\le t < 3 \\text{ ms}$ (delivers) and $3 \\text{ ms} \\le t < 4 \\text{ ms}$ (absorbs).",
-      "answer": "(a) $i(t) = -2 \\cos(500t) \\text{ A}$; (b) Delivers power: $0$-$1 \\text{ ms}$, $2$-$3 \\text{ ms}$; Absorbs power: $1$-$2 \\text{ ms}$, $3$-$4 \\text{ ms}$"
+      "solution": "(a) The voltage-current relationship for an inductor is given by $v(t) = L \\frac{di}{dt}$. Solving for the derivative of the current:\n\n$$ \\frac{di}{dt} = \\frac{v(t)}{L} = \\frac{100 \\sin(5000t)}{0.02} = 5000 \\sin(5000t) \\text{ A/s} $$\n\nIntegrating with respect to time:\n\n$$ i(t) = \\int 5000 \\sin(5000t) \\, dt = -\\frac{5000}{5000} \\cos(5000t) + K = -\\cos(5000t) + K $$\n\nApplying the initial condition $i(0) = -2 \\text{ A}$:\n\n$$ -1 + K = -2 \\implies K = -1 $$\n\nThus, the current is:\n\n$$ i(t) = -1 - \\cos(5000t) \\text{ A} $$\n\n(b) The instantaneous power is defined as $p(t) = v(t)i(t)$. Substituting the expressions for voltage and current:\n\n$$ p(t) = 100 \\sin(5000t) \\left[ -1 - \\cos(5000t) \\right] $$\n\nThe inductor absorbs power when $p(t) > 0$. Since $100 > 0$, the condition for absorbing power is:\n\n$$ \\sin(5000t) \\left[ -1 - \\cos(5000t) \\right] > 0 $$\n\nThe term $\\left[ -1 - \\cos(5000t) \\right]$ is always negative because $\\cos(5000t)$ ranges from $-1$ to $1$, making $-1 - \\cos(5000t)$ range from $-2$ to $0$. For the product to be positive, $\\sin(5000t)$ must be negative.\n\nThe period of the sinusoidal signal is:\n\n$$ T = \\frac{2\\pi}{\\omega} = \\frac{2\\pi}{5000} \\approx 1.257 \\text{ ms} $$\n\nWithin the first cycle, $0 < t < 1.257 \\text{ ms}$, the argument $5000t$ ranges from $0$ to $2\\pi$. The sine function is negative in the interval $(\\pi, 2\\pi)$. Therefore, the inductor absorbs power when:\n\n$$ \\pi < 5000t < 2\\pi \\implies \\frac{\\pi}{5000} < t < \\frac{2\\pi}{5000} $$\n\nCalculating the time boundaries:\n\n$$ \\frac{\\pi}{5000} \\approx 0.628 \\text{ ms}, \\quad \\frac{2\\pi}{5000} \\approx 1.257 \\text{ ms} $$\n\nThe inductor absorbs power for $0.628 \\text{ ms} < t < 1.257 \\text{ ms}$ and delivers power for $0 < t < 0.628 \\text{ ms}$.",
+      "answer": "(a) $i(t) = -1 - \\cos(5000t) \\text{ A}$; (b) Delivering: $0 < t < 0.628 \\text{ ms}$; Absorbing: $0.628 \\text{ ms} < t < 1.257 \\text{ ms}$",
+      "set": 1
     },
     {
       "id": "P03",
-      "question": "A capacitor with C = 1 \\mu F has a voltage v(t) = 0 for t < 0 and v(t) = 20 e^{-5000t} \\sin(10000t) V for t >= 0. (a) Find the initial capacitor current i(0+) in the direction of the voltage drop. (b) Calculate the power delivered to the capacitor at t = \\pi/40 ms. (c) Calculate the energy stored in the capacitor at t = \\pi/40 ms.",
+      "question": "A capacitor with capacitance C = 1 \\mu F has a voltage v(t) = 0 for t < 0 and v(t) = 20 e^{-5000t} sin(10000t) V for t >= 0. (a) Find the initial capacitor current i(0+) in the direction of the voltage drop. (b) Calculate the power delivered to the capacitor at t = \\pi/40 ms. (c) Calculate the energy stored in the capacitor at t = \\pi/40 ms.",
       "source_base": "N3",
       "circuit_spec": {
         "type": "series",
@@ -243,12 +448,13 @@
         "voltage_label": "v(t)",
         "note": "Single capacitor, passive sign convention"
       },
-      "solution": "(a) The current is given by $i(t) = C \\frac{dv}{dt}$. The voltage is $v(t) = 20 e^{-5000t} \\sin(10000t)$. Differentiating with respect to time yields:\n$$ \\frac{dv}{dt} = 20 \\left[ -5000 e^{-5000t} \\sin(10000t) + 10000 e^{-5000t} \\cos(10000t) \\right] $$\n$$ \\frac{dv}{dt} = 20 e^{-5000t} \\left[ -5000 \\sin(10000t) + 10000 \\cos(10000t) \\right] $$\nAt $t = 0$:\n$$ \\frac{dv}{dt} = 20 [ 0 + 10000 ] = 200,000 \\text{ V/s} $$\nThe initial current is:\n$$ i(0^+) = 1 \\times 10^{-6} \\cdot 200,000 = 0.2 \\text{ A} = 200 \\text{ mA} $$\n\n(b) The time is $t = \\frac{\\pi}{40} \\text{ ms} = \\frac{\\pi}{40000} \\text{ s}$.\nThe arguments of the trigonometric functions are:\n$$ 10000t = 10000 \\left( \\frac{\\pi}{40000} \\right) = \\frac{\\pi}{4} $$\n$$ 5000t = \\frac{\\pi}{8} $$\nThe voltage at this time is:\n$$ v(t) = 20 e^{-\\pi/8} \\sin\\left(\\frac{\\pi}{4}\\right) = 20 e^{-\\pi/8} \\left( \\frac{\\sqrt{2}}{2} \\right) = 10\\sqrt{2} e^{-\\pi/8} \\text{ V} $$\nThe current at this time is:\n$$ i(t) = 1 \\times 10^{-6} \\cdot 20 e^{-\\pi/8} \\left[ -5000 \\left( \\frac{\\sqrt{2}}{2} \\right) + 10000 \\left( \\frac{\\sqrt{2}}{2} \\right) \\right] $$\n$$ i(t) = 20 \\times 10^{-6} e^{-\\pi/8} \\left[ \\frac{5000\\sqrt{2}}{2} \\right] = 20 \\times 10^{-6} e^{-\\pi/8} \\cdot 2500\\sqrt{2} $$\n$$ i(t) = 0.05\\sqrt{2} e^{-\\pi/8} \\text{ A} $$\nThe instantaneous power is:\n$$ p(t) = v(t)i(t) = \\left( 10\\sqrt{2} e^{-\\pi/8} \\right) \\left( 0.05\\sqrt{2} e^{-\\pi/8} \\right) $$\n$$ p(t) = 10 \\cdot 0.05 \\cdot 2 \\cdot e^{-\\pi/4} = 1 \\cdot e^{-\\pi/4} \\text{ W} $$\nSince $e^{-\\pi/4} \\approx e^{-0.785} \\approx 0.456$:\n$$ p \\approx 0.456 \\text{ W} $$\n\n(c) The energy stored in the capacitor is $w(t) = 0.5 C v^2$.\nUsing $v(t) = 10\\sqrt{2} e^{-\\pi/8}$:\n$$ v^2 = 200 e^{-\\pi/4} $$\nThe energy is:\n$$ w = 0.5 \\cdot 1 \\times 10^{-6} \\cdot 200 e^{-\\pi/4} = 100 \\times 10^{-6} e^{-\\pi/4} $$\n$$ w = 100 e^{-\\pi/4} \\text{ }\\mu\\text{J} \\approx 45.6 \\text{ }\\mu\\text{J} $$",
-      "answer": "(a) $200\\ \\text{mA}$; (b) $0.456\\ \\text{W}$; (c) $45.6\\ \\mu\\text{J}$"
+      "solution": "(a) The current is given by $i(t) = C \\frac{dv}{dt}$. The voltage is $v(t) = 20 e^{-5000t} \\sin(10000t)$. Differentiating with respect to time yields:\n$$ \\frac{dv}{dt} = 20 \\left[ -5000 e^{-5000t} \\sin(10000t) + 10000 e^{-5000t} \\cos(10000t) \\right] $$\nAt $t = 0$,\n$$ \\frac{dv}{dt} = 20 \\left[ 0 + 10000 \\right] = 200,000 \\text{ V/s} $$\nThus,\n$$ i(0^+) = 1 \\times 10^{-6} \\cdot 200,000 = 0.2 \\text{ A} = 200 \\text{ mA} $$\n\n(b) The time is $t = \\frac{\\pi}{40} \\text{ ms} = \\frac{\\pi}{40000} \\text{ s}$.\n$$ 10000t = 10000 \\left( \\frac{\\pi}{40000} \\right) = \\frac{\\pi}{4} $$\n$$ 5000t = 5000 \\left( \\frac{\\pi}{40000} \\right) = \\frac{\\pi}{8} $$\nThe voltage at this instant is:\n$$ v\\left(\\frac{\\pi}{40} \\text{ ms}\\right) = 20 e^{-\\pi/8} \\sin\\left(\\frac{\\pi}{4}\\right) = 20 e^{-0.3927} (0.7071) = 20(0.675)(0.7071) = 9.55 \\text{ V} $$\nThe current is:\n$$ i(t) = 1 \\times 10^{-6} \\cdot 20 e^{-5000t} \\left[ -5000 \\sin(10000t) + 10000 \\cos(10000t) \\right] $$\n$$ i(t) = 20 \\times 10^{-6} e^{-5000t} \\left[ -5000(0.7071) + 10000(0.7071) \\right] $$\n$$ i(t) = 20 \\times 10^{-6} e^{-\\pi/8} (3535.5) = 0.0707 e^{-0.3927} = 0.0707(0.675) = 0.0477 \\text{ A} $$\nThe instantaneous power is:\n$$ p(t) = v(t) i(t) = 9.55 \\cdot 0.0477 = 0.456 \\text{ W} $$\n\n(c) The energy is given by $w(t) = 0.5 C v^2$.\n$$ w\\left(\\frac{\\pi}{40} \\text{ ms}\\right) = 0.5 \\cdot 1 \\times 10^{-6} \\cdot (9.55)^2 = 0.5 \\times 10^{-6} \\cdot 91.2 = 45.6 \\text{ \\mu J} $$",
+      "answer": "(a) $200\\ \\text{mA}$; (b) $0.456\\ \\text{W}$; (c) $45.6\\ \\mu\\text{J}$",
+      "set": 1
     },
     {
       "id": "P04",
-      "question": "A capacitor with C = 2 \\mu F has zero current and voltage for t < 0. For t >= 0, the current is i(t) = 4 \\cos(20000t) A. (a) Find the voltage drop v(t) in the direction of the current. (b) Determine the maximum instantaneous power delivered to the capacitor. (c) Determine the maximum stored energy.",
+      "question": "A capacitor with capacitance C = 2 \\mu F has zero voltage and zero current for t < 0. For t >= 0, the current is i(t) = 4 cos(20000t) A. (a) Find the voltage drop v(t) in the direction of the current. (b) Find the maximum instantaneous power delivered to the capacitor. (c) Find the maximum stored energy.",
       "source_base": "N4",
       "circuit_spec": {
         "type": "series",
@@ -262,12 +468,13 @@
         "voltage_label": "v(t)",
         "note": "Single capacitor, passive sign convention"
       },
-      "solution": "(a) The voltage is given by $v(t) = \\frac{1}{C} \\int i(t) \\, dt$. Substituting the given values:\n$$ v(t) = \\frac{1}{2 \\times 10^{-6}} \\int 4 \\cos(20000t) \\, dt $$\n$$ v(t) = 500,000 \\left[ \\frac{4}{20000} \\sin(20000t) \\right] + K $$\n$$ v(t) = 500,000 \\left[ 0.0002 \\sin(20000t) \\right] + K $$\n$$ v(t) = 100 \\sin(20000t) + K $$\nSince $v(0) = 0$, $K = 0$. Therefore:\n$$ v(t) = 100 \\sin(20000t) \\, \\text{V} $$\n\n(b) The instantaneous power is given by $p(t) = v(t)i(t)$.\n$$ p(t) = 100 \\sin(20000t) \\cdot 4 \\cos(20000t) $$\n$$ p(t) = 400 \\sin(20000t) \\cos(20000t) $$\nUsing the trigonometric identity $\\sin(2\\theta) = 2 \\sin(\\theta) \\cos(\\theta)$:\n$$ p(t) = 200 \\sin(40000t) \\, \\text{W} $$\nThe maximum value of $\\sin(40000t)$ is $1$. Thus:\n$$ p_{\\text{max}} = 200 \\, \\text{W} $$\n\n(c) The energy stored in the capacitor is given by $w(t) = 0.5 C v^2$.\n$$ w(t) = 0.5 \\cdot 2 \\times 10^{-6} \\cdot (100 \\sin(20000t))^2 $$\n$$ w(t) = 1 \\times 10^{-6} \\cdot 10000 \\sin^2(20000t) $$\n$$ w(t) = 0.01 \\sin^2(20000t) \\, \\text{J} $$\nThe maximum value of $\\sin^2(20000t)$ is $1$. Therefore:\n$$ w_{\\text{max}} = 0.01 \\, \\text{J} = 10 \\, \\text{mJ} $$",
-      "answer": "(a) $v(t) = 100 \\sin(20000t) \\text{ V}$; (b) $200 \\text{ W}$; (c) $10 \\text{ mJ}$"
+      "solution": "(a) The voltage is given by $v(t) = \\frac{1}{C} \\int_0^t i(\\tau) \\, d\\tau$. Substituting the given values:\n$$v(t) = \\frac{1}{2 \\times 10^{-6}} \\int_0^t 4 \\cos(20000\\tau) \\, d\\tau$$\n$$v(t) = 2 \\times 10^6 \\left[ \\frac{4}{20000} \\sin(20000\\tau) \\right]_0^t$$\n$$v(t) = 2 \\times 10^6 \\cdot (2 \\times 10^{-4}) \\sin(20000t)$$\n$$v(t) = 400 \\sin(20000t) \\, \\text{V}$$\n\n(b) The instantaneous power is $p(t) = v(t)i(t)$.\n$$p(t) = 400 \\sin(20000t) \\cdot 4 \\cos(20000t)$$\n$$p(t) = 1600 \\sin(20000t) \\cos(20000t)$$\nUsing the trigonometric identity $\\sin(2\\theta) = 2 \\sin(\\theta) \\cos(\\theta)$:\n$$p(t) = 800 \\sin(40000t) \\, \\text{W}$$\nThe maximum value is $800 \\, \\text{W}$.\n\n(c) The energy stored in the capacitor is $w(t) = \\frac{1}{2} C v^2$.\n$$w(t) = \\frac{1}{2} \\cdot 2 \\times 10^{-6} \\cdot (400 \\sin(20000t))^2$$\n$$w(t) = 1 \\times 10^{-6} \\cdot 160000 \\sin^2(20000t)$$\n$$w(t) = 0.16 \\sin^2(20000t) \\, \\text{J}$$\nThe maximum stored energy is $0.16 \\, \\text{J} = 160 \\, \\text{mJ}$.",
+      "answer": "(a) $v(t) = 400 \\sin(20000t) \\text{ V}$; (b) $800 \\text{ W}$; (c) $160 \\text{ mJ}$",
+      "set": 1
     },
     {
       "id": "P05",
-      "question": "A capacitor with C = 100 nF has an initial voltage v(0) = -40 V. For t >= 0, the current is i(t) = 50 e^{-10000t} mA. (a) Find the expression for the voltage v(t). (b) Calculate the energy stored in the capacitor at t = 100 \\mu s. (c) Calculate the energy stored in the capacitor as t approaches infinity.",
+      "question": "A capacitor with capacitance C = 100 nF has an initial voltage v(0) = -50 V. For t >= 0, the current is i(t) = 50 e^{-10000t} mA. (a) Find the energy stored in the capacitor at t = 100 \\mu s. (b) Find the energy stored in the capacitor at t = \\infty.",
       "source_base": "N5",
       "circuit_spec": {
         "type": "series",
@@ -281,31 +488,33 @@
         "voltage_label": "v(t)",
         "note": "Single capacitor, passive sign convention"
       },
-      "solution": "(a) The voltage is given by $v(t) = v(0) + \\frac{1}{C} \\int_0^t i(\\tau) \\, d\\tau$. The current is $i(t) = 50 \\times 10^{-3} e^{-10000t} \\, \\text{A}$. Evaluating the integral:\n$$ \\int_0^t 50 \\times 10^{-3} e^{-10000\\tau} \\, d\\tau = 50 \\times 10^{-3} \\left[ \\frac{e^{-10000\\tau}}{-10000} \\right]_0^t $$\n$$ = 50 \\times 10^{-3} \\left[ \\frac{1}{10000} (1 - e^{-10000t}) \\right] = 5 \\times 10^{-6} (1 - e^{-10000t}) \\, \\text{C} $$\nThe reciprocal of the capacitance is:\n$$ \\frac{1}{C} = \\frac{1}{100 \\times 10^{-9}} = 10^7 \\, \\text{F}^{-1} $$\nThe change in voltage is:\n$$ \\Delta v = 10^7 \\cdot 5 \\times 10^{-6} (1 - e^{-10000t}) = 50 (1 - e^{-10000t}) \\, \\text{V} $$\nThus, the voltage expression is:\n$$ v(t) = -40 + 50(1 - e^{-10000t}) = 10 - 50 e^{-10000t} \\, \\text{V} $$\n\n(b) At $t = 100 \\, \\mu\\text{s} = 100 \\times 10^{-6} \\, \\text{s}$:\n$$ 10000t = 1 $$\n$$ e^{-1} \\approx 0.3679 $$\nThe voltage at this time is:\n$$ v(100 \\, \\mu\\text{s}) = 10 - 50(0.3679) = 10 - 18.395 = -8.395 \\, \\text{V} $$\nThe energy stored is:\n$$ w = 0.5 C v^2 = 0.5 \\cdot 100 \\times 10^{-9} \\cdot (-8.395)^2 = 50 \\times 10^{-9} \\cdot 70.48 = 3524 \\times 10^{-9} \\, \\text{J} = 3.52 \\, \\mu\\text{J} $$\n\n(c) As $t \\to \\infty$, $e^{-10000t} \\to 0$. Therefore:\n$$ v(\\infty) = 10 \\, \\text{V} $$\nThe energy at infinity is:\n$$ w(\\infty) = 0.5 \\cdot 100 \\times 10^{-9} \\cdot 10^2 = 50 \\times 10^{-9} \\cdot 100 = 5000 \\times 10^{-9} \\, \\text{J} = 5 \\, \\mu\\text{J} $$",
-      "answer": "(a) $v(t) = 10 - 50 e^{-10000t} \\text{ V}$; (b) $3.52 \\ \\mu\\text{J}$; (c) $5 \\ \\mu\\text{J}$"
+      "solution": "First, find $v(t)$.\n$$v(t) = v(0) + \\frac{1}{C} \\int_0^t i(\\tau) \\, d\\tau$$\nGiven $i(t) = 50 \\times 10^{-3} e^{-10000t} \\, \\text{A}$.\n$$\\int_0^t 50 \\times 10^{-3} e^{-10000\\tau} \\, d\\tau = 50 \\times 10^{-3} \\left[ -\\frac{1}{10000} e^{-10000\\tau} \\right]_0^t$$\n$$= -5 \\times 10^{-6} \\left( e^{-10000t} - 1 \\right) = 5 \\times 10^{-6} \\left( 1 - e^{-10000t} \\right)$$\n$$v(t) = -50 + \\frac{1}{100 \\times 10^{-9}} \\cdot 5 \\times 10^{-6} \\left( 1 - e^{-10000t} \\right)$$\n$$= -50 + 50 \\left( 1 - e^{-10000t} \\right)$$\n$$= -50 + 50 - 50 e^{-10000t}$$\n$$= -50 e^{-10000t} \\, \\text{V}$$\n\n(a) At $t = 100 \\, \\mu\\text{s} = 1 \\times 10^{-4} \\, \\text{s}$, $10000t = 1$.\n$$v(100 \\, \\mu\\text{s}) = -50 e^{-1} = -50(0.3679) = -18.39 \\, \\text{V}$$\n$$w = \\frac{1}{2} C v^2 = \\frac{1}{2} \\cdot 100 \\times 10^{-9} \\cdot (-18.39)^2 = 50 \\times 10^{-9} \\cdot 338.2 = 16.91 \\, \\mu\\text{J}$$\n\n(b) As $t \\to \\infty$, $v(t) \\to 0$.\n$$w(\\infty) = 0 \\, \\text{J}$$",
+      "answer": "(a) $16.91 \\, \\mu\\text{J}$; (b) $0 \\, \\text{J}$",
+      "set": 1
     },
     {
       "id": "P06",
-      "question": "A capacitor with C = 50 nF has an initial voltage of 20 V drop in the reference direction of the current. A rectangular current pulse is applied: i = 40 mA for 0 < t < 50 \\mu s; i = -20 mA for 50 \\mu s < t < 150 \\mu s; i = 0 for t > 150 \\mu s. Find the expression for v(t) in each of the three intervals.",
+      "question": "A capacitor with capacitance C = 100 nF has an initial voltage of 20 V (drop in the reference direction of the current). A rectangular current pulse is applied: i(t) = 40 mA for 0 < t < 50 \\mu s, i(t) = -20 mA for 50 \\mu s < t < 150 \\mu s, and i(t) = 0 for t > 150 \\mu s. Find the voltage v(t) in each of the three intervals.",
       "source_base": "N6",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "C",
-            "value": "50 nF"
+            "value": "100 nF"
           }
         ],
         "current_label": "i(t)",
         "voltage_label": "v(t)",
-        "note": "Single capacitor with piecewise current source"
+        "note": "Single capacitor, passive sign convention"
       },
-      "solution": "Interval 1: $0 < t < 50 \\, \\mu\\text{s}$.\n\n$i = 40 \\times 10^{-3} \\, \\text{A}$.\n\n$$ \\frac{dv}{dt} = \\frac{i}{C} = \\frac{40 \\times 10^{-3}}{50 \\times 10^{-9}} = 800,000 \\, \\text{V/s} $$\n\n$$ v(t) = v(0) + \\int_0^t 800,000 \\, d\\tau = 20 + 800,000 t $$\n\nAt $t = 50 \\, \\mu\\text{s} = 50 \\times 10^{-6} \\, \\text{s}$:\n\n$$ v = 20 + 800,000(50 \\times 10^{-6}) = 20 + 40 = 60 \\, \\text{V} $$\n\nInterval 2: $50 \\, \\mu\\text{s} < t < 150 \\, \\mu\\text{s}$.\n\n$i = -20 \\times 10^{-3} \\, \\text{A}$.\n\n$$ \\frac{dv}{dt} = \\frac{-20 \\times 10^{-3}}{50 \\times 10^{-9}} = -400,000 \\, \\text{V/s} $$\n\n$$ v(t) = v(50 \\, \\mu\\text{s}) + \\int_{50 \\, \\mu\\text{s}}^t -400,000 \\, d\\tau = 60 - 400,000(t - 50 \\times 10^{-6}) $$\n\nAt $t = 150 \\, \\mu\\text{s}$:\n\n$$ v = 60 - 400,000(100 \\times 10^{-6}) = 60 - 40 = 20 \\, \\text{V} $$\n\nInterval 3: $t > 150 \\, \\mu\\text{s}$.\n\n$i = 0$.\n\n$$ \\frac{dv}{dt} = 0 $$\n\n$$ v(t) = v(150 \\, \\mu\\text{s}) = 20 \\, \\text{V} $$",
-      "answer": "$v(t) = 20 + 800{,}000t \\text{ V}$ ($0 \\le t \\le 50 \\ \\mu\\text{s}$); $v(t) = 60 - 400{,}000(t - 50 \\ \\mu\\text{s}) \\text{ V}$ ($50 \\ \\mu\\text{s} \\le t \\le 150 \\ \\mu\\text{s}$); $v(t) = 20 \\text{ V}$ ($t > 150 \\ \\mu\\text{s}$)"
+      "solution": "The capacitor voltage is determined by the integral of the current:\n$$v(t) = v(0) + \\frac{1}{C} \\int_0^t i(\\tau) \\, d\\tau$$\nGiven $C = 100 \\times 10^{-9} \\, \\text{F}$, the reciprocal is $\\frac{1}{C} = 10^7 \\, \\text{F}^{-1}$.\n\nFor the interval $0 < t < 50 \\, \\mu\\text{s}$, the current is $i = 40 \\times 10^{-3} \\, \\text{A}$. The voltage is:\n$$v(t) = 20 + 10^7 \\cdot 40 \\times 10^{-3} \\cdot t = 20 + 400{,}000 \\, t$$\nAt $t = 50 \\, \\mu\\text{s} = 50 \\times 10^{-6} \\, \\text{s}$:\n$$v = 20 + 400{,}000(50 \\times 10^{-6}) = 20 + 20 = 40 \\, \\text{V}$$\n\nFor the interval $50 \\, \\mu\\text{s} < t < 150 \\, \\mu\\text{s}$, the current is $i = -20 \\times 10^{-3} \\, \\text{A}$. The voltage is:\n$$v(t) = v(50 \\, \\mu\\text{s}) + 10^7 \\cdot (-20 \\times 10^{-3}) \\cdot (t - 50 \\, \\mu\\text{s}) = 40 - 200{,}000 (t - 50 \\, \\mu\\text{s})$$\nAt $t = 150 \\, \\mu\\text{s}$, the time difference is $t - 50 \\, \\mu\\text{s} = 100 \\, \\mu\\text{s} = 100 \\times 10^{-6} \\, \\text{s}$. Thus:\n$$v = 40 - 200{,}000(100 \\times 10^{-6}) = 40 - 20 = 20 \\, \\text{V}$$\n\nFor the interval $t > 150 \\, \\mu\\text{s}$, the current is $i = 0$. The voltage remains constant:\n$$v(t) = v(150 \\, \\mu\\text{s}) = 20 \\, \\text{V}$$",
+      "answer": "$v(t) = 20 + 400{,}000t \\text{ V}$ for $0 < t < 50 \\text{ }\\mu\\text{s}$;\n$v(t) = 40 - 200{,}000(t - 50 \\text{ }\\mu\\text{s}) \\text{ V}$ for $50 \\text{ }\\mu\\text{s} < t < 150 \\text{ }\\mu\\text{s}$;\n$v(t) = 20 \\text{ V}$ for $t > 150 \\text{ }\\mu\\text{s}$",
+      "set": 2
     },
     {
       "id": "P07",
-      "question": "A capacitor with C = 1 \\mu F is subjected to a voltage pulse defined as: v(t) = 20 V for 0 <= t <= 1 s; v(t) = 20(2-t) V for 1 < t <= 2 s; v(t) = 0 elsewhere. Derive the expression for the capacitor current i(t) during the interval 0 <= t <= 2 s, noting any impulses at the boundaries.",
+      "question": "A capacitor with capacitance C = 1 \\mu F is subjected to a voltage pulse defined as: v(t) = 20 V for 0 <= t <= 1 s; v(t) = 20(2-t) V for 1 < t <= 2 s; v(t) = 0 elsewhere. Derive the expression for the capacitor current i(t) during the interval 0 <= t <= 2 s.",
       "source_base": "N7",
       "circuit_spec": {
         "type": "series",
@@ -317,14 +526,15 @@
         ],
         "current_label": "i(t)",
         "voltage_label": "v(t)",
-        "note": "Single capacitor with piecewise voltage source"
+        "note": "Single capacitor, passive sign convention"
       },
-      "solution": "$i(t) = C \\frac{dv}{dt}$. For $0 < t < 1 \\text{ s}$, $v(t) = 20 \\text{ V}$, so $\\frac{dv}{dt} = 0$, thus $i(t) = 0$. At $t = 0$, $v$ jumps from $0$ to $20 \\text{ V}$. This is a step change $\\Delta v = 20 \\text{ V}$. The current is an impulse $i(t) = C \\Delta v \\delta(t) = 1 \\times 10^{-6} \\cdot 20 \\delta(t) = 20 \\ \\mu\\text{C} \\ \\delta(t)$. For $1 < t < 2 \\text{ s}$, $v(t) = 20(2-t) = 40 - 20t$. $\\frac{dv}{dt} = -20 \\text{ V/s}$. $i(t) = 1 \\times 10^{-6} \\cdot (-20) = -20 \\ \\mu\\text{A}$. At $t = 1 \\text{ s}$, $v$ is continuous ($20 \\text{ V}$ from left, $20(2-1)=20 \\text{ V}$ from right), so no impulse. At $t = 2 \\text{ s}$, $v$ jumps from $0$ to $0$ (since $v(2)=0$ and $v(t>2)=0$), so no impulse. Thus, $i(t)$ consists of an impulse of $20 \\ \\mu\\text{C}$ at $t=0$, $0$ for $0<t<1$, $-20 \\ \\mu\\text{A}$ for $1<t<2$, and $0$ for $t>2$.",
-      "answer": "$i(t) = 20\\,\\mu\\text{C}\\,\\delta(t) + 0\\,(0<t<1) - 20\\,\\mu\\text{A}\\,(1<t<2) + 0\\,(t>2)$"
+      "solution": "$i(t) = C \\frac{dv}{dt}$. $C = 1 \\times 10^{-6} \\text{ F}$. For $0 < t < 1 \\text{ s}$, $v(t) = 20 \\text{ V}$ (constant). $\\frac{dv}{dt} = 0$. $i(t) = 0$. At $t = 0$, there is a step from $0$ to $20 \\text{ V}$, which implies an impulse current of charge $Q = C \\Delta V = 1 \\times 10^{-6} \\times 20 = 20 \\text{ \\mu C}$. For $1 < t < 2 \\text{ s}$, $v(t) = 20(2 - t) = 40 - 20t$. $\\frac{dv}{dt} = -20 \\text{ V/s}$. $i(t) = 1 \\times 10^{-6} \\times (-20) = -20 \\text{ \\mu A}$. At $t = 2 \\text{ s}$, $v$ goes to $0$, another impulse of $-20 \\text{ \\mu C}$. So for the continuous part: $i(t) = 0$ for $0 < t < 1 \\text{ s}$; $i(t) = -20 \\text{ \\mu A}$ for $1 < t < 2 \\text{ s}$.",
+      "answer": "$i(t) = 0$ for $0 < t < 1\\ \\text{s}$; $i(t) = -20\\ \\mu\\text{A}$ for $1 < t < 2\\ \\text{s}$ (plus impulses at $t = 0$ and $t = 2$)",
+      "set": 2
     },
     {
       "id": "P08",
-      "question": "Two inductors, L1 = 5 H and L2 = 15 H, are connected in parallel. At t=0, they are connected to a load (black box). The voltage across the parallel combination is v(t) = 900 e^{-10t} V for t > 0. The initial currents are i1(0) = 2 A and i2(0) = -8 A. (a) Find the equivalent inductance and the total current i(t) entering the load. (b) Find the individual currents i1(t) and i2(t). (c) Calculate the total energy delivered to the load from t=0 to t=\\infty. (d) Calculate the initial stored energy in the inductors. (e) Calculate the energy trapped in the inductors at t=\\infty.",
+      "question": "Two inductors, L1 = 5 H and L2 = 15 H, are connected in parallel. The combination is connected to a load at t=0. The voltage across the parallel combination is v(t) = 900 e^{-10t} V for t > 0. The initial currents are i1(0) = 2 A and i2(0) = -8 A. (a) Find the equivalent inductance and the total current i(t). (b) Find i1(t). (c) Find i2(t). (d) Calculate the energy delivered to the load from t=0 to t=\\infty. (e) Calculate the initial stored energy. (f) Calculate the energy trapped in the inductors at t=\\infty.",
       "source_base": "N8",
       "circuit_spec": {
         "type": "parallel",
@@ -348,12 +558,13 @@
         ],
         "note": "Parallel inductors connected to a load"
       },
-      "solution": "(a) The equivalent inductance $L_{eq}$ is calculated as:\n$$ L_{eq} = \\frac{L_1 L_2}{L_1 + L_2} = \\frac{5 \\cdot 15}{5 + 15} = \\frac{75}{20} = 3.75 \\text{ H} $$\nThe total current $i(t)$ is the sum of the branch currents. The relationship between voltage and current is given by $v(t) = L_{eq} \\frac{di}{dt}$. Solving for the derivative:\n$$ \\frac{di}{dt} = \\frac{v(t)}{L_{eq}} = \\frac{900 e^{-10t}}{3.75} = 240 e^{-10t} \\text{ A/s} $$\nIntegrating to find $i(t)$:\n$$ i(t) = \\int 240 e^{-10t} \\, dt = -24 e^{-10t} + K $$\nThe initial total current is the sum of the initial branch currents:\n$$ i(0) = i_1(0) + i_2(0) = 2 - 8 = -6 \\text{ A} $$\nSubstituting $t=0$ into the expression for $i(t)$:\n$$ -6 = -24(1) + K \\implies K = 18 $$\nThus, the total current is:\n$$ i(t) = 18 - 24 e^{-10t} \\text{ A} $$\n\n(b) For inductor $L_1$:\n$$ v(t) = L_1 \\frac{di_1}{dt} \\implies \\frac{di_1}{dt} = \\frac{900 e^{-10t}}{5} = 180 e^{-10t} $$\nIntegrating:\n$$ i_1(t) = \\int 180 e^{-10t} \\, dt = -18 e^{-10t} + K_1 $$\nUsing the initial condition $i_1(0) = 2 \\text{ A}$:\n$$ 2 = -18 + K_1 \\implies K_1 = 20 $$\nThus:\n$$ i_1(t) = 20 - 18 e^{-10t} \\text{ A} $$\n\nFor inductor $L_2$:\n$$ v(t) = L_2 \\frac{di_2}{dt} \\implies \\frac{di_2}{dt} = \\frac{900 e^{-10t}}{15} = 60 e^{-10t} $$\nIntegrating:\n$$ i_2(t) = \\int 60 e^{-10t} \\, dt = -6 e^{-10t} + K_2 $$\nUsing the initial condition $i_2(0) = -8 \\text{ A}$:\n$$ -8 = -6 + K_2 \\implies K_2 = -2 $$\nThus:\n$$ i_2(t) = -2 - 6 e^{-10t} \\text{ A} $$\n\nVerification:\n$$ i_1(t) + i_2(t) = (20 - 18 e^{-10t}) + (-2 - 6 e^{-10t}) = 18 - 24 e^{-10t} \\text{ A} $$\nThis matches the total current $i(t)$ derived in part (a).\n\n(c) The energy delivered to the load is determined by integrating the power over time.\n\n(d) The initial energy stored in the inductors is:\n$$ W_0 = \\frac{1}{2} L_1 i_1(0)^2 + \\frac{1}{2} L_2 i_2(0)^2 $$\n$$ W_0 = \\frac{1}{2}(5)(2^2) + \\frac{1}{2}(15)(-8^2) = 10 + \\frac{1}{2}(15)(64) = 10 + 480 = 490 \\text{ J} $$\n\n(e) The final energy stored in the inductors as $t \\to \\infty$ is:\n$$ W_{\\infty} = \\frac{1}{2} L_1 i_1(\\infty)^2 + \\frac{1}{2} L_2 i_2(\\infty)^2 $$\nAs $t \\to \\infty$, $e^{-10t} \\to 0$, so $i_1(\\infty) = 20 \\text{ A}$ and $i_2(\\infty) = -2 \\text{ A}$.\n$$ W_{\\infty} = \\frac{1}{2}(5)(20^2) + \\frac{1}{2}(15)(-2^2) = \\frac{1}{2}(5)(400) + \\frac{1}{2}(15)(4) = 1000 + 30 = 1030 \\text{ J} $$\n\nThe energy delivered to the load is calculated by integrating the power $p_{load} = v(t) i(t)$ from $t=0$ to $t=\\infty$:\n$$ W_{load} = \\int_0^\\infty 900 e^{-10t} (18 - 24 e^{-10t}) \\, dt $$\n$$ W_{load} = \\int_0^\\infty (16200 e^{-10t} - 21600 e^{-20t}) \\, dt $$\n$$ W_{load} = \\left[ -1620 e^{-10t} + 1080 e^{-20t} \\right]_0^\\infty $$\n$$ W_{load} = (0) - (-1620 + 1080) = 540 \\text{ J} $$\n\nThe energy delivered to the load is $540 \\text{ J}$. The energy trapped in the inductors at $t=\\infty$ is $1030 \\text{ J}$.",
-      "answer": "(a) $L_{eq} = 3.75 \\text{ H}$, $i(t) = 18 - 24 e^{-10t} \\text{ A}$; (b) $i_1(t) = 20 - 18 e^{-10t} \\text{ A}$, $i_2(t) = -2 - 6 e^{-10t} \\text{ A}$; (c) $540 \\text{ J}$; (d) $490 \\text{ J}$; (e) $1030 \\text{ J}$"
+      "solution": "(a) The equivalent inductance is given by:\n$$L_{eq} = \\frac{L_1 L_2}{L_1 + L_2} = \\frac{5 \\cdot 15}{5 + 15} = \\frac{75}{20} = 3.75 \\text{ H}$$\nThe total current is the sum of the individual currents:\n$$i(t) = i_1(t) + i_2(t)$$\nThe voltage across the equivalent inductance is related to the total current by:\n$$v = L_{eq} \\frac{di}{dt}$$\nSolving for the derivative of the current:\n$$\\frac{di}{dt} = \\frac{v}{L_{eq}} = \\frac{900 e^{-10t}}{3.75} = 240 e^{-10t} \\text{ A/s}$$\nIntegrating to find the total current:\n$$i(t) = \\int 240 e^{-10t} \\, dt = -24 e^{-10t} + K$$\nThe initial total current is:\n$$i(0) = i_1(0) + i_2(0) = 2 - 8 = -6 \\text{ A}$$\nSubstituting $t=0$ into the expression for $i(t)$:\n$$-24 + K = -6 \\implies K = 18$$\nThus, the total current is:\n$$i(t) = 18 - 24 e^{-10t} \\text{ A}$$\n\n(b) The current through the first inductor is:\n$$i_1(t) = i_1(0) + \\frac{1}{L_1} \\int_0^t v(\\tau) \\, d\\tau$$\n$$i_1(t) = 2 + \\frac{1}{5} \\int_0^t 900 e^{-10\\tau} \\, d\\tau$$\n$$i_1(t) = 2 + 180 \\left[ -0.1 e^{-10\\tau} \\right]_0^t$$\n$$i_1(t) = 2 + 180 \\left( -0.1 e^{-10t} + 0.1 \\right)$$\n$$i_1(t) = 2 + 18 (1 - e^{-10t})$$\n$$i_1(t) = 20 - 18 e^{-10t} \\text{ A}$$\n\n(c) The current through the second inductor is:\n$$i_2(t) = i_2(0) + \\frac{1}{L_2} \\int_0^t v(\\tau) \\, d\\tau$$\n$$i_2(t) = -8 + \\frac{1}{15} \\int_0^t 900 e^{-10\\tau} \\, d\\tau$$\n$$i_2(t) = -8 + 60 \\left( -0.1 e^{-10t} + 0.1 \\right)$$\n$$i_2(t) = -8 + 6 (1 - e^{-10t})$$\n$$i_2(t) = -2 - 6 e^{-10t} \\text{ A}$$\nVerification:\n$$i_1(t) + i_2(t) = (20 - 18 e^{-10t}) + (-2 - 6 e^{-10t}) = 18 - 24 e^{-10t} \\text{ A}$$\nThis matches the total current derived in part (a).\n\n(d) The energy delivered to the load is determined by the power integral. The power delivered to the load is defined as $p_{load} = v \\cdot i_{load}$. Based on the passive sign convention for the inductors, the total current $i(t)$ flows into the positive terminal of the inductor combination. Therefore, the current flowing out of the inductors into the load is $-i(t)$.\n$$p_{load} = v(t) \\cdot (-i(t)) = -v(t) i(t)$$\n$$p_{load} = -900 e^{-10t} (18 - 24 e^{-10t})$$\n$$p_{load} = -16200 e^{-10t} + 21600 e^{-20t} \\text{ W}$$\nThe energy delivered to the load is the integral of power from $t=0$ to $t=\\infty$:\n$$W_{load} = \\int_0^\\infty p_{load} \\, dt = \\int_0^\\infty (-16200 e^{-10t} + 21600 e^{-20t}) \\, dt$$\n$$W_{load} = \\left[ \\frac{-16200}{-10} e^{-10t} + \\frac{21600}{-20} e^{-20t} \\right]_0^\\infty$$\n$$W_{load} = \\left[ 1620 e^{-10t} - 1080 e^{-20t} \\right]_0^\\infty$$\n$$W_{load} = (0 - 0) - (1620 - 1080)$$\n$$W_{load} = -540 \\text{ J}$$\n\n(e) The initial energy stored in the inductors is:\n$$W_{initial} = \\frac{1}{2} L_1 i_1(0)^2 + \\frac{1}{2} L_2 i_2(0)^2$$\n$$W_{initial} = \\frac{1}{2}(5)(2)^2 + \\frac{1}{2}(15)(-8)^2$$\n$$W_{initial} = \\frac{1}{2}(5)(4) + \\frac{1}{2}(15)(64)$$\n$$W_{initial} = 10 + 480 = 490 \\text{ J}$$\n\n(f) At $t=\\infty$, $e^{-10t} = 0$. The final currents are:\n$$i_1(\\infty) = 20 \\text{ A}$$\n$$i_2(\\infty) = -2 \\text{ A}$$\nThe final energy stored in the inductors is:\n$$W_{final} = \\frac{1}{2} L_1 i_1(\\infty)^2 + \\frac{1}{2} L_2 i_2(\\infty)^2$$\n$$W_{final} = \\frac{1}{2}(5)(20)^2 + \\frac{1}{2}(15)(-2)^2$$\n$$W_{final} = \\frac{1}{2}(5)(400) + \\frac{1}{2}(15)(4)$$\n$$W_{final} = 1000 + 30 = 1030 \\text{ J}$$\nThe change in energy stored in the inductors is:\n$$\\Delta W_L = W_{final} - W_{initial} = 1030 - 490 = 540 \\text{ J}$$\nBy conservation of energy, the energy delivered to the load is equal to the negative of the change in stored energy (assuming no other sources):\n$$W_{load} = -\\Delta W_L = -540 \\text{ J}$$\nThe negative sign indicates that the load delivers $540 \\text{ J}$ to the inductors.",
+      "answer": "(a) $L_{eq} = 3.75 \\text{ H}$, $i(t) = 18 - 24 e^{-10t} \\text{ A}$; (b) $i_1(t) = 20 - 18 e^{-10t} \\text{ A}$; (c) $i_2(t) = -2 - 6 e^{-10t} \\text{ A}$; (d) $-540 \\text{ J}$; (e) $490 \\text{ J}$; (f) $1030 \\text{ J}$",
+      "set": 2
     },
     {
       "id": "P09",
-      "question": "Two capacitors, C1 = 10 nF and C2 = 20 nF, are connected in series. The positive terminal of C1 is at the top, and the positive terminal of C2 is at the bottom, such that their voltages add algebraically around the series string. At t = 0, the initial voltages are v1(0) = 30 V and v2(0) = 10 V. For t > 0, the current flowing through the series combination is i(t) = -1000 e^{-500t} \\mu A. Determine: (a) the equivalent capacitance and the total voltage v_o(t) across the series combination; (b) the voltage v1(t) across C1; (c) the voltage v2(t) across C2; (d) the energy delivered to the load connected across the series combination; (e) the initial energy stored in the capacitors; (f) the final energy trapped in the capacitors.",
+      "question": "Two capacitors, C1 = 10 nF and C2 = 30 nF, are connected in series. The combination is connected to a load at t=0. The initial voltages are v1(0) = 30 V and v2(0) = 10 V, with polarities additive (positive terminals facing each other is NOT the case, they are in series aiding the total voltage drop). Specifically, the total voltage v_o = v1 + v2. The current flowing through the series combination is i(t) = -1000 e^{-500t} \\mu A for t > 0. (a) Find the equivalent capacitance and the total voltage v_o(t). (b) Find v1(t). (c) Find v2(t). (d) Calculate the energy delivered to the load. (e) Calculate the initial stored energy. (f) Calculate the energy trapped in the capacitors.",
       "source_base": "N9",
       "circuit_spec": {
         "type": "series",
@@ -364,26 +575,27 @@
           },
           {
             "kind": "C",
-            "value": "20 nF"
+            "value": "30 nF"
           }
         ],
         "current_label": "i(t)",
         "voltage_label": "v_o(t)",
-        "note": "Series capacitors with additive initial voltages"
+        "note": "Series capacitors connected to a load"
       },
-      "solution": "(a) The equivalent capacitance of two series capacitors is $C_{eq} = \\frac{C_1 C_2}{C_1 + C_2} = \\frac{10 \\cdot 20}{10 + 20} = \\frac{200}{30} = \\frac{20}{3} \\text{ nF}$. The total initial voltage is $v_o(0) = v_1(0) + v_2(0) = 30 + 10 = 40 \\text{ V}$. The relationship between current and voltage for a capacitor is $i(t) = C_{eq} \\frac{dv_o}{dt}$. Thus, $\\frac{dv_o}{dt} = \\frac{i(t)}{C_{eq}} = \\frac{-1000 \\times 10^{-6} e^{-500t}}{\\frac{20}{3} \\times 10^{-9}} = \\frac{-10^{-3}}{\\frac{20}{3} \\times 10^{-9}} e^{-500t} = -\\frac{3}{20} \\times 10^6 e^{-500t} = -150,000 e^{-500t} \\text{ V/s}$. Integrating from 0 to $t$:\n$$v_o(t) = v_o(0) + \\int_0^t -150,000 e^{-500\\tau} d\\tau = 40 - 150,000 \\left[ \\frac{e^{-500\\tau}}{-500} \\right]_0^t = 40 + 300 (e^{-500t} - 1) = 300 e^{-500t} - 260 \\text{ V}$$\n\n(b) For $C_1$, $i(t) = C_1 \\frac{dv_1}{dt}$.\n$$\\frac{dv_1}{dt} = \\frac{i(t)}{C_1} = \\frac{-1000 \\times 10^{-6}}{10 \\times 10^{-9}} e^{-500t} = -100,000 e^{-500t} \\text{ V/s}$$\nIntegrating:\n$$v_1(t) = v_1(0) + \\int_0^t -100,000 e^{-500\\tau} d\\tau = 30 - 100,000 \\left[ \\frac{e^{-500\\tau}}{-500} \\right]_0^t = 30 + 200 (e^{-500t} - 1) = 200 e^{-500t} - 170 \\text{ V}$$\n\n(c) For $C_2$, $i(t) = C_2 \\frac{dv_2}{dt}$.\n$$\\frac{dv_2}{dt} = \\frac{i(t)}{C_2} = \\frac{-1000 \\times 10^{-6}}{20 \\times 10^{-9}} e^{-500t} = -50,000 e^{-500t} \\text{ V/s}$$\nIntegrating:\n$$v_2(t) = v_2(0) + \\int_0^t -50,000 e^{-500\\tau} d\\tau = 10 - 50,000 \\left[ \\frac{e^{-500\\tau}}{-500} \\right]_0^t = 10 + 100 (e^{-500t} - 1) = 100 e^{-500t} - 90 \\text{ V}$$\nVerification: $v_1(t) + v_2(t) = (200 e^{-500t} - 170) + (100 e^{-500t} - 90) = 300 e^{-500t} - 260 = v_o(t)$.\n\n(d) The energy delivered to the load is determined by the power absorbed by the external circuit. The instantaneous power delivered to the load is $p(t) = v_o(t) i(t)$.\n\n(e) The initial energy stored in the capacitors is:\n$$W_{initial} = \\frac{1}{2} C_1 v_1(0)^2 + \\frac{1}{2} C_2 v_2(0)^2 = \\frac{1}{2}(10 \\times 10^{-9})(30)^2 + \\frac{1}{2}(20 \\times 10^{-9})(10)^2 = 5 \\times 10^{-9}(900) + 10 \\times 10^{-9}(100) = 4500 \\times 10^{-9} + 1000 \\times 10^{-9} = 5500 \\text{ nJ} = 5.5 \\mu \\text{J}$$\n\n(f) The final energy stored in the capacitors as $t \\to \\infty$ is calculated using $v_1(\\infty) = -170 \\text{ V}$ and $v_2(\\infty) = -90 \\text{ V}$:\n$$W_{final} = \\frac{1}{2} C_1 v_1(\\infty)^2 + \\frac{1}{2} C_2 v_2(\\infty)^2 = \\frac{1}{2}(10 \\times 10^{-9})(-170)^2 + \\frac{1}{2}(20 \\times 10^{-9})(-90)^2 = 5 \\times 10^{-9}(28900) + 10 \\times 10^{-9}(8100) = 144500 \\times 10^{-9} + 81000 \\times 10^{-9} = 225500 \\times 10^{-9} \\text{ J} = 225.5 \\mu \\text{J}$$\n\nThe energy transferred between the capacitor network and the external circuit is the integral of the power $p(t) = v_o(t) i(t)$ over time:\n$$W_{load} = \\int_0^\\infty v_o(t) i(t) dt = \\int_0^\\infty (300 e^{-500t} - 260)(-1000 e^{-500t}) \\mu dt$$\n$$W_{load} = \\int_0^\\infty (-300,000 e^{-1000t} + 260,000 e^{-500t}) \\mu dt$$\n$$W_{load} = -300,000 \\left[ \\frac{e^{-1000t}}{-1000} \\right]_0^\\infty + 260,000 \\left[ \\frac{e^{-500t}}{-500} \\right]_0^\\infty$$\n$$W_{load} = -300,000 (0 - (-1/1000)) + 260,000 (0 - (-1/500)) = -300 + 520 = 220 \\mu \\text{J}$$\nThe positive result indicates that $220 \\mu \\text{J}$ of energy is delivered to the load. This is consistent with the change in stored energy in the capacitors, which increases by $225.5 \\mu \\text{J} - 5.5 \\mu \\text{J} = 220 \\mu \\text{J}$, implying the capacitors absorb this energy from the external circuit.",
-      "answer": "(a) $C_{eq} = 6.67 \\text{ nF}$, $v_o(t) = 300 e^{-500t} - 260 \\text{ V}$; (b) $v_1(t) = 200 e^{-500t} - 170 \\text{ V}$; (c) $v_2(t) = 100 e^{-500t} - 90 \\text{ V}$; (d) $220 \\text{ }\\mu\\text{J}$ (absorbed by capacitors); (e) $5.5 \\text{ }\\mu\\text{J}$; (f) $225.5 \\text{ }\\mu\\text{J}$"
+      "solution": "(a) The equivalent capacitance is given by $C_{eq} = \\frac{C_1 C_2}{C_1 + C_2} = \\frac{10 \\cdot 30}{40} = 7.5 \\text{ nF}$. The output voltage is expressed as $v_o(t) = v_o(0) + \\frac{1}{C_{eq}} \\int_0^t i(\\tau) \\, d\\tau$. The initial voltage is $v_o(0) = 30 + 10 = 40 \\text{ V}$. The current is $i(t) = -1000 \\times 10^{-6} e^{-500t} \\text{ A} = -1 \\times 10^{-3} e^{-500t} \\text{ A}$. Evaluating the integral yields:\n$$ \\int_0^t -1 \\times 10^{-3} e^{-500\\tau} \\, d\\tau = -1 \\times 10^{-3} \\left[ -\\frac{1}{500} e^{-500\\tau} \\right]_0^t = 2 \\times 10^{-6} (e^{-500t} - 1) $$\nSubstituting this into the voltage equation:\n$$ v_o(t) = 40 + \\frac{1}{7.5 \\times 10^{-9}} \\cdot 2 \\times 10^{-6} (e^{-500t} - 1) $$\n$$ v_o(t) = 40 + \\frac{2}{7.5} \\times 10^3 (e^{-500t} - 1) $$\n$$ v_o(t) = 40 + 266.67 (e^{-500t} - 1) $$\n$$ v_o(t) = 40 - 266.67 + 266.67 e^{-500t} $$\n$$ v_o(t) = -226.67 + 266.67 e^{-500t} \\text{ V} $$\n\n(b) The voltage across $C_1$ is:\n$$ v_1(t) = v_1(0) + \\frac{1}{C_1} \\int_0^t i(\\tau) \\, d\\tau $$\n$$ v_1(t) = 30 + \\frac{1}{10 \\times 10^{-9}} \\cdot 2 \\times 10^{-6} (e^{-500t} - 1) $$\n$$ v_1(t) = 30 + 200 (e^{-500t} - 1) $$\n$$ v_1(t) = 30 - 200 + 200 e^{-500t} $$\n$$ v_1(t) = -170 + 200 e^{-500t} \\text{ V} $$\n\n(c) The voltage across $C_2$ is:\n$$ v_2(t) = v_2(0) + \\frac{1}{C_2} \\int_0^t i(\\tau) \\, d\\tau $$\n$$ v_2(t) = 10 + \\frac{1}{30 \\times 10^{-9}} \\cdot 2 \\times 10^{-6} (e^{-500t} - 1) $$\n$$ v_2(t) = 10 + 66.67 (e^{-500t} - 1) $$\n$$ v_2(t) = 10 - 66.67 + 66.67 e^{-500t} $$\n$$ v_2(t) = -56.67 + 66.67 e^{-500t} \\text{ V} $$\nCheck: $v_1 + v_2 = -226.67 + 266.67 e^{-500t}$. Correct.\n\n(d) The energy delivered to the load is $W_{\\text{initial}} - W_{\\text{final}}$.\n\n(e) The initial energy is:\n$$ W_{\\text{initial}} = 0.5 C_1 v_1(0)^2 + 0.5 C_2 v_2(0)^2 $$\n$$ W_{\\text{initial}} = 0.5(10 \\times 10^{-9})(900) + 0.5(30 \\times 10^{-9})(100) $$\n$$ W_{\\text{initial}} = 4.5 \\times 10^{-6} + 1.5 \\times 10^{-6} = 6 \\text{ \\mu J} $$\n\n(f) At $t = \\infty$, $e^{-500t} = 0$. Thus, $v_1(\\infty) = -170 \\text{ V}$ and $v_2(\\infty) = -56.67 \\text{ V}$. The final energy is:\n$$ W_{\\text{final}} = 0.5(10 \\times 10^{-9})(170^2) + 0.5(30 \\times 10^{-9})(56.67^2) $$\n$$ W_{\\text{final}} = 5 \\times 10^{-9}(28900) + 15 \\times 10^{-9}(3211) $$\n$$ W_{\\text{final}} = 144.5 \\times 10^{-6} + 48.17 \\times 10^{-6} = 192.67 \\text{ \\mu J} $$\nThe energy delivered to the load is:\n$$ 6 - 192.67 = -186.67 \\text{ \\mu J} $$\nThus, $186.67 \\text{ \\mu J}$ is delivered by the load to the capacitors.",
+      "answer": "(a) $C_{eq} = 7.5 \\text{ nF}$, $v_o(t) = -226.67 + 266.67 e^{-500t} \\text{ V}$; (b) $v_1(t) = -170 + 200 e^{-500t} \\text{ V}$; (c) $v_2(t) = -56.67 + 66.67 e^{-500t} \\text{ V}$; (d) $-186.67 \\text{ }\\mu\\text{J}$; (e) $6 \\text{ }\\mu\\text{J}$; (f) $192.67 \\text{ }\\mu\\text{J}$",
+      "set": 2
     },
     {
       "id": "P10",
-      "question": "A series RLC circuit consists of a 240 V dc source, an inductor L = 10 mH, and a capacitor C = 250 nF. The switch has been open for a long time, so the initial current is zero and the initial capacitor voltage is zero. At t = 0, the switch closes. The current in the circuit for t >= 0+ is given by $i_o(t) = 40 e^{-4000t} (\\cos 3000t + 2 \\sin 3000t) \\text{ mA}$. Determine the voltage across the inductor $v_1(0+)$ and the voltage across the capacitor $v_2(0+)$ immediately after the switch closes.",
+      "question": "A series circuit consists of a 160 V DC source, an inductor L = 10 mH, and a capacitor C = 250 nF. The current in the circuit is given by i_o(t) = 20 e^{-4000t}(cos 3000t + 2 sin 3000t) mA for t >= 0+. Find the initial voltage across the inductor v1(0+) and the initial voltage across the capacitor v2(0+).",
       "source_base": "N10",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "Vdc",
-            "value": "240 V"
+            "value": "160 V"
           },
           {
             "kind": "L",
@@ -395,15 +607,16 @@
           }
         ],
         "current_label": "i_o(t)",
-        "voltage_label": "v_1(t), v_2(t)",
-        "note": "Series RLC with DC source, L and C"
+        "voltage_label": "v1(t), v2(t)",
+        "note": "Series RLC-like loop with DC source"
       },
-      "solution": "The current is given by $i_o(t) = 40 e^{-4000t} (\\cos 3000t + 2 \\sin 3000t) \\text{ mA}$ for $t \\ge 0+$. The voltage across the inductor is defined as $v_1(t) = L \\frac{di_o}{dt}$.\n\nFirst, the derivative of the current with respect to time is calculated. Expressing the current in amperes:\n$$ i_o(t) = 40 \\times 10^{-3} e^{-4000t} (\\cos 3000t + 2 \\sin 3000t) $$\n\nApplying the product rule:\n$$ \\frac{di_o}{dt} = 40 \\times 10^{-3} \\left[ -4000 e^{-4000t} (\\cos 3000t + 2 \\sin 3000t) + e^{-4000t} (-3000 \\sin 3000t + 6000 \\cos 3000t) \\right] $$\n\nAt $t = 0+$, the trigonometric and exponential terms evaluate to $e^0 = 1$, $\\cos 0 = 1$, and $\\sin 0 = 0$. Substituting these values:\n$$ \\frac{di_o}{dt}\\bigg|_{0+} = 40 \\times 10^{-3} \\left[ -4000 (1) (1 + 0) + 1 (-0 + 6000 (1)) \\right] $$\n$$ \\frac{di_o}{dt}\\bigg|_{0+} = 40 \\times 10^{-3} [ -4000 + 6000 ] $$\n$$ \\frac{di_o}{dt}\\bigg|_{0+} = 40 \\times 10^{-3} (2000) = 80 \\text{ A/s} $$\n\nThe inductor voltage at $t = 0+$ is:\n$$ v_1(0+) = L \\frac{di_o}{dt}\\bigg|_{0+} = 10 \\times 10^{-3} \\text{ H} \\times 80 \\text{ A/s} = 0.8 \\text{ V} $$\n\nFor the capacitor voltage $v_2(0+)$, the initial condition is determined by the continuity of capacitor voltage. Since the switch was open for a long time prior to $t=0$, the initial capacitor voltage is $v_2(0-) = 0$. Therefore:\n$$ v_2(0+) = v_2(0-) = 0 \\text{ V} $$\n\nFinal Answers:\n$$ v_1(0+) = 0.8 \\text{ V} $$\n$$ v_2(0+) = 0 \\text{ V} $$",
-      "answer": "$v_1(0^+) = 0.8\\ \\text{V}$; $v_2(0^+) = 0\\ \\text{V}$"
+      "solution": "KVL: $V_s = v_1(t) + v_2(t)$. $v_1(t) = L \\frac{di}{dt}$. $v_2(t) = V_s - v_1(t)$. First, find $i(0^+)$. $i_o(t) = 20 \\times 10^{-3} e^{-4000t} (\\cos 3000t + 2 \\sin 3000t) \\text{ A}$. $i(0^+) = 20 \\times 10^{-3} (1 + 0) = 20 \\text{ mA}$. Now find $\\frac{di}{dt}$ at $t=0^+$. Let $i(t) = 20 \\times 10^{-3} e^{-4000t} (\\cos 3000t + 2 \\sin 3000t)$.\n\n$$\n\\frac{di}{dt} = 20 \\times 10^{-3} \\left[ -4000 e^{-4000t} (\\cos 3000t + 2 \\sin 3000t) + e^{-4000t} (-3000 \\sin 3000t + 6000 \\cos 3000t) \\right]\n$$\n\nAt $t=0$:\n\n$$\n\\frac{di}{dt}(0^+) = 20 \\times 10^{-3} \\left[ -4000(1) + 6000(1) \\right] = 20 \\times 10^{-3} [ 2000 ] = 40 \\text{ A/s}\n$$\n\n$v_1(0^+) = L \\frac{di}{dt}(0^+) = 10 \\times 10^{-3} \\cdot 40 = 0.4 \\text{ V}$.\n\n$v_2(0^+) = V_s - v_1(0^+) = 160 - 0.4 = 159.6 \\text{ V}$.",
+      "answer": "$v_1(0^+) = 0.4 \\text{ V}$; $v_2(0^+) = 159.6 \\text{ V}$",
+      "set": 2
     },
     {
       "id": "P11",
-      "question": "A capacitor with capacitance C = 200 \\mu F is connected to a voltage source. The voltage across the capacitor is a triangular pulse defined as follows: $v(t) = 0$ for $t < 0$; $v(t) = 2t$ V for $0 \\le t < 5$ s; $v(t) = 10$ V for $5 \\le t < 15$ s; $v(t) = -2t + 40$ V for $15 \\le t < 20$ s; $v(t) = 0$ for $t \\ge 20$ s. Determine the expressions for the current $i(t)$, power $p(t)$, and energy $w(t)$ stored in the capacitor for all time intervals.",
+      "question": "A 200 \\mu F capacitor is subjected to a piecewise-linear voltage pulse v(t) defined as: v(t) = 0 for t < 0; v(t) = 2t for 0 \\le t < 5 s; v(t) = 10 V for 5 \\le t < 15 s; v(t) = 40 - 2t for 15 \\le t < 20 s; v(t) = 0 for t \\ge 20 s. Determine the expressions for the current i(t), power p(t), and energy w(t) stored in the capacitor for all time intervals.",
       "source_base": "N11",
       "circuit_spec": {
         "type": "series",
@@ -415,14 +628,15 @@
         ],
         "current_label": "i(t)",
         "voltage_label": "v(t)",
-        "note": "Capacitor with piecewise linear voltage input"
+        "note": "Capacitor with piecewise-linear voltage source"
       },
-      "solution": "The current through a capacitor is given by $i(t) = C \\frac{dv}{dt}$. The power is $p(t) = v(t) i(t)$. The energy stored is $w(t) = \\frac{1}{2} C v(t)^2$. The capacitance is $C = 200 \\ \\mu\\text{F} = 2 \\times 10^{-4} \\ \\text{F}$.\n\nInterval 1: $0 \\le t < 5 \\ \\text{s}$.\nThe voltage is $v(t) = 2t$.\nThe derivative is $\\frac{dv}{dt} = 2 \\ \\text{V/s}$.\nThe current is $i(t) = 200 \\times 10^{-6} \\times 2 = 400 \\ \\mu\\text{A} = 0.4 \\ \\text{mA}$.\nThe power is $p(t) = (2t)(0.4 \\times 10^{-3}) = 0.8t \\ \\text{mW}$.\nThe energy is $w(t) = \\frac{1}{2} (200 \\times 10^{-6}) (2t)^2 = 100 \\times 10^{-6} (4t^2) = 400 t^2 \\ \\mu\\text{J} = 4 \\times 10^{-4} t^2 \\ \\text{J}$.\n\nInterval 2: $5 \\le t < 15 \\ \\text{s}$.\nThe voltage is $v(t) = 10$.\nThe derivative is $\\frac{dv}{dt} = 0$.\nThe current is $i(t) = 0$.\nThe power is $p(t) = 0$.\nThe energy is $w(t) = \\frac{1}{2} (200 \\times 10^{-6}) (10)^2 = 100 \\times 10^{-6} (100) = 10,000 \\ \\mu\\text{J} = 10 \\ \\text{mJ}$.\n\nInterval 3: $15 \\le t < 20 \\ \\text{s}$.\nThe voltage is $v(t) = -2t + 40$.\nThe derivative is $\\frac{dv}{dt} = -2 \\ \\text{V/s}$.\nThe current is $i(t) = 200 \\times 10^{-6} \\times (-2) = -400 \\ \\mu\\text{A} = -0.4 \\ \\text{mA}$.\nThe power is $p(t) = (-2t + 40)(-0.4 \\times 10^{-3}) = (0.8t - 16) \\times 10^{-3} \\ \\text{W} = (0.8t - 16) \\ \\text{mW}$.\nThe energy is $w(t) = \\frac{1}{2} (200 \\times 10^{-6}) (-2t + 40)^2 = 100 \\times 10^{-6} (4t^2 - 160t + 1600) = (400t^2 - 16000t + 160000) \\ \\mu\\text{J}$.\n\nInterval 4: $t \\ge 20 \\ \\text{s}$.\nThe voltage is $v(t) = 0$.\nThe current is $i(t) = 0$.\nThe power is $p(t) = 0$.\nThe energy is $w(t) = 0$.\n\nFor $t < 0$, all quantities are $0$.",
-      "answer": "$i(t)$: $0.4\\ \\text{mA}$ ($0 \\le t < 5\\ \\text{s}$), $0$ ($5\\ \\text{s} \\le t < 15\\ \\text{s}$), $-0.4\\ \\text{mA}$ ($15\\ \\text{s} \\le t < 20\\ \\text{s}$), $0$ ($t > 20\\ \\text{s}$).\n$p(t)$: $0.8t\\ \\text{mW}$ ($0 \\le t < 5\\ \\text{s}$), $0$ ($5\\ \\text{s} \\le t < 15\\ \\text{s}$), $(0.8t - 16)\\ \\text{mW}$ ($15\\ \\text{s} \\le t < 20\\ \\text{s}$), $0$ ($t > 20\\ \\text{s}$).\n$w(t)$: $4 \\times 10^{-4} t^2\\ \\text{J}$ ($0 \\le t < 5\\ \\text{s}$), $10\\ \\text{mJ}$ ($5\\ \\text{s} \\le t < 15\\ \\text{s}$), $1 \\times 10^{-4} (-2t + 40)^2\\ \\text{J}$ ($15\\ \\text{s} \\le t < 20\\ \\text{s}$), $0$ ($t > 20\\ \\text{s}$)."
+      "solution": "The current through a capacitor is given by $i(t) = C \\frac{dv}{dt}$. \n\n1. For $0 \\le t < 5$ s: $v(t) = 2t$, so $\\frac{dv}{dt} = 2$ V/s. \n   $i(t) = 200 \\times 10^{-6} \\times 2 = 0.4$ mA. \n   $p(t) = v(t)i(t) = (2t)(0.4 \\times 10^{-3}) = 0.8t$ mW. \n   $w(t) = \\frac{1}{2}Cv^2 = \\frac{1}{2}(200 \\times 10^{-6})(2t)^2 = 0.4t^2$ mJ.\n\n2. For $5 \\le t < 15$ s: $v(t) = 10$ V, so $\\frac{dv}{dt} = 0$. \n   $i(t) = 0$ A. \n   $p(t) = 0$ W. \n   $w(t) = \\frac{1}{2}(200 \\times 10^{-6})(10)^2 = 10$ mJ.\n\n3. For $15 \\le t < 20$ s: $v(t) = 40 - 2t$, so $\\frac{dv}{dt} = -2$ V/s. \n   $i(t) = 200 \\times 10^{-6} \\times (-2) = -0.4$ mA. \n   $p(t) = v(t)i(t) = (40 - 2t)(-0.4 \\times 10^{-3}) = -16 + 0.8t$ mW. \n   $w(t) = \\frac{1}{2}(200 \\times 10^{-6})(40 - 2t)^2 = 0.02(40 - 2t)^2$ mJ.\n\n4. For $t < 0$ and $t \\ge 20$ s: $v(t) = 0$, so $i(t) = 0$, $p(t) = 0$, $w(t) = 0$.",
+      "answer": "$i(t) = 0.4\\ \\text{mA}$ ($0 \\le t \\le 5\\ \\text{s}$), $0$ ($5 \\le t \\le 15\\ \\text{s}$), $-0.4\\ \\text{mA}$ ($15 \\le t \\le 20\\ \\text{s}$);\n$p(t) = 0.8t\\ \\text{mW}$ ($0 \\le t \\le 5\\ \\text{s}$), $0$ ($5 \\le t \\le 15\\ \\text{s}$), $(0.8t - 16)\\ \\text{mW}$ ($15 \\le t \\le 20\\ \\text{s}$);\n$w(t) = 0.4t^2\\ \\text{mJ}$ ($0 \\le t \\le 5\\ \\text{s}$), $10\\ \\text{mJ}$ ($5 \\le t \\le 15\\ \\text{s}$), $0.02(40 - 2t)^2\\ \\text{mJ}$ ($15 \\le t \\le 20\\ \\text{s}$).",
+      "set": 3
     },
     {
       "id": "P12",
-      "question": "A capacitor with capacitance $C = 100$ nF has an initial voltage of $0$ V. The current flowing into the positive terminal of the capacitor is a piecewise linear waveform defined as: $i(t) = 0$ for $t < 10$ ms; $i(t) = 2.5t - 25$ mA for $10 \\le t < 30$ ms; $i(t) = -2.5t + 125$ mA for $30 \\le t < 50$ ms; and $i(t) = 0$ for $t \\ge 50$ ms. Determine: (a) the charge on the capacitor at $t = 30$ ms; (b) the voltage across the capacitor at $t = 50$ ms; and (c) the total energy stored in the capacitor at $t = 50$ ms.",
+      "question": "A 100 nF capacitor has an initial voltage of 0 V. The current flowing into the positive terminal is defined piecewise as: i(t) = 0 for t < 10 ms; i(t) = 5(t - 0.01) A for 10 ms \\le t < 30 ms; i(t) = 0.1 - 5(t - 0.03) A for 30 ms \\le t < 50 ms; i(t) = 0 for t \\ge 50 ms. Find (a) the charge on the capacitor at t = 30 ms, (b) the voltage across the capacitor at t = 50 ms, and (c) the total energy stored in the capacitor at t = 50 ms.",
       "source_base": "N12",
       "circuit_spec": {
         "type": "series",
@@ -436,31 +650,33 @@
         "voltage_label": "v(t)",
         "note": "Capacitor with triangular current pulse"
       },
-      "solution": "The current waveform is a triangle. From 10 ms to 30 ms, it rises from 0 to 50 mA. The slope is $\\frac{50 - 0}{30 - 10} = \\frac{50}{20} = 2.5$ mA/ms. Equation: $i(t) = 2.5(t - 10)$ mA for $10 \\le t < 30$. From 30 ms to 50 ms, it falls from 50 mA to 0 mA. The slope is $\\frac{0 - 50}{50 - 30} = \\frac{-50}{20} = -2.5$ mA/ms. Equation: $i(t) = -2.5(t - 50) = 2.5(50 - t)$ mA for $30 \\le t < 50$. (a) Charge at $t = 30$ ms. $q(30) = q(0) + \\int_0^{30} i(t) dt$. $q(0) = C v(0) = 0$. The integral is the area under the current curve from 0 to 30 ms. The area is a triangle with base 20 ms and height 50 mA. Area $= \\frac{1}{2} \\times 20 \\times 10^{-3} \\text{ s} \\times 50 \\times 10^{-3} \\text{ A} = 500 \\times 10^{-6} \\text{ C} = 500 \\mu C$. So $q(30) = 500 \\mu C$. (b) Voltage at $t = 50$ ms. $v(50) = \\frac{q(50)}{C}$. $q(50) = q(30) + \\int_{30}^{50} i(t) dt$. The integral from 30 to 50 is the area of the second triangle, base 20 ms, height 50 mA. Area $= \\frac{1}{2} \\times 20 \\times 10^{-3} \\times 50 \\times 10^{-3} = 500 \\mu C$. Total charge $q(50) = 500 \\mu C + 500 \\mu C = 1000 \\mu C = 1$ mC. $v(50) = \\frac{1 \\times 10^{-3} \\text{ C}}{100 \\times 10^{-9} \\text{ F}} = \\frac{10^{-3}}{10^{-7}} = 10,000 \\text{ V} = 10$ kV. (c) Energy stored at $t = 50$ ms. $w(50) = \\frac{1}{2} C v(50)^2 = \\frac{1}{2} (100 \\times 10^{-9}) (10,000)^2 = 50 \\times 10^{-9} \\times 10^8 = 50 \\times 10^{-1} = 5$ J.",
-      "answer": "(a) $500\\ \\mu\\text{C}$; (b) $10\\ \\text{kV}$; (c) $5\\ \\text{J}$"
+      "solution": "The charge $q(t)$ is the integral of current: $q(t) = q(0) + \\int_0^t i(\\tau) d\\tau$. Since $v(0)=0$, $q(0)=0$.\n\n(a) Charge at $t = 30$ ms ($0.03$ s):\n   $q(0.03) = \\int_{0.01}^{0.03} 5(\\tau - 0.01) d\\tau = \\left[ \\frac{5}{2}(\\tau - 0.01)^2 \\right]_{0.01}^{0.03} = \\frac{5}{2}(0.02)^2 = 2.5 \\times 10^{-4}$ C = 250 \\mu C.\n\n(b) Voltage at $t = 50$ ms ($0.05$ s):\n   First, find total charge at 50 ms. The current waveform is symmetric around 30 ms.\n   $\\int_{0.03}^{0.05} (0.1 - 5(\\tau - 0.03)) d\\tau$. Let $u = \\tau - 0.03$, limits 0 to 0.02.\n   $\\int_0^{0.02} (0.1 - 5u) du = [0.1u - 2.5u^2]_0^{0.02} = 0.002 - 2.5(0.0004) = 0.002 - 0.001 = 0.001$ C = 1 mC.\n   The current $i(t)$ rises from 0 to 0.1 A in 20 ms, reaching a peak of 100 mA.\n   Area 1 (10-30ms): Triangle base 20ms, height 100mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Area 2 (30-50ms): Triangle base 20ms, height 100mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Total charge $q(0.05) = 1 \\text{ mC} + 1 \\text{ mC} = 2$ mC.\n   $v(0.05) = \\frac{q(0.05)}{C} = \\frac{2 \\times 10^{-3}}{100 \\times 10^{-9}} = 20,000$ V = 20 kV.\n\n(c) Energy at $t = 50$ ms:\n   $w = \\frac{1}{2} C v^2 = \\frac{1}{2} (100 \\times 10^{-9}) (20,000)^2 = 50 \\times 10^{-9} \\times 4 \\times 10^8 = 20$ J.",
+      "answer": "(a) $1\\ \\text{mC}$; (b) $20\\ \\text{kV}$; (c) $20\\ \\text{J}$",
+      "set": 3
     },
     {
       "id": "P13",
-      "question": "A capacitor with capacitance C = 100 nF is connected in a circuit. The voltage across the capacitor, using the passive sign convention, is given by the following functions for $t \\ge 0$. Find the current $i(t)$ for each case: (a) $v_C(t) = -5$ V; (b) $v_C(t) = 10 e^{-5t}$ V; (c) $v_C(t) = 4 \\cos(0.02t)$ mV; (d) $v_C(t) = 2 + 6 \\sin(0.1t)$ V.",
+      "question": "A 500 pF capacitor has the following voltage functions for t \\ge 0. Find the current i(t) for each case: (a) v_C(t) = -10 V; (b) v_C(t) = 20 e^{-5t} V; (c) v_C(t) = 5 \\cos(100t) mV; (d) v_C(t) = 2 + 3 \\sin(20t) V.",
       "source_base": "H1",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "C",
-            "value": "100 nF"
+            "value": "500 pF"
           }
         ],
         "current_label": "i(t)",
         "voltage_label": "v(t)",
-        "note": "Capacitor current calculation for various voltage waveforms"
+        "note": "Capacitor current calculation"
       },
-      "solution": "The current is given by $i(t) = C \\frac{dv_C}{dt}$. C = 100 nF = $10^{-7}$ F. (a) $v_C(t) = -5$ V. $\\frac{dv_C}{dt} = 0$. $i(t) = 10^{-7} \\times 0 = 0$ A. (b) $v_C(t) = 10 e^{-5t}$ V. $\\frac{dv_C}{dt} = 10 (-5) e^{-5t} = -50 e^{-5t}$ V/s. $i(t) = 10^{-7} (-50 e^{-5t}) = -5000 e^{-5t}$ nA = $-5 e^{-5t}$ \\mu A. (c) $v_C(t) = 4 \\cos(0.02t)$ mV = $4 \\times 10^{-3} \\cos(0.02t)$ V. $\\frac{dv_C}{dt} = 4 \\times 10^{-3} (-0.02 \\sin(0.02t)) = -0.08 \\times 10^{-3} \\sin(0.02t)$ V/s = $-80 \\mu$ V/s. $i(t) = 10^{-7} (-80 \\times 10^{-6} \\sin(0.02t)) = -8000 \\times 10^{-13} \\sin(0.02t)$ A = $-8 \\times 10^{-9} \\sin(0.02t)$ A = $-8 \\sin(0.02t)$ nA. (d) $v_C(t) = 2 + 6 \\sin(0.1t)$ V. $\\frac{dv_C}{dt} = 6 (0.1 \\cos(0.1t)) = 0.6 \\cos(0.1t)$ V/s. $i(t) = 10^{-7} (0.6 \\cos(0.1t)) = 0.6 \\times 10^{-7} \\cos(0.1t)$ A = $60 \\times 10^{-9} \\cos(0.1t)$ A = $60 \\cos(0.1t)$ nA.",
-      "answer": "(a) $0\\ \\text{A}$; (b) $-5 e^{-5t}\\ \\mu\\text{A}$; (c) $-8 \\sin(0.02t)\\ \\text{nA}$; (d) $60 \\cos(0.1t)\\ \\text{nA}$"
+      "solution": "Use $i(t) = C \\frac{dv}{dt}$ with $C = 500 \\times 10^{-12}$ F.\n\n(a) $v_C(t) = -10$ V (constant). $\\frac{dv}{dt} = 0$. \n   $i(t) = 0$ A.\n\n(b) $v_C(t) = 20 e^{-5t}$ V. $\\frac{dv}{dt} = 20(-5)e^{-5t} = -100 e^{-5t}$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times (-100 e^{-5t}) = -50,000 e^{-5t}$ A = $-50 e^{-5t}$ \\mu A.\n\n(c) $v_C(t) = 5 \\cos(100t)$ mV $= 5 \\times 10^{-3} \\cos(100t)$ V. \n   $\\frac{dv}{dt} = 5 \\times 10^{-3} (-100 \\sin(100t)) = -0.5 \\sin(100t)$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times (-0.5 \\sin(100t)) = -250 \\times 10^{-12} \\sin(100t)$ A = $-250 \\sin(100t)$ pA.\n\n(d) $v_C(t) = 2 + 3 \\sin(20t)$ V. $\\frac{dv}{dt} = 3(20)\\cos(20t) = 60 \\cos(20t)$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times 60 \\cos(20t) = 30,000 \\times 10^{-12} \\cos(20t)$ A = $30 \\cos(20t)$ nA.",
+      "answer": "(a) $0\\ \\text{A}$; (b) $-50 e^{-5t}\\ \\mu\\text{A}$; (c) $-250 \\sin(100t)\\ \\text{pA}$; (d) $30 \\cos(20t)\\ \\text{nA}$",
+      "set": 3
     },
     {
       "id": "P14",
-      "question": "A capacitor with capacitance C = 10 pF is subjected to a piecewise-linear voltage waveform $v(t)$ for $t \\ge 0$. The voltage is defined as: $v(t) = 0$ V for $0 \\le t < 1$ s; $v(t) = 2t - 2$ V for $1 \\le t < 2$ s; $v(t) = 2$ V for $2 \\le t < 3$ s; $v(t) = -2t + 8$ V for $3 \\le t < 4$ s; $v(t) = 0$ V for $t \\ge 4$ s. Determine the current $i(t)$ flowing into the positive terminal of the capacitor for all time intervals.",
+      "question": "A 10 pF capacitor is connected to a voltage source. The voltage waveform v(t) is piecewise linear: v(t) = 0 for t < 0; v(t) = 2t for 0 \\le t < 2 s; v(t) = 4 V for 2 \\le t < 4 s; v(t) = 12 - 2t for 4 \\le t < 6 s; v(t) = 0 for t \\ge 6 s. Determine the current i(t) for all time intervals.",
       "source_base": "H2",
       "circuit_spec": {
         "type": "series",
@@ -472,14 +688,15 @@
         ],
         "current_label": "i(t)",
         "voltage_label": "v(t)",
-        "note": "Capacitor current for piecewise linear voltage"
+        "note": "Capacitor with trapezoidal voltage"
       },
-      "solution": "The current is $i(t) = C \\frac{dv}{dt}$. C = 10 pF = $10 \\times 10^{-12}$ F. Interval 1: $0 \\le t < 1$ s. $v(t) = 0$. $\\frac{dv}{dt} = 0$. $i(t) = 0$. Interval 2: $1 \\le t < 2$ s. $v(t) = 2t - 2$. $\\frac{dv}{dt} = 2$ V/s. $i(t) = 10 \\times 10^{-12} \\times 2 = 20 \\times 10^{-12}$ A = 20 pA. Interval 3: $2 \\le t < 3$ s. $v(t) = 2$. $\\frac{dv}{dt} = 0$. $i(t) = 0$. Interval 4: $3 \\le t < 4$ s. $v(t) = -2t + 8$. $\\frac{dv}{dt} = -2$ V/s. $i(t) = 10 \\times 10^{-12} \\times (-2) = -20 \\times 10^{-12}$ A = -20 pA. Interval 5: $t \\ge 4$ s. $v(t) = 0$. $\\frac{dv}{dt} = 0$. $i(t) = 0$.",
-      "answer": "$i(t) = 0$ ($0 < t < 1\\,\\text{s}$), $20\\,\\text{pA}$ ($1\\,\\text{s} < t < 2\\,\\text{s}$), $0$ ($2\\,\\text{s} < t < 3\\,\\text{s}$), $-20\\,\\text{pA}$ ($3\\,\\text{s} < t < 4\\,\\text{s}$), $0$ ($t > 4\\,\\text{s}$)"
+      "solution": "Calculate $i(t) = C \\frac{dv}{dt}$ with $C = 10 \\times 10^{-12}$ F.\n\n1. For $0 \\le t < 2$ s: $v(t) = 2t$, $\\frac{dv}{dt} = 2$ V/s. \n   $i(t) = 10 \\times 10^{-12} \\times 2 = 20$ pA.\n\n2. For $2 \\le t < 4$ s: $v(t) = 4$ V, $\\frac{dv}{dt} = 0$. \n   $i(t) = 0$ A.\n\n3. For $4 \\le t < 6$ s: $v(t) = 12 - 2t$, $\\frac{dv}{dt} = -2$ V/s. \n   $i(t) = 10 \\times 10^{-12} \\times (-2) = -20$ pA.\n\n4. For $t < 0$ and $t \\ge 6$ s: $v(t) = 0$, $\\frac{dv}{dt} = 0$. \n   $i(t) = 0$ A.",
+      "answer": "$i(t) = 20\\ \\text{pA}$ ($0\\text{--}2\\ \\text{s}$), $0$ ($2\\text{--}4\\ \\text{s}$), $-20\\ \\text{pA}$ ($4\\text{--}6\\ \\text{s}$), $0$ otherwise.",
+      "set": 3
     },
     {
       "id": "P15",
-      "question": "Calculate the energy stored in a capacitor at $t = 2$ s for the following cases: (a) C = 2 F, $v_C(2) = 4$ V; (b) C = 10 pF, $v_C(2) = 1.2$ V; (c) C = 5 nF, $v_C(2) = 10$ V, given that $v_C(0) = 2$ V and the energy stored at $t=0$ was 100 nJ.",
+      "question": "Calculate the energy stored in a capacitor at t = 1 s for the following cases: (a) C = 2 F, v_C = 5 V; (b) C = 10 pF, v_C = 2 V; (c) C = 5 nF, v_C(1) = 10 V, v_C(0) = 0 V, w_C(0) = 0 J.",
       "source_base": "H3",
       "circuit_spec": {
         "type": "series",
@@ -489,12 +706,411 @@
             "value": "C"
           }
         ],
-        "current_label": "i",
-        "voltage_label": "v",
+        "current_label": "i(t)",
+        "voltage_label": "v(t)",
         "note": "Energy calculation for capacitors"
       },
-      "solution": "The energy stored in a capacitor is given by $w = \\frac{1}{2} C v^2$. (a) C = 2 F, $v = 4$ V. $w = \\frac{1}{2} (2) (4)^2 = 1 \\times 16 = 16$ J. (b) C = 10 pF = $10 \\times 10^{-12}$ F, $v = 1.2$ V. $w = \\frac{1}{2} (10 \\times 10^{-12}) (1.2)^2 = 5 \\times 10^{-12} (1.44) = 7.2 \\times 10^{-12}$ J = 7.2 pJ. (c) C = 5 nF = $5 \\times 10^{-9}$ F, $v(2) = 10$ V. $w(2) = \\frac{1}{2} (5 \\times 10^{-9}) (10)^2 = 2.5 \\times 10^{-9} (100) = 250 \\times 10^{-9}$ J = 250 nJ. The initial energy and voltage are extra information not needed for the final energy calculation at t=2s, as energy depends only on the instantaneous voltage and capacitance.",
-      "answer": "(a) $16\\ \\text{J}$; (b) $7.2\\ \\text{pJ}$; (c) $250\\ \\text{nJ}$"
+      "solution": "The energy stored in a capacitor is given by $w = \\frac{1}{2} C v^2$.\n\n(a) $C = 2$ F, $v = 5$ V. \n   $w = \\frac{1}{2} (2) (5)^2 = 25$ J.\n\n(b) $C = 10$ pF $= 10 \\times 10^{-12}$ F, $v = 2$ V. \n   $w = \\frac{1}{2} (10 \\times 10^{-12}) (2)^2 = 5 \\times 10^{-12} \\times 4 = 20 \\times 10^{-12}$ J = 20 pJ.\n\n(c) $C = 5$ nF $= 5 \\times 10^{-9}$ F, $v(1) = 10$ V. \n   $w(1) = \\frac{1}{2} (5 \\times 10^{-9}) (10)^2 = 2.5 \\times 10^{-9} \\times 100 = 250 \\times 10^{-9}$ J = 250 nJ.",
+      "answer": "(a) $25\\ \\text{J}$; (b) $20\\ \\text{pJ}$; (c) $250\\ \\text{nJ}$",
+      "set": 3
+    },
+    {
+      "id": "P16",
+      "question": "A 100 pF capacitor has a voltage $v_C(t) = 10 e^{-4t}$ V for $t \\ge 0$ and $v_C(t) = 10$ V for $t < 0$. Determine the energy stored in the capacitor at $t = 0$, $t = 100$ ms, and $t = 500$ ms.",
+      "source_base": "H4",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "100 pF"
+          }
+        ],
+        "current_label": "i(t)",
+        "voltage_label": "v(t)",
+        "note": "Energy decay in capacitor"
+      },
+      "solution": "The energy is $w(t) = \\frac{1}{2} C v_C^2(t)$. \n   $v_C(t) = 10 e^{-4t}$ V. \n   $w(t) = \\frac{1}{2} (100 \\times 10^{-12}) (10 e^{-4t})^2 = 50 \\times 10^{-12} \\times 100 e^{-8t} = 5000 \\times 10^{-12} e^{-8t}$ J = $5 e^{-8t}$ nJ.\n\n1. At $t = 0$: \n   $w(0) = 5 e^{0} = 5$ nJ.\n\n2. At $t = 100$ ms $= 0.1$ s: \n   $w(0.1) = 5 e^{-8(0.1)} = 5 e^{-0.8} \\approx 5 \\times 0.4493 = 2.247$ nJ.\n\n3. At $t = 500$ ms $= 0.5$ s: \n   $w(0.5) = 5 e^{-8(0.5)} = 5 e^{-4} \\approx 5 \\times 0.0183 = 0.0915$ nJ.",
+      "answer": "$w(0) = 5\\ \\text{nJ}$; $w(0.1) \\approx 2.25\\ \\text{nJ}$; $w(0.5) \\approx 0.0915\\ \\text{nJ}$",
+      "set": 4
+    },
+    {
+      "id": "P17",
+      "question": "Consider a series circuit consisting of a 5 V DC source, a 10 \\Omega resistor, a 20 \\Omega resistor, and a 10 \\mu F capacitor. The circuit has been in this state for a long time (DC steady state). Determine the voltage across the capacitor $v_C$ and the power dissipated in the 20 \\Omega resistor.",
+      "source_base": "H5",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "5 V"
+          },
+          {
+            "kind": "R",
+            "value": "10 \\Omega"
+          },
+          {
+            "kind": "R",
+            "value": "20 \\Omega"
+          },
+          {
+            "kind": "C",
+            "value": "10 \\mu F"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v",
+        "note": "DC steady state series RC circuit"
+      },
+      "solution": "In DC steady state, a capacitor acts as an open circuit. Therefore, no current flows through the series loop.\n   $i = 0$ A.\n\nSince no current flows, the voltage drop across the resistors is zero:\n   $v_{R1} = i R_1 = 0 \\times 10 = 0$ V.\n   $v_{R2} = i R_2 = 0 \\times 20 = 0$ V.\n\nBy KVL, the source voltage must appear entirely across the open capacitor:\n   $v_C = V_{source} - v_{R1} - v_{R2} = 5 - 0 - 0 = 5$ V.\n\nThe power dissipated in the 20 \\Omega resistor is:\n   $P_{20} = i^2 R_2 = 0^2 \\times 20 = 0$ W.",
+      "answer": "$v_C = 5\\ \\text{V}$; $P(20\\ \\Omega) = 0\\ \\text{W}$",
+      "set": 4
+    },
+    {
+      "id": "P18",
+      "question": "A 1 \\mu A DC current source is connected to a network. The network consists of a 5 k\\Omega resistor in series with a parallel combination of a 10 k\\Omega resistor and a 2 \\mu F capacitor. The circuit is in DC steady state. Determine the voltage across the capacitor $v_C$.",
+      "source_base": "H6",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "1 \\mu A"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "5 k\\Omega"
+            },
+            {
+              "kind": "R",
+              "value": "10 k\\Omega"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "2 \\mu F"
+            }
+          ]
+        ],
+        "note": "Current source feeding R series (R || C)"
+      },
+      "solution": "In DC steady state, the capacitor acts as an open circuit. The circuit simplifies to the current source driving the series combination of the 5 k\\Omega resistor and the 10 k\\Omega resistor (since the capacitor branch is open, all current flows through the resistors).\n\nTotal resistance $R_{eq} = 5 \\text{ k}\\Omega + 10 \\text{ k}\\Omega = 15 \\text{ k}\\Omega$.\n\nThe total voltage across the parallel section (which is the voltage across the capacitor, since the capacitor is in parallel with the 10 k\\Omega resistor) is the voltage drop across the 10 k\\Omega resistor.\n\nFirst, find the current. Since it's a single loop with the source and the two resistors (capacitor open), the current $I = 1 \\mu A$.\n\nVoltage across the 10 k\\Omega resistor:\n   $v_{10k} = I \\times R_{10k} = 1 \\mu A \\times 10 \\text{ k}\\Omega = 1 \\times 10^{-6} \\times 10 \\times 10^3 = 10 \\times 10^{-3}$ V = 10 mV.\n\nSince the capacitor is in parallel with the 10 k\\Omega resistor, $v_C = v_{10k} = 10$ mV.",
+      "answer": "$v_C = 10 \\text{ mV}$",
+      "set": 4
+    },
+    {
+      "id": "P19",
+      "question": "A 10 mH inductor has the following current functions for t \\ge 0. Find the voltage v(t) across the inductor for each case: (a) i(t) = 5 mA; (b) i(t) = 2 \\sin(10t) A; (c) i(t) = 1 + 2 \\cos(50t) A; (d) i(t) = 5 e^{-2t} A.",
+      "source_base": "H7",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "L",
+            "value": "10 mH"
+          }
+        ],
+        "current_label": "i(t)",
+        "voltage_label": "v(t)",
+        "note": "Inductor voltage calculation"
+      },
+      "solution": "The voltage across an inductor is given by $v(t) = L \\frac{di}{dt}$ with $L = 10 \\times 10^{-3}$ H.\n\n(a) $i(t) = 5$ mA (constant). $\\frac{di}{dt} = 0$. \n   $v(t) = 0$ V.\n\n(b) $i(t) = 2 \\sin(10t)$ A. $\\frac{di}{dt} = 2(10)\\cos(10t) = 20 \\cos(10t)$ A/s. \n   $v(t) = 10 \\times 10^{-3} \\times 20 \\cos(10t) = 200 \\times 10^{-3} \\cos(10t)$ V = $0.2 \\cos(10t)$ V.\n\n(c) $i(t) = 1 + 2 \\cos(50t)$ A. $\\frac{di}{dt} = 2(-50 \\sin(50t)) = -100 \\sin(50t)$ A/s. \n   $v(t) = 10 \\times 10^{-3} \\times (-100 \\sin(50t)) = -1000 \\times 10^{-3} \\sin(50t)$ V = $-1 \\sin(50t)$ V.\n\n(d) $i(t) = 5 e^{-2t}$ A. $\\frac{di}{dt} = 5(-2)e^{-2t} = -10 e^{-2t}$ A/s. \n   $v(t) = 10 \\times 10^{-3} \\times (-10 e^{-2t}) = -100 \\times 10^{-3} e^{-2t}$ V = $-0.1 e^{-2t}$ V.",
+      "answer": "(a) $0\\ \\text{V}$; (b) $0.2 \\cos(10t)\\ \\text{V}$; (c) $-1 \\sin(50t)\\ \\text{V}$; (d) $-0.1 e^{-2t}\\ \\text{V}$",
+      "set": 4
+    },
+    {
+      "id": "P20",
+      "question": "A 1 H inductor has a voltage $v_L(t) = 2t$ V for $0 \\le t \\le 0.1$ s. The initial current $i_L(0) = 0$ A. Determine the current $i_L(t)$ at $t = 0.05$ s and $t = 0.1$ s.",
+      "source_base": "H8",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "L",
+            "value": "1 H"
+          }
+        ],
+        "current_label": "i(t)",
+        "voltage_label": "v(t)",
+        "note": "Inductor current from linear voltage"
+      },
+      "solution": "The current through an inductor is given by $i_L(t) = i_L(0) + \\frac{1}{L} \\int_0^t v_L(\\tau) d\\tau$.\n   Given $L = 1$ H, $i_L(0) = 0$ A, and $v_L(\\tau) = 2\\tau$ V.\n\n   $i_L(t) = 0 + \\frac{1}{1} \\int_0^t 2\\tau d\\tau = \\left[ \\tau^2 \\right]_0^t = t^2$ A.\n\n1. At $t = 0.05$ s: \n   $i_L(0.05) = (0.05)^2 = 0.0025$ A = 2.5 mA.\n\n2. At $t = 0.1$ s: \n   $i_L(0.1) = (0.1)^2 = 0.01$ A = 10 mA.",
+      "answer": "$i_L(0.05) = 2.5\\ \\text{mA}$; $i_L(0.1) = 10\\ \\text{mA}$",
+      "set": 4
+    },
+    {
+      "id": "P21",
+      "question": "Calculate the energy stored in a 2 nH inductor for the following current values: (a) 0 mA, (b) 2 mA, (c) 10 A, and (d) 4 sin(100t) mA for t > 0.",
+      "source_base": "H9",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "L",
+            "value": "2 nH"
+          }
+        ],
+        "current_label": "i(t)",
+        "voltage_label": "v(t)",
+        "note": "Single inductor energy calculation"
+      },
+      "solution": "The energy stored in an inductor is given by $w = \\frac{1}{2} L i^2$. (a) For $i = 0$ mA, $w = \\frac{1}{2}(2 \\times 10^{-9})(0)^2 = 0$ J. (b) For $i = 2$ mA $= 2 \\times 10^{-3}$ A, $w = \\frac{1}{2}(2 \\times 10^{-9})(2 \\times 10^{-3})^2 = 10^{-9} \\times 4 \\times 10^{-6} = 4 \\times 10^{-15}$ J $= 4$ fJ. (c) For $i = 10$ A, $w = \\frac{1}{2}(2 \\times 10^{-9})(10)^2 = 10^{-9} \\times 100 = 10^{-7}$ J $= 0.1$ $\\mu$J. (d) For $i(t) = 4 \\sin(100t)$ mA, $w(t) = \\frac{1}{2}(2 \\times 10^{-9})(4 \\times 10^{-3} \\sin(100t))^2 = 10^{-9} \\times 16 \\times 10^{-6} \\sin^2(100t) = 16 \\times 10^{-15} \\sin^2(100t)$ J $= 16 \\sin^2(100t)$ fJ.",
+      "answer": "(a) $0\\ \\text{J}$; (b) $4\\ \\text{fJ}$; (c) $0.1\\ \\mu\\text{J}$; (d) $16 \\sin^2(100t)\\ \\text{fJ}$",
+      "set": 5
+    },
+    {
+      "id": "P22",
+      "question": "Find the energy stored in a 10 mH inductor at t = 1 ms if the current is: (a) 5 A, and (b) $i_L(t) = 2 - 8e^{-500t}$ mA.",
+      "source_base": "H10",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "L",
+            "value": "10 mH"
+          }
+        ],
+        "current_label": "i(t)",
+        "voltage_label": "v(t)",
+        "note": "Inductor energy at specific time"
+      },
+      "solution": "The energy is $w = \\frac{1}{2} L i^2$. (a) At $t=1$ ms, $i=5$ A. $w = \\frac{1}{2}(10 \\times 10^{-3})(5)^2 = 5 \\times 10^{-3} \\times 25 = 0.125$ J. (b) First find $i(1 \\text{ ms})$. $t = 1 \\times 10^{-3}$ s. $i(10^{-3}) = 2 - 8e^{-500(10^{-3})} = 2 - 8e^{-0.5}$ mA. $e^{-0.5} \\approx 0.6065$. $i = 2 - 8(0.6065) = 2 - 4.852 = -2.852$ mA $= -2.852 \\times 10^{-3}$ A. $w = \\frac{1}{2}(10 \\times 10^{-3})(-2.852 \\times 10^{-3})^2 = 5 \\times 10^{-3} \\times 8.134 \\times 10^{-6} \\approx 4.07 \\times 10^{-8}$ J $= 40.7$ nJ.",
+      "answer": "(a) $0.125 \\text{ J}$; (b) $40.7 \\text{ nJ}$",
+      "set": 5
+    },
+    {
+      "id": "P23",
+      "question": "Consider a DC circuit with a 12 V source connected to a series combination of a 4 kΩ resistor and a 2 mH inductor. The circuit has been connected for a very long time. Find the current $i_x$ through the inductor and the energy stored in it.",
+      "source_base": "H11",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "4 kΩ"
+          },
+          {
+            "kind": "L",
+            "value": "2 mH"
+          }
+        ],
+        "current_label": "i_x",
+        "voltage_label": "v",
+        "note": "DC steady state: inductor acts as short circuit"
+      },
+      "solution": "In DC steady state, an inductor behaves as a short circuit (zero voltage drop). The circuit reduces to the 12 V source in series with the 4 kΩ resistor. The current $i_x$ is determined by Ohm's law: $i_x = \\frac{V}{R} = \\frac{12 \\text{ V}}{4 \\text{ k}\\Omega} = 3 \\text{ mA}$. The energy stored in the inductor is $w = \\frac{1}{2} L i_x^2$. Substituting the values: $w = \\frac{1}{2}(2 \\times 10^{-3} \\text{ H})(3 \\times 10^{-3} \\text{ A})^2 = 10^{-3} \\times 9 \\times 10^{-6} = 9 \\times 10^{-9}$ J $= 9$ nJ.",
+      "answer": "$i_x = 3\\ \\text{mA}$, $w = 9\\ \\text{nJ}$",
+      "set": 5
+    },
+    {
+      "id": "P24",
+      "question": "A circuit consists of a 6 V DC source in series with a 2 kΩ resistor, connected to a parallel combination of a 6 kΩ resistor and a 20 mH inductor. (a) Find the Thevenin equivalent resistance seen by the inductor. (b) Find the steady-state current through the inductor. (c) Calculate the energy stored in the inductor.",
+      "source_base": "H12",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "6 V"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "2 kΩ"
+            }
+          ],
+          [
+            {
+              "kind": "R",
+              "value": "6 kΩ"
+            },
+            {
+              "kind": "L",
+              "value": "20 mH"
+            }
+          ]
+        ],
+        "note": "Source with series R, then parallel R and L"
+      },
+      "solution": "(a) To find the Thevenin resistance $R_{th}$ seen by the inductor, turn off the voltage source (replace with short). The 2 kΩ resistor is in parallel with the 6 kΩ resistor. $R_{th} = 2 \\text{ k}\\Omega \\parallel 6 \\text{ k}\\Omega = \\frac{2 \\times 6}{2 + 6} \\text{ k}\\Omega = \\frac{12}{8} \\text{ k}\\Omega = 1.5 \\text{ k}\\Omega$. (b) In DC steady state, the inductor is a short circuit. The 6 kΩ resistor is shorted out. The total resistance is just the 2 kΩ series resistor. The current from the source is $I_{total} = \\frac{6 \\text{ V}}{2 \\text{ k}\\Omega} = 3 \\text{ mA}$. Since the 6 kΩ resistor is shorted by the inductor, all current flows through the inductor. $i_L = 3 \\text{ mA}$. (c) Energy $w = \\frac{1}{2} L i_L^2 = \\frac{1}{2}(20 \\times 10^{-3})(3 \\times 10^{-3})^2 = 10^{-2} \\times 9 \\times 10^{-6} = 9 \\times 10^{-8}$ J $= 90$ nJ.",
+      "answer": "(a) $1.5\\ \\text{k}\\Omega$; (b) $3\\ \\text{mA}$; (c) $90\\ \\text{nJ}$",
+      "set": 5
+    },
+    {
+      "id": "P25",
+      "question": "Three inductors with values $L_1 = 2$ H, $L_2 = 4$ H, and $L_3 = 4$ H are connected in parallel. The total current entering the parallel combination is $i_s(t) = 10 e^{-100t}$ A for $t \\ge 0$. The initial current in $L_1$ is $i_1(0) = 5$ A, and the initial currents in $L_2$ and $L_3$ are 0 A. (a) Find the equivalent inductance. (b) Find the voltage $v(t)$ across the inductors for $t \\ge 0$. (c) Find the current $i_1(t)$ for $t \\ge 0$.",
+      "source_base": "H13",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "is(t)"
+        },
+        "branches": [
+          [
+            {
+              "kind": "L",
+              "value": "2 H"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "4 H"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "4 H"
+            }
+          ]
+        ],
+        "note": "Parallel inductors with current source"
+      },
+      "solution": "(a) For parallel inductors, $\\frac{1}{L_{eq}} = \\frac{1}{L_1} + \\frac{1}{L_2} + \\frac{1}{L_3} = \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{4} = 1$ S. Thus, $L_{eq} = 1$ H. (b) The voltage across the parallel combination is $v(t) = L_{eq} \\frac{di_s}{dt}$. Given $i_s(t) = 10 e^{-100t}$ A, $\\frac{di_s}{dt} = -1000 e^{-100t}$ A/s. $v(t) = 1 \\times (-1000 e^{-100t}) = -1000 e^{-100t}$ V. (c) The current in $L_1$ is found by integrating the voltage: $i_1(t) = i_1(0) + \\frac{1}{L_1} \\int_0^t v(\\tau) d\\tau$. $i_1(t) = 5 + \\frac{1}{2} \\int_0^t -1000 e^{-100\\tau} d\\tau = 5 - 500 \\left[ \\frac{e^{-100\\tau}}{-100} \\right]_0^t = 5 + 5 (e^{-100t} - 1) = 5 + 5e^{-100t} - 5 = 5e^{-100t}$ A.",
+      "answer": "(a) $1\\ \\text{H}$; (b) $-1000 e^{-100t}\\ \\text{V}$; (c) $5 e^{-100t}\\ \\text{A}$",
+      "set": 5
+    },
+    {
+      "id": "P26",
+      "question": "A series circuit consists of a voltage source $v_s(t) = 50 e^{-50t}$ V, a 2 µF capacitor, and a 2 µF capacitor. The initial voltage across the first capacitor is $v_1(0) = 10$ V, and the initial voltage across the second is $v_2(0) = 0$ V. (a) Find the equivalent capacitance. (b) Find the current $i(t)$ for $t \\ge 0$. (c) Find the voltage $v_1(t)$ for $t \\ge 0$.",
+      "source_base": "H14",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "vs(t)"
+          },
+          {
+            "kind": "C",
+            "value": "2 µF"
+          },
+          {
+            "kind": "C",
+            "value": "2 µF"
+          }
+        ],
+        "current_label": "i(t)",
+        "voltage_label": "v1, v2",
+        "note": "Series capacitors with source"
+      },
+      "solution": "(a) For series capacitors, $\\frac{1}{C_{eq}} = \\frac{1}{C_1} + \\frac{1}{C_2} = \\frac{1}{2} + \\frac{1}{2} = 1$ mS. Thus, $C_{eq} = 1$ µF. (b) The total voltage across the series combination is $v_s(t)$. The current is $i(t) = C_{eq} \\frac{dv_s}{dt}$. $\\frac{dv_s}{dt} = -2500 e^{-50t}$ V/s. $i(t) = 1 \\times 10^{-6} \\times (-2500 e^{-50t}) = -2.5 e^{-50t}$ mA. (c) The voltage across $C_1$ is $v_1(t) = v_1(0) + \\frac{1}{C_1} \\int_0^t i(\\tau) d\\tau$. $v_1(t) = 10 + \\frac{1}{2 \\times 10^{-6}} \\int_0^t -2.5 \\times 10^{-3} e^{-50\\tau} d\\tau = 10 - 1250 \\left[ \\frac{e^{-50\\tau}}{-50} \\right]_0^t = 10 + 25 (e^{-50t} - 1) = 10 + 25e^{-50t} - 25 = 25e^{-50t} - 15$ V.",
+      "answer": "(a) $1\\ \\mu\\text{F}$; (b) $-2.5 e^{-50t}\\ \\text{mA}$; (c) $25 e^{-50t} - 15\\ \\text{V}$",
+      "set": 6
+    },
+    {
+      "id": "P27",
+      "question": "An ideal op-amp integrator circuit has an input resistor $R_1 = 50$ kΩ and a feedback capacitor $C_f = 100$ µF. The input voltage is $v_s(t) = 10 \\sin(100t)$ mV. Assuming the initial output voltage is zero, find the output voltage $v_{out}(t)$.",
+      "source_base": "H15",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "vs(t)"
+          },
+          {
+            "kind": "R",
+            "value": "50 kΩ"
+          }
+        ],
+        "current_label": "i_in",
+        "voltage_label": "v_out",
+        "note": "Ideal inverting integrator, Cf = 100 µF in feedback"
+      },
+      "solution": "For an ideal inverting integrator, the output voltage is given by $v_{out}(t) = -\\frac{1}{R_1 C_f} \\int_0^t v_s(\\tau) d\\tau + v_{out}(0)$. With the initial condition $v_{out}(0) = 0$, the gain coefficient is calculated as:\n$$ \\frac{1}{R_1 C_f} = \\frac{1}{(50 \\times 10^3)(100 \\times 10^{-6})} = \\frac{1}{5} = 0.2 \\text{ s}^{-1} $$\nThe input signal is $v_s(t) = 10 \\sin(100t)$ mV. The definite integral of the input from 0 to $t$ is:\n$$ \\int_0^t 10 \\sin(100\\tau) d\\tau = \\left[ -\\frac{10}{100} \\cos(100\\tau) \\right]_0^t = -0.1 (\\cos(100t) - \\cos(0)) = 0.1 - 0.1 \\cos(100t) \\text{ mV} $$\nSubstituting this result into the integrator equation yields:\n$$ v_{out}(t) = -0.2 (0.1 - 0.1 \\cos(100t)) = -0.02 + 0.02 \\cos(100t) \\text{ mV} $$\nThis expression can be written as:\n$$ v_{out}(t) = 0.02(\\cos(100t) - 1) \\text{ mV} $$",
+      "answer": "$v_{out}(t) = 0.02(\\cos(100t) - 1) \\text{ mV}$",
+      "set": 6
+    },
+    {
+      "id": "P28",
+      "question": "An ideal op-amp differentiator circuit has an input inductor $L_1 = 10$ mH and a feedback resistor $R_f = 5$ kΩ. The input voltage is $v_s(t)$. Derive the expression for the output voltage $v_{out}(t)$ in terms of $v_s(t)$.",
+      "source_base": "H16",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "vs(t)"
+          },
+          {
+            "kind": "C",
+            "value": "10 µF"
+          }
+        ],
+        "current_label": "i_in",
+        "voltage_label": "v_out",
+        "note": "Ideal inverting differentiator, Rf = 5 kΩ in feedback"
+      },
+      "solution": "For an ideal inverting differentiator with a capacitor $C_1$ in the input path and a resistor $R_f$ in the feedback path, the current through the capacitor is $i_C = C_1 \\frac{dv_s}{dt}$. Since the op-amp input is a virtual ground, this current flows through the feedback resistor. The output voltage is $v_{out}(t) = -i_C R_f$. Substituting the expression for $i_C$, we get $v_{out}(t) = -R_f C_1 \\frac{dv_s}{dt}$. Given $R_f = 5$ kΩ $= 5000$ Ω and $C_1 = 10$ µF $= 10 \\times 10^{-6}$ F, the gain coefficient is $R_f C_1 = 5000 \\times 10 \\times 10^{-6} = 0.05$ s. Thus, $v_{out}(t) = -0.05 \\frac{dv_s}{dt}$.",
+      "answer": "$$v_{out}(t) = -0.05 \\frac{dv_s}{dt}$$",
+      "set": 6
+    },
+    {
+      "id": "P29",
+      "question": "Design an op-amp differentiator circuit to measure the rate of change of a temperature sensor signal. The sensor outputs 10 mV for every 1 °C. The desired output is 1 V for every 1 °C/s. Determine the values of the input capacitor $C_1$ and feedback resistor $R_f$ if $C_1 = 1$ µF.",
+      "source_base": "H17",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "vs(t)"
+          },
+          {
+            "kind": "C",
+            "value": "1 µF"
+          }
+        ],
+        "current_label": "i_in",
+        "voltage_label": "v_out",
+        "note": "Differentiator for temperature rate monitoring"
+      },
+      "solution": "The sensor output voltage is $v_s(t) = k_T T(t)$, where $k_T = 10$ mV/°C $= 0.01$ V/°C. The desired output is $v_{out}(t) = k_{out} \\frac{dT}{dt}$, where $k_{out} = 1$ V/(°C/s). The differentiator circuit produces $v_{out}(t) = -R_f C_1 \\frac{dv_s}{dt}$. Substituting $v_s(t)$, we get $v_{out}(t) = -R_f C_1 k_T \\frac{dT}{dt}$. We want the magnitude of the gain to match $k_{out}$. So, $R_f C_1 k_T = k_{out}$. Solving for $R_f$: $R_f = \\frac{k_{out}}{C_1 k_T}$. Given $C_1 = 1$ µF $= 10^{-6}$ F, $k_T = 0.01$ V/°C, and $k_{out} = 1$ V/(°C/s). $R_f = \\frac{1}{10^{-6} \\times 0.01} = \\frac{1}{10^{-8}} = 10^8$ Ω $= 100$ MΩ. This is a very high resistance, but theoretically correct for the specified calibration.",
+      "answer": "$R_f = 100 \\text{ M}\\Omega$",
+      "set": 6
+    },
+    {
+      "id": "P30",
+      "question": "A DC circuit consists of a 10 V source in series with a 100 Ω resistor and a 5 mH inductor. There is also a 50 Ω resistor in parallel with the inductor. The circuit has been connected for a long time. (a) Find the current through the inductor. (b) Find the power dissipated by the 50 Ω resistor.",
+      "source_base": "H18",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "10 V"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "100 Ω"
+            }
+          ],
+          [
+            {
+              "kind": "R",
+              "value": "50 Ω"
+            },
+            {
+              "kind": "L",
+              "value": "5 mH"
+            }
+          ]
+        ],
+        "note": "DC steady state: inductor is short"
+      },
+      "solution": "In DC steady state, the inductor acts as a short circuit. The 50 Ω resistor is in parallel with the shorted inductor, so the voltage across the 50 Ω resistor is 0 V. Consequently, the current through the 50 Ω resistor is 0 A, and the power dissipated by it is 0 W. The entire circuit current flows through the inductor. The total resistance seen by the source is the 100 Ω series resistor (since the parallel branch is shorted). The current $i_L$ is $i_L = \\frac{V}{R_{series}} = \\frac{10 \\text{ V}}{100 \\text{ Ω}} = 0.1$ A $= 100$ mA. (a) The current through the inductor is 100 mA. (b) The power dissipated by the 50 Ω resistor is $P = I^2 R = 0^2 \\times 50 = 0$ W.",
+      "answer": "(a) $100\\ \\text{mA}$; (b) $0\\ \\text{W}$",
+      "set": 6
     }
   ]
 }
