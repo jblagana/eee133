@@ -1,3 +1,7 @@
 # Agent workspace metadata — kept out of the public repo / Pages site
 Agents.md
 INSTRUCTIONS.md
+
+# local bank backups
+data/*.bak*
+

@@ -1,0 +1,1592 @@
+{
+  "chapter": "07",
+  "title": "Second-Order Circuits · Complete Response",
+  "conceptual": [
+    {
+      "id": "C01",
+      "question": "In a second-order RLC circuit subjected to a dc step input, the complete response x(t) is the sum of which two components?",
+      "type": "mcq",
+      "options": [
+        "Natural response and initial conditions",
+        "Forced (steady-state) response and natural (transient) response",
+        "Transient response and impulse response",
+        "Steady-state response and damping factor"
+      ],
+      "answer": "B",
+      "explanation": "The complete response is defined as $x(t) = x_{ss} + x_n$, where $x_{ss}$ is the forced steady-state value and $x_n$ is the natural transient response determined by the circuit's characteristic roots.",
+      "set": 1
+    },
+    {
+      "id": "C02",
+      "question": "Does the presence of a dc source in a second-order circuit change the characteristic equation or the damping factor alpha?",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "The characteristic equation is derived from the homogeneous part of the differential equation, which is found by turning off independent sources; thus, the dc source does not affect alpha, w0, or the damping case.",
+      "set": 1
+    },
+    {
+      "id": "C03",
+      "question": "For a series RLC circuit, the damping factor alpha is calculated using which formula?",
+      "type": "mcq",
+      "options": [
+        "alpha = 1/(2RC)",
+        "alpha = R/(2L)",
+        "alpha = 1/sqrt(LC)",
+        "alpha = R/L"
+      ],
+      "answer": "B",
+      "explanation": "In a series RLC circuit, the damping factor is defined as $\\alpha = \\frac{R}{2L}$, while the resonant frequency is $\\omega_0 = \\frac{1}{\\sqrt{LC}}$.",
+      "set": 1
+    },
+    {
+      "id": "C04",
+      "question": "In a parallel RLC circuit, increasing the resistance R results in which change to the damping factor alpha?",
+      "type": "mcq",
+      "options": [
+        "alpha increases, making the circuit more damped",
+        "alpha decreases, making the circuit more oscillatory",
+        "alpha remains constant regardless of R",
+        "alpha becomes negative"
+      ],
+      "answer": "B",
+      "explanation": "For a parallel RLC circuit, $\\alpha = \\frac{1}{2RC}$; therefore, increasing $R$ decreases $\\alpha$, which moves the circuit toward underdamping and more oscillatory behavior.",
+      "set": 1
+    },
+    {
+      "id": "C05",
+      "question": "What is the mathematical form of the natural response for an underdamped second-order circuit?",
+      "type": "mcq",
+      "options": [
+        "A1 e^{s1 t} + A2 e^{s2 t}",
+        "(A1 + A2 t) e^{-alpha t}",
+        "e^{-alpha t} (B1 cos wd t + B2 sin wd t)",
+        "B e^{-alpha t}"
+      ],
+      "answer": "C",
+      "explanation": "When $\\alpha < \\omega_0$, the roots are complex conjugates, and the natural response takes the form $e^{-\\alpha t} (B_1 \\cos \\omega_d t + B_2 \\sin \\omega_d t)$, where $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2}$.",
+      "set": 1
+    },
+    {
+      "id": "C06",
+      "question": "The capacitor voltage vC(t) and inductor current iL(t) can change instantaneously at t = 0+ if a switch is operated.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "Due to the continuity of energy storage, $v_C(0^+) = v_C(0^-)$ and $i_L(0^+) = i_L(0^-)$; these variables cannot change instantaneously.",
+      "set": 2
+    },
+    {
+      "id": "C07",
+      "question": "To determine the initial derivative dvC/dt at t = 0+, one must analyze the circuit at t = 0+ by replacing the capacitor with which equivalent element?",
+      "type": "mcq",
+      "options": [
+        "A short circuit",
+        "An open circuit",
+        "A voltage source with value vC(0+)",
+        "A current source with value iC(0+)"
+      ],
+      "answer": "C",
+      "explanation": "At $t = 0^+$, the capacitor acts as a voltage source with value $v_C(0^+)$ because its voltage is fixed, allowing the calculation of the initial current and thus the derivative $\\frac{dv_C}{dt} = \\frac{i_C(0^+)}{C}$.",
+      "set": 2
+    },
+    {
+      "id": "C08",
+      "question": "For a critically damped second-order circuit, the relationship between alpha and w0 is:",
+      "type": "mcq",
+      "options": [
+        "alpha > w0",
+        "alpha < w0",
+        "alpha = w0",
+        "alpha = 2w0"
+      ],
+      "answer": "C",
+      "explanation": "Critical damping occurs when the characteristic roots are real and repeated, which happens when $\\alpha = \\omega_0$.",
+      "set": 2
+    },
+    {
+      "id": "C09",
+      "question": "The steady-state value x_ss in the complete response of a step-driven RLC circuit is determined by the circuit configuration at t -> infinity.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "x_ss is the forced response, found by analyzing the circuit at dc steady state where capacitors act as open circuits and inductors act as short circuits.",
+      "set": 2
+    },
+    {
+      "id": "C10",
+      "question": "In a series RLC step response, the final capacitor voltage vC(inf) is determined by:",
+      "type": "mcq",
+      "options": [
+        "The initial inductor current",
+        "The damping factor alpha",
+        "The dc source voltage and the resistive voltage divider at steady state",
+        "The resonant frequency w0"
+      ],
+      "answer": "C",
+      "explanation": "At t -> infinity, the inductor is a short and the capacitor is an open; the final voltage is determined by the dc source and the resistive network (voltage divider) in the steady-state circuit.",
+      "set": 2
+    },
+    {
+      "id": "C11",
+      "question": "The natural response of a second-order circuit is identical in shape to its step response, differing only by a vertical shift.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "Since the characteristic equation (and thus the natural response form) is independent of the source, the step response has the same transient shape as the natural response but is shifted by the constant x_ss.",
+      "set": 3
+    },
+    {
+      "id": "C12",
+      "question": "For an overdamped circuit, the roots s1 and s2 of the characteristic equation are:",
+      "type": "mcq",
+      "options": [
+        "Complex conjugates",
+        "Real and distinct",
+        "Real and repeated",
+        "Purely imaginary"
+      ],
+      "answer": "B",
+      "explanation": "Overdamping occurs when $\\alpha > \\omega_0$, resulting in two distinct real roots $s_{1,2} = -\\alpha \\pm \\sqrt{\\alpha^2 - \\omega_0^2}$.",
+      "set": 3
+    },
+    {
+      "id": "C13",
+      "question": "The damping factor alpha for a parallel RLC circuit is given by:",
+      "type": "mcq",
+      "options": [
+        "R/(2L)",
+        "1/(2RC)",
+        "1/sqrt(LC)",
+        "2RC"
+      ],
+      "answer": "B",
+      "explanation": "In a parallel RLC circuit, the damping factor is defined as $\\alpha = \\frac{1}{2RC}$, which is the dual of the series case.",
+      "set": 3
+    },
+    {
+      "id": "C14",
+      "question": "If a second-order circuit is underdamped, the damped natural frequency wd is calculated as:",
+      "type": "mcq",
+      "options": [
+        "sqrt(alpha^2 - w0^2)",
+        "sqrt(w0^2 - alpha^2)",
+        "w0 - alpha",
+        "alpha + w0"
+      ],
+      "answer": "B",
+      "explanation": "For underdamped circuits ($\\alpha < \\omega_0$), the damped frequency is $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2}$, which determines the oscillation period.",
+      "set": 3
+    },
+    {
+      "id": "C15",
+      "question": "The derivative diL/dt at t = 0+ can be determined directly from the initial inductor current iL(0+).",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "The derivative $\\frac{di_L}{dt}$ at $t = 0^+$ is determined by the voltage across the inductor at $t = 0^+$, given by $\\frac{di_L}{dt} = \\frac{v_L(0^+)}{L}$. This calculation requires analyzing the $0^+$ circuit, not merely the initial current.",
+      "set": 3
+    },
+    {
+      "id": "C16",
+      "question": "In the general 4-step method for solving second-order circuits, the first step is to:",
+      "type": "mcq",
+      "options": [
+        "Find the steady-state value x_ss",
+        "Write the second-order differential equation",
+        "Solve for the constants A1 and A2",
+        "Calculate the damping factor alpha"
+      ],
+      "answer": "B",
+      "explanation": "The first step is to derive the second-order differential equation governing the circuit variable, which allows for the subsequent identification of the characteristic equation.",
+      "set": 4
+    },
+    {
+      "id": "C17",
+      "question": "To find the characteristic equation for the natural response, independent sources in the circuit must be:",
+      "type": "mcq",
+      "options": [
+        "Left at their step values",
+        "Turned off (voltage sources shorted, current sources opened)",
+        "Replaced with their Thevenin equivalents",
+        "Doubled in magnitude"
+      ],
+      "answer": "B",
+      "explanation": "The natural response corresponds to the homogeneous solution, which is found by turning off all independent sources to isolate the circuit's internal dynamics.",
+      "set": 4
+    },
+    {
+      "id": "C18",
+      "question": "A 'just barely' overdamped circuit has roots that are:",
+      "type": "mcq",
+      "options": [
+        "Far apart on the real axis",
+        "Complex with a large imaginary part",
+        "Real and very close to each other",
+        "Equal to zero"
+      ],
+      "answer": "C",
+      "explanation": "When alpha is just slightly greater than w0, the term sqrt(alpha^2 - w0^2) is small, resulting in two real roots that are close together near -alpha.",
+      "set": 4
+    },
+    {
+      "id": "C19",
+      "question": "The settling time of a second-order circuit's transient response is approximately:",
+      "type": "mcq",
+      "options": [
+        "1/alpha",
+        "2/alpha",
+        "4/alpha",
+        "10/alpha"
+      ],
+      "answer": "C",
+      "explanation": "The transient envelope decays as $e^{-\\alpha t}$; it is considered settled (within $\\sim 2\\%$ of the final value) when $e^{-\\alpha t}$ is small, which occurs at $t \\approx \\frac{4}{\\alpha}$.",
+      "set": 4
+    },
+    {
+      "id": "C20",
+      "question": "In a step response, the forced component x_ss is a function of time t.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "For a dc step input, the forced response is the dc steady-state value, which is a constant x_ss, not a function of time.",
+      "set": 4
+    },
+    {
+      "id": "C21",
+      "question": "The initial conditions vC(0+) and iL(0+) are determined by the circuit state at:",
+      "type": "mcq",
+      "options": [
+        "t = infinity",
+        "t = 0- (just before switching)",
+        "t = 1 second",
+        "t = 0+ (just after switching) without continuity"
+      ],
+      "answer": "B",
+      "explanation": "Due to continuity, $v_C(0^+) = v_C(0^-)$ and $i_L(0^+) = i_L(0^-)$; thus, the initial conditions are determined by the steady-state or transient state of the circuit just before the switch operation.",
+      "set": 5
+    },
+    {
+      "id": "C22",
+      "question": "For a series RLC circuit, the resonant frequency w0 is given by:",
+      "type": "mcq",
+      "options": [
+        "1/sqrt(LC)",
+        "1/(2pi sqrt(LC))",
+        "sqrt(LC)",
+        "R/sqrt(LC)"
+      ],
+      "answer": "A",
+      "explanation": "The undamped natural frequency (resonant frequency) for any RLC circuit is $\\omega_0 = \\frac{1}{\\sqrt{LC}}$, independent of the resistance.",
+      "set": 5
+    },
+    {
+      "id": "C23",
+      "question": "If alpha = 0 in a second-order circuit, the response is:",
+      "type": "mcq",
+      "options": [
+        "Overdamped",
+        "Critically damped",
+        "Undamped (pure oscillation)",
+        "Non-existent"
+      ],
+      "answer": "C",
+      "explanation": "When $\\alpha = 0$ ($R = 0$), the damping term vanishes, and the circuit oscillates at $\\omega_0$ without decay, which is the undamped case.",
+      "set": 5
+    },
+    {
+      "id": "C24",
+      "question": "The constants A1 and A2 in the complete response are solved using which two pieces of information?",
+      "type": "mcq",
+      "options": [
+        "x_ss and alpha",
+        "x(0+) and dx/dt at t = 0+",
+        "w0 and wd",
+        "The source voltage and resistance"
+      ],
+      "answer": "B",
+      "explanation": "The two unknown constants are determined by applying the initial value $x(0^+)$ and the initial derivative $\\frac{dx}{dt}$ at $t = 0^+$ to the complete response equation.",
+      "set": 5
+    },
+    {
+      "id": "C25",
+      "question": "In a parallel RLC circuit, increasing the capacitance C will increase the damping factor alpha.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "For a parallel RLC circuit, the neper frequency is given by $\\alpha = \\frac{1}{2RC}$. Increasing $C$ decreases $\\alpha$, making the circuit less damped.",
+      "set": 5
+    },
+    {
+      "id": "C26",
+      "question": "The period of oscillation Td for an underdamped second-order circuit is given by:",
+      "type": "mcq",
+      "options": [
+        "2 pi / w0",
+        "2 pi / alpha",
+        "2 pi / wd",
+        "pi / wd"
+      ],
+      "answer": "C",
+      "explanation": "The damped oscillation period is determined by the damped frequency $\\omega_d$, so $T_d = \\frac{2\\pi}{\\omega_d}$.",
+      "set": 6
+    },
+    {
+      "id": "C27",
+      "question": "A dc source stepped at t = 0 affects the initial conditions vC(0+) and iL(0+).",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "The initial conditions are determined by the state of the circuit at $t = 0^-$ (before the step); the new dc source affects the final value $x_{ss}$, not the initial conditions.",
+      "set": 6
+    },
+    {
+      "id": "C28",
+      "question": "In the complete response x(t) = x_ss + x_n, the term x_n approaches zero as t approaches infinity.",
+      "type": "tf",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The natural response x_n consists of decaying exponential or damped sinusoidal terms that vanish as t -> infinity, leaving only the steady-state value x_ss.",
+      "set": 6
+    },
+    {
+      "id": "C29",
+      "question": "For a series RLC circuit, the differential equation for the capacitor voltage vC is:",
+      "type": "mcq",
+      "options": [
+        "LC v''_C + RC v'_C + v_C = V_S",
+        "LC v''_C + L v'_C + C v_C = V_S",
+        "C v''_C + R v'_C + L v_C = V_S",
+        "L v''_C + R v'_C + C v_C = V_S"
+      ],
+      "answer": "A",
+      "explanation": "Applying KVL to a series RLC circuit and expressing in terms of $v_C$ yields $LC \\frac{d^2 v_C}{dt^2} + RC \\frac{dv_C}{dt} + v_C = V_S$.",
+      "set": 6
+    },
+    {
+      "id": "C30",
+      "question": "The damping case (over, critical, or under) is determined by comparing alpha with:",
+      "type": "mcq",
+      "options": [
+        "The source voltage V_S",
+        "The initial current iL(0)",
+        "The resonant frequency w0",
+        "The resistance R"
+      ],
+      "answer": "C",
+      "explanation": "The damping case is determined by the relationship between the damping factor $\\alpha$ and the resonant frequency $\\omega_0$: $\\alpha > \\omega_0$ (overdamped), $\\alpha = \\omega_0$ (critically damped), and $\\alpha < \\omega_0$ (underdamped).",
+      "set": 6
+    }
+  ],
+  "problems": [
+    {
+      "id": "P01",
+      "question": "At $t = 0$ a $12$ V dc source is switched in, in series with a $4$ $\\Omega$ resistor $R_1$, to node A. From node A, a $2$ H inductor goes to the bottom rail, and a $6$ $\\Omega$ resistor $R_2$ goes to node B; from node B, a $0.5$ F capacitor goes to the bottom rail. All elements are initially unenergized. Find (a) $v_C(t)$ for $t \\ge 0$; (b) $i_L(t)$ for $t \\ge 0$; (c) the maximum value of $v_C(t)$ and the time at which it occurs.",
+      "source_base": "N23",
+      "circuit_spec": {
+        "type": "netlist",
+        "nodes": {
+          "S1": [
+            0,
+            40
+          ],
+          "S2": [
+            0,
+            160
+          ],
+          "A": [
+            120,
+            40
+          ],
+          "B": [
+            240,
+            40
+          ],
+          "gL": [
+            120,
+            160
+          ],
+          "gC": [
+            240,
+            160
+          ]
+        },
+        "edges": [
+          {
+            "from": "S1",
+            "to": "S2",
+            "comp": {
+              "kind": "Vdc",
+              "value": "12 V"
+            }
+          },
+          {
+            "from": "S1",
+            "to": "A",
+            "comp": {
+              "kind": "R",
+              "value": "4"
+            }
+          },
+          {
+            "from": "A",
+            "to": "gL",
+            "comp": {
+              "kind": "L",
+              "value": "2 H"
+            }
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "6"
+            }
+          },
+          {
+            "from": "B",
+            "to": "gC",
+            "comp": {
+              "kind": "C",
+              "value": "0.5 F"
+            }
+          },
+          {
+            "from": "S2",
+            "to": "gL"
+          },
+          {
+            "from": "gL",
+            "to": "gC"
+          }
+        ],
+        "note": "Series-parallel RLC ladder (source switched in at t = 0)"
+      },
+      "solution": "Let $v_C$ be the capacitor voltage and $v_A$ the node-A voltage.\n\nKCL at node B: $C\\frac{dv_C}{dt} = \\frac{v_A - v_C}{R_2}$, hence $v_A = v_C + R_2 C\\, v_C' = v_C + 3\\,v_C'$.\n\nKCL at node A, with $i_L$ the (downward) inductor current: $\\frac{v_A - 12}{4} + i_L + \\frac{v_A - v_C}{6} = 0$. Since $v_A - v_C = 3\\,v_C'$, this becomes $i_L = \\frac{12 - v_C}{4} - 1.25\\,v_C'$. Using $\\frac{di_L}{dt} = v_A/L = (v_C + 3\\,v_C')/2$ and eliminating $i_L$ gives the second-order equation\n$v_C'' + 1.4\\,v_C' + 0.4\\,v_C = 0$.\n\n$\\alpha = 0.7$, $\\omega_0 = \\sqrt{0.4} \\approx 0.632$ rad/s: overdamped, roots $s_1 = -0.7 + 0.3 = -0.4$ and $s_2 = -0.7 - 0.3 = -1$.\n\nFinal value: at dc the inductor is a short, so $v_A(\\infty) = 0$ and $v_C(\\infty) = 0$. Thus $v_C(t) = A e^{-0.4t} + B e^{-t}$.\n\nInitial conditions: $v_C(0^+) = 0$, $i_L(0^+) = 0$. KCL at A at $0^+$: $\\frac{v_A - 12}{4} + \\frac{v_A}{6} = 0 \\Rightarrow 5v_A = 36 \\Rightarrow v_A(0^+) = 7.2$ V, so $v_C'(0^+) = \\frac{v_A(0^+) - v_C(0^+)}{R_2 C} = \\frac{7.2}{3} = 2.4$ V/s.\n\n$A + B = 0$ and $-0.4A - B = 2.4$ give $A = 4$, $B = -4$.\n\n(a) $v_C(t) = 4(e^{-0.4t} - e^{-t})$ V.\n\n(b) $i_L(t) = \\frac{12 - v_C}{4} - 1.25\\,v_C' = 3 + e^{-0.4t} - 4e^{-t}$ A (check: $i_L(0) = 0$, $i_L(\\infty) = 12/4 = 3$ A).\n\n(c) $v_C'(t) = 0 \\Rightarrow 4e^{-t} = 1.6e^{-0.4t} \\Rightarrow e^{0.6t} = 2.5 \\Rightarrow t_p = \\frac{\\ln 2.5}{0.6} \\approx 1.53$ s, where $v_C(t_p) \\approx 1.30$ V.",
+      "answer": "$v_C(t) = 4(e^{-0.4t} - e^{-t})$ V; $i_L(t) = 3 + e^{-0.4t} - 4e^{-t}$ A; $v_{C,\\max} \\approx 1.30$ V at $t_p \\approx 1.53$ s.",
+      "set": 1,
+      "difficulty": "medium"
+    },
+    {
+      "id": "P02",
+      "question": "A source-free parallel RLC circuit has $L = 10$ mH, $C = 1$ $\\mu$F, and a resistor $R$ adjusted so that the characteristic roots are $-8000 \\pm j6000$ rad/s. The initial conditions are $v(0) = 10$ V and $i_L(0) = 40$ mA. Find (a) $R$; (b) $\\frac{dv}{dt}\\big|_{0^+}$; (c) the constants $B_1$ and $B_2$ in $v(t) = e^{-\\alpha t}(B_1\\cos\\omega_d t + B_2\\sin\\omega_d t)$; (d) $i_L(t)$ for $t \\ge 0$.",
+      "source_base": "N18",
+      "circuit_spec": {
+        "type": "parallel",
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "62.5"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "10 mH"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "1 uF"
+            }
+          ]
+        ],
+        "note": "Source-free parallel RLC; v(0) = 10 V, iL(0) = 40 mA"
+      },
+      "solution": "$\\alpha = 8000$ Np/s, $\\omega_d = 6000$ rad/s, so $\\omega_0 = \\sqrt{\\alpha^2 + \\omega_d^2} = 10000$ rad/s, consistent with $\\omega_0 = 1/\\sqrt{LC} = 1/\\sqrt{(0.01)(10^{-6})}$.\n\n(a) $R = \\frac{1}{2C\\alpha} = \\frac{1}{2(10^{-6})(8000)} = 62.5$ $\\Omega$.\n\n(b) KCL at $0^+$ (all branch currents defined downward from the top node): $i_C(0^+) = -i_R(0^+) - i_L(0^+) = -\\frac{10}{62.5} - 0.04 = -0.20$ A, hence $\\frac{dv}{dt}\\big|_{0^+} = \\frac{i_C(0^+)}{C} = -2.0 \\times 10^5$ V/s.\n\n(c) $B_1 = v(0) = 10$. Differentiating, $v'(0^+) = -\\alpha B_1 + \\omega_d B_2$, so $-2.0 \\times 10^5 = -80000 + 6000\\,B_2 \\Rightarrow B_2 = -20$.\n\nThus $v(t) = e^{-8000 t}(10\\cos 6000 t - 20\\sin 6000 t)$ V.\n\n(d) $i_L(t) = -\\frac{v}{R} - C\\frac{dv}{dt} = e^{-8000 t}(0.04\\cos 6000 t + 0.22\\sin 6000 t)$ A (check: $i_L(0) = 40$ mA, $i_L(\\infty) = 0$).",
+      "answer": "$R = 62.5$ $\\Omega$; $dv/dt|_{0^+} = -2.0 \\times 10^5$ V/s; $B_1 = 10$, $B_2 = -20$; $v(t) = e^{-8000t}(10\\cos 6000t - 20\\sin 6000t)$ V; $i_L(t) = e^{-8000t}(0.04\\cos 6000t + 0.22\\sin 6000t)$ A.",
+      "set": 1,
+      "difficulty": "medium"
+    },
+    {
+      "id": "P03",
+      "question": "A source-free parallel RLC circuit has $L = 0.4$ H and $C = 10$ $\\mu$F, and its resistance is adjusted for critical damping. The initial energy stored in the circuit is 25 mJ, distributed equally between the inductor and the capacitor, with $v(0) = 50$ V and $i_L(0) = 0.25$ A. Find (a) $R$; (b) $v(t)$ for $t \\ge 0$; (c) $i_L(t)$ for $t \\ge 0$; (d) $i_R(0^+)$.",
+      "source_base": "N19",
+      "circuit_spec": {
+        "type": "parallel",
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "100"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "0.4 H"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "10 uF"
+            }
+          ]
+        ],
+        "note": "Source-free parallel RLC, critical damping; v(0) = 50 V, iL(0) = 0.25 A, 25 mJ total"
+      },
+      "solution": "$\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.4 \\times 10^{-5}}} = 500$ rad/s. (Consistency with the given energy: $\\tfrac{1}{2}Cv^2 = \\tfrac{1}{2}(10^{-5})(50)^2 = 12.5$ mJ and $\\tfrac{1}{2}Li_L^2 = \\tfrac{1}{2}(0.4)(0.25)^2 = 12.5$ mJ, total 25 mJ.)\n\n(a) Critical damping: $\\alpha = \\omega_0 = 500$ Np/s, so $R = \\frac{1}{2C\\alpha} = \\frac{1}{2(10^{-5})(500)} = 100$ $\\Omega$.\n\n(b) $v(t) = (A_1 + A_2 t)e^{-500 t}$ with $A_1 = v(0) = 50$. KCL at $0^+$: $i_C(0^+) = -\\frac{50}{100} - 0.25 = -0.75$ A, so $v'(0^+) = -75000$ V/s. Then $v'(0^+) = A_2 - 500 A_1 \\Rightarrow A_2 = -75000 + 25000 = -50000$, and $v(t) = (50 - 50000\\,t)e^{-500 t}$ V.\n\n(c) $i_L(t) = i_L(0) + \\frac{1}{L}\\int_0^t v\\,dt = (0.25 + 250\\,t)e^{-500 t}$ A (equivalently $i_L = -v/R - C\\,v'$; check $i_L(0) = 0.25$ A, $i_L(\\infty) = 0$).\n\n(d) $i_R(0^+) = v(0)/R = 50/100 = 0.5$ A.",
+      "answer": "$R = 100$ $\\Omega$; $v(t) = (50 - 50000\\,t)e^{-500t}$ V; $i_L(t) = (0.25 + 250\\,t)e^{-500t}$ A; $i_R(0^+) = 0.5$ A.",
+      "set": 1,
+      "difficulty": "hard"
+    },
+    {
+      "id": "P04",
+      "question": "A source-free parallel RLC circuit has $R = 2$ k$\\Omega$, $L = 250$ mH, and $C = 10$ nF. The initial conditions are $i_L(0) = -30$ mA and $v_C(0) = 90$ V. Find (a) $i_R(0^+)$ and $i_C(0^+)$; (b) $v_C(t)$ for $t \\ge 0$; (c) $i_L(t)$ for $t \\ge 0$.",
+      "source_base": "N20",
+      "circuit_spec": {
+        "type": "parallel",
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "2 k"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "250 mH"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "10 nF"
+            }
+          ]
+        ],
+        "note": "Source-free parallel RLC; iL(0) = -30 mA, vC(0) = 90 V"
+      },
+      "solution": "$\\alpha = \\frac{1}{2RC} = \\frac{1}{2(2000)(10^{-8})} = 25000$ Np/s, $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.25 \\times 10^{-8}}} = 20000$ rad/s: overdamped.\nRoots: $s_{1,2} = -25000 \\pm \\sqrt{25000^2 - 20000^2} = -25000 \\pm 15000$, i.e. $s_1 = -10000$ and $s_2 = -40000$.\n\n(a) $i_R(0^+) = v_C(0)/R = 90/2000 = 45$ mA. KCL: $i_C(0^+) = -i_R(0^+) - i_L(0^+) = -45 + 30 = -15$ mA.\n\n(b) $v_C(t) = A e^{-10000 t} + B e^{-40000 t}$: $A + B = 90$ and, with $v_C'(0^+) = i_C(0^+)/C = -1.5 \\times 10^6$ V/s, $-10000A - 40000B = -1.5 \\times 10^6 \\Rightarrow A + 4B = 150$. Hence $B = 20$ and $A = 70$.\n\n$v_C(t) = 70e^{-10000 t} + 20e^{-40000 t}$ V.\n\n(c) $i_L(t) = -\\frac{v_C}{R} - C\\frac{dv_C}{dt} = -0.028\\,e^{-10000 t} - 0.002\\,e^{-40000 t}$ A (check: $i_L(0) = -30$ mA, $i_L(\\infty) = 0$).",
+      "answer": "$i_R(0^+) = 45$ mA, $i_C(0^+) = -15$ mA; $v_C(t) = 70e^{-10000t} + 20e^{-40000t}$ V; $i_L(t) = -(0.028\\,e^{-10000t} + 0.002\\,e^{-40000t})$ A.",
+      "set": 1,
+      "difficulty": "medium"
+    },
+    {
+      "id": "P05",
+      "question": "A source-free parallel RLC circuit has $L = 50$ mH and $C = 50$ nF, and its resistance is chosen so that the response is critically damped. The initial conditions are $v(0) = 60$ V and $i_L(0) = 0$. Find (a) the resistance $R$; (b) $v(t)$ for $t \\ge 0$; (c) $i_L(t)$ for $t \\ge 0$ and its peak value.",
+      "source_base": "N21",
+      "circuit_spec": {
+        "type": "parallel",
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "500"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "50 mH"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "50 nF"
+            }
+          ]
+        ],
+        "note": "Source-free parallel RLC, critical damping; v(0) = 60 V, iL(0) = 0"
+      },
+      "solution": "$\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.05 \\times 5\\times 10^{-8}}} = 20000$ rad/s.\n\n(a) Critical damping requires $\\alpha = \\omega_0 = 20000$ Np/s, so $R = \\frac{1}{2C\\alpha} = \\frac{1}{2(5\\times 10^{-8})(20000)} = 500$ $\\Omega$.\n\n(b) $v(t) = (A_1 + A_2 t)e^{-20000 t}$ with $A_1 = 60$. Since $i_R(0^+) = 60/500 = 0.12$ A and $i_L(0^+) = 0$, KCL gives $i_C(0^+) = -0.12$ A and $v'(0^+) = -0.12/(5\\times 10^{-8}) = -2.4 \\times 10^6$ V/s. Then $A_2 = v'(0^+) + 20000\\,A_1 = -2.4\\times 10^6 + 1.2\\times 10^6 = -1.2 \\times 10^6$.\n\n$v(t) = 60(1 - 20000\\,t)e^{-20000 t}$ V.\n\n(c) $i_L(t) = -\\frac{v}{R} - C\\frac{dv}{dt} = 1200\\,t\\,e^{-20000 t}$ A. The peak occurs where $\\frac{di_L}{dt} = 1200\\,e^{-20000t}(1 - 20000\\,t) = 0$, i.e. at $t = 50$ $\\mu$s, with $i_{L,\\max} = \\frac{0.06}{e} \\approx 22.1$ mA.",
+      "answer": "$R = 500$ $\\Omega$; $v(t) = 60(1 - 20000\\,t)e^{-20000t}$ V; $i_L(t) = 1200\\,t\\,e^{-20000t}$ A, peaking at $22.1$ mA at $t = 50$ $\\mu$s.",
+      "set": 1,
+      "difficulty": "medium"
+    },
+    {
+      "id": "P06",
+      "question": "In the two-loop RLC circuit shown, a current source $4u(t)$ A feeds node A and a $5$ A current source feeds node B; $R = 30$ $\\Omega$ connects A to B, $L = 3$ H connects A to the bottom rail, and $C = 1/27$ F connects B to the bottom rail. For $t < 0$ the circuit is in dc steady state. Find (a) $v_C(0^+)$ and $i_L(0^+)$; (b) $v_C(t)$ for $t \\ge 0$; (c) $i_L(t)$ for $t \\ge 0$.",
+      "source_base": "H15",
+      "circuit_spec": {
+        "type": "netlist",
+        "nodes": {
+          "cA": [
+            40,
+            60
+          ],
+          "A": [
+            80,
+            60
+          ],
+          "B": [
+            260,
+            60
+          ],
+          "cB": [
+            300,
+            60
+          ],
+          "g1": [
+            40,
+            180
+          ],
+          "gL": [
+            80,
+            180
+          ],
+          "gC": [
+            260,
+            180
+          ],
+          "gB": [
+            300,
+            180
+          ]
+        },
+        "edges": [
+          {
+            "from": "cA",
+            "to": "A"
+          },
+          {
+            "from": "cA",
+            "to": "g1",
+            "comp": {
+              "kind": "Idc",
+              "value": "4u(t) A"
+            }
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "30"
+            }
+          },
+          {
+            "from": "A",
+            "to": "gL",
+            "comp": {
+              "kind": "L",
+              "value": "3 H"
+            }
+          },
+          {
+            "from": "B",
+            "to": "gC",
+            "comp": {
+              "kind": "C",
+              "value": "1/27 F"
+            }
+          },
+          {
+            "from": "B",
+            "to": "cB"
+          },
+          {
+            "from": "cB",
+            "to": "gB",
+            "comp": {
+              "kind": "Idc",
+              "value": "5 A"
+            }
+          },
+          {
+            "from": "g1",
+            "to": "gL"
+          },
+          {
+            "from": "gL",
+            "to": "gC"
+          },
+          {
+            "from": "gC",
+            "to": "gB"
+          }
+        ],
+        "note": "Two-source RLC (4u(t) A into A, 5 A into B); find vC(t), iL(t)"
+      },
+      "solution": "(a) For $t < 0$ the $4u(t)$ source is off (open circuit). In dc steady state the inductor is a short and the capacitor an open, so the $5$ A source drives $i_L(0^-) = 5$ A through the shorted inductor and $i_R(0^-) = -5$ A through $R$, giving $v_R(0^-) = -150$ V. With $v_A(0^-) = 0$ (shorted inductor), $v_C(0^-) = v_B(0^-) = v_A(0^-) - v_R(0^-) = 150$ V. By continuity: $i_L(0^+) = 5$ A, $v_C(0^+) = 150$ V.\n\nAt $t = 0^+$: KCL at A, $i_R(0^+) = 4 - i_L(0^+) = -1$ A; at B, $i_C(0^+) = i_R(0^+) + 5 = 4$ A. So $v_R(0^+) = -30$ V, $v_L(0^+) = v_C(0^+) + v_R(0^+) = 120$ V, and $v_C'(0^+) = i_C(0^+)/C = 4/(1/27) = 108$ V/s.\n\nFor $t > 0$ the natural response is found with the sources turned off (open circuits): the circuit reduces to one loop containing $L$, $R$ and $C$ in series, so $LC\\,v_C'' + RC\\,v_C' + v_C = 0$ with $\\alpha = R/(2L) = 5$ Np/s and $\\omega_0 = 1/\\sqrt{LC} = 3$ rad/s: overdamped, roots $s_1 = -5 + 4 = -1$ and $s_2 = -5 - 4 = -9$.\n\nFinal values ($t \\to \\infty$, C open, L short): the $5$ A source is then balanced by $i_R(\\infty) = -5$ A, so $i_L(\\infty) = 4 - i_R(\\infty) = 9$ A and $v_C(\\infty) = -v_R(\\infty) = 150$ V.\n\n(b) $v_C(t) = 150 + A e^{-t} + B e^{-9t}$: $A + B = v_C(0^+) - 150 = 0$ and $v_C'(0^+) = -A - 9B = 108$ give $A = 13.5$, $B = -13.5$. Hence $v_C(t) = 150 + 13.5\\,e^{-t} - 13.5\\,e^{-9t}$ V.\n\n(c) $i_C(t) = C\\,v_C'(t) = -0.5\\,e^{-t} + 4.5\\,e^{-9t}$ A and, from KCL at B, $i_L(t) = 9 - i_C(t) = 9 + 0.5\\,e^{-t} - 4.5\\,e^{-9t}$ A. Check: $i_L(0^+) = 5$ A and $di_L/dt|_{0^+} = v_L(0^+)/L = 40$ A/s.",
+      "answer": "$v_C(0^+) = 150$ V, $i_L(0^+) = 5$ A; $v_C(t) = 150 + 13.5\\,e^{-t} - 13.5\\,e^{-9t}$ V; $i_L(t) = 9 + 0.5\\,e^{-t} - 4.5\\,e^{-9t}$ A.",
+      "set": 2,
+      "difficulty": "hard"
+    },
+    {
+      "id": "P07",
+      "question": "In the same two-source RLC circuit as the previous problem ($R = 30$ $\\Omega$ between nodes A and B, $L = 3$ H from A to the rail, $C = 1/27$ F from B to the rail, sources $4u(t)$ A into A and $5$ A into B, dc steady state for $t < 0$), determine at $t = 0^+$ the first derivatives of all six branch variables: $\\frac{di_L}{dt}$, $\\frac{dv_C}{dt}$, $\\frac{di_R}{dt}$, $\\frac{dv_R}{dt}$, $\\frac{di_C}{dt}$, and $\\frac{dv_L}{dt}$.",
+      "source_base": "H16",
+      "circuit_spec": {
+        "type": "netlist",
+        "nodes": {
+          "cA": [
+            40,
+            60
+          ],
+          "A": [
+            80,
+            60
+          ],
+          "B": [
+            260,
+            60
+          ],
+          "cB": [
+            300,
+            60
+          ],
+          "g1": [
+            40,
+            180
+          ],
+          "gL": [
+            80,
+            180
+          ],
+          "gC": [
+            260,
+            180
+          ],
+          "gB": [
+            300,
+            180
+          ]
+        },
+        "edges": [
+          {
+            "from": "cA",
+            "to": "A"
+          },
+          {
+            "from": "cA",
+            "to": "g1",
+            "comp": {
+              "kind": "Idc",
+              "value": "4u(t) A"
+            }
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "30"
+            }
+          },
+          {
+            "from": "A",
+            "to": "gL",
+            "comp": {
+              "kind": "L",
+              "value": "3 H"
+            }
+          },
+          {
+            "from": "B",
+            "to": "gC",
+            "comp": {
+              "kind": "C",
+              "value": "1/27 F"
+            }
+          },
+          {
+            "from": "B",
+            "to": "cB"
+          },
+          {
+            "from": "cB",
+            "to": "gB",
+            "comp": {
+              "kind": "Idc",
+              "value": "5 A"
+            }
+          },
+          {
+            "from": "g1",
+            "to": "gL"
+          },
+          {
+            "from": "gL",
+            "to": "gC"
+          },
+          {
+            "from": "gC",
+            "to": "gB"
+          }
+        ],
+        "note": "Two-source RLC; find the six first derivatives at t = 0+"
+      },
+      "solution": "First the $0^+$ values (dc steady state for $t<0$, then the $0^+$ circuit): $i_L(0^+) = 5$ A, $v_C(0^+) = 150$ V, $i_R(0^+) = 4 - 5 = -1$ A, $i_C(0^+) = -1 + 5 = 4$ A, $v_R(0^+) = 30(-1) = -30$ V, $v_L(0^+) = v_C(0^+) + v_R(0^+) = 120$ V.\n\nElement laws: $\\frac{di_L}{dt}\\big|_{0^+} = \\frac{v_L(0^+)}{L} = \\frac{120}{3} = 40$ A/s, and $\\frac{dv_C}{dt}\\big|_{0^+} = \\frac{i_C(0^+)}{C} = \\frac{4}{1/27} = 108$ V/s.\n\nKCL and KVL are satisfied by the derivatives as well, and both sources are constant for $t > 0$. At node A: $0 = \\frac{di_L}{dt} + \\frac{di_R}{dt}$, so $\\frac{di_R}{dt}\\big|_{0^+} = -40$ A/s and $\\frac{dv_R}{dt}\\big|_{0^+} = 30(-40) = -1200$ V/s.\n\nAt node B: $\\frac{di_C}{dt}\\big|_{0^+} = \\frac{di_R}{dt}\\big|_{0^+} = -40$ A/s. Around the loop, $v_L = v_C + v_R$, so $\\frac{dv_L}{dt}\\big|_{0^+} = 108 - 1200 = -1092$ V/s.",
+      "answer": "At $t = 0^+$: $di_L/dt = 40$ A/s; $dv_C/dt = 108$ V/s; $di_R/dt = -40$ A/s; $dv_R/dt = -1200$ V/s; $di_C/dt = -40$ A/s; $dv_L/dt = -1092$ V/s.",
+      "set": 2,
+      "difficulty": "medium"
+    },
+    {
+      "id": "P08",
+      "question": "A source-free parallel RLC circuit has $R = 12500/3$ $\\Omega$, $L = 250$ mH, and $C = 10$ nF, with initial conditions $v(0) = 90$ V and $i_L(0) = -34$ mA. Find $v(t)$ and $i_L(t)$ for $t \\ge 0$.",
+      "source_base": "N22",
+      "circuit_spec": {
+        "type": "parallel",
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "12500/3"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "250 mH"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "10 nF"
+            }
+          ]
+        ],
+        "note": "Source-free parallel RLC; v(0) = 90 V, iL(0) = -34 mA"
+      },
+      "solution": "$\\alpha = \\frac{1}{2RC} = \\frac{1}{2(12500/3)(10^{-8})} = 12000$ Np/s, $\\omega_0 = \\frac{1}{\\sqrt{LC}} = 20000$ rad/s: underdamped with $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{4\\times 10^8 - 1.44\\times 10^8} = 16000$ rad/s.\n\nKCL at $0^+$: $i_C(0^+) = -\\frac{v(0)}{R} - i_L(0^+) = -90\\cdot\\frac{3}{12500} + 0.034 = -0.0216 + 0.034 = 0.0124$ A, so $v'(0^+) = i_C(0^+)/C = 1.24 \\times 10^6$ V/s.\n\n$v(t) = e^{-12000 t}(B_1\\cos 16000 t + B_2\\sin 16000 t)$: $B_1 = 90$, and $v'(0^+) = -12000\\,B_1 + 16000\\,B_2 \\Rightarrow 1.24\\times 10^6 = -1.08\\times 10^6 + 16000\\,B_2 \\Rightarrow B_2 = 145$.\n\n$v(t) = e^{-12000 t}(90\\cos 16000 t + 145\\sin 16000 t)$ V.\n\n$i_L(t) = -\\frac{v}{R} - C\\frac{dv}{dt} = -e^{-12000 t}(0.034\\cos 16000 t + 0.003\\sin 16000 t)$ A (check: $i_L(0) = -34$ mA, $i_L(\\infty) = 0$).",
+      "answer": "$v(t) = e^{-12000t}(90\\cos 16000t + 145\\sin 16000t)$ V; $i_L(t) = -e^{-12000t}(0.034\\cos 16000t + 0.003\\sin 16000t)$ A.",
+      "set": 2,
+      "difficulty": "medium"
+    },
+    {
+      "id": "P09",
+      "question": "The switch has been in position a for a long time, where a $100$ V source charged the $2$ mF capacitor through a $15$ k$\\Omega$ resistor (the inductor carried no current), and moves to position b at $t = 0$. For $t \\ge 0$ the source-free loop consists of $R = 3.5$ $\\Omega$, $L = 5$ mH, and $C = 2$ mF. Find (a) $v_C(t)$ for $t \\ge 0$; (b) $i_L(t)$ for $t \\ge 0$, with $i_L$ in the direction of capacitor discharge.",
+      "source_base": "N9",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "switch",
+            "value": "t = 0"
+          },
+          {
+            "kind": "R",
+            "value": "3.5"
+          },
+          {
+            "kind": "L",
+            "value": "5 mH"
+          },
+          {
+            "kind": "C",
+            "value": "2 mF"
+          }
+        ],
+        "note": "Switch moves a -> b at t = 0; vC(0+) = 100 V, iL(0+) = 0"
+      },
+      "solution": "Initial conditions: for $t < 0$ the capacitor is charged to $v_C(0^-) = 100$ V and $i_L(0^-) = 0$; by continuity $v_C(0^+) = 100$ V, $i_L(0^+) = 0$.\n\nFor $t \\ge 0$ (source-free series loop): $\\alpha = R/(2L) = 3.5/(2 \\times 0.005) = 350$ Np/s and $\\omega_0 = 1/\\sqrt{LC} = 1/\\sqrt{(0.005)(0.002)} \\approx 316.2$ rad/s: overdamped. Roots: $s_{1,2} = -350 \\pm \\sqrt{350^2 - \\omega_0^2} = -350 \\pm \\sqrt{22500} = -350 \\pm 150$, i.e. $s_1 = -200$ and $s_2 = -500$.\n\n(a) $v_C(t) = A e^{-200 t} + B e^{-500 t}$: $A + B = 100$ and, since $i_C(0^+) = i_L(0^+) = 0$, $v_C'(0^+) = 0 = -200A - 500B \\Rightarrow A = -2.5B$. Hence $B = -200/3$ and $A = 500/3$.\n\n$v_C(t) = \\frac{500}{3}e^{-200 t} - \\frac{200}{3}e^{-500 t} \\approx 166.7\\,e^{-200 t} - 66.7\\,e^{-500 t}$ V.\n\n(b) $i_L(t) = C\\,\\frac{dv_C}{dt} = \\frac{200}{3}\\left(e^{-500 t} - e^{-200 t}\\right)$ A (check: $i_L(0) = 0$, $i_L(\\infty) = 0$).",
+      "answer": "$v_C(t) = \\tfrac{500}{3}e^{-200t} - \\tfrac{200}{3}e^{-500t}$ V ($\\approx 166.7\\,e^{-200t} - 66.7\\,e^{-500t}$ V); $i_L(t) = \\tfrac{200}{3}(e^{-500t} - e^{-200t})$ A ($\\approx 66.7(e^{-500t} - e^{-200t})$ A).",
+      "set": 2,
+      "difficulty": "medium"
+    },
+    {
+      "id": "P10",
+      "question": "The switch has been in position a for a long time, where a $28$ V source charged the $8$ nF capacitor through a $24$ k$\\Omega$ resistor (the inductor carried no current), and moves to position b at $t = 0$. For $t \\ge 0$ the source-free loop consists of $R = 14.5$ k$\\Omega$, $L = 200$ mH, and $C = 8$ nF. Find $v_C(t)$ for $t \\ge 0$.",
+      "source_base": "N10",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "switch",
+            "value": "t = 0"
+          },
+          {
+            "kind": "R",
+            "value": "14.5 k"
+          },
+          {
+            "kind": "L",
+            "value": "200 mH"
+          },
+          {
+            "kind": "C",
+            "value": "8 nF"
+          }
+        ],
+        "note": "Switch moves a -> b at t = 0; vC(0+) = 28 V, iL(0+) = 0"
+      },
+      "solution": "Initial conditions: $v_C(0^+) = 28$ V and $i_L(0^+) = 0$ (no current in the inductor while the switch sat in position a).\n\nFor $t \\ge 0$ (source-free series loop): $\\alpha = R/(2L) = 14500/(2 \\times 0.2) = 36250$ Np/s and $\\omega_0 = 1/\\sqrt{LC} = 1/\\sqrt{(0.2)(8\\times 10^{-9})} = 25000$ rad/s: overdamped. Roots: $s_{1,2} = -36250 \\pm \\sqrt{36250^2 - 25000^2} = -36250 \\pm 26250$, i.e. $s_1 = -10000$ and $s_2 = -62500$.\n\n$v_C(t) = A e^{-10000 t} + B e^{-62500 t}$: $A + B = 28$ and $v_C'(0^+) = i_C(0^+)/C = 0$ give $-10000A - 62500B = 0 \\Rightarrow A = -6.25\\,B$. Hence $B = -16/3$ and $A = 100/3$.\n\n$v_C(t) = \\frac{100}{3}e^{-10000 t} - \\frac{16}{3}e^{-62500 t} \\approx 33.3\\,e^{-10000 t} - 5.33\\,e^{-62500 t}$ V.",
+      "answer": "$v_C(t) = \\tfrac{100}{3}e^{-10000t} - \\tfrac{16}{3}e^{-62500t}$ V ($\\approx 33.3\\,e^{-10000t} - 5.33\\,e^{-62500t}$ V).",
+      "set": 2,
+      "difficulty": "medium"
+    },
+    {
+      "id": "P11",
+      "question": "A series RLC circuit consists of a DC voltage source, a resistor R = 100 Ω, an inductor L = 40 mH, and a capacitor C = 10 mF. The circuit has been in DC steady state for a long time with the source voltage at 200 V. At t = 0, the source voltage suddenly drops to 100 V and remains constant. Find the capacitor voltage v_C(t) for t ≥ 0.",
+      "source_base": "N11",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "100 V"
+          },
+          {
+            "kind": "R",
+            "value": "100 Ω"
+          },
+          {
+            "kind": "L",
+            "value": "40 mH"
+          },
+          {
+            "kind": "C",
+            "value": "10 mF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Source steps from 200 V to 100 V at t=0"
+      },
+      "solution": "1. Initial Conditions: For t < 0, the circuit is in DC steady state. The capacitor acts as an open circuit and the inductor as a short circuit. Thus, the entire source voltage appears across the capacitor: $v_C(0^-) = 200$ V. The inductor current is $i_L(0^-) = 0$ A. Due to continuity, $v_C(0^+) = 200$ V and $i_L(0^+) = 0$ A.\n2. Final Values: For t → ∞, the circuit reaches a new DC steady state with the 100 V source. The capacitor voltage becomes $v_C(\\infty) = 100$ V and the inductor current is $i_L(\\infty) = 0$ A.\n3. Circuit Parameters: The damping factor is $\\alpha = \\frac{R}{2L} = \\frac{100}{2(0.04)} = 1250$ rad/s. The resonant frequency is $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.04 \\times 0.01}} = \\frac{1}{\\sqrt{0.0004}} = 50$ rad/s.\n4. Damping Type: Since $\\alpha > \\omega_0$ (1250 > 50), the response is overdamped. The roots of the characteristic equation are $s_{1,2} = -\\alpha \\pm \\sqrt{\\alpha^2 - \\omega_0^2}$.\n$$ s_{1,2} = -1250 \\pm \\sqrt{1250^2 - 50^2} = -1250 \\pm \\sqrt{1{,}560{,}000} \\approx -1250 \\pm 1249.0 $$\n$s_1 \\approx -1250 + 1249.0 = -1.0004 \\approx -1.0$ rad/s. $s_2 \\approx -1250 - 1249.0 = -2499.0$ rad/s.\n5. General Solution: $v_C(t) = v_C(\\infty) + A_1 e^{s_1 t} + A_2 e^{s_2 t} = 100 + A_1 e^{-1.0004 t} + A_2 e^{-2499.0 t}$.\n6. Applying Initial Conditions: At t=0, $v_C(0^+) = 100 + A_1 + A_2 = 200 \\Rightarrow A_1 + A_2 = 100$. The derivative of the capacitor voltage is related to the current by $\\frac{dv_C}{dt} = \\frac{i_L}{C}$. At t=0, $\\frac{dv_C(0^+)}{dt} = \\frac{0}{0.01} = 0$. Differentiating the general solution: $\\frac{dv_C}{dt} = -1.0004 A_1 e^{-1.0004 t} - 2499.0 A_2 e^{-2499.0 t}$. At t=0: $-1.0004 A_1 - 2499.0 A_2 = 0 \\Rightarrow A_1 = -2498.0 A_2$. Substituting into the first equation: $-2498.0 A_2 + A_2 = 100 \\Rightarrow -2497.0 A_2 = 100 \\Rightarrow A_2 \\approx -0.04$. Then $A_1 \\approx 100.04$.\n7. Final Expression: $v_C(t) = 100 + 100.04 e^{-1.0004 t} - 0.04 e^{-2499.0 t}$ V for t ≥ 0.",
+      "answer": "$$v_C(t) = 100 + 100.04 e^{-1.0004 t} - 0.04 e^{-2499.0 t} \\text{ V}$$",
+      "set": 3
+    },
+    {
+      "id": "P12",
+      "question": "Consider a series RLC circuit with a 100 V DC source, a resistor R = 2 kΩ, an inductor L = 640 mH, and a capacitor C = 62.5 nF. The circuit is initially in steady state with a switch closed that shorts the capacitor. At t = 0, the switch opens, connecting the full series loop. Find the voltage across the capacitor v_C(t) for t ≥ 0.",
+      "source_base": "N12",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "100 V"
+          },
+          {
+            "kind": "R",
+            "value": "2 kΩ"
+          },
+          {
+            "kind": "L",
+            "value": "640 mH"
+          },
+          {
+            "kind": "C",
+            "value": "62.5 nF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Switch opens at t=0 to connect series loop"
+      },
+      "solution": "1. Initial Conditions: For $t < 0$, the capacitor is shorted, so $v_C(0^-) = 0$ V. The inductor is in steady state with the 100 V source and 2 kΩ resistor. The current is $i_L(0^-) = \\frac{100}{2000} = 0.05$ A = 50 mA. Thus, $v_C(0^+) = 0$ V and $i_L(0^+) = 50$ mA.\n\n2. Final Values: As $t \\to \\infty$, the capacitor acts as an open circuit. The current becomes 0 A. The voltage across the capacitor equals the source voltage: $v_C(\\infty) = 100$ V.\n\n3. Circuit Parameters:\n$$ \\alpha = \\frac{R}{2L} = \\frac{2000}{2(0.64)} = \\frac{2000}{1.28} = 1562.5 \\text{ rad/s} $$\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.64 \\times 62.5 \\times 10^{-9}}} = \\frac{1}{\\sqrt{40 \\times 10^{-9}}} = \\frac{1}{2 \\times 10^{-4}} = 5000 \\text{ rad/s} $$\n\n4. Damping Type: Since $\\alpha < \\omega_0$ ($1562.5 < 5000$), the response is underdamped. The damped frequency is:\n$$ \\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{25{,}000{,}000 - 2{,}441{,}406} \\approx 4749.6 \\text{ rad/s} $$\n\n5. General Solution:\n$$ v_C(t) = 100 + e^{-\\alpha t} (A_1 \\cos \\omega_d t + A_2 \\sin \\omega_d t) $$\n\n6. Applying Initial Conditions:\nAt $t=0$, $v_C(0^+) = 100 + A_1 = 0 \\Rightarrow A_1 = -100$.\n\nThe derivative is $\\frac{dv_C}{dt} = \\frac{i_L}{C}$. At $t=0$:\n$$ \\frac{dv_C(0^+)}{dt} = \\frac{0.05}{62.5 \\times 10^{-9}} = 800{,}000 \\text{ V/s} $$\n\nDifferentiating the general solution:\n$$ \\frac{dv_C}{dt} = -\\alpha e^{-\\alpha t}(A_1 \\cos \\omega_d t + A_2 \\sin \\omega_d t) + e^{-\\alpha t}(-A_1 \\omega_d \\sin \\omega_d t + A_2 \\omega_d \\cos \\omega_d t) $$\n\nAt $t=0$:\n$$ \\frac{dv_C(0^+)}{dt} = -\\alpha A_1 + A_2 \\omega_d $$\n$$ 800{,}000 = -1562.5(-100) + A_2(4749.6) $$\n$$ 800{,}000 = 156{,}250 + 4749.6 A_2 $$\n$$ 643{,}750 = 4749.6 A_2 \\Rightarrow A_2 \\approx 135.54 $$\n\n7. Final Expression:\n$$ v_C(t) = 100 + e^{-1562.5 t} (-100 \\cos 4749.6 t + 135.54 \\sin 4749.6 t) \\text{ V} \\quad \\text{for } t \\ge 0 $$",
+      "answer": "$$v_C(t) = 100 + e^{-1562.5 t}\\left(-100 \\cos 4749.6 t + 135.54 \\sin 4749.6 t\\right) \\text{ V}$$",
+      "set": 3
+    },
+    {
+      "id": "P13",
+      "question": "A circuit contains a 75 V DC source, a resistor R_1 = 6 kΩ, an inductor L = 12.5 H, and a capacitor C = 0.8 nF. A switch connects the source to the RLC branch at position 'a' for t < 0 and moves to position 'b' at t = 0, which disconnects the source and connects the RLC loop in series with a resistor R_2 = 60 kΩ. Find the voltage across the capacitor v_C(t) for t ≥ 0.",
+      "source_base": "N13",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "75 V"
+          },
+          {
+            "kind": "R",
+            "value": "6 kΩ"
+          },
+          {
+            "kind": "L",
+            "value": "12.5 H"
+          },
+          {
+            "kind": "C",
+            "value": "0.8 nF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Switch moves a->b at t=0, adding 60 kΩ in series"
+      },
+      "solution": "1. Initial Conditions: For t < 0, the switch is at 'a'. The circuit is in DC steady state. The series capacitor blocks DC current, so $v_C(0^-) = 75$ V and $i_L(0^-) = 0$ A. Thus, $v_C(0^+) = 75$ V and $i_L(0^+) = 0$ A.\n2. Final Values: For t ≥ 0, the switch is at 'b'. The source is disconnected. The circuit is a source-free series RLC with total resistance $R_{eq} = R_1 + R_2 = 6 \\text{ k}\\Omega + 60 \\text{ k}\\Omega = 66 \\text{ k}\\Omega$. As t → ∞, all energy dissipates, so $v_C(\\infty) = 0$ V and $i_L(\\infty) = 0$ A.\n3. Circuit Parameters: $\\alpha = \\frac{R_{eq}}{2L} = \\frac{66000}{2(12.5)} = \\frac{66000}{25} = 2640$ rad/s. $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{12.5 \\times 0.8 \\times 10^{-9}}} = \\frac{1}{\\sqrt{10 \\times 10^{-9}}} = \\frac{1}{10^{-4}} = 10000$ rad/s.\n4. Damping Type: $\\alpha < \\omega_0$ (2640 < 10000), so the response is underdamped. $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{100{,}000{,}000 - 6{,}969{,}600} \\approx 9645.2$ rad/s.\n5. General Solution: $v_C(t) = e^{-\\alpha t} (A_1 \\cos \\omega_d t + A_2 \\sin \\omega_d t)$.\n6. Applying Initial Conditions: At t=0, $v_C(0^+) = A_1 = 75$. The derivative $\\frac{dv_C}{dt} = \\frac{i_L}{C}$. At t=0, $\\frac{dv_C(0^+)}{dt} = \\frac{0}{0.8 \\times 10^{-9}} = 0$ V/s. Differentiating the general solution and evaluating at t=0: $\\frac{dv_C(0^+)}{dt} = -\\alpha A_1 + A_2 \\omega_d$.\n$$ 0 = -2640(75) + A_2(9645.2) \\Rightarrow A_2 = \\frac{198{,}000}{9645.2} \\approx 20.53 $$\n7. Final Expression: $v_C(t) = e^{-2640 t} (75 \\cos 9645.2 t + 20.53 \\sin 9645.2 t)$ V for t ≥ 0.",
+      "answer": "$$v_C(t) = e^{-2640 t}\\left(75 \\cos 9645.2 t + 20.53 \\sin 9645.2 t\\right) \\text{ V}$$",
+      "set": 3
+    },
+    {
+      "id": "P14",
+      "question": "A source-free series RLC circuit has a capacitor C = 31.25 nF. The initial energy stored in the capacitor is 9 µJ, and the initial inductor current is zero. The characteristic roots of the circuit are -4000 and -16000 rad/s. Determine (a) the values of R and L, (b) the initial current i(0+) and its derivative di/dt at t=0+, (c) the expression for i(t) for t ≥ 0, (d) the time at which the current peaks, and (e) the peak current value.",
+      "source_base": "N14",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "L",
+            "value": "L"
+          },
+          {
+            "kind": "C",
+            "value": "31.25 nF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Source-free, initial energy in C"
+      },
+      "solution": "1. Determine R and L: The roots are $s_1 = -4000$ and $s_2 = -16000$. The damping factor is $\\alpha = \\frac{s_1 + s_2}{2} = \\frac{-20000}{2} = -10000$ rad/s (magnitude 10000). The resonant frequency squared is $\\omega_0^2 = s_1 s_2 = (-4000)(-16000) = 64 \\times 10^6$, so $\\omega_0 = 8000$ rad/s. From $\\omega_0 = \\frac{1}{\\sqrt{LC}}$, we have $L = \\frac{1}{\\omega_0^2 C} = \\frac{1}{64 \\times 10^6 \\times 31.25 \\times 10^{-9}} = \\frac{1}{2} = 0.5$ H. From $\\alpha = \\frac{R}{2L}$, we have $R = 2 L \\alpha = 2(0.5)(10000) = 10000$ Ω = 10 kΩ. 2. Initial Conditions: Energy in C is $W_C = \\frac{1}{2} C v_C^2 = 9 \\mu J$. $v_C(0) = \\sqrt{\\frac{2 W_C}{C}} = \\sqrt{\\frac{18 \\times 10^{-6}}{31.25 \\times 10^{-9}}} = \\sqrt{576} = 24$ V. $i_L(0) = 0$ A. Thus $i(0^+) = 0$ A. The derivative of inductor current is $\\frac{di}{dt} = \\frac{v_L}{L}$. At t=0, KVL gives $v_R + v_L + v_C = 0$. Since $i(0)=0$, $v_R(0)=0$. So $v_L(0) = -v_C(0) = -24$ V. $\\frac{di(0^+)}{dt} = \\frac{-24}{0.5} = -48$ A/s. 3. Expression for i(t): The response is overdamped. $i(t) = A_1 e^{-4000t} + A_2 e^{-16000t}$. At t=0, $i(0) = A_1 + A_2 = 0 \\Rightarrow A_2 = -A_1$. Derivative: $\\frac{di}{dt} = -4000 A_1 e^{-4000t} - 16000 A_2 e^{-16000t}$. At t=0, $-48 = -4000 A_1 - 16000(-A_1) = 12000 A_1$. $A_1 = \\frac{-48}{12000} = -0.004$ A = -4 mA. $A_2 = 4$ mA. So $i(t) = 4(e^{-16000t} - e^{-4000t})$ mA. 4. Peak Time: Set $\\frac{di}{dt} = 0$. $-16000(4)e^{-16000t} + 4000(4)e^{-4000t} = 0$. $e^{-4000t} = 4 e^{-16000t}$. Take ln: $-4000t = \\ln 4 - 16000t \\Rightarrow 12000t = \\ln 4 \\Rightarrow t_{peak} = \\frac{\\ln 4}{12000} \\approx \\frac{1.386}{12000} \\approx 115.5$ µs. 5. Peak Current: $i(t_{peak}) = 4(e^{-16000(115.5 \\times 10^{-6})} - e^{-4000(115.5 \\times 10^{-6})})$. Exponent 1: $-1.848$. Exponent 2: $-0.462$. $i_{peak} = 4(e^{-1.848} - e^{-0.462}) = 4(0.1575 - 0.630) = 4(-0.4725) = -1.89$ mA. The magnitude is 1.89 mA.",
+      "answer": "(a) $R = 10 \\text{ k}\\Omega$, $L = 0.5 \\text{ H}$; (b) $i(0^+) = 0$, $\\frac{di}{dt} = -48 \\text{ A/s}$; (c) $i(t) = 4(e^{-16000t} - e^{-4000t}) \\text{ mA}$; (d) $t_{\\text{peak}} \\approx 115.5 \\text{ }\\mu\\text{s}$; (e) $i_{\\text{peak}} \\approx -1.89 \\text{ mA}$",
+      "set": 3
+    },
+    {
+      "id": "P15",
+      "question": "A source-free series RLC circuit has L = 250 mH and C = 160 nF. The resistance R is adjusted to provide critical damping. The initial capacitor voltage is v_C(0) = 90 V and the initial inductor current is i_L(0) = 24 mA. Determine (a) the value of R, (b) the initial current i(0+) and its derivative di/dt at t=0+, and (c) the expression for the capacitor voltage v_C(t) for t ≥ 0.",
+      "source_base": "N15",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "R",
+            "value": "R"
+          },
+          {
+            "kind": "L",
+            "value": "250 mH"
+          },
+          {
+            "kind": "C",
+            "value": "160 nF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Critically damped, source-free"
+      },
+      "solution": "1. Determine R: For critical damping, $\\alpha = \\omega_0$.\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.25 \\times 160 \\times 10^{-9}}} = \\frac{1}{\\sqrt{40 \\times 10^{-9}}} = \\frac{1}{2 \\times 10^{-4}} = 5000 \\text{ rad/s} $$\n$$ \\alpha = \\frac{R}{2L} \\Rightarrow R = 2 L \\alpha = 2(0.25)(5000) = 2500 \\ \\Omega = 2.5 \\text{ k}\\Omega $$\n2. Initial Conditions: $i(0^+) = i_L(0) = 24$ mA = 0.024 A. $\\frac{di(0^+)}{dt} = \\frac{v_L(0)}{L}$. KVL: $v_R + v_L + v_C = 0$. $v_R(0) = i(0)R = 0.024 \\times 2500 = 60$ V. $v_L(0) = -v_C(0) - v_R(0) = -90 - 60 = -150$ V. $\\frac{di(0^+)}{dt} = \\frac{-150}{0.25} = -600$ A/s.\n3. Expression for v_C(t): For critical damping, $v_C(t) = (A_1 + A_2 t)e^{-5000 t}$. $v_C(0) = A_1 = 90$. $\\frac{dv_C(0)}{dt} = \\frac{i(0)}{C} = \\frac{0.024}{160 \\times 10^{-9}} = 150{,}000$ V/s. Differentiating $v_C(t)$ and evaluating at t=0: $\\frac{dv_C(0)}{dt} = A_2 - 5000 A_1$.\n$$ 150{,}000 = A_2 - 5000(90) = A_2 - 450{,}000 \\Rightarrow A_2 = 600{,}000 $$\n4. Final Expression: $v_C(t) = (90 + 600{,}000 t)e^{-5000 t}$ V for t ≥ 0.",
+      "answer": "(a) $R = 2.5 \\text{ k}\\Omega$; (b) $i(0^+) = 24 \\text{ mA}$, $\\frac{di}{dt} = -600 \\text{ A/s}$; (c) $v_C(t) = (90 + 6.0 \\times 10^5 t)e^{-5000 t} \\text{ V}$",
+      "set": 3
+    },
+    {
+      "id": "P16",
+      "question": "A series RLC circuit consists of a 250 V DC source, a resistor R = 1 kΩ, an inductor L = 1.6 H, and a capacitor C = 10 mF. The circuit has been in steady state with the switch open (capacitor uncharged, inductor current zero). At t = 0, the switch closes. Determine the total energy delivered to (a) the inductor, (b) the resistor, (c) the capacitor, and (d) the source, and (e) verify energy conservation.",
+      "source_base": "N16",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "250 V"
+          },
+          {
+            "kind": "R",
+            "value": "1 kΩ"
+          },
+          {
+            "kind": "L",
+            "value": "1.6 H"
+          },
+          {
+            "kind": "C",
+            "value": "10 mF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Switch closes at t=0, energy balance"
+      },
+      "solution": "1. Initial and Final States\nFor $t < 0$, the switch is open, resulting in $i(0^-) = 0$ and $v_C(0^-) = 0$. As $t \\to \\infty$, the circuit reaches steady state, where $i(\\infty) = 0$ and $v_C(\\infty) = 250$ V.\n\n2. Energy in Inductor\nThe energy stored in an inductor is given by $W_L = \\frac{1}{2} L i^2$. The net change in inductor energy is:\n$$ \\Delta W_L = \\frac{1}{2}L i(\\infty)^2 - \\frac{1}{2}L i(0)^2 = 0 \\text{ J} $$\n\n3. Energy in Capacitor\nThe net change in capacitor energy is:\n$$ \\Delta W_C = \\frac{1}{2} C v_C(\\infty)^2 - \\frac{1}{2} C v_C(0)^2 = \\frac{1}{2}(0.01)(250)^2 - 0 = 312.5 \\text{ J} $$\n\n4. Energy in Resistor\nThe resistor dissipates energy. To determine the total energy dissipated, apply the principle of conservation of energy. The total energy supplied by the source equals the sum of the energy absorbed by the resistor, inductor, and capacitor:\n$$ W_S = W_R + W_C + W_L $$\n\nFirst, calculate the total energy supplied by the source. Since the source voltage $v_s$ is constant at 250 V, the energy supplied is:\n$$ W_S = \\int_0^\\infty v_s i(t) \\, dt = 250 \\int_0^\\infty i(t) \\, dt = 250 [q(\\infty) - q(0)] $$\nThe charge on the capacitor is $q = C v_C$. Thus:\n$$ q(\\infty) = C v_C(\\infty) = 0.01 \\times 250 = 2.5 \\text{ C} $$\n$$ q(0) = 0 \\text{ C} $$\n$$ W_S = 250 \\times (2.5 - 0) = 625 \\text{ J} $$\n\nSubstitute the known values into the conservation equation:\n$$ 625 = W_R + 312.5 + 0 $$\n$$ W_R = 312.5 \\text{ J} $$\n\n5. Results\n(a) Inductor: 0 J (net)\n(b) Resistor: 312.5 J\n(c) Capacitor: 312.5 J\n(d) Source: 625 J delivered\n(e) Verification: $625 = 312.5 + 312.5 + 0$. Energy is conserved.\n6. (Reference) The transient is overdamped: $\\alpha = \\frac{R}{2L} = \\frac{1000}{3.2} = 312.5$ rad/s and $\\omega_0 = \\frac{1}{\\sqrt{1.6 \\times 0.01}} \\approx 7.906$ rad/s, with roots $s \\approx -0.10$ and $-624.90$ rad/s. The energy balance above does not depend on the damping type.",
+      "answer": "(a) $0\\ \\text{J}$; (b) $312.5\\ \\text{J}$; (c) $312.5\\ \\text{J}$; (d) $625\\ \\text{J}$; (e) Conserved",
+      "set": 4
+    },
+    {
+      "id": "P17",
+      "question": "A circuit contains a 30 V DC source, a resistor R = 100 Ω, an inductor L = 2 H, and a capacitor C = 10 mF. A switch has been closed for a long time, connecting the source to the RLC branch. At t = 0, the switch opens, disconnecting the source and leaving the RLC components in a closed loop. Find the voltage across the capacitor v_C(t) for t ≥ 0+.",
+      "source_base": "N17",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "30 V"
+          },
+          {
+            "kind": "R",
+            "value": "100 Ω"
+          },
+          {
+            "kind": "L",
+            "value": "2 H"
+          },
+          {
+            "kind": "C",
+            "value": "10 mF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Switch opens at t=0, source-free RLC loop"
+      },
+      "solution": "1. Initial Conditions: For t < 0, switch closed, DC steady state. The capacitor is an open circuit and blocks DC current, so $v_C(0^-) = 30$ V and $i_L(0^-) = 0$ A. Thus $v_C(0^+) = 30$ V, $i_L(0^+) = 0$ A.\n2. Final Values: For t ≥ 0, source-free. All energy dissipates. $v_C(\\infty) = 0$ V, $i_L(\\infty) = 0$ A.\n3. Circuit Parameters:\n$$ \\alpha = \\frac{R}{2L} = \\frac{100}{2(2)} = 25 \\text{ rad/s} $$\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{2 \\times 0.01}} = \\frac{1}{\\sqrt{0.02}} \\approx 7.071 \\text{ rad/s} $$\n4. Damping Type: $\\alpha > \\omega_0$ (25 > 7.071), overdamped. Roots:\n$$ s_{1,2} = -25 \\pm \\sqrt{25^2 - 7.071^2} = -25 \\pm \\sqrt{625 - 50} = -25 \\pm \\sqrt{575} \\approx -25 \\pm 23.979 $$\n$s_1 \\approx -1.021$ rad/s, $s_2 \\approx -48.979$ rad/s.\n5. General Solution: $v_C(t) = A_1 e^{-1.021 t} + A_2 e^{-48.979 t}$.\n6. Applying Initial Conditions: $v_C(0) = A_1 + A_2 = 30$. $\\frac{dv_C(0)}{dt} = \\frac{i_L(0)}{C} = \\frac{0}{0.01} = 0$ V/s.\n$$ -1.021 A_1 - 48.979 A_2 = 0 $$\nWith $A_1 = 30 - A_2$: $-1.021(30 - A_2) - 48.979 A_2 = 0 \\Rightarrow -30.63 - 47.958 A_2 = 0 \\Rightarrow A_2 \\approx -0.639$, $A_1 \\approx 30.639$.\n7. Final Expression: $v_C(t) = 30.64 e^{-1.021 t} - 0.64 e^{-48.98 t}$ V for t ≥ 0+.",
+      "answer": "$$v_C(t) = 30.64 e^{-1.021 t} - 0.64 e^{-48.98 t} \\text{ V}$$",
+      "set": 4
+    },
+    {
+      "id": "P18",
+      "question": "A series RLC circuit is driven by a voltage source $v_s(t) = -8 + 2u(t)$ V. The circuit parameters are R = 15 Ω, L = 6 mH, and C = 5 mF. Determine (a) the initial capacitor voltage v_C(0+), (b) the initial inductor current i_L(0+), (c) the final capacitor voltage v_C(∞), and (d) the capacitor voltage v_C at t = 150 ms.",
+      "source_base": "H1",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "vs(t)=-8+2u(t) V"
+          },
+          {
+            "kind": "R",
+            "value": "15 Ω"
+          },
+          {
+            "kind": "L",
+            "value": "6 mH"
+          },
+          {
+            "kind": "C",
+            "value": "5 mF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Source steps from -8 V to -6 V at t=0"
+      },
+      "solution": "1. Initial Conditions: For t < 0, $v_s = -8$ V. DC steady state. $v_C(0^-) = -8$ V, $i_L(0^-) = 0$ A. Thus $v_C(0^+) = -8$ V, $i_L(0^+) = 0$ A.\n2. Final Values: For t > 0, $v_s = -6$ V. DC steady state. $v_C(\\infty) = -6$ V, $i_L(\\infty) = 0$ A.\n3. Circuit Parameters:\n$$ \\alpha = \\frac{R}{2L} = \\frac{15}{2(0.006)} = \\frac{15}{0.012} = 1250 \\text{ rad/s} $$\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.006 \\times 0.005}} = \\frac{1}{\\sqrt{30 \\times 10^{-6}}} \\approx 182.57 \\text{ rad/s} $$\n4. Damping Type: $\\alpha > \\omega_0$, overdamped. Roots:\n$$ s_{1,2} = -1250 \\pm \\sqrt{1250^2 - 182.57^2} \\approx -1250 \\pm 1236.59 $$\n$s_1 \\approx -13.41$ rad/s, $s_2 \\approx -2486.59$ rad/s.\n5. General Solution: $v_C(t) = -6 + A_1 e^{-13.41 t} + A_2 e^{-2486.59 t}$.\n6. Applying Initial Conditions: $v_C(0) = -6 + A_1 + A_2 = -8 \\Rightarrow A_1 + A_2 = -2$. $\\frac{dv_C(0)}{dt} = \\frac{i_L(0)}{C} = 0$.\n$$ -13.41 A_1 - 2486.59 A_2 = 0 \\Rightarrow A_1 = -185.43 A_2 $$\n$$ -185.43 A_2 + A_2 = -2 \\Rightarrow A_2 \\approx 0.0108, \\quad A_1 \\approx -2.0108 $$\n7. Evaluate at t = 150 ms = 0.15 s: $v_C(0.15) = -6 - 2.0108 e^{-13.41(0.15)} + 0.0108 e^{-2486.59(0.15)}$. The second exponential term is negligible.\n$$ v_C(0.15) \\approx -6 - 2.0108 e^{-2.0115} = -6 - 2.0108(0.13385) \\approx -6.27 \\text{ V} $$",
+      "answer": "(a) $-8$ V; (b) $0$ A; (c) $-6$ V; (d) $-6.27$ V",
+      "set": 4
+    },
+    {
+      "id": "P19",
+      "question": "A series RLC circuit is driven by a voltage source $v_s(t) = 1 - 2u(t)$ V. The circuit parameters are R = 500 mΩ, L = 6 mH, and C = 5 mF. Determine (a) the initial inductor current i_L(0+), (b) the initial capacitor voltage v_C(0+), (c) the final inductor current i_L(∞), and (d) the capacitor voltage v_C at t = 4 ms.",
+      "source_base": "H2",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vac",
+            "value": "vs(t)=1-2u(t) V"
+          },
+          {
+            "kind": "R",
+            "value": "500 mΩ"
+          },
+          {
+            "kind": "L",
+            "value": "6 mH"
+          },
+          {
+            "kind": "C",
+            "value": "5 mF"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Source steps from 1 V to -1 V at t=0"
+      },
+      "solution": "1. Initial Conditions: For t < 0, $v_s = 1$ V. DC steady state. $v_C(0^-) = 1$ V, $i_L(0^-) = 0$ A. Thus $v_C(0^+) = 1$ V, $i_L(0^+) = 0$ A. 2. Final Values: For t > 0, $v_s = -1$ V. DC steady state. $v_C(\\infty) = -1$ V, $i_L(\\infty) = 0$ A. 3. Circuit Parameters: $\\alpha = \\frac{R}{2L} = \\frac{0.5}{2(0.006)} = \\frac{0.5}{0.012} \\approx 41.67$ rad/s. $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.006 \\times 0.005}} \\approx 182.6$ rad/s. 4. Damping Type: $\\alpha < \\omega_0$, underdamped. $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{182.6^2 - 41.67^2} \\approx \\sqrt{33343 - 1736} \\approx 177.5$ rad/s. 5. General Solution: $v_C(t) = -1 + e^{-41.67t} (A_1 \\cos 177.5t + A_2 \\sin 177.5t)$. 6. Applying Initial Conditions: $v_C(0) = -1 + A_1 = 1 \\Rightarrow A_1 = 2$. $\\frac{dv_C(0)}{dt} = \\frac{i_L(0)}{C} = 0$. $\\frac{dv_C}{dt} = -41.67 e^{-41.67t}(A_1 \\cos \\omega_d t + A_2 \\sin \\omega_d t) + e^{-41.67t}(-A_1 \\omega_d \\sin \\omega_d t + A_2 \\omega_d \\cos \\omega_d t)$. At t=0: $0 = -41.67(2) + A_2(177.5)$. $83.34 = 177.5 A_2 \\Rightarrow A_2 \\approx 0.47$. 7. Evaluate at t = 4 ms = 0.004 s: $v_C(0.004) = -1 + e^{-41.67(0.004)} (2 \\cos(177.5 \\times 0.004) + 0.47 \\sin(177.5 \\times 0.004))$. Exponent: $-0.1667$. $e^{-0.1667} \\approx 0.846$. Angle: $0.71$ rad. $\\cos(0.71) \\approx 0.758$. $\\sin(0.71) \\approx 0.652$. $v_C(0.004) = -1 + 0.846 (2(0.758) + 0.47(0.652)) = -1 + 0.846 (1.516 + 0.306) = -1 + 0.846(1.822) = -1 + 1.54 = 0.54$ V.",
+      "answer": "(a) $0\\ \\text{A}$; (b) $1\\ \\text{V}$; (c) $0\\ \\text{A}$; (d) $0.54\\ \\text{V}$",
+      "set": 4
+    },
+    {
+      "id": "P20",
+      "question": "An RLC network is driven by a current source $i_1(t) = 8 - 10u(t)$ mA. The network consists of a parallel combination of a resistor R = 10 Ω, an inductor L = 2 mH, and a capacitor C = 20 nF. Determine the inductor current i_L(t) for t > 0.",
+      "source_base": "H3",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Iac",
+          "value": "i1(t)=8-10u(t) mA"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "10 Ω"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "2 mH"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "20 nF"
+            }
+          ]
+        ],
+        "note": "Current source steps from 8 mA to -2 mA at t=0"
+      },
+      "solution": "1. Initial Conditions: For t < 0, $i_1 = 8$ mA. DC steady state. Inductor is short, capacitor is open. All current flows through inductor. $i_L(0^-) = 8$ mA. Voltage across parallel branch is 0 V (since inductor is short). $v_C(0^-) = 0$ V. Thus $i_L(0^+) = 8$ mA, $v_C(0^+) = 0$ V.\n2. Final Values: For t > 0, $i_1 = -2$ mA. DC steady state. Inductor is short. $i_L(\\infty) = -2$ mA. $v_C(\\infty) = 0$ V.\n3. Circuit Parameters (Parallel RLC):\n$$ \\alpha = \\frac{1}{2RC} = \\frac{1}{2(10)(20 \\times 10^{-9})} = \\frac{1}{4 \\times 10^{-7}} = 2500000 \\text{ rad/s} $$\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.002 \\times 20 \\times 10^{-9}}} = \\frac{1}{\\sqrt{40 \\times 10^{-12}}} = \\frac{1}{6.3246 \\times 10^{-6}} \\approx 158114 \\text{ rad/s} $$\n4. Damping Type: $\\alpha > \\omega_0$ (2500000 > 158114), overdamped. Roots:\n$$ s_{1,2} = -2500000 \\pm \\sqrt{(2.5 \\times 10^6)^2 - (1.58114 \\times 10^5)^2} \\approx -2500000 \\pm 2495000 $$\n$s_1 \\approx -5005$ rad/s, $s_2 \\approx -4995000$ rad/s.\n5. General Solution for i_L(t): $i_L(t) = -2 + A_1 e^{-5005 t} + A_2 e^{-4995000 t}$ mA.\n6. Applying Initial Conditions: $i_L(0) = -2 + A_1 + A_2 = 8 \\Rightarrow A_1 + A_2 = 10$. $\\frac{di_L(0)}{dt} = \\frac{v_L(0)}{L}$. In parallel circuit, $v_L = v_C$. So $\\frac{di_L(0)}{dt} = \\frac{v_C(0)}{L} = \\frac{0}{0.002} = 0$ A/s.\n$$ -5005 A_1 - 4995000 A_2 = 0 $$\nWith $A_1 = 10 - A_2$: $-5005(10 - A_2) - 4995000 A_2 = 0 \\Rightarrow -50050 - 4989995 A_2 = 0 \\Rightarrow A_2 \\approx -0.01003$, $A_1 \\approx 10.01$.\n7. Final Expression: $i_L(t) = -2 + 10.01 e^{-5005 t} - 0.01003 e^{-4995000 t}$ mA for t > 0.",
+      "answer": "$i_L(t) = -2 + 10.01 e^{-5005 t} - 0.01003 e^{-4995000 t} \\text{ mA}$",
+      "set": 4
+    },
+    {
+      "id": "P21",
+      "question": "A series RLC circuit consists of a voltage source $v_s(t) = 12u(t)$ V, a $2$ k$\\Omega$ resistor, a $4$ mH inductor, and a $10$ nF capacitor. The circuit is uncharged for $t < 0$. Determine the inductor current $i_L(t)$ for $t > 0$.",
+      "source_base": "H4",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "2 kΩ"
+          },
+          {
+            "kind": "L",
+            "value": "4 mH"
+          },
+          {
+            "kind": "C",
+            "value": "10 nF"
+          }
+        ],
+        "current_label": "i_L",
+        "voltage_label": "v",
+        "note": "Source steps from 0 V to 12 V at t=0"
+      },
+      "solution": "1. Initial Conditions: For t < 0 the source is off and the circuit is uncharged: $i_L(0^+) = 0$ A, $v_C(0^+) = 0$ V.\n2. Final Values: For t > 0 the source is a 12 V dc source. In steady state the capacitor is open, so $i_L(\\infty) = 0$ A and $v_C(\\infty) = 12$ V.\n3. Circuit Parameters:\n$$ \\alpha = \\frac{R}{2L} = \\frac{2000}{2(0.004)} = 250000 \\text{ rad/s} $$\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.004 \\times 10 \\times 10^{-9}}} = \\frac{1}{\\sqrt{40 \\times 10^{-12}}} \\approx 158114 \\text{ rad/s} $$\n4. Damping Type: $\\alpha > \\omega_0$ (250000 > 158114), overdamped. Roots:\n$$ s_{1,2} = -250000 \\pm \\sqrt{250000^2 - 158114^2} \\approx -250000 \\pm 193649 $$\n$s_1 \\approx -56351$ rad/s, $s_2 \\approx -443649$ rad/s.\n5. General Solution: $i_L(t) = A_1 e^{-56351 t} + A_2 e^{-443649 t}$ A.\n6. Applying Initial Conditions: $i_L(0) = A_1 + A_2 = 0$.\n$$ \\frac{di_L(0)}{dt} = \\frac{v_L(0)}{L} = \\frac{v_s(0^+) - i_L(0)R - v_C(0)}{L} = \\frac{12}{0.004} = 3000 \\text{ A/s} $$\n$$ -56351 A_1 - 443649 A_2 = 3000 $$\nWith $A_2 = -A_1$: $(-56351 + 443649) A_1 = 3000 \\Rightarrow A_1 = \\frac{3000}{387298} \\approx 0.007746$ A, $A_2 \\approx -0.007746$ A.\n7. Final Expression:\n$$ i_L(t) = 7.75\\left(e^{-56351 t} - e^{-443649 t}\\right) \\text{ mA} \\quad \\text{for } t > 0 $$",
+      "answer": "$i_L(t) = 7.75\\left(e^{-56351 t} - e^{-443649 t}\\right) \\text{ mA}$",
+      "set": 5
+    },
+    {
+      "id": "P22",
+      "question": "A series RLC circuit consists of a 12 V DC source, a $2$ $\\Omega$ resistor, a $4$ $\\Omega$ resistor, a $10$ mH inductor, and a $0.2$ F capacitor. The switch closes at $t=0$. (a) Find the capacitor voltage $v_C(t)$ for $t > 0$. (b) Find $v_C$ at $t = 20$ ms and $t = 1$ s.",
+      "source_base": "H5",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "6"
+          },
+          {
+            "kind": "L",
+            "value": "10 mH"
+          },
+          {
+            "kind": "C",
+            "value": "0.2 F"
+          }
+        ],
+        "current_label": "i",
+        "voltage_label": "v_C",
+        "note": "Series RLC with switch closing at t=0"
+      },
+      "solution": "Total resistance $R = 2 + 4 = 6$ $\\Omega$. $L = 0.01$ H, $C = 0.2$ F. \nInitial conditions: $v_C(0^-) = 0$, $i_L(0^-) = 0$. Thus $v_C(0^+) = 0$, $i_L(0^+) = 0$. \nFinal value: $v_C(\\infty) = 12$ V. \nDamping factor $\\alpha = \\frac{R}{2L} = \\frac{6}{2(0.01)} = 300$ rad/s. \nResonant frequency $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.01 \\times 0.2}} = \\frac{1}{\\sqrt{0.002}} = \\frac{1}{0.0447} \\approx 22.36$ rad/s. \nSince $\\alpha > \\omega_0$, the response is overdamped. \nRoots $s_{1,2} = -\\alpha \\pm \\sqrt{\\alpha^2 - \\omega_0^2} = -300 \\pm \\sqrt{90,000 - 500} = -300 \\pm \\sqrt{89,500} \\approx -300 \\pm 299.165$. \n$s_1 = -0.835$, $s_2 = -599.165$. \n$v_C(t) = 12 + A_1 e^{-0.835t} + A_2 e^{-599.165t}$. \n$v_C(0^+) = 0 \\implies 12 + A_1 + A_2 = 0 \\implies A_1 + A_2 = -12$. \n$\\frac{dv_C}{dt}(0^+) = \\frac{i_C(0^+)}{C} = \\frac{0}{0.2} = 0$. \n$\\frac{dv_C}{dt} = -0.835 A_1 e^{-0.835t} - 599.165 A_2 e^{-599.165t}$. \nAt $t=0$: $-0.835 A_1 - 599.165 A_2 = 0 \\implies A_1 = -\\frac{599.165}{0.835} A_2 \\approx -717.56 A_2$. \nSubstitute into sum: $-717.56 A_2 + A_2 = -12 \\implies -716.56 A_2 = -12 \\implies A_2 \\approx 0.0167$. \n$A_1 = -12 - 0.0167 = -12.0167$. \n$v_C(t) = 12 - 12.0167 e^{-0.835t} + 0.0167 e^{-599.165t}$ V. \n(a) $v_C(t) = 12 - 12.02 e^{-0.835t} + 0.017 e^{-599.2t}$ V. \n(b) At $t = 20$ ms $= 0.02$ s: \n$e^{-0.835(0.02)} = e^{-0.0167} \\approx 0.9834$. \n$e^{-599.165(0.02)} = e^{-11.98} \\approx 0$. \n$v_C(0.02) \\approx 12 - 12.0167(0.9834) + 0 = 12 - 11.817 = 0.183$ V. \nAt $t = 1$ s: \n$e^{-0.835(1)} = e^{-0.835} \\approx 0.4338$. \n$e^{-599.165(1)} \\approx 0$. \n$v_C(1) \\approx 12 - 12.0167(0.4338) = 12 - 5.213 = 6.787$ V.",
+      "answer": "(a) $v_C(t) = 12 - 12.02 e^{-0.835t} + 0.017 e^{-599.2t} \\text{ V}$; (b) $v_C(20 \\text{ ms}) = 0.183 \\text{ V}$, $v_C(1 \\text{ s}) = 6.79 \\text{ V}$",
+      "set": 5
+    },
+    {
+      "id": "P23",
+      "question": "In the series RLC circuit from P22, the resistors are changed to $0.2$ $\\Omega$ and $0.4$ $\\Omega$ (total $R = 0.6$ $\\Omega$). The source is still 12 V, $L = 10$ mH, $C = 0.2$ F. Determine the capacitor current $i_C(t)$ for $t > 0$.",
+      "source_base": "H6",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "Vdc",
+            "value": "12 V"
+          },
+          {
+            "kind": "R",
+            "value": "0.6"
+          },
+          {
+            "kind": "L",
+            "value": "10 mH"
+          },
+          {
+            "kind": "C",
+            "value": "0.2 F"
+          }
+        ],
+        "current_label": "i_C",
+        "voltage_label": "v_C",
+        "note": "Series RLC with low resistance"
+      },
+      "solution": "$R = 0.6$ $\\Omega$, $L = 0.01$ H, $C = 0.2$ F. \n$\\alpha = \\frac{R}{2L} = \\frac{0.6}{0.02} = 30$ rad/s. \n$\\omega_0 = \\frac{1}{\\sqrt{LC}} = 22.36$ rad/s. \n$\\alpha > \\omega_0$, overdamped. \n$s_{1,2} = -30 \\pm \\sqrt{900 - 500} = -30 \\pm \\sqrt{400} = -30 \\pm 20$. \n$s_1 = -10$, $s_2 = -50$. \n$v_C(t) = 12 + A_1 e^{-10t} + A_2 e^{-50t}$. \n$v_C(0^+) = 0 \\implies A_1 + A_2 = -12$. \n$\\frac{dv_C}{dt}(0^+) = 0 \\implies -10 A_1 - 50 A_2 = 0 \\implies A_1 = -5 A_2$. \n$-5 A_2 + A_2 = -12 \\implies -4 A_2 = -12 \\implies A_2 = 3$. \n$A_1 = -15$. \n$v_C(t) = 12 - 15 e^{-10t} + 3 e^{-50t}$ V. \n$i_C(t) = C \\frac{dv_C}{dt} = 0.2 \\frac{d}{dt}(12 - 15 e^{-10t} + 3 e^{-50t})$. \n$i_C(t) = 0.2 (150 e^{-10t} - 150 e^{-50t}) = 30 e^{-10t} - 30 e^{-50t}$ A.",
+      "answer": "$i_C(t) = 30(e^{-10t} - e^{-50t}) \\text{ A}$",
+      "set": 5
+    },
+    {
+      "id": "P24",
+      "question": "A parallel RLC circuit is driven by a current source $i_s(t) = 4u(-t) + 8u(t)$ mA. The circuit contains a $4$ $\\Omega$ resistor, a $4$ mH inductor, and a $2$ F capacitor in parallel. Determine the capacitor voltage $v_C(t)$ for $t \\ge 0$.",
+      "source_base": "H7",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "i_s(t)=4u(-t)+8u(t) mA"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "4"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "4 mH"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "2 F"
+            }
+          ]
+        ],
+        "note": "Parallel RLC with step current source"
+      },
+      "solution": "$R = 4$ $\\Omega$, $L = 0.004$ H, $C = 2$ F.\n$\\alpha = \\frac{1}{2RC} = \\frac{1}{2(4)(2)} = \\frac{1}{16} = 0.0625$ rad/s.\n$\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.004 \\times 2}} = \\frac{1}{\\sqrt{0.008}} \\approx 11.18$ rad/s.\n$\\alpha < \\omega_0$, underdamped.\n$\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{125 - 0.0039} \\approx 11.18$ rad/s.\n\nFor $t < 0$, $i_s = 4$ mA. DC steady state: the inductor is a short circuit, so the node voltage is zero and the inductor carries the entire source current:\n$v_C(0^-) = 0$ V, $i_L(0^-) = 4$ mA.\nAt $t = 0^+$, $v_C(0^+) = 0$ V, $i_L(0^+) = 4$ mA.\n\nFor $t > 0$, $i_s = 8$ mA. DC steady state again gives $v_C(\\infty) = 0$ V and $i_L(\\infty) = 8$ mA.\n\n$v_C(t) = e^{-0.0625t}(A_1 \\cos 11.18t + A_2 \\sin 11.18t)$.\n$v_C(0^+) = 0 \\implies A_1 = 0$.\n\n$i_C(0^+) = i_s(0^+) - i_R(0^+) - i_L(0^+)$.\n$i_R(0^+) = v_C(0^+)/R = 0$.\n$i_C(0^+) = 8 \\text{ mA} - 0 - 4 \\text{ mA} = 4$ mA.\n$\\frac{dv_C}{dt}(0^+) = \\frac{i_C(0^+)}{C} = \\frac{4 \\times 10^{-3}}{2} = 0.002$ V/s.\n\nDerivative at $t=0$: $-\\alpha A_1 + \\omega_d A_2 = 0.002 \\implies 11.18 A_2 = 0.002 \\implies A_2 = 1.789 \\times 10^{-4}$ V.\n\n$v_C(t) = 1.789 \\times 10^{-4}\\, e^{-0.0625t} \\sin(11.18\\, t)$ V $= 0.179\\, e^{-0.0625t} \\sin(11.18\\, t)$ mV.",
+      "answer": "$$v_C(t) = 0.179\\, e^{-0.0625 t} \\sin(11.18\\, t) \\text{ mV}$$",
+      "set": 5
+    },
+    {
+      "id": "P25",
+      "question": "Consider a parallel RLC circuit with $L = 4$ mH, $C = 2$ F, and a variable resistor $R$. It is driven by $i_s(t) = 4u(t)$ A. (a) Set $R$ for a just-barely overdamped response. (b) Find the first time $t > 0$ when the energy in the capacitor equals the energy in the inductor. (c) Calculate that energy.",
+      "source_base": "H8",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "4u(t) A"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "R"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "4 mH"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "2 F"
+            }
+          ]
+        ],
+        "note": "Parallel RLC design problem"
+      },
+      "solution": "(a) Just-barely overdamped means critical damping, $\\alpha = \\omega_0$.\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.004 \\times 2}} = \\frac{1}{\\sqrt{0.008}} \\approx 11.18 \\text{ rad/s} $$\nFor a parallel RLC circuit $\\alpha = \\frac{1}{2RC}$, so\n$$ R = \\frac{1}{2 C \\omega_0} = \\frac{1}{2(2)(11.18)} = \\frac{1}{44.72} \\approx 0.02236 \\ \\Omega = 22.36 \\text{ m}\\Omega $$\n\n(b) With this $R$, the response is critically damped. At DC steady state the inductor is a short circuit, so $v_C(\\infty) = 0$. The initial conditions are $v_C(0^+) = 0$ and $i_L(0^+) = 0$ (source off for $t < 0$), and\n$$ \\frac{dv_C}{dt}(0^+) = \\frac{i_C(0^+)}{C} = \\frac{i_s(0^+) - i_R(0^+) - i_L(0^+)}{C} = \\frac{4 - 0 - 0}{2} = 2 \\text{ V/s} $$\nThe critically damped form is $v_C(t) = (A_1 + A_2 t)e^{-\\alpha t}$ with $\\alpha = \\omega_0 \\approx 11.18$ rad/s. From $v_C(0^+) = 0$: $A_1 = 0$. From $\\frac{dv_C}{dt}(0^+) = A_2 - \\alpha A_1 = 2$: $A_2 = 2$. Hence\n$$ v_C(t) = 2t\\, e^{-11.18 t} \\text{ V} $$\nThe inductor current follows from $i_L(t) = \\frac{1}{L}\\int_0^t v_C(\\tau)\\, d\\tau$:\n$$ i_L(t) = 500 \\int_0^t 2\\tau e^{-11.18 \\tau} d\\tau = \\frac{4}{\\alpha^2}(1 - e^{-\\alpha t}) - \\frac{t}{\\alpha}(500) e^{-\\alpha t} \\approx 4(1 - e^{-11.18 t}) - 44.72\\, t\\, e^{-11.18 t} \\text{ A} $$\n(consistent with $i_L(\\infty) = i_s = 4$ A).\n\nThe energies are $W_C = \\frac{1}{2} C v_C^2 = v_C^2$ (since $C = 2$ F) and $W_L = \\frac{1}{2} L i_L^2 = 0.002\\, i_L^2$. Setting $W_C = W_L$ (both quantities positive for $t > 0$):\n$$ 2t e^{-11.18 t} = 0.0447\\left[4(1 - e^{-11.18 t}) - 44.72\\, t\\, e^{-11.18 t}\\right] $$\nSolving (e.g., by bisection) gives $t \\approx 0.1124$ s $\\approx 112$ ms. This is the first such time: for small $t$, $W_C \\sim 4t^2$ while $W_L \\sim 125 t^4$, so $W_C > W_L$ initially, and afterwards $i_L(t)$ increases monotonically while $v_C(t)$ decays, so the curves meet only once.\n\n(c) At $t = 0.1124$ s: $v_C = 2(0.1124)e^{-11.18(0.1124)} \\approx 2(0.1124)(0.2847) \\approx 0.0640$ V, so\n$$ W = W_C = v_C^2 \\approx (0.0640)^2 \\approx 4.09 \\times 10^{-3} \\text{ J} = 4.09 \\text{ mJ} $$\n(Check: $i_L \\approx 1.43$ A and $W_L = 0.002(1.43)^2 \\approx 4.09$ mJ $\\checkmark$.)",
+      "answer": "(a) $R = 22.4 \\text{ m}\\Omega$; (b) $t \\approx 112 \\text{ ms}$; (c) $W \\approx 4.09 \\text{ mJ}$",
+      "set": 5
+    },
+    {
+      "id": "P26",
+      "question": "A parallel RLC circuit has $L = 0.4$ H, $C = 10$ nF, and $R = 40$ k$\\Omega$. It is driven by a current source $i_s(t) = 20u(t)$ mA. Evaluate $\\frac{dv_C}{dt}$ and $\\frac{di_L}{dt}$ at $t = 0^+$.",
+      "source_base": "H9",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Idc",
+          "value": "20u(t) mA"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "40 k"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "0.4 H"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "10 nF"
+            }
+          ]
+        ],
+        "note": "Parallel RLC initial derivatives"
+      },
+      "solution": "For $t < 0$, $i_s = 0$. $v_C(0^-) = 0$, $i_L(0^-) = 0$. \nAt $t = 0^+$, $v_C(0^+) = 0$, $i_L(0^+) = 0$. \n$i_s(0^+) = 20$ mA. \n$i_C(0^+) = i_s(0^+) - i_R(0^+) - i_L(0^+) = 20 \\text{ mA} - 0 - 0 = 20$ mA. \n$\\frac{dv_C}{dt}(0^+) = \\frac{i_C(0^+)}{C} = \\frac{20 \\times 10^{-3}}{10 \\times 10^{-9}} = 2 \\times 10^6$ V/s. \n$v_L(0^+) = v_C(0^+) = 0$. \n$\\frac{di_L}{dt}(0^+) = \\frac{v_L(0^+)}{L} = \\frac{0}{0.4} = 0$ A/s.\n5. (Reference) The circuit's transient is underdamped: $\\alpha = \\frac{1}{2RC} = \\frac{1}{2(40{,}000)(10 \\times 10^{-9})} = 1250$ rad/s, $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{0.4 \\times 10 \\times 10^{-9}}} = \\frac{1}{\\sqrt{4 \\times 10^{-9}}} \\approx 15811$ rad/s, so $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} \\approx 15762$ rad/s. These signature values do not affect the initial-derivative evaluation above.",
+      "answer": "$\\frac{dv_C}{dt}(0^+) = 2\\ \\text{MV/s},\\ \\frac{di_L}{dt}(0^+) = 0\\ \\text{A/s}$",
+      "set": 6
+    },
+    {
+      "id": "P27",
+      "question": "A series RLC circuit contains a $20$ H inductor, a $10$ $\\Omega$ resistor, and a capacitor $C$. A current source of $4$ A is connected in parallel with the inductor for $t < 0$ and removed at $t = 0$. (a) What value of $C$ gives an overdamped response? (b) Set $C = 0.5$ F and find $i_L(t)$ for $t > 0$.",
+      "source_base": "H10",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "R",
+            "value": "10"
+          },
+          {
+            "kind": "L",
+            "value": "20 H"
+          },
+          {
+            "kind": "C",
+            "value": "C"
+          }
+        ],
+        "current_label": "i_L",
+        "voltage_label": "v",
+        "note": "Series RLC with initial inductor current"
+      },
+      "solution": "(a) The overdamped condition requires $\\alpha > \\omega_0$.\n$\\alpha = \\frac{R}{2L} = \\frac{10}{40} = 0.25$ rad/s.\n$\\omega_0 = \\frac{1}{\\sqrt{LC}}$.\n$0.25 > \\frac{1}{\\sqrt{20C}} \\implies \\sqrt{20C} > 4 \\implies 20C > 16 \\implies C > 0.8$ F.\n\n(b) $C = 0.5$ F.\n$\\alpha = 0.25$, $\\omega_0 = \\frac{1}{\\sqrt{20(0.5)}} = \\frac{1}{\\sqrt{10}} \\approx 0.316$ rad/s.\nSince $\\alpha < \\omega_0$, the response is underdamped.\n$\\omega_d = \\sqrt{0.316^2 - 0.25^2} = \\sqrt{0.1 - 0.0625} = \\sqrt{0.0375} \\approx 0.1936$ rad/s.\n\nInitial conditions: $i_L(0^-) = 4$ A. $v_C(0^-) = 0$.\nFor $t < 0$, the circuit is in DC steady state. The inductor acts as a short circuit, so the current source of $4$ A flows entirely through the inductor. Thus, $i_L(0^-) = 4$ A and $v_C(0^-) = 0$.\nAt $t = 0$, the source is removed. The circuit becomes a source-free series RLC circuit with initial conditions $i_L(0^+) = 4$ A and $v_C(0^+) = 0$.\nThe final value is $i_L(\\infty) = 0$.\n\nThe general form of the current is:\n$i_L(t) = e^{-0.25t}(A_1 \\cos 0.1936t + A_2 \\sin 0.1936t)$.\n\nApplying the initial condition $i_L(0^+) = 4$:\n$4 = e^{0}(A_1 \\cos 0 + A_2 \\sin 0) \\implies A_1 = 4$.\n\nTo find $A_2$, the initial derivative $\\frac{di_L}{dt}(0^+)$ is required.\n$\\frac{di_L}{dt}(0^+) = \\frac{v_L(0^+)}{L}$.\nFrom Kirchhoff's Voltage Law, $v_L(0^+) = -v_R(0^+) - v_C(0^+) = -i_L(0^+)R - 0 = -4(10) = -40$ V.\n$\\frac{di_L}{dt}(0^+) = \\frac{-40}{20} = -2$ A/s.\n\nDifferentiating the expression for $i_L(t)$:\n$\\frac{di_L}{dt} = -0.25 e^{-0.25t}(A_1 \\cos 0.1936t + A_2 \\sin 0.1936t) + e^{-0.25t}(-0.1936 A_1 \\sin 0.1936t + 0.1936 A_2 \\cos 0.1936t)$.\nAt $t = 0^+$:\n$\\frac{di_L}{dt}(0^+) = -0.25 A_1 + 0.1936 A_2$.\nSubstituting known values:\n$-2 = -0.25(4) + 0.1936 A_2$\n$-2 = -1 + 0.1936 A_2$\n$-1 = 0.1936 A_2$\n$A_2 = -5.165$.\n\nThe final expression for the inductor current is:\n$i_L(t) = e^{-0.25t}(4 \\cos 0.1936t - 5.165 \\sin 0.1936t)$ A.",
+      "answer": "(a) $C > 0.8 \\text{ F}$; (b) $i_L(t) = e^{-0.25t}(4 \\cos 0.1936t - 5.165 \\sin 0.1936t) \\text{ A}$",
+      "set": 6
+    },
+    {
+      "id": "P28",
+      "question": "A series RLC circuit has $L = 20$ H, $C = 2$ F, and two $2$ $\\Omega$ resistors in series. A dependent voltage source $v_d = -4 i_1$ is in series with the resistors, where $i_1$ is the circuit current. A current source $6u(-t)$ A is in parallel with the inductor. Determine $v_C(t)$ at $t = 0^+$ and $t = 10$ s.",
+      "source_base": "H11",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "R",
+            "value": "2"
+          },
+          {
+            "kind": "R",
+            "value": "2"
+          },
+          {
+            "kind": "L",
+            "value": "20 H"
+          },
+          {
+            "kind": "C",
+            "value": "2 F"
+          }
+        ],
+        "current_label": "i_1",
+        "voltage_label": "v_C",
+        "note": "Series RLC with dependent source"
+      },
+      "solution": "The circuit current $i_1$ flows through both $2$ $\\Omega$ resistors and the dependent source $v_d = -4i_1$ (in series). For $t > 0$ the $6$ A source is off, so KVL around the loop gives\n$$ L\\frac{di_1}{dt} + 2 i_1 + 2 i_1 + v_d + v_C = 0 \\;\\implies\\; 20\\frac{di_1}{dt} + 4 i_1 - 4 i_1 + v_C = 0 \\;\\implies\\; 20\\frac{di_1}{dt} + v_C = 0. $$\nThe dependent source exactly cancels the resistance ($R_{eff} = 4 - 4 = 0$ $\\Omega$), so $\\alpha = 0$: the response is undamped.\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{20 \\times 2}} = \\frac{1}{\\sqrt{40}} \\approx 0.15811 \\text{ rad/s}. $$\n\nInitial conditions: for $t < 0$ the $6$ A source sits in parallel with the inductor. In DC steady state the inductor is a short circuit, so $i_L(0^-) = 6$ A and $v_C(0^-) = 0$ V (no DC current flows in the R-L-C loop). Hence $i_L(0^+) = 6$ A, $v_C(0^+) = 0$ V.\n\nGeneral solution: $v_C(t) = A \\cos \\omega_0 t + B \\sin \\omega_0 t$.\n$v_C(0^+) = 0 \\implies A = 0$.\nIn the loop $i_C = i_L$, so $\\frac{dv_C}{dt}(0^+) = \\frac{i_L(0^+)}{C} = \\frac{6}{2} = 3$ V/s.\n$\\frac{dv_C}{dt} = B \\omega_0 \\cos \\omega_0 t$, so at $t=0$: $B \\omega_0 = 3 \\implies B = \\frac{3}{0.15811} \\approx 18.97$.\n\n$$ v_C(t) = 18.97 \\sin(0.15811\\, t) \\text{ V}. $$\n\nAt $t = 0^+$: $v_C = 0$ V.\nAt $t = 10$ s: $v_C(10) = 18.97 \\sin(1.5811) \\approx 18.97(0.99997) \\approx 18.97$ V.",
+      "answer": "$v_C(0^+) = 0 \\text{ V}$, $v_C(10 \\text{ s}) \\approx 18.97 \\text{ V}$",
+      "set": 6
+    },
+    {
+      "id": "P29",
+      "question": "In the circuit from P28, the current source is $10u(t)$ A. Obtain an expression for $i_1(t)$ valid for $t > 0$.",
+      "source_base": "H12",
+      "circuit_spec": {
+        "type": "series",
+        "components": [
+          {
+            "kind": "R",
+            "value": "2"
+          },
+          {
+            "kind": "R",
+            "value": "2"
+          },
+          {
+            "kind": "L",
+            "value": "20 H"
+          },
+          {
+            "kind": "C",
+            "value": "2 F"
+          }
+        ],
+        "current_label": "i_1",
+        "voltage_label": "v_C",
+        "note": "Series RLC with dependent source; 10 A step current source in parallel with inductor"
+      },
+      "solution": "For $t < 0$ the source is off, so the initial conditions are $i_1(0^+) = 0$ A and $v_C(0^+) = 0$ V. For $t > 0$ the source supplies $i_s = 10$ A.\n\nAs in P28, the dependent source $v_d = -4i_1$ cancels the series resistance ($R_{eff} = 0$ $\\Omega$), so $\\alpha = 0$ and\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{20 \\times 2}} \\approx 0.158 \\text{ rad/s}. $$\n\nAs $t \\to \\infty$, the inductor acts as a short and the capacitor as an open, so the full source current flows through the inductor: $i_1(\\infty) = 10$ A.\n\nGeneral solution:\n$$ i_1(t) = i_1(\\infty) + A \\cos \\omega_0 t + B \\sin \\omega_0 t = 10 + A \\cos 0.158 t + B \\sin 0.158 t. $$\n\nApplying $i_1(0^+) = 0$:\n$$ 0 = 10 + A \\implies A = -10. $$\n\nThe initial derivative follows from the inductor voltage; since $v_C(0^+) = 0$ V,\n$$ \\frac{di_1}{dt}(0^+) = \\frac{v_L(0^+)}{L} = 0. $$\nDifferentiating and evaluating at $t=0$:\n$$ \\frac{di_1}{dt}(0^+) = -\\omega_0 B = 0 \\implies B = 0. $$\n\nSubstituting the constants:\n$$ i_1(t) = 10 - 10 \\cos 0.158 t = 10(1 - \\cos 0.158 t) \\text{ A} \\quad (t > 0). $$",
+      "answer": "$i_1(t) = 10(1 - \\cos 0.158t) \\text{ A}$",
+      "set": 6
+    },
+    {
+      "id": "P30",
+      "question": "Design a parallel RLC circuit with $L = 1$ H and $C = 1$ F that produces an underdamped response with a peak voltage of $2$ V. The second peak must be greater than $1$ V. Determine the resistance $R$.",
+      "source_base": "H13",
+      "circuit_spec": {
+        "type": "parallel",
+        "source": {
+          "kind": "Vdc",
+          "value": "2 V"
+        },
+        "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "R"
+            }
+          ],
+          [
+            {
+              "kind": "L",
+              "value": "1 H"
+            }
+          ],
+          [
+            {
+              "kind": "C",
+              "value": "1 F"
+            }
+          ]
+        ],
+        "note": "Parallel RLC design for damped sinusoid"
+      },
+      "solution": "For a parallel RLC circuit, the damping factor and resonant frequency are defined as $\\alpha = \\frac{1}{2RC}$ and $\\omega_0 = \\frac{1}{\\sqrt{LC}} = 1$ rad/s, respectively. The system is underdamped when $\\alpha < 1$. The step response for a 2 V input is given by:\n$$v(t) = 2 + e^{-\\alpha t}(A \\cos \\omega_d t + B \\sin \\omega_d t)$$\nApplying the initial conditions $v(0) = 0$ and $\\frac{dv}{dt}(0) = 0$ yields $A = -2$ and $B = \\frac{2\\alpha}{\\omega_d}$.\n\nThe peaks of the response occur approximately at $t_n = \\frac{n\\pi}{\\omega_d}$ for light damping. The second peak occurs at $t_2 \\approx \\frac{2\\pi}{\\omega_d}$. Evaluating the voltage at this time:\n$$v(t_2) \\approx 2 - 2 e^{-2\\alpha \\pi / \\omega_d} \\cos(2\\pi) = 2 - 2 e^{-2\\alpha \\pi / \\omega_d}$$\nThe condition requires that the second peak exceeds 1 V:\n$$2 - 2 e^{-2\\alpha \\pi / \\omega_d} > 1$$\n$$1 > 2 e^{-2\\alpha \\pi / \\omega_d}$$\n$$e^{-2\\alpha \\pi / \\omega_d} < 0.5$$\nTaking the natural logarithm of both sides:\n$$-2\\alpha \\pi / \\omega_d < \\ln(0.5) = -0.693$$\n$$\\frac{2\\alpha \\pi}{\\omega_d} > 0.693$$\n$$\\frac{\\alpha}{\\omega_d} > \\frac{0.693}{2\\pi} \\approx 0.11$$\nSince $\\omega_d \\approx 1$, the damping factor must satisfy $\\alpha > 0.11$. Combined with the underdamped condition $\\alpha < 1$, a valid choice is $\\alpha = 0.2$.\n\nSolving for the resistance $R$ with $C = 1$ F:\n$$\\frac{1}{2R(1)} = 0.2$$\n$$R = \\frac{1}{0.4} = 2.5 \\ \\Omega$$",
+      "answer": "$R = 2.5 \\, \\Omega$",
+      "set": 6
+    }
+  ]
+}

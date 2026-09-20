@@ -13,6 +13,7 @@ with step-by-step worked solutions and circuit diagrams.
 | 04 | First-Order Circuits · Part 2 | 30 | 30 |
 | 05 | Linear Waveshaping | 30 | 30 |
 | 06 | Second-Order Circuits · Natural Response | 30 | 30 |
+| 07 | Second-Order Circuits · Complete Response | 30 | 30 |
 
 ## Archived Lessons
 
@@ -28,6 +29,7 @@ are preserved in [`archive/lessons/`](archive/lessons/).
 ├── practice-04.html        ← Chapter 04 practice
 ├── practice-05.html        ← Chapter 05 practice
 ├── practice-06.html        ← Chapter 06 practice
+├── practice-07.html        ← Chapter 07 practice
 ├── data/                   ← Question bank JSON (source data)
 ├── css/style.css           ← Shared design system
 ├── archive/lessons/        ← Original interactive lecture pages
