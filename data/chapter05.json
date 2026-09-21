@@ -7,10 +7,10 @@
       "question": "For an ideal inverting op-amp integrator with input resistor R1 and feedback capacitor Cf, what is the mathematical relationship between the output voltage vout(t) and the input voltage vs(t)?",
       "type": "mcq",
       "options": [
-        "vout(t) = -(1/(R1 Cf)) \\int_{0}^{t} vs(\\tau) d\\tau + vout(0)",
+        "$v_{out}(t) = -\\frac{1}{R_1 C_f} \\int_{0}^{t} v_s(\\tau) d\\tau + v_{out}(0)$",
         "vout(t) = -R1 Cf (dvs/dt)",
         "vout(t) = -(Rf/R1) vs(t)",
-        "vout(t) = (1/(R1 Cf)) \\int_{0}^{t} vs(\\tau) d\\tau"
+        "$v_{out}(t) = \\frac{1}{R_1 C_f} \\int_{0}^{t} v_s(\\tau) d\\tau$"
       ],
       "answer": "A",
       "explanation": "The ideal inverting integrator performs integration of the input signal scaled by the time constant R1 Cf, with a negative sign due to the inverting configuration, plus the initial condition.",
@@ -112,13 +112,13 @@
     },
     {
       "id": "C09",
-      "question": "In a symmetric astable multivibrator, the frequency of oscillation f is determined by the total period T = T_on + T_off. If T_on = T_off, how is f related to T_on?",
+      "question": "In a symmetric astable multivibrator, the frequency of oscillation $f$ is determined by the total period $T = T_{on} + T_{off}$. If $T_{on} = T_{off}$, how is $f$ related to $T_{on}$?",
       "type": "mcq",
       "options": [
-        "f = T_on",
-        "f = 1 / T_on",
-        "f = 1 / (2 * T_on)",
-        "f = 2 * T_on"
+        "$f = T_{on}$",
+        "$f = 1 / T_{on}$",
+        "$f = 1 / (2 * T_{on})$",
+        "$f = 2 * T_{on}$"
       ],
       "answer": "C",
       "explanation": "The total period $T$ is the sum of $T_{\\text{on}}$ and $T_{\\text{off}}$. Since they are equal, $T = 2 \\cdot T_{\\text{on}}$. The frequency is the reciprocal of the period, so $f = \\frac{1}{2 \\cdot T_{\\text{on}}}$.",
@@ -305,7 +305,7 @@
         "False"
       ],
       "answer": "False",
-      "explanation": "The gain of a differentiator is proportional to frequency (j\\omega Rf C). Therefore, it amplifies high-frequency signals more than low-frequency signals.",
+      "explanation": "The gain of a differentiator is proportional to frequency ($j\\omega R_f C$). Therefore, it amplifies high-frequency signals more than low-frequency signals.",
       "set": 5
     },
     {
@@ -690,7 +690,7 @@
     },
     {
       "id": "P11",
-      "question": "Design an astable multivibrator circuit using two NPN transistors with a supply voltage V_CC = 15 V and load resistors R_L = 4 kΩ. The circuit uses two coupling capacitors C_1 = C_2 = 0.01 µF. Determine the values of the base resistors R_1 and R_2 such that each transistor is ON for 40 µs and OFF for 60 µs per cycle. Assume the base-emitter voltage drop is 0.7 V and the capacitors charge/discharge between 0.7 V and -0.7 V.",
+      "question": "Design an astable multivibrator circuit using two NPN transistors with a supply voltage $V_{CC} = 15$ V and load resistors $R_L = 4$ kΩ. The circuit uses two coupling capacitors $C_1 = C_2 = 0.01$ µF. Determine the values of the base resistors $R_1$ and $R_2$ such that each transistor is ON for $40$ µs and OFF for $60$ µs per cycle. Assume the base-emitter voltage drop is $0.7$ V and the capacitors charge/discharge between $0.7$ V and $-0.7$ V.",
       "source_base": "N11",
       "circuit_spec": {
         "type": "series",

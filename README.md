@@ -15,11 +15,6 @@ with step-by-step worked solutions and circuit diagrams.
 | 06 | Second-Order Circuits · Natural Response | 30 | 30 |
 | 07 | Second-Order Circuits · Complete Response | 30 | 30 |
 
-## Archived Lessons
-
-The original interactive lecture pages (with live simulations and quizzes)
-are preserved in [`archive/lessons/`](archive/lessons/).
-
 ## Structure
 
 ```

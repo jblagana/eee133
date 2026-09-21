@@ -4,7 +4,7 @@
   "conceptual": [
     {
       "id": "C01",
-      "question": "In the general first-order solution x(t) = x(infinity) + [x(0+) - x(infinity)] e^{-t/tau}, what does the term x(infinity) represent?",
+      "question": "In the general first-order solution $x(t) = x(\\infty) + [x(0^+) - x(\\infty)] e^{-t/\\tau}$, what does the term $x(\\infty)$ represent?",
       "type": "mcq",
       "options": [
         "The initial value of the state variable at t = 0-",
@@ -18,7 +18,7 @@
     },
     {
       "id": "C02",
-      "question": "For a source-free RC circuit, the voltage across the capacitor is given by vC(t) = V0 e^{-t/RC}. What is the value of vC(t) at t = RC?",
+      "question": "For a source-free RC circuit, the voltage across the capacitor is given by $v_C(t) = V_0 e^{-t/RC}$. What is the value of $v_C(t)$ at $t = RC$?",
       "type": "mcq",
       "options": [
         "0.368 V0",
@@ -72,7 +72,7 @@
     },
     {
       "id": "C06",
-      "question": "The energy stored in a capacitor in a source-free RC circuit decays as w(t) = w(0) e^{-2t/tau}. What fraction of the initial energy remains after one time constant?",
+      "question": "The energy stored in a capacitor in a source-free RC circuit decays as $w(t) = w(0) e^{-2t/\\tau}$. What fraction of the initial energy remains after one time constant?",
       "type": "mcq",
       "options": [
         "36.8%",
@@ -166,7 +166,7 @@
     },
     {
       "id": "C13",
-      "question": "In a source-free RL circuit, the inductor current decays as iL(t) = I0 e^{-t/tau}. What is the value of iL(t) at t = 2 tau?",
+      "question": "In a source-free RL circuit, the inductor current decays as $i_L(t) = I_0 e^{-t/\\tau}$. What is the value of $i_L(t)$ at $t = 2\\tau$?",
       "type": "mcq",
       "options": [
         "0.368 I0",
@@ -274,7 +274,7 @@
     },
     {
       "id": "C21",
-      "question": "The log plot of the exponential decay e^{-t/tau} is a straight line. Is this statement true or false?",
+      "question": "The log plot of the exponential decay $e^{-t/\\tau}$ is a straight line. Is this statement true or false?",
       "type": "tf",
       "options": [
         "True",
@@ -354,7 +354,7 @@
     },
     {
       "id": "C27",
-      "question": "In a source-free RL circuit, the energy stored in the inductor decays as w(t) = w(0) e^{-2t/tau}. What is the time constant for the energy decay?",
+      "question": "In a source-free RL circuit, the energy stored in the inductor decays as $w(t) = w(0) e^{-2t/\\tau}$. What is the time constant for the energy decay?",
       "type": "mcq",
       "options": [
         "tau",
@@ -690,7 +690,7 @@
     },
     {
       "id": "P11",
-      "question": "A circuit consists of a 10 V DC source in series with a 5 kΩ resistor and a switch. The switch has been open for a long time and closes at t = 0. The load consists of two capacitors connected in series: C1 = 2 µF and C2 = 6 µF. Find the voltage across the equivalent capacitor, v_o(t), for t >= 0.",
+      "question": "A circuit consists of a $10\\text{ V}$ DC source in series with a $5\\text{ k}\\Omega$ resistor and a switch. The switch has been open for a long time and closes at $t = 0$. The load consists of two capacitors connected in series: $C_1 = 2\\text{ \\mu F}$ and $C_2 = 6\\text{ \\mu F}$. Find the voltage across the equivalent capacitor, $v_o(t)$, for $t \\ge 0$.",
       "source_base": "N11",
       "circuit_spec": {
         "type": "series",
@@ -722,7 +722,7 @@
     },
     {
       "id": "P12",
-      "question": "A circuit contains a 12 V DC source connected to a parallel combination of a 4 kΩ resistor and a 2 H inductor. A switch in series with the source has been open for a long time and closes at t = 0. Find the inductor current i_L(t) for t >= 0.",
+      "question": "A circuit contains a $12$ V DC source connected to a parallel combination of a $4$ k$\\Omega$ resistor and a $2$ H inductor. A switch in series with the source has been open for a long time and closes at $t = 0$. Find the inductor current $i_L(t)$ for $t \\ge 0$.",
       "source_base": "N12",
       "circuit_spec": {
         "type": "parallel",
@@ -752,7 +752,7 @@
     },
     {
       "id": "P13",
-      "question": "A 5 mA current source is connected in parallel with a 10 kΩ resistor and a 0.5 µF capacitor. A switch in series with the current source has been open for a long time and closes at t = 0. The capacitor is initially uncharged. (a) Find the capacitor voltage v(t) for t >= 0. (b) Find the current through the capacitor i_C(t) for t >= 0.",
+      "question": "A $5 \\text{ mA}$ current source is connected in parallel with a $10 \\text{ k}\\Omega$ resistor and a $0.5 \\text{ \\mu F}$ capacitor. A switch in series with the current source has been open for a long time and closes at $t = 0$. The capacitor is initially uncharged. (a) Find the capacitor voltage $v(t)$ for $t \\ge 0$. (b) Find the current through the capacitor $i_C(t)$ for $t \\ge 0$.",
       "source_base": "N13",
       "circuit_spec": {
         "type": "parallel",
@@ -782,7 +782,7 @@
     },
     {
       "id": "P14",
-      "question": "A circuit has a 20 V DC source in series with a 2 kΩ resistor and a switch. The switch is in position 'a' for a long time, connecting the source to a 1 µF capacitor. At t = 0, the switch moves to position 'b', disconnecting the source and connecting the capacitor to a 4 kΩ resistor. (a) Find the initial capacitor voltage v_C(0). (b) Find the final capacitor voltage v_C(\\infty). (c) Find the time constant for t > 0. (d) Find the time t when v_C(t) = 0.",
+      "question": "A circuit has a $20\\text{ V}$ DC source in series with a $2\\text{ k}\\Omega$ resistor and a switch. The switch is in position 'a' for a long time, connecting the source to a $1\\text{ \\mu F}$ capacitor. At $t = 0$, the switch moves to position 'b', disconnecting the source and connecting the capacitor to a $4\\text{ k}\\Omega$ resistor. (a) Find the initial capacitor voltage $v_C(0)$. (b) Find the final capacitor voltage $v_C(\\infty)$. (c) Find the time constant for $t > 0$. (d) Find the time $t$ when $v_C(t) = 0$.",
       "source_base": "N14",
       "circuit_spec": {
         "type": "series",
@@ -814,7 +814,7 @@
     },
     {
       "id": "P15",
-      "question": "A circuit consists of a 10 mA current source in parallel with a 5 kΩ resistor. This combination is connected to a node where a 2 kΩ resistor and a 0.2 µF capacitor are in series. A switch connects the current source branch to this RC branch at t = 0. The capacitor is initially uncharged. Find the voltage across the capacitor v_o(t) and the current through the capacitor i_o(t) for t >= 0.",
+      "question": "A circuit consists of a $10\\text{ mA}$ current source in parallel with a $5\\text{ k}\\Omega$ resistor. This combination is connected to a node where a $2\\text{ k}\\Omega$ resistor and a $0.2\\text{ \\mu F}$ capacitor are in series. A switch connects the current source branch to this RC branch at $t = 0$. The capacitor is initially uncharged. Find the voltage across the capacitor $v_o(t)$ and the current through the capacitor $i_o(t)$ for $t \\ge 0$.",
       "source_base": "N15",
       "circuit_spec": {
         "type": "parallel",
@@ -848,7 +848,7 @@
     },
     {
       "id": "P16",
-      "question": "A source-free RL circuit consists of a 2 kΩ resistor and a 4 mH inductor in series. The initial current in the inductor is i(0) = -5 mA. (a) Find the expression for i(t) for t >= 0. (b) Calculate the current at t = \\tau/2.",
+      "question": "A source-free RL circuit consists of a $2\\text{ k}\\Omega$ resistor and a $4\\text{ mH}$ inductor in series. The initial current in the inductor is $i(0) = -5\\text{ mA}$. (a) Find the expression for $i(t)$ for $t \\ge 0$. (b) Calculate the current at $t = \\tau/2$.",
       "source_base": "H1",
       "circuit_spec": {
         "type": "series",
@@ -960,7 +960,7 @@
     },
     {
       "id": "P20",
-      "question": "A source-free RC circuit consists of a 2 nF capacitor in parallel with a 10 MΩ resistor. The initial voltage across the capacitor is v(0) = 5 V. (a) Find the time constant of the circuit. (b) Find the expression for the capacitor voltage v(t) for t >= 0. (c) Calculate the voltage at t = \\tau.",
+      "question": "A source-free RC circuit consists of a 2 nF capacitor in parallel with a 10 MΩ resistor. The initial voltage across the capacitor is $v(0) = 5$ V. (a) Find the time constant of the circuit. (b) Find the expression for the capacitor voltage $v(t)$ for $t \\ge 0$. (c) Calculate the voltage at $t = \\tau$.",
       "source_base": "H5",
       "circuit_spec": {
         "type": "series",
@@ -1060,7 +1060,7 @@
     },
     {
       "id": "P24",
-      "question": "A circuit contains a 2 mA DC current source in parallel with a 10 kΩ resistor. A switch connects a series combination of a 5 kΩ resistor and a 100 nF capacitor to the node between the source and the 10 kΩ resistor. The switch closes at t = 0. (a) Find the time constant tau. (b) Determine the capacitor voltage v(0^-). (c) Find v(t) for t > 0. (d) Calculate v(2 ms).",
+      "question": "A circuit contains a $2\\text{ mA}$ DC current source in parallel with a $10\\text{ k}\\Omega$ resistor. A switch connects a series combination of a $5\\text{ k}\\Omega$ resistor and a $100\\text{ nF}$ capacitor to the node between the source and the $10\\text{ k}\\Omega$ resistor. The switch closes at $t = 0$. (a) Find the time constant $\\tau$. (b) Determine the capacitor voltage $v(0^-)$. (c) Find $v(t)$ for $t > 0$. (d) Calculate $v(2\\text{ ms})$.",
       "source_base": "H9",
       "circuit_spec": {
         "type": "parallel",

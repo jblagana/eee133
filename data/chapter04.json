@@ -42,7 +42,7 @@
     },
     {
       "id": "C04",
-      "question": "In the general solution x(t) = x(inf) + [x(0+) - x(inf)] e^{-t/tau}, the term x(0+) represents the value of the state variable at the beginning of the current time interval.",
+      "question": "In the general solution $x(t) = x(\\infty) + [x(0^+) - x(\\infty)] e^{-t/\\tau}$, the term $x(0^+)$ represents the value of the state variable at the beginning of the current time interval.",
       "type": "tf",
       "options": [
         "True",
@@ -372,7 +372,7 @@
   "problems": [
     {
       "id": "P01",
-      "question": "A circuit consists of a 10 mA DC current source in parallel with a 5 kΩ resistor. This combination is connected in series with an equivalent inductance of 100 mH. A switch has been in position 'a' for a long time, connecting the source and resistor to the inductor. At t = 0, the switch moves to position 'b', disconnecting the source and resistor and short-circuiting the inductor. Find the voltage across the inductor, v_L(t), for t >= 0+.",
+      "question": "A circuit consists of a $10\\text{ mA}$ DC current source in parallel with a $5\\text{ k}\\Omega$ resistor. This combination is connected in series with an equivalent inductance of $100\\text{ mH}$. A switch has been in position 'a' for a long time, connecting the source and resistor to the inductor. At $t = 0$, the switch moves to position 'b', disconnecting the source and resistor and short-circuiting the inductor. Find the voltage across the inductor, $v_L(t)$, for $t \\ge 0^+$.",
       "source_base": "N1",
       "circuit_spec": {
         "type": "series",
@@ -474,7 +474,7 @@
     },
     {
       "id": "P05",
-      "question": "A circuit consists of a 100 V DC source in series with a 20 kΩ resistor and a 5 µF capacitor. A switch has been in position 'a' for a long time, connecting the source to the RC series circuit. At t=0, the switch moves to position 'b', disconnecting the source and connecting the capacitor to a 10 kΩ resistor. Find the voltage across the capacitor, v_C(t), for t >= 0.",
+      "question": "A circuit consists of a 100 V DC source in series with a 20 kΩ resistor and a 5 µF capacitor. A switch has been in position 'a' for a long time, connecting the source to the RC series circuit. At $t=0$, the switch moves to position 'b', disconnecting the source and connecting the capacitor to a 10 kΩ resistor. Find the voltage across the capacitor, $v_C(t)$, for $t \\ge 0$.",
       "source_base": "N5",
       "circuit_spec": {
         "type": "series",
@@ -542,7 +542,7 @@
     },
     {
       "id": "P08",
-      "question": "A circuit consists of a 20 V DC source in series with a 5 kΩ resistor and a 2 µF capacitor. The switch is open for a long time. At t=0, the switch closes. Find the voltage across the capacitor, v_C(t), for t >= 0.",
+      "question": "A circuit consists of a 20 V DC source in series with a 5 kΩ resistor and a 2 µF capacitor. The switch is open for a long time. At $t=0$, the switch closes. Find the voltage across the capacitor, $v_C(t)$, for $t \\ge 0$.",
       "source_base": "N8",
       "circuit_spec": {
         "type": "series",
@@ -898,7 +898,7 @@
     },
     {
       "id": "P21",
-      "question": "Consider a circuit with a 10 V DC source, a 2 kΩ resistor, and a 10 mH inductor in series. A switch connects the source to the RL branch at t = 0. The inductor current is zero for t < 0. (a) Find the inductor current i_L(t) for all t. (b) Calculate i_L at t = 5 µs, 10 µs, and 20 µs.",
+      "question": "Consider a circuit with a $10\\text{ V}$ DC source, a $2\\text{ k}\\Omega$ resistor, and a $10\\text{ mH}$ inductor in series. A switch connects the source to the RL branch at $t = 0$. The inductor current is zero for $t < 0$. (a) Find the inductor current $i_L(t)$ for all $t$. (b) Calculate $i_L$ at $t = 5\\text{ \\mu s}$, $10\\text{ \\mu s}$, and $20\\text{ \\mu s}$.",
       "source_base": "H6",
       "circuit_spec": {
         "type": "series",
@@ -984,7 +984,7 @@
     },
     {
       "id": "P24",
-      "question": "Consider a circuit with a 5 V DC source, a 10 Ω resistor, and a 50 mH inductor in series. Additionally, there is a dependent voltage source in series with the inductor, controlled by the current i1 flowing through the 10 Ω resistor, with a gain of 2 (i.e., $v_{dep} = 2 i_1$). The switch closes at t = 0. Find the inductor current i_L(t) for all t.",
+      "question": "Consider a circuit with a $5\\text{ V}$ DC source, a $10\\ \\Omega$ resistor, and a $50\\text{ mH}$ inductor in series. Additionally, there is a dependent voltage source in series with the inductor, controlled by the current $i_1$ flowing through the $10\\ \\Omega$ resistor, with a gain of $2$ (i.e., $v_{dep} = 2 i_1$). The switch closes at $t = 0$. Find the inductor current $i_L(t)$ for all $t$.",
       "source_base": "H9",
       "circuit_spec": {
         "type": "series",
@@ -1016,14 +1016,14 @@
     },
     {
       "id": "P25",
-      "question": "A circuit consists of a 10 V DC source, a 100 Ω resistor, and a 10 µH inductor in series. The source voltage is a pulse: $v_s(t) = 10 u(t) - 10 u(t - 100 \\mu s)$. The initial inductor current is 0 A. Sketch the inductor current i_L(t) over the interval 0 to 200 µs.",
+      "question": "A circuit consists of a 10 V DC source, a 100 $\\Omega$ resistor, and a 10 $\\mu$H inductor in series. The source voltage is a pulse: $v_s(t) = 10 u(t) - 10 u(t - 100 \\mu s)$. The initial inductor current is 0 A. Sketch the inductor current $i_L(t)$ over the interval 0 to 200 $\\mu$s.",
       "source_base": "H10",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "Vac",
-            "value": "v_s(t)=10u(t)-10u(t-100\\mu)"
+            "value": "v_s(t)=10u(t)-10u(t-100µ)"
           },
           {
             "kind": "R",
@@ -1044,7 +1044,7 @@
     },
     {
       "id": "P26",
-      "question": "A circuit consists of a 10 V DC source, a 10 Ω resistor, and a 10 H inductor in series. The source voltage is a pulse: $v_s(t) = 10 u(t) - 10 u(t - 0.1 s)$. The initial inductor current is 0 A. Sketch the inductor current i_L(t) over the interval 0 to 0.2 s.",
+      "question": "A circuit consists of a 10 V DC source, a 10 Ω resistor, and a 10 H inductor in series. The source voltage is a pulse: $v_s(t) = 10 u(t) - 10 u(t - 0.1 \\text{ s})$. The initial inductor current is 0 A. Sketch the inductor current $i_L(t)$ over the interval 0 to 0.2 s.",
       "source_base": "H11",
       "circuit_spec": {
         "type": "series",
@@ -1072,7 +1072,7 @@
     },
     {
       "id": "P27",
-      "question": "A circuit has a 10 V DC source, a 1 kΩ resistor, and a 10 µF capacitor in series. Two switches, A and B, are synchronized. Switch A is initially open, and switch B is initially closed. At t = 0, A closes and B opens. At t = 40 ms, A opens and B closes. This pattern repeats every 40 ms. Find the capacitor voltage v_C at t = 0-, 0+, 40- ms, 40+ ms, and 50 ms.",
+      "question": "A circuit has a 10 V DC source, a 1 k$\\Omega$ resistor, and a 10 $\\mu$F capacitor in series. Two switches, A and B, are synchronized. Switch A is initially open, and switch B is initially closed. At $t = 0$, A closes and B opens. At $t = 40$ ms, A opens and B closes. This pattern repeats every 40 ms. Find the capacitor voltage $v_C$ at $t = 0^-$, $0^+$, $40^-$ ms, $40^+$ ms, and 50 ms.",
       "source_base": "H12",
       "circuit_spec": {
         "type": "series",
@@ -1136,7 +1136,7 @@
     },
     {
       "id": "P29",
-      "question": "A circuit consists of a 5 V DC source, a 10 Ω resistor, and a 10 mH inductor in series. There is a dependent voltage source in series with the inductor, with value $v_{dep} = -2 i_L$. (a) Find the time constant. (b) Find the inductor current i_L(t) for all t. (c) Is the circuit stable?",
+      "question": "A circuit consists of a 5 V DC source, a 10 Ω resistor, and a 10 mH inductor in series. There is a dependent voltage source in series with the inductor, with value $v_{dep} = -2 i_L$. (a) Find the time constant. (b) Find the inductor current $i_L(t)$ for all $t$. (c) Is the circuit stable?",
       "source_base": "H14",
       "circuit_spec": {
         "type": "series",
@@ -1168,7 +1168,7 @@
     },
     {
       "id": "P30",
-      "question": "A circuit consists of a 5 V DC source, a 10 Ω resistor, and a 1 mF capacitor in series. The capacitor has a parallel leakage resistance of 100 Ω. There is a dependent voltage source in series with the capacitor, with value $v_{dep} = -20 i_C$. (a) Find the time constant. (b) Find the capacitor voltage v_C(t) for all t. (c) Is the circuit stable?",
+      "question": "A circuit consists of a 5 V DC source, a 10 $\\Omega$ resistor, and a 1 mF capacitor in series. The capacitor has a parallel leakage resistance of 100 $\\Omega$. There is a dependent voltage source in series with the capacitor, with value $v_{dep} = -20 i_C$. (a) Find the time constant. (b) Find the capacitor voltage $v_C(t)$ for all $t$. (c) Is the circuit stable?",
       "source_base": "H15",
       "circuit_spec": {
         "type": "series",

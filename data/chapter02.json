@@ -32,7 +32,7 @@
     },
     {
       "id": "C03",
-      "question": "The energy stored in a 10 \\mu F capacitor charged to 100 V is 0.5 J.",
+      "question": "The energy stored in a $10 \\mu F$ capacitor charged to $100 V$ is $0.5 J$.",
       "type": "tf",
       "options": [
         "True",
@@ -144,13 +144,13 @@
     },
     {
       "id": "C12",
-      "question": "Three 6 \\mu F capacitors are connected in parallel. What is the equivalent capacitance?",
+      "question": "Three $6 \\mu F$ capacitors are connected in parallel. What is the equivalent capacitance?",
       "type": "mcq",
       "options": [
-        "2 \\mu F",
-        "6 \\mu F",
-        "12 \\mu F",
-        "18 \\mu F"
+        "$2 \\mu F$",
+        "$6 \\mu F$",
+        "$12 \\mu F$",
+        "$18 \\mu F$"
       ],
       "answer": "D",
       "explanation": "For parallel capacitors, the equivalent capacitance is given by $C_{eq} = C_1 + C_2 + C_3 = 6 + 6 + 6 = 18 \\, \\mu\\text{F}$.",
@@ -246,13 +246,13 @@
     },
     {
       "id": "C20",
-      "question": "A 4 \\mu F capacitor and an 8 \\mu F capacitor are connected in series. What is the equivalent capacitance?",
+      "question": "A $4 \\mu F$ capacitor and an $8 \\mu F$ capacitor are connected in series. What is the equivalent capacitance?",
       "type": "mcq",
       "options": [
-        "12 \\mu F",
-        "6 \\mu F",
-        "8/3 \\mu F",
-        "3 \\mu F"
+        "$12 \\mu F$",
+        "$6 \\mu F$",
+        "$8/3 \\mu F$",
+        "$3 \\mu F$"
       ],
       "answer": "C",
       "explanation": "For series capacitors, $\\frac{1}{C_{eq}} = \\frac{1}{4} + \\frac{1}{8} = \\frac{3}{8}$, so $C_{eq} = \\frac{8}{3} \\ \\mu\\text{F}$.",
@@ -284,13 +284,13 @@
     },
     {
       "id": "C23",
-      "question": "Two 2 \\mu F capacitors are connected in parallel. What is the equivalent capacitance?",
+      "question": "Two $2 \\mu F$ capacitors are connected in parallel. What is the equivalent capacitance?",
       "type": "mcq",
       "options": [
-        "1 \\mu F",
-        "2 \\mu F",
-        "4 \\mu F",
-        "8 \\mu F"
+        "$1 \\mu F$",
+        "$2 \\mu F$",
+        "$4 \\mu F$",
+        "$8 \\mu F$"
       ],
       "answer": "C",
       "explanation": "For parallel capacitors, $C_{eq} = C_1 + C_2 = 2 + 2 = 4 \\, \\mu\\text{F}$.",
@@ -374,13 +374,13 @@
     },
     {
       "id": "C30",
-      "question": "A 1 \\mu F capacitor has a voltage of 10 V. What is the energy stored in it?",
+      "question": "A $1 \\mu F$ capacitor has a voltage of $10 V$. What is the energy stored in it?",
       "type": "mcq",
       "options": [
-        "50 \\mu J",
-        "100 \\mu J",
-        "500 \\mu J",
-        "1000 \\mu J"
+        "$50 \\mu J$",
+        "$100 \\mu J$",
+        "$500 \\mu J$",
+        "$1000 \\mu J$"
       ],
       "answer": "A",
       "explanation": "The energy is $w = \\frac{1}{2} C v^2 = \\frac{1}{2} \\cdot 1 \\times 10^{-6} \\cdot 10^2 = \\frac{1}{2} \\cdot 100 \\times 10^{-6} = 50 \\, \\mu\\text{J}$.",
@@ -390,7 +390,7 @@
   "problems": [
     {
       "id": "P01",
-      "question": "Consider a single inductor with inductance L = 5 mH. The current through the inductor is given by i(t) = 10(e^{-200t} - e^{-800t}) A for t >= 0, and i(0-) = 0. Determine: (a) the initial voltage v(0+) across the inductor in the direction of the current; (b) the time t > 0 when the voltage is zero; (c) the expression for the power p(t) delivered to the inductor; (d) the time t_p when the power is maximum; (e) the maximum power value; (f) the time t_w when the stored energy is maximum; (g) the maximum stored energy.",
+      "question": "Consider a single inductor with inductance $L = 5 \\text{ mH}$. The current through the inductor is given by $i(t) = 10(e^{-200t} - e^{-800t}) \\text{ A}$ for $t \\ge 0$, and $i(0^-) = 0$. Determine: (a) the initial voltage $v(0^+)$ across the inductor in the direction of the current; (b) the time $t > 0$ when the voltage is zero; (c) the expression for the power $p(t)$ delivered to the inductor; (d) the time $t_p$ when the power is maximum; (e) the maximum power value; (f) the time $t_w$ when the stored energy is maximum; (g) the maximum stored energy.",
       "source_base": "N1",
       "circuit_spec": {
         "type": "series",
@@ -434,14 +434,14 @@
     },
     {
       "id": "P03",
-      "question": "A capacitor with capacitance C = 1 \\mu F has a voltage v(t) = 0 for t < 0 and v(t) = 20 e^{-5000t} sin(10000t) V for t >= 0. (a) Find the initial capacitor current i(0+) in the direction of the voltage drop. (b) Calculate the power delivered to the capacitor at t = \\pi/40 ms. (c) Calculate the energy stored in the capacitor at t = \\pi/40 ms.",
+      "question": "A capacitor with capacitance $C = 1 \\mu F$ has a voltage $v(t) = 0$ for $t < 0$ and $v(t) = 20 e^{-5000t} \\sin(10000t)$ V for $t >= 0$. (a) Find the initial capacitor current $i(0+)$ in the direction of the voltage drop. (b) Calculate the power delivered to the capacitor at $t = \\pi/40$ ms. (c) Calculate the energy stored in the capacitor at $t = \\pi/40$ ms.",
       "source_base": "N3",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "C",
-            "value": "1 \\mu F"
+            "value": "1 µF"
           }
         ],
         "current_label": "i(t)",
@@ -454,14 +454,14 @@
     },
     {
       "id": "P04",
-      "question": "A capacitor with capacitance C = 2 \\mu F has zero voltage and zero current for t < 0. For t >= 0, the current is i(t) = 4 cos(20000t) A. (a) Find the voltage drop v(t) in the direction of the current. (b) Find the maximum instantaneous power delivered to the capacitor. (c) Find the maximum stored energy.",
+      "question": "A capacitor with capacitance $C = 2 \\mu F$ has zero voltage and zero current for $t < 0$. For $t \\ge 0$, the current is $i(t) = 4 \\cos(20000t)$ A. (a) Find the voltage drop $v(t)$ in the direction of the current. (b) Find the maximum instantaneous power delivered to the capacitor. (c) Find the maximum stored energy.",
       "source_base": "N4",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "C",
-            "value": "2 \\mu F"
+            "value": "2 µF"
           }
         ],
         "current_label": "i(t)",
@@ -474,7 +474,7 @@
     },
     {
       "id": "P05",
-      "question": "A capacitor with capacitance C = 100 nF has an initial voltage v(0) = -50 V. For t >= 0, the current is i(t) = 50 e^{-10000t} mA. (a) Find the energy stored in the capacitor at t = 100 \\mu s. (b) Find the energy stored in the capacitor at t = \\infty.",
+      "question": "A capacitor with capacitance $C = 100 \\text{ nF}$ has an initial voltage $v(0) = -50 \\text{ V}$. For $t \\ge 0$, the current is $i(t) = 50 e^{-10000t} \\text{ mA}$. (a) Find the energy stored in the capacitor at $t = 100 \\mu\\text{s}$. (b) Find the energy stored in the capacitor at $t = \\infty$.",
       "source_base": "N5",
       "circuit_spec": {
         "type": "series",
@@ -494,7 +494,7 @@
     },
     {
       "id": "P06",
-      "question": "A capacitor with capacitance C = 100 nF has an initial voltage of 20 V (drop in the reference direction of the current). A rectangular current pulse is applied: i(t) = 40 mA for 0 < t < 50 \\mu s, i(t) = -20 mA for 50 \\mu s < t < 150 \\mu s, and i(t) = 0 for t > 150 \\mu s. Find the voltage v(t) in each of the three intervals.",
+      "question": "A capacitor with capacitance $C = 100 \\text{ nF}$ has an initial voltage of $20 \\text{ V}$ (drop in the reference direction of the current). A rectangular current pulse is applied: $i(t) = 40 \\text{ mA}$ for $0 < t < 50 \\mu\\text{s}$, $i(t) = -20 \\text{ mA}$ for $50 \\mu\\text{s} < t < 150 \\mu\\text{s}$, and $i(t) = 0$ for $t > 150 \\mu\\text{s}$. Find the voltage $v(t)$ in each of the three intervals.",
       "source_base": "N6",
       "circuit_spec": {
         "type": "series",
@@ -514,14 +514,14 @@
     },
     {
       "id": "P07",
-      "question": "A capacitor with capacitance C = 1 \\mu F is subjected to a voltage pulse defined as: v(t) = 20 V for 0 <= t <= 1 s; v(t) = 20(2-t) V for 1 < t <= 2 s; v(t) = 0 elsewhere. Derive the expression for the capacitor current i(t) during the interval 0 <= t <= 2 s.",
+      "question": "A capacitor with capacitance $C = 1 \\mu F$ is subjected to a voltage pulse defined as: $v(t) = 20$ V for $0 \\leq t \\leq 1$ s; $v(t) = 20(2-t)$ V for $1 < t \\leq 2$ s; $v(t) = 0$ elsewhere. Derive the expression for the capacitor current $i(t)$ during the interval $0 \\leq t \\leq 2$ s.",
       "source_base": "N7",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "C",
-            "value": "1 \\mu F"
+            "value": "1 µF"
           }
         ],
         "current_label": "i(t)",
@@ -534,7 +534,7 @@
     },
     {
       "id": "P08",
-      "question": "Two inductors, L1 = 5 H and L2 = 15 H, are connected in parallel. The combination is connected to a load at t=0. The voltage across the parallel combination is v(t) = 900 e^{-10t} V for t > 0. The initial currents are i1(0) = 2 A and i2(0) = -8 A. (a) Find the equivalent inductance and the total current i(t). (b) Find i1(t). (c) Find i2(t). (d) Calculate the energy delivered to the load from t=0 to t=\\infty. (e) Calculate the initial stored energy. (f) Calculate the energy trapped in the inductors at t=\\infty.",
+      "question": "Two inductors, $L_1 = 5 \\text{ H}$ and $L_2 = 15 \\text{ H}$, are connected in parallel. The combination is connected to a load at $t=0$. The voltage across the parallel combination is $v(t) = 900 e^{-10t} \\text{ V}$ for $t > 0$. The initial currents are $i_1(0) = 2 \\text{ A}$ and $i_2(0) = -8 \\text{ A}$. (a) Find the equivalent inductance and the total current $i(t)$. (b) Find $i_1(t)$. (c) Find $i_2(t)$. (d) Calculate the energy delivered to the load from $t=0$ to $t=\\infty$. (e) Calculate the initial stored energy. (f) Calculate the energy trapped in the inductors at $t=\\infty$.",
       "source_base": "N8",
       "circuit_spec": {
         "type": "parallel",
@@ -564,7 +564,7 @@
     },
     {
       "id": "P09",
-      "question": "Two capacitors, C1 = 10 nF and C2 = 30 nF, are connected in series. The combination is connected to a load at t=0. The initial voltages are v1(0) = 30 V and v2(0) = 10 V, with polarities additive (positive terminals facing each other is NOT the case, they are in series aiding the total voltage drop). Specifically, the total voltage v_o = v1 + v2. The current flowing through the series combination is i(t) = -1000 e^{-500t} \\mu A for t > 0. (a) Find the equivalent capacitance and the total voltage v_o(t). (b) Find v1(t). (c) Find v2(t). (d) Calculate the energy delivered to the load. (e) Calculate the initial stored energy. (f) Calculate the energy trapped in the capacitors.",
+      "question": "Two capacitors, $C_1 = 10 \\text{ nF}$ and $C_2 = 30 \\text{ nF}$, are connected in series. The combination is connected to a load at $t=0$. The initial voltages are $v_1(0) = 30 \\text{ V}$ and $v_2(0) = 10 \\text{ V}$, with polarities additive (positive terminals facing each other is NOT the case, they are in series aiding the total voltage drop). Specifically, the total voltage $v_o = v_1 + v_2$. The current flowing through the series combination is $i(t) = -1000 e^{-500t} \\mu \\text{ A}$ for $t > 0$. (a) Find the equivalent capacitance and the total voltage $v_o(t)$. (b) Find $v_1(t)$. (c) Find $v_2(t)$. (d) Calculate the energy delivered to the load. (e) Calculate the initial stored energy. (f) Calculate the energy trapped in the capacitors.",
       "source_base": "N9",
       "circuit_spec": {
         "type": "series",
@@ -588,7 +588,7 @@
     },
     {
       "id": "P10",
-      "question": "A series circuit consists of a 160 V DC source, an inductor L = 10 mH, and a capacitor C = 250 nF. The current in the circuit is given by i_o(t) = 20 e^{-4000t}(cos 3000t + 2 sin 3000t) mA for t >= 0+. Find the initial voltage across the inductor v1(0+) and the initial voltage across the capacitor v2(0+).",
+      "question": "A series circuit consists of a 160 V DC source, an inductor $L = 10 \\text{ mH}$, and a capacitor $C = 250 \\text{ nF}$. The current in the circuit is given by $i_o(t) = 20 e^{-4000t}(\\cos 3000t + 2 \\sin 3000t) \\text{ mA}$ for $t \\ge 0+$. Find the initial voltage across the inductor $v_1(0+)$ and the initial voltage across the capacitor $v_2(0+)$.",
       "source_base": "N10",
       "circuit_spec": {
         "type": "series",
@@ -616,14 +616,14 @@
     },
     {
       "id": "P11",
-      "question": "A 200 \\mu F capacitor is subjected to a piecewise-linear voltage pulse v(t) defined as: v(t) = 0 for t < 0; v(t) = 2t for 0 \\le t < 5 s; v(t) = 10 V for 5 \\le t < 15 s; v(t) = 40 - 2t for 15 \\le t < 20 s; v(t) = 0 for t \\ge 20 s. Determine the expressions for the current i(t), power p(t), and energy w(t) stored in the capacitor for all time intervals.",
+      "question": "A $200 \\, \\mu\\text{F}$ capacitor is subjected to a piecewise-linear voltage pulse $v(t)$ defined as: $v(t) = 0$ for $t < 0$; $v(t) = 2t$ for $0 \\le t < 5 \\, \\text{s}$; $v(t) = 10 \\, \\text{V}$ for $5 \\le t < 15 \\, \\text{s}$; $v(t) = 40 - 2t$ for $15 \\le t < 20 \\, \\text{s}$; $v(t) = 0$ for $t \\ge 20 \\, \\text{s}$. Determine the expressions for the current $i(t)$, power $p(t)$, and energy $w(t)$ stored in the capacitor for all time intervals.",
       "source_base": "N11",
       "circuit_spec": {
         "type": "series",
         "components": [
           {
             "kind": "C",
-            "value": "200 \\mu F"
+            "value": "200 µF"
           }
         ],
         "current_label": "i(t)",
@@ -636,7 +636,7 @@
     },
     {
       "id": "P12",
-      "question": "A 100 nF capacitor has an initial voltage of 0 V. The current flowing into the positive terminal is defined piecewise as: i(t) = 0 for t < 10 ms; i(t) = 5(t - 0.01) A for 10 ms \\le t < 30 ms; i(t) = 0.1 - 5(t - 0.03) A for 30 ms \\le t < 50 ms; i(t) = 0 for t \\ge 50 ms. Find (a) the charge on the capacitor at t = 30 ms, (b) the voltage across the capacitor at t = 50 ms, and (c) the total energy stored in the capacitor at t = 50 ms.",
+      "question": "A 100 nF capacitor has an initial voltage of 0 V. The current flowing into the positive terminal is defined piecewise as: $i(t) = 0$ for $t < 10$ ms; $i(t) = 5(t - 0.01)$ A for $10$ ms $\\le t < 30$ ms; $i(t) = 0.1 - 5(t - 0.03)$ A for $30$ ms $\\le t < 50$ ms; $i(t) = 0$ for $t \\ge 50$ ms. Find (a) the charge on the capacitor at $t = 30$ ms, (b) the voltage across the capacitor at $t = 50$ ms, and (c) the total energy stored in the capacitor at $t = 50$ ms.",
       "source_base": "N12",
       "circuit_spec": {
         "type": "series",
@@ -650,13 +650,13 @@
         "voltage_label": "v(t)",
         "note": "Capacitor with triangular current pulse"
       },
-      "solution": "The charge $q(t)$ is the integral of current: $q(t) = q(0) + \\int_0^t i(\\tau) d\\tau$. Since $v(0)=0$, $q(0)=0$.\n\n(a) Charge at $t = 30$ ms ($0.03$ s):\n   $q(0.03) = \\int_{0.01}^{0.03} 5(\\tau - 0.01) d\\tau = \\left[ \\frac{5}{2}(\\tau - 0.01)^2 \\right]_{0.01}^{0.03} = \\frac{5}{2}(0.02)^2 = 2.5 \\times 10^{-4}$ C = 250 \\mu C.\n\n(b) Voltage at $t = 50$ ms ($0.05$ s):\n   First, find total charge at 50 ms. The current waveform is symmetric around 30 ms.\n   $\\int_{0.03}^{0.05} (0.1 - 5(\\tau - 0.03)) d\\tau$. Let $u = \\tau - 0.03$, limits 0 to 0.02.\n   $\\int_0^{0.02} (0.1 - 5u) du = [0.1u - 2.5u^2]_0^{0.02} = 0.002 - 2.5(0.0004) = 0.002 - 0.001 = 0.001$ C = 1 mC.\n   The current $i(t)$ rises from 0 to 0.1 A in 20 ms, reaching a peak of 100 mA.\n   Area 1 (10-30ms): Triangle base 20ms, height 100mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Area 2 (30-50ms): Triangle base 20ms, height 100mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Total charge $q(0.05) = 1 \\text{ mC} + 1 \\text{ mC} = 2$ mC.\n   $v(0.05) = \\frac{q(0.05)}{C} = \\frac{2 \\times 10^{-3}}{100 \\times 10^{-9}} = 20,000$ V = 20 kV.\n\n(c) Energy at $t = 50$ ms:\n   $w = \\frac{1}{2} C v^2 = \\frac{1}{2} (100 \\times 10^{-9}) (20,000)^2 = 50 \\times 10^{-9} \\times 4 \\times 10^8 = 20$ J.",
+      "solution": "The charge $q(t)$ is the integral of current: $q(t) = q(0) + \\int_0^t i(\\tau) d\\tau$. Since $v(0)=0$, $q(0)=0$.\n\n(a) Charge at $t = 30$ ms ($0.03$ s):\n   $q(0.03) = \\int_{0.01}^{0.03} 5(\\tau - 0.01) d\\tau = \\left[ \\frac{5}{2}(\\tau - 0.01)^2 \\right]_{0.01}^{0.03} = \\frac{5}{2}(0.02)^2 = 2.5 \\times 10^{-4}$ C = 250 $\\mu$C.\n\n(b) Voltage at $t = 50$ ms ($0.05$ s):\n   First, find total charge at 50 ms. The current waveform is symmetric around 30 ms.\n   $\\int_{0.03}^{0.05} (0.1 - 5(\\tau - 0.03)) d\\tau$. Let $u = \\tau - 0.03$, limits 0 to 0.02.\n   $\\int_0^{0.02} (0.1 - 5u) du = [0.1u - 2.5u^2]_0^{0.02} = 0.002 - 2.5(0.0004) = 0.002 - 0.001 = 0.001$ C = 1 mC.\n   The current $i(t)$ rises from 0 to 0.1 A in 20 ms, reaching a peak of 100 mA.\n   Area 1 (10-30ms): Triangle base 20ms, height 100mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Area 2 (30-50ms): Triangle base 20ms, height 100mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Total charge $q(0.05) = 1$ mC $+ 1$ mC $= 2$ mC.\n   $v(0.05) = \\frac{q(0.05)}{C} = \\frac{2 \\times 10^{-3}}{100 \\times 10^{-9}} = 20,000$ V = 20 kV.\n\n(c) Energy at $t = 50$ ms:\n   $w = \\frac{1}{2} C v^2 = \\frac{1}{2} (100 \\times 10^{-9}) (20,000)^2 = 50 \\times 10^{-9} \\times 4 \\times 10^8 = 20$ J.",
       "answer": "(a) $1\\ \\text{mC}$; (b) $20\\ \\text{kV}$; (c) $20\\ \\text{J}$",
       "set": 3
     },
     {
       "id": "P13",
-      "question": "A 500 pF capacitor has the following voltage functions for t \\ge 0. Find the current i(t) for each case: (a) v_C(t) = -10 V; (b) v_C(t) = 20 e^{-5t} V; (c) v_C(t) = 5 \\cos(100t) mV; (d) v_C(t) = 2 + 3 \\sin(20t) V.",
+      "question": "A $500$ pF capacitor has the following voltage functions for $t \\ge 0$. Find the current $i(t)$ for each case: (a) $v_C(t) = -10$ V; (b) $v_C(t) = 20 e^{-5t}$ V; (c) $v_C(t) = 5 \\cos(100t)$ mV; (d) $v_C(t) = 2 + 3 \\sin(20t)$ V.",
       "source_base": "H1",
       "circuit_spec": {
         "type": "series",
@@ -670,13 +670,13 @@
         "voltage_label": "v(t)",
         "note": "Capacitor current calculation"
       },
-      "solution": "Use $i(t) = C \\frac{dv}{dt}$ with $C = 500 \\times 10^{-12}$ F.\n\n(a) $v_C(t) = -10$ V (constant). $\\frac{dv}{dt} = 0$. \n   $i(t) = 0$ A.\n\n(b) $v_C(t) = 20 e^{-5t}$ V. $\\frac{dv}{dt} = 20(-5)e^{-5t} = -100 e^{-5t}$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times (-100 e^{-5t}) = -50,000 e^{-5t}$ A = $-50 e^{-5t}$ \\mu A.\n\n(c) $v_C(t) = 5 \\cos(100t)$ mV $= 5 \\times 10^{-3} \\cos(100t)$ V. \n   $\\frac{dv}{dt} = 5 \\times 10^{-3} (-100 \\sin(100t)) = -0.5 \\sin(100t)$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times (-0.5 \\sin(100t)) = -250 \\times 10^{-12} \\sin(100t)$ A = $-250 \\sin(100t)$ pA.\n\n(d) $v_C(t) = 2 + 3 \\sin(20t)$ V. $\\frac{dv}{dt} = 3(20)\\cos(20t) = 60 \\cos(20t)$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times 60 \\cos(20t) = 30,000 \\times 10^{-12} \\cos(20t)$ A = $30 \\cos(20t)$ nA.",
+      "solution": "Use $i(t) = C \\frac{dv}{dt}$ with $C = 500 \\times 10^{-12}$ F.\n\n(a) $v_C(t) = -10$ V (constant). $\\frac{dv}{dt} = 0$. \n   $i(t) = 0$ A.\n\n(b) $v_C(t) = 20 e^{-5t}$ V. $\\frac{dv}{dt} = 20(-5)e^{-5t} = -100 e^{-5t}$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times (-100 e^{-5t}) = -50,000 e^{-5t}$ A = $-50 e^{-5t}$ $\\mu$A.\n\n(c) $v_C(t) = 5 \\cos(100t)$ mV $= 5 \\times 10^{-3} \\cos(100t)$ V. \n   $\\frac{dv}{dt} = 5 \\times 10^{-3} (-100 \\sin(100t)) = -0.5 \\sin(100t)$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times (-0.5 \\sin(100t)) = -250 \\times 10^{-12} \\sin(100t)$ A = $-250 \\sin(100t)$ pA.\n\n(d) $v_C(t) = 2 + 3 \\sin(20t)$ V. $\\frac{dv}{dt} = 3(20)\\cos(20t) = 60 \\cos(20t)$ V/s. \n   $i(t) = 500 \\times 10^{-12} \\times 60 \\cos(20t) = 30,000 \\times 10^{-12} \\cos(20t)$ A = $30 \\cos(20t)$ nA.",
       "answer": "(a) $0\\ \\text{A}$; (b) $-50 e^{-5t}\\ \\mu\\text{A}$; (c) $-250 \\sin(100t)\\ \\text{pA}$; (d) $30 \\cos(20t)\\ \\text{nA}$",
       "set": 3
     },
     {
       "id": "P14",
-      "question": "A 10 pF capacitor is connected to a voltage source. The voltage waveform v(t) is piecewise linear: v(t) = 0 for t < 0; v(t) = 2t for 0 \\le t < 2 s; v(t) = 4 V for 2 \\le t < 4 s; v(t) = 12 - 2t for 4 \\le t < 6 s; v(t) = 0 for t \\ge 6 s. Determine the current i(t) for all time intervals.",
+      "question": "A $10\\text{ pF}$ capacitor is connected to a voltage source. The voltage waveform $v(t)$ is piecewise linear: $v(t) = 0$ for $t < 0$; $v(t) = 2t$ for $0 \\le t < 2\\text{ s}$; $v(t) = 4\\text{ V}$ for $2 \\le t < 4\\text{ s}$; $v(t) = 12 - 2t$ for $4 \\le t < 6\\text{ s}$; $v(t) = 0$ for $t \\ge 6\\text{ s}$. Determine the current $i(t)$ for all time intervals.",
       "source_base": "H2",
       "circuit_spec": {
         "type": "series",
@@ -696,7 +696,7 @@
     },
     {
       "id": "P15",
-      "question": "Calculate the energy stored in a capacitor at t = 1 s for the following cases: (a) C = 2 F, v_C = 5 V; (b) C = 10 pF, v_C = 2 V; (c) C = 5 nF, v_C(1) = 10 V, v_C(0) = 0 V, w_C(0) = 0 J.",
+      "question": "Calculate the energy stored in a capacitor at $t = 1$ s for the following cases: (a) $C = 2$ F, $v_C = 5$ V; (b) $C = 10$ pF, $v_C = 2$ V; (c) $C = 5$ nF, $v_C(1) = 10$ V, $v_C(0) = 0$ V, $w_C(0) = 0$ J.",
       "source_base": "H3",
       "circuit_spec": {
         "type": "series",
@@ -736,7 +736,7 @@
     },
     {
       "id": "P17",
-      "question": "Consider a series circuit consisting of a 5 V DC source, a 10 \\Omega resistor, a 20 \\Omega resistor, and a 10 \\mu F capacitor. The circuit has been in this state for a long time (DC steady state). Determine the voltage across the capacitor $v_C$ and the power dissipated in the 20 \\Omega resistor.",
+      "question": "Consider a series circuit consisting of a 5 V DC source, a $10 \\, \\Omega$ resistor, a $20 \\, \\Omega$ resistor, and a $10 \\, \\mu\\text{F}$ capacitor. The circuit has been in this state for a long time (DC steady state). Determine the voltage across the capacitor $v_C$ and the power dissipated in the $20 \\, \\Omega$ resistor.",
       "source_base": "H5",
       "circuit_spec": {
         "type": "series",
@@ -747,62 +747,62 @@
           },
           {
             "kind": "R",
-            "value": "10 \\Omega"
+            "value": "10 Ω"
           },
           {
             "kind": "R",
-            "value": "20 \\Omega"
+            "value": "20 Ω"
           },
           {
             "kind": "C",
-            "value": "10 \\mu F"
+            "value": "10 µF"
           }
         ],
         "current_label": "i",
         "voltage_label": "v",
         "note": "DC steady state series RC circuit"
       },
-      "solution": "In DC steady state, a capacitor acts as an open circuit. Therefore, no current flows through the series loop.\n   $i = 0$ A.\n\nSince no current flows, the voltage drop across the resistors is zero:\n   $v_{R1} = i R_1 = 0 \\times 10 = 0$ V.\n   $v_{R2} = i R_2 = 0 \\times 20 = 0$ V.\n\nBy KVL, the source voltage must appear entirely across the open capacitor:\n   $v_C = V_{source} - v_{R1} - v_{R2} = 5 - 0 - 0 = 5$ V.\n\nThe power dissipated in the 20 \\Omega resistor is:\n   $P_{20} = i^2 R_2 = 0^2 \\times 20 = 0$ W.",
+      "solution": "In DC steady state, a capacitor acts as an open circuit. Therefore, no current flows through the series loop.\n$i = 0$ A.\n\nSince no current flows, the voltage drop across the resistors is zero:\n$v_{R1} = i R_1 = 0 \\times 10 = 0$ V.\n$v_{R2} = i R_2 = 0 \\times 20 = 0$ V.\n\nBy KVL, the source voltage must appear entirely across the open capacitor:\n$v_C = V_{source} - v_{R1} - v_{R2} = 5 - 0 - 0 = 5$ V.\n\nThe power dissipated in the $20 \\, \\Omega$ resistor is:\n$P_{20} = i^2 R_2 = 0^2 \\times 20 = 0$ W.",
       "answer": "$v_C = 5\\ \\text{V}$; $P(20\\ \\Omega) = 0\\ \\text{W}$",
       "set": 4
     },
     {
       "id": "P18",
-      "question": "A 1 \\mu A DC current source is connected to a network. The network consists of a 5 k\\Omega resistor in series with a parallel combination of a 10 k\\Omega resistor and a 2 \\mu F capacitor. The circuit is in DC steady state. Determine the voltage across the capacitor $v_C$.",
+      "question": "A $1 \\mu A$ DC current source is connected to a network. The network consists of a $5 \\text{ k}\\Omega$ resistor in series with a parallel combination of a $10 \\text{ k}\\Omega$ resistor and a $2 \\mu F$ capacitor. The circuit is in DC steady state. Determine the voltage across the capacitor $v_C$.",
       "source_base": "H6",
       "circuit_spec": {
         "type": "parallel",
         "source": {
           "kind": "Idc",
-          "value": "1 \\mu A"
+          "value": "1 µ A"
         },
         "branches": [
           [
             {
               "kind": "R",
-              "value": "5 k\\Omega"
+              "value": "5 kΩ"
             },
             {
               "kind": "R",
-              "value": "10 k\\Omega"
+              "value": "10 kΩ"
             }
           ],
           [
             {
               "kind": "C",
-              "value": "2 \\mu F"
+              "value": "2 µF"
             }
           ]
         ],
         "note": "Current source feeding R series (R || C)"
       },
-      "solution": "In DC steady state, the capacitor acts as an open circuit. The circuit simplifies to the current source driving the series combination of the 5 k\\Omega resistor and the 10 k\\Omega resistor (since the capacitor branch is open, all current flows through the resistors).\n\nTotal resistance $R_{eq} = 5 \\text{ k}\\Omega + 10 \\text{ k}\\Omega = 15 \\text{ k}\\Omega$.\n\nThe total voltage across the parallel section (which is the voltage across the capacitor, since the capacitor is in parallel with the 10 k\\Omega resistor) is the voltage drop across the 10 k\\Omega resistor.\n\nFirst, find the current. Since it's a single loop with the source and the two resistors (capacitor open), the current $I = 1 \\mu A$.\n\nVoltage across the 10 k\\Omega resistor:\n   $v_{10k} = I \\times R_{10k} = 1 \\mu A \\times 10 \\text{ k}\\Omega = 1 \\times 10^{-6} \\times 10 \\times 10^3 = 10 \\times 10^{-3}$ V = 10 mV.\n\nSince the capacitor is in parallel with the 10 k\\Omega resistor, $v_C = v_{10k} = 10$ mV.",
+      "solution": "In DC steady state, the capacitor acts as an open circuit. The circuit simplifies to the current source driving the series combination of the $5 \\text{ k}\\Omega$ resistor and the $10 \\text{ k}\\Omega$ resistor (since the capacitor branch is open, all current flows through the resistors).\n\nTotal resistance $R_{eq} = 5 \\text{ k}\\Omega + 10 \\text{ k}\\Omega = 15 \\text{ k}\\Omega$.\n\nThe total voltage across the parallel section (which is the voltage across the capacitor, since the capacitor is in parallel with the $10 \\text{ k}\\Omega$ resistor) is the voltage drop across the $10 \\text{ k}\\Omega$ resistor.\n\nFirst, find the current. Since it's a single loop with the source and the two resistors (capacitor open), the current $I = 1 \\mu A$.\n\nVoltage across the $10 \\text{ k}\\Omega$ resistor:\n   $v_{10k} = I \\times R_{10k} = 1 \\mu A \\times 10 \\text{ k}\\Omega = 1 \\times 10^{-6} \\times 10 \\times 10^3 = 10 \\times 10^{-3}$ V = $10$ mV.\n\nSince the capacitor is in parallel with the $10 \\text{ k}\\Omega$ resistor, $v_C = v_{10k} = 10$ mV.",
       "answer": "$v_C = 10 \\text{ mV}$",
       "set": 4
     },
     {
       "id": "P19",
-      "question": "A 10 mH inductor has the following current functions for t \\ge 0. Find the voltage v(t) across the inductor for each case: (a) i(t) = 5 mA; (b) i(t) = 2 \\sin(10t) A; (c) i(t) = 1 + 2 \\cos(50t) A; (d) i(t) = 5 e^{-2t} A.",
+      "question": "A 10 mH inductor has the following current functions for $t \\ge 0$. Find the voltage $v(t)$ across the inductor for each case: (a) $i(t) = 5$ mA; (b) $i(t) = 2 \\sin(10t)$ A; (c) $i(t) = 1 + 2 \\cos(50t)$ A; (d) $i(t) = 5 e^{-2t}$ A.",
       "source_base": "H7",
       "circuit_spec": {
         "type": "series",

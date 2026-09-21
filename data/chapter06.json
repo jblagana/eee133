@@ -63,13 +63,13 @@
       "question": "In an underdamped second-order circuit, the damped natural frequency wd is calculated as:",
       "type": "mcq",
       "options": [
-        "sqrt(w0^2 + alpha^2)",
-        "sqrt(w0^2 - alpha^2)",
+        "$\\sqrt{\\omega_0^2 + \\alpha^2}$",
+        "$\\sqrt{\\omega_0^2 - \\alpha^2}$",
         "w0 - alpha",
         "w0 / alpha"
       ],
       "answer": "B",
-      "explanation": "When alpha < w0, the roots are complex conjugates with an imaginary part equal to sqrt(w0^2 - alpha^2). This imaginary part is defined as the damped natural frequency wd.",
+      "explanation": "When $\\alpha < \\omega_0$, the roots are complex conjugates with an imaginary part equal to $\\sqrt{\\omega_0^2 - \\alpha^2}$. This imaginary part is defined as the damped natural frequency $\\omega_d$.",
       "set": 1
     },
     {
@@ -130,7 +130,7 @@
     },
     {
       "id": "C10",
-      "question": "In an overdamped parallel RLC circuit, the general form of the natural response v(t) is A1 e^{s1 t} + A2 e^{s2 t}. The constant A1 is determined by the initial voltage V0 and the other constant A2. Which equation is used to solve for A1 and A2?",
+      "question": "In an overdamped parallel RLC circuit, the general form of the natural response $v(t)$ is $A_1 e^{s_1 t} + A_2 e^{s_2 t}$. The constant $A_1$ is determined by the initial voltage $V_0$ and the other constant $A_2$. Which equation is used to solve for $A_1$ and $A_2$?",
       "type": "mcq",
       "options": [
         "A1 + A2 = V0 and s1 A1 + s2 A2 = dv/dt|0+",
@@ -144,7 +144,7 @@
     },
     {
       "id": "C11",
-      "question": "For an underdamped parallel RLC circuit, the natural response is v(t) = e^{-alpha t} (A1 cos wd t + A2 sin wd t). The constant A1 is equal to:",
+      "question": "For an underdamped parallel RLC circuit, the natural response is $v(t) = e^{-\\alpha t} (A_1 \\cos \\omega_d t + A_2 \\sin \\omega_d t)$. The constant $A_1$ is equal to:",
       "type": "mcq",
       "options": [
         "V0",
@@ -158,7 +158,7 @@
     },
     {
       "id": "C12",
-      "question": "For an underdamped parallel RLC circuit, the constant A2 in the response v(t) = e^{-alpha t} (A1 cos wd t + A2 sin wd t) is calculated using:",
+      "question": "For an underdamped parallel RLC circuit, the constant $A_2$ in the response $v(t) = e^{-\\alpha t} (A_1 \\cos \\omega_d t + A_2 \\sin \\omega_d t)$ is calculated using:",
       "type": "mcq",
       "options": [
         "(dv/dt|0+ - alpha V0) / wd",
@@ -172,7 +172,7 @@
     },
     {
       "id": "C13",
-      "question": "In a series RLC circuit, the natural response current i(t) for the underdamped case is i(t) = e^{-alpha t} (B1 cos wd t + B2 sin wd t). The constant B1 is equal to:",
+      "question": "In a series RLC circuit, the natural response current $i(t)$ for the underdamped case is $i(t) = e^{-\\alpha t} (B_1 \\cos \\omega_d t + B_2 \\sin \\omega_d t)$. The constant $B_1$ is equal to:",
       "type": "mcq",
       "options": [
         "V0",
@@ -312,7 +312,7 @@
     },
     {
       "id": "C23",
-      "question": "For a critically damped circuit, the natural response has the form (A + Bt) e^{-alpha t}. This form arises because:",
+      "question": "For a critically damped circuit, the natural response has the form $(A + Bt) e^{-\\alpha t}$. This form arises because:",
       "type": "mcq",
       "options": [
         "The roots are complex conjugates",
@@ -382,7 +382,7 @@
     },
     {
       "id": "C28",
-      "question": "The characteristic equation s^2 + 2alpha s + w0^2 = 0 is derived from the differential equation governing the circuit. The coefficient of the s term is:",
+      "question": "The characteristic equation $s^2 + 2\\alpha s + \\omega_0^2 = 0$ is derived from the differential equation governing the circuit. The coefficient of the $s$ term is:",
       "type": "mcq",
       "options": [
         "2alpha",
@@ -786,7 +786,7 @@
     },
     {
       "id": "P11",
-      "question": "Consider a source-free parallel RLC circuit with R = 50 Ω, L = 2 H, and C = 0.5 mF. At t = 0, the capacitor voltage is v(0) = 0 V and the capacitor current is i_C(0+) = 10 mA. Determine the constants A1 and A2 for the capacitor current i_C(t), and find the expressions for v(t) and i_L(t) for t >= 0.",
+      "question": "Consider a source-free parallel RLC circuit with $R = 50 \\ \\Omega$, $L = 2 \\ \\text{H}$, and $C = 0.5 \\ \\text{mF}$. At $t = 0$, the capacitor voltage is $v(0) = 0 \\ \\text{V}$ and the capacitor current is $i_C(0^+) = 10 \\ \\text{mA}$. Determine the constants $A_1$ and $A_2$ for the capacitor current $i_C(t)$, and find the expressions for $v(t)$ and $i_L(t)$ for $t \\ge 0$.",
       "source_base": "N11",
       "circuit_spec": {
         "type": "parallel",
@@ -850,7 +850,7 @@
     },
     {
       "id": "P13",
-      "question": "A parallel RLC circuit has R = 100 Ω, L = 0.5 H, and C = 1 mF. A 2 A DC current source is connected to the circuit at t = 0. The initial inductor current is i_L(0) = 0 A and the initial capacitor voltage is v_C(0) = 10 V. Find the inductor current i_L(t) for t >= 0.",
+      "question": "A parallel RLC circuit has $R = 100 \\, \\Omega$, $L = 0.5 \\, \\text{H}$, and $C = 1 \\, \\text{mF}$. A $2 \\, \\text{A}$ DC current source is connected to the circuit at $t = 0$. The initial inductor current is $i_L(0) = 0 \\, \\text{A}$ and the initial capacitor voltage is $v_C(0) = 10 \\, \\text{V}$. Find the inductor current $i_L(t)$ for $t \\ge 0$.",
       "source_base": "N13",
       "circuit_spec": {
         "type": "parallel",
@@ -886,7 +886,7 @@
     },
     {
       "id": "P14",
-      "question": "A series RLC circuit has C = 1 mF. The current response for t >= 0 is given by i(t) = e^{-100t}(A_1 \\cos 300t + A_2 \\sin 300t) A. The initial current is i(0) = 0 A and the initial capacitor voltage is v_C(0) = 5 V (positive at the terminal where current enters). Determine the values of R, L, A_1, and A_2.",
+      "question": "A series RLC circuit has $C = 1 \\text{ mF}$. The current response for $t \\ge 0$ is given by $i(t) = e^{-100t}(A_1 \\cos 300t + A_2 \\sin 300t) \\text{ A}$. The initial current is $i(0) = 0 \\text{ A}$ and the initial capacitor voltage is $v_C(0) = 5 \\text{ V}$ (positive at the terminal where current enters). Determine the values of $R$, $L$, $A_1$, and $A_2$.",
       "source_base": "N14",
       "circuit_spec": {
         "type": "series",
@@ -914,7 +914,7 @@
     },
     {
       "id": "P15",
-      "question": "For the series RLC circuit described in the previous problem (R = 2 Ω, L = 10 mH, C = 1 mF), with initial conditions i(0) = 0 A and v_C(0) = 5 V, find the voltage across the capacitor v_C(t) for t >= 0.",
+      "question": "For the series RLC circuit described in the previous problem ($R = 2 \\ \\Omega$, $L = 10 \\ \\text{mH}$, $C = 1 \\ \\text{mF}$), with initial conditions $i(0) = 0 \\ \\text{A}$ and $v_C(0) = 5 \\ \\text{V}$, find the voltage across the capacitor $v_C(t)$ for $t \\geq 0$.",
       "source_base": "N15",
       "circuit_spec": {
         "type": "series",
@@ -1006,7 +1006,7 @@
     },
     {
       "id": "P18",
-      "question": "A parallel RLC circuit has R = 50 Ω, L = 0.25 H, and C = 1 mF. A 4 A DC current source is connected to the circuit at t = 0. The initial inductor current is i_L(0) = 0 A and the initial capacitor voltage is v_C(0) = 0 V. Find the inductor current i_L(t) for t >= 0.",
+      "question": "A parallel RLC circuit has $R = 50 \\ \\Omega$, $L = 0.25 \\ \\text{H}$, and $C = 1 \\ \\text{mF}$. A $4 \\ \\text{A}$ DC current source is connected to the circuit at $t = 0$. The initial inductor current is $i_L(0) = 0 \\ \\text{A}$ and the initial capacitor voltage is $v_C(0) = 0 \\ \\text{V}$. Find the inductor current $i_L(t)$ for $t \\ge 0$.",
       "source_base": "N18",
       "circuit_spec": {
         "type": "parallel",
@@ -1042,7 +1042,7 @@
     },
     {
       "id": "P19",
-      "question": "A parallel RLC circuit has R = 100 Ω, L = 1 H, and C = 1 mF. A 2 A DC current source is connected to the circuit at t = 0. The initial inductor current is i_L(0) = 0 A and the initial capacitor voltage is v_C(0) = 0 V. Find the inductor current i_L(t) for t >= 0.",
+      "question": "A parallel RLC circuit has $R = 100 \\, \\Omega$, $L = 1 \\, \\text{H}$, and $C = 1 \\, \\text{mF}$. A $2 \\, \\text{A}$ DC current source is connected to the circuit at $t = 0$. The initial inductor current is $i_L(0) = 0 \\, \\text{A}$ and the initial capacitor voltage is $v_C(0) = 0 \\, \\text{V}$. Find the inductor current $i_L(t)$ for $t \\ge 0$.",
       "source_base": "N19",
       "circuit_spec": {
         "type": "parallel",
@@ -1078,7 +1078,7 @@
     },
     {
       "id": "P20",
-      "question": "A source-free parallel RLC circuit has R = 1 kΩ and C = 2 µF. The inductor L is chosen such that the circuit is critically damped. The initial capacitor voltage is v(0) = 10 V and the initial inductor current is i_L(0) = 0 A. (a) Determine the value of L. (b) Find the expression for the capacitor voltage v(t) for t >= 0.",
+      "question": "A source-free parallel RLC circuit has $R = 1 \\text{ k}\\Omega$ and $C = 2 \\text{ \\mu F}$. The inductor $L$ is chosen such that the circuit is critically damped. The initial capacitor voltage is $v(0) = 10 \\text{ V}$ and the initial inductor current is $i_L(0) = 0 \\text{ A}$. (a) Determine the value of $L$. (b) Find the expression for the capacitor voltage $v(t)$ for $t \\ge 0$.",
       "source_base": "H1",
       "circuit_spec": {
         "type": "parallel",
@@ -1110,7 +1110,7 @@
     },
     {
       "id": "P21",
-      "question": "A source-free parallel RLC circuit consists of a resistor R, an inductor L = 2 mH, and a capacitor C = 50 mF. (a) Determine the value of R required for the circuit to be just barely overdamped (critically damped). (b) Given initial conditions v(0) = 10 V and i_L(0) = 0 A, write the expression for the capacitor voltage v(t) for t > 0.",
+      "question": "A source-free parallel RLC circuit consists of a resistor $R$, an inductor $L = 2 \\text{ mH}$, and a capacitor $C = 50 \\text{ mF}$. (a) Determine the value of $R$ required for the circuit to be just barely overdamped (critically damped). (b) Given initial conditions $v(0) = 10 \\text{ V}$ and $i_L(0) = 0 \\text{ A}$, write the expression for the capacitor voltage $v(t)$ for $t > 0$.",
       "source_base": "H2",
       "circuit_spec": {
         "type": "parallel",
