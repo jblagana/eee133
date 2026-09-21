@@ -38,12 +38,12 @@ _Provenance: which textbook problem each generated item derives from._
 ## Circuit problems
 | id | source base | textbook | base ref | generated question (truncated) |
 |---|---|---|---|---|
-| P01 | `N23` | Nils & Riedel 12e | original (method: NR Sec 8.4 four-step; no direct book figure) | At $t = 0$ a $12$ V dc source is switched in, in series with a $4$ $\Omega$ resistor… |
+| P01 | `N23` | Nils & Riedel 12e | NR Sec 8.4 four-step method (original circuit) | At $t = 0$ a $12$ V dc source is switched in, in series with a $4$ $\Omega$ resistor… |
 | P02 | `N18` | Nils & Riedel 12e | NR Prob 8.9 (Sec 8.1) | A source-free parallel RLC circuit has $L = 10$ mH, $C = 1$ $\mu$F, and a resistor $R$… |
 | P03 | `N19` | Nils & Riedel 12e | NR Prob 8.10 (Sec 8.1) | A source-free parallel RLC circuit has $L = 0.4$ H and $C = 10$ $\mu$F, and its… |
 | P04 | `N20` | Nils & Riedel 12e | NR Prob 8.5 (Sec 8.1) | A source-free parallel RLC circuit has $R = 2$ k$\Omega$, $L = 250$ mH, and $C = 10$ nF.… |
 | P05 | `N21` | Nils & Riedel 12e | NR Prob 8.6 (Sec 8.1) | A source-free parallel RLC circuit has $L = 50$ mH and $C = 50$ nF, and its resistance is… |
-| P06 | `H15` | Hayt 8e | H 8e Sec 9.6, worked circuit of Examples 9.10-9.11 (topology reconstructed from the worked text) | In the two-loop RLC circuit shown, a current source $4u(t)$ A feeds node A and a $5$ A… |
+| P06 | `H15` | Hayt 8e | H 8e Examples 9.10-9.11 (Sec 9.6; topology reconstructed from the worked text) | In the two-loop RLC circuit shown, a current source $4u(t)$ A feeds node A and a $5$ A… |
 | P07 | `H16` | Hayt 8e | H 8e Example 9.10 (Sec 9.6; same circuit as [H15]) | In the same two-source RLC circuit as the previous problem ($R = 30$ $\Omega$ between… |
 | P08 | `N22` | Nils & Riedel 12e | NR Prob 8.7 (Sec 8.1) | A source-free parallel RLC circuit has $R = 12500/3$ $\Omega$, $L = 250$ mH, and $C = 10$… |
 | P09 | `N9` | Nils & Riedel 12e | NR Prob 8.49 (Sec 8.3) | The switch has been in position a for a long time, where a $100$ V source charged the $2$… |
