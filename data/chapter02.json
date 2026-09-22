@@ -410,7 +410,7 @@
     },
     {
       "id": "P02",
-      "question": "A 20 mH inductor is connected to a voltage source v(t) = 100 sin(5000t) V. The initial current is i(0) = -2 A. (a) Find the expression for the current i(t) for t >= 0. (b) Determine the subintervals within the first cycle (0 to 0.2 ms) where the inductor is absorbing power and where it is delivering power.",
+      "question": "A 20 mH inductor is connected to a voltage source $v(t) = 100 \\sin(5000t)$ V. The initial current is $i(0) = -2$ A. (a) Find the expression for the current $i(t)$ for $t \\ge 0$. (b) Determine the subintervals within the first cycle ($0$ to $0.2$ ms) where the inductor is absorbing power and where it is delivering power.",
       "source_base": "N2",
       "circuit_spec": {
         "type": "series",
@@ -650,7 +650,7 @@
         "voltage_label": "v(t)",
         "note": "Capacitor with triangular current pulse"
       },
-      "solution": "The charge $q(t)$ is the integral of current: $q(t) = q(0) + \\int_0^t i(\\tau) d\\tau$. Since $v(0)=0$, $q(0)=0$.\n\n(a) Charge at $t = 30$ ms ($0.03$ s):\n   $q(0.03) = \\int_{0.01}^{0.03} 5(\\tau - 0.01) d\\tau = \\left[ \\frac{5}{2}(\\tau - 0.01)^2 \\right]_{0.01}^{0.03} = \\frac{5}{2}(0.02)^2 = 2.5 \\times 10^{-4}$ C = 250 $\\mu$C.\n\n(b) Voltage at $t = 50$ ms ($0.05$ s):\n   First, find total charge at 50 ms. The current waveform is symmetric around 30 ms.\n   $\\int_{0.03}^{0.05} (0.1 - 5(\\tau - 0.03)) d\\tau$. Let $u = \\tau - 0.03$, limits 0 to 0.02.\n   $\\int_0^{0.02} (0.1 - 5u) du = [0.1u - 2.5u^2]_0^{0.02} = 0.002 - 2.5(0.0004) = 0.002 - 0.001 = 0.001$ C = 1 mC.\n   The current $i(t)$ rises from 0 to 0.1 A in 20 ms, reaching a peak of 100 mA.\n   Area 1 (10-30ms): Triangle base 20ms, height 100mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Area 2 (30-50ms): Triangle base 20ms, height 100mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Total charge $q(0.05) = 1$ mC $+ 1$ mC $= 2$ mC.\n   $v(0.05) = \\frac{q(0.05)}{C} = \\frac{2 \\times 10^{-3}}{100 \\times 10^{-9}} = 20,000$ V = 20 kV.\n\n(c) Energy at $t = 50$ ms:\n   $w = \\frac{1}{2} C v^2 = \\frac{1}{2} (100 \\times 10^{-9}) (20,000)^2 = 50 \\times 10^{-9} \\times 4 \\times 10^8 = 20$ J.",
+      "solution": "The charge $q(t)$ is the integral of current: $q(t) = q(0) + \\int_0^t i(\\tau) d\\tau$. Since $v(0)=0$, $q(0)=0$.\n\n(a) Charge at $t = 30$ ms ($0.03$ s):\n   $q(0.03) = \\int_{0.01}^{0.03} 5(\\tau - 0.01) d\\tau = \\left[ \\frac{5}{2}(\\tau - 0.01)^2 \\right]_{0.01}^{0.03} = \\frac{5}{2}(0.02)^2 = 2.5 \\times 10^{-4}$ C = 250 $\\mu$C.\n\n(b) Voltage at $t = 50$ ms ($0.05$ s):\n   First, find total charge at 50 ms. The current waveform is symmetric around 30 ms.\n   $\\int_{0.03}^{0.05} (0.1 - 5(\\tau - 0.03)) d\\tau$. Let $u = \\tau - 0.03$, limits $0$ to $0.02$.\n   $\\int_0^{0.02} (0.1 - 5u) du = [0.1u - 2.5u^2]_0^{0.02} = 0.002 - 2.5(0.0004) = 0.002 - 0.001 = 0.001$ C = 1 mC.\n   The current $i(t)$ rises from 0 to 0.1 A in 20 ms, reaching a peak of 100 mA.\n   Area 1 ($10$-$30$ ms): Triangle base 20 ms, height 100 mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Area 2 ($30$-$50$ ms): Triangle base 20 ms, height 100 mA. Area = $0.5 \\times 0.02 \\times 0.1 = 0.001$ C = 1 mC.\n   Total charge $q(0.05) = 1$ mC $+ 1$ mC $= 2$ mC.\n   $v(0.05) = \\frac{q(0.05)}{C} = \\frac{2 \\times 10^{-3}}{100 \\times 10^{-9}} = 20,000$ V = 20 kV.\n\n(c) Energy at $t = 50$ ms:\n   $w = \\frac{1}{2} C v^2 = \\frac{1}{2} (100 \\times 10^{-9}) (20,000)^2 = 50 \\times 10^{-9} \\times 4 \\times 10^8 = 20$ J.",
       "answer": "(a) $1\\ \\text{mC}$; (b) $20\\ \\text{kV}$; (c) $20\\ \\text{J}$",
       "set": 3
     },
@@ -771,28 +771,36 @@
       "question": "A $1 \\mu A$ DC current source is connected to a network. The network consists of a $5 \\text{ k}\\Omega$ resistor in series with a parallel combination of a $10 \\text{ k}\\Omega$ resistor and a $2 \\mu F$ capacitor. The circuit is in DC steady state. Determine the voltage across the capacitor $v_C$.",
       "source_base": "H6",
       "circuit_spec": {
-        "type": "parallel",
+        "type": "ladder",
         "source": {
           "kind": "Idc",
-          "value": "1 µ A"
+          "value": "1 µA"
         },
-        "branches": [
-          [
-            {
-              "kind": "R",
-              "value": "5 kΩ"
-            },
-            {
-              "kind": "R",
-              "value": "10 kΩ"
-            }
-          ],
-          [
-            {
-              "kind": "C",
-              "value": "2 µF"
-            }
-          ]
+        "stages": [
+          {
+            "series": [
+              {
+                "kind": "R",
+                "value": "5 kΩ"
+              }
+            ]
+          },
+          {
+            "parallel": [
+              [
+                {
+                  "kind": "R",
+                  "value": "10 kΩ"
+                }
+              ],
+              [
+                {
+                  "kind": "C",
+                  "value": "2 µF"
+                }
+              ]
+            ]
+          }
         ],
         "note": "Current source feeding R series (R || C)"
       },
@@ -842,7 +850,7 @@
     },
     {
       "id": "P21",
-      "question": "Calculate the energy stored in a 2 nH inductor for the following current values: (a) 0 mA, (b) 2 mA, (c) 10 A, and (d) 4 sin(100t) mA for t > 0.",
+      "question": "Calculate the energy stored in a 2 nH inductor for the following current values: (a) 0 mA, (b) 2 mA, (c) 10 A, and (d) $4 \\sin(100t)$ mA for $t > 0$.",
       "source_base": "H9",
       "circuit_spec": {
         "type": "series",
@@ -913,28 +921,36 @@
       "question": "A circuit consists of a 6 V DC source in series with a 2 kΩ resistor, connected to a parallel combination of a 6 kΩ resistor and a 20 mH inductor. (a) Find the Thevenin equivalent resistance seen by the inductor. (b) Find the steady-state current through the inductor. (c) Calculate the energy stored in the inductor.",
       "source_base": "H12",
       "circuit_spec": {
-        "type": "parallel",
+        "type": "ladder",
         "source": {
           "kind": "Vdc",
           "value": "6 V"
         },
-        "branches": [
-          [
-            {
-              "kind": "R",
-              "value": "2 kΩ"
-            }
-          ],
-          [
-            {
-              "kind": "R",
-              "value": "6 kΩ"
-            },
-            {
-              "kind": "L",
-              "value": "20 mH"
-            }
-          ]
+        "stages": [
+          {
+            "series": [
+              {
+                "kind": "R",
+                "value": "2 kΩ"
+              }
+            ]
+          },
+          {
+            "parallel": [
+              [
+                {
+                  "kind": "R",
+                  "value": "6 kΩ"
+                }
+              ],
+              [
+                {
+                  "kind": "L",
+                  "value": "20 mH"
+                }
+              ]
+            ]
+          }
         ],
         "note": "Source with series R, then parallel R and L"
       },
@@ -1083,28 +1099,36 @@
       "question": "A DC circuit consists of a 10 V source in series with a 100 Ω resistor and a 5 mH inductor. There is also a 50 Ω resistor in parallel with the inductor. The circuit has been connected for a long time. (a) Find the current through the inductor. (b) Find the power dissipated by the 50 Ω resistor.",
       "source_base": "H18",
       "circuit_spec": {
-        "type": "parallel",
+        "type": "ladder",
         "source": {
           "kind": "Vdc",
           "value": "10 V"
         },
-        "branches": [
-          [
-            {
-              "kind": "R",
-              "value": "100 Ω"
-            }
-          ],
-          [
-            {
-              "kind": "R",
-              "value": "50 Ω"
-            },
-            {
-              "kind": "L",
-              "value": "5 mH"
-            }
-          ]
+        "stages": [
+          {
+            "series": [
+              {
+                "kind": "R",
+                "value": "100 Ω"
+              }
+            ]
+          },
+          {
+            "parallel": [
+              [
+                {
+                  "kind": "L",
+                  "value": "5 mH"
+                }
+              ],
+              [
+                {
+                  "kind": "R",
+                  "value": "50 Ω"
+                }
+              ]
+            ]
+          }
         ],
         "note": "DC steady state: inductor is short"
       },

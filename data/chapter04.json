@@ -49,7 +49,7 @@
         "False"
       ],
       "answer": "True",
-      "explanation": "The general solution for a first-order circuit uses the initial condition at the start of the interval (0+) and the final steady-state value to determine the transient response.",
+      "explanation": "The general solution for a first-order circuit uses the initial condition at the start of the interval ($0^+$) and the final steady-state value to determine the transient response.",
       "set": 1
     },
     {
@@ -66,7 +66,7 @@
     },
     {
       "id": "C06",
-      "question": "If the time constant tau is much smaller than the pulse width of an input signal to an RC circuit, the output voltage will:",
+      "question": "If the time constant $\\tau$ is much smaller than the pulse width of an input signal to an RC circuit, the output voltage will:",
       "type": "mcq",
       "options": [
         "Barely change from its initial value",
@@ -75,7 +75,7 @@
         "Become unbounded"
       ],
       "answer": "B",
-      "explanation": "When tau is much smaller than the pulse width, the circuit reaches steady state quickly relative to the input changes, allowing the output to track the input waveform effectively.",
+      "explanation": "When $\\tau$ is much smaller than the pulse width, the circuit reaches steady state quickly relative to the input changes, allowing the output to track the input waveform effectively.",
       "set": 2
     },
     {
@@ -128,7 +128,7 @@
     },
     {
       "id": "C11",
-      "question": "For a first-order circuit with a finite pulse input, if tau is much larger than the pulse width, the output will:",
+      "question": "For a first-order circuit with a finite pulse input, if $\\tau$ is much larger than the pulse width, the output will:",
       "type": "mcq",
       "options": [
         "Follow the input closely",
@@ -137,7 +137,7 @@
         "Become negative"
       ],
       "answer": "B",
-      "explanation": "When tau is much larger than the pulse width, the circuit is slow to respond, so the output voltage changes very little during the short duration of the pulse.",
+      "explanation": "When $\\tau$ is much larger than the pulse width, the circuit is slow to respond, so the output voltage changes very little during the short duration of the pulse.",
       "set": 3
     },
     {
@@ -226,7 +226,7 @@
     },
     {
       "id": "C19",
-      "question": "For a pulse response where tau is comparable to the pulse width, the output will exhibit a significant transient change but may not fully reach the steady-state value of the pulse.",
+      "question": "For a pulse response where $\\tau$ is comparable to the pulse width, the output will exhibit a significant transient change but may not fully reach the steady-state value of the pulse.",
       "type": "tf",
       "options": [
         "True",
@@ -310,7 +310,7 @@
     },
     {
       "id": "C26",
-      "question": "In the response equation, if x(0+) equals x(inf), the transient term vanishes and the response is constant.",
+      "question": "In the response equation, if $x(0^+)$ equals $x(\\infty)$, the transient term vanishes and the response is constant.",
       "type": "tf",
       "options": [
         "True",
@@ -322,14 +322,14 @@
     },
     {
       "id": "C27",
-      "question": "The time constant tau determines the rate at which the transient response decays or grows.",
+      "question": "The time constant $\\tau$ determines the rate at which the transient response decays or grows.",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "True",
-      "explanation": "The time constant is the reciprocal of the exponential rate; a smaller tau means faster decay, while a negative tau implies growth.",
+      "explanation": "The time constant is the reciprocal of the exponential rate; a smaller $\\tau$ means faster decay, while a negative $\\tau$ implies growth.",
       "set": 6
     },
     {
@@ -444,7 +444,7 @@
     },
     {
       "id": "P04",
-      "question": "A circuit contains two inductors, L1 = 4 H and L2 = 12 H, connected in parallel. A 20 A DC current source is connected in parallel with this combination. A switch has been in position 'a' for a long time, connecting the source to the inductors. At t=0, the switch moves to position 'b', disconnecting the source and shorting the inductor combination. Find the voltage across the inductors, v(t), for t >= 0+.",
+      "question": "A circuit contains two inductors, $L_1 = 4 \\text{ H}$ and $L_2 = 12 \\text{ H}$, connected in parallel. A $20 \\text{ A}$ DC current source is connected in parallel with this combination. A switch has been in position 'a' for a long time, connecting the source to the inductors. At $t = 0$, the switch moves to position 'b', disconnecting the source and shorting the inductor combination. Find the voltage across the inductors, $v(t)$, for $t \\ge 0^+$.",
       "source_base": "N4",
       "circuit_spec": {
         "type": "parallel",
@@ -570,7 +570,7 @@
     },
     {
       "id": "P09",
-      "question": "Two capacitors, C1 = 2 µF and C2 = 6 µF, are connected in parallel. A 100 V DC source is connected in series with a 10 kΩ resistor to this parallel combination. A switch has been in position 'a' for a long time, charging the capacitors. At t=0, the switch moves to position 'b', disconnecting the source and resistor, leaving the capacitors in a closed loop with each other (and a 5 kΩ resistor in series with the loop). Find (a) the voltage across the capacitors, v(t), for t >= 0+, and (b) the energy trapped in the capacitors as t -> infinity.",
+      "question": "Two capacitors, $C_1 = 2 \\ \\mu F$ and $C_2 = 6 \\ \\mu F$, are connected in parallel. A 100 V DC source is connected in series with a 10 kΩ resistor to this parallel combination. A switch has been in position 'a' for a long time, charging the capacitors. At $t = 0$, the switch moves to position 'b', disconnecting the source and resistor, leaving the capacitors in a closed loop with each other (and a 5 kΩ resistor in series with the loop). Find (a) the voltage across the capacitors, $v(t)$, for $t \\ge 0^+$, and (b) the energy trapped in the capacitors as $t \\to \\infty$.",
       "source_base": "N9",
       "circuit_spec": {
         "type": "parallel",
@@ -1104,7 +1104,7 @@
     },
     {
       "id": "P28",
-      "question": "Using the same circuit as P27 (10 V source, 1 kΩ resistor, 10 µF capacitor, switches A and B), but the switches change state every 400 ms. Find the energy stored in the capacitor at t = 0-, 0+, 200 ms, 400- ms, 400+ ms, and 700 ms.",
+      "question": "Using the same circuit as P27 (10 V source, 1 kΩ resistor, 10 µF capacitor, switches A and B), but the switches change state every 400 ms. Find the energy stored in the capacitor at $t = 0^-$, $0^+$, 200 ms, $400^-$ ms, $400^+$ ms, and 700 ms.",
       "source_base": "H13",
       "circuit_spec": {
         "type": "series",
@@ -1130,7 +1130,7 @@
         "voltage_label": "v_C",
         "note": "RC sequential switching, longer period"
       },
-      "solution": "Time constant $\\tau = 10$ ms. Period is 400 ms, which is 40 time constants. The capacitor will reach steady state in each half-cycle. For t < 0, $v_C(0^-) = 0$ V. Energy $w(0^-) = 0$ J. At t = 0+, $v_C(0^+) = 0$ V. Energy $w(0^+) = 0$ J. For $0 < t < 400$ ms, the capacitor charges. Since 400 ms >> 5τ, it reaches 10 V. At t = 200 ms (20τ), $v_C(200) \\approx 10$ V. Energy $w(200) = \\frac{1}{2} C V^2 = 0.5 \\times 10 \\mu \\times 100 = 500 \\mu$ J. At t = 400- ms, $v_C(400^-) \\approx 10$ V. Energy $w(400^-) = 500 \\mu$ J. At t = 400+ ms, switch B closes, shorting C. $v_C(400^+) = 0$ V. Energy $w(400^+) = 0$ J. For $400 < t < 800$ ms, it charges again. At t = 700 ms (300 ms into charging, 30τ), $v_C(700) \\approx 10$ V. Energy $w(700) = 500 \\mu$ J.",
+      "solution": "Time constant $\\tau = 10$ ms. Period is 400 ms, which is 40 time constants. The capacitor will reach steady state in each half-cycle. For $t < 0$, $v_C(0^-) = 0$ V. Energy $w(0^-) = 0$ J. At $t = 0^+$, $v_C(0^+) = 0$ V. Energy $w(0^+) = 0$ J. For $0 < t < 400$ ms, the capacitor charges. Since 400 ms $\\gg 5\\tau$, it reaches 10 V. At $t = 200$ ms ($20\\tau$), $v_C(200) \\approx 10$ V. Energy $w(200) = \\frac{1}{2} C V^2 = 0.5 \\times 10 \\mu \\times 100 = 500 \\mu$ J. At $t = 400^-$ ms, $v_C(400^-) \\approx 10$ V. Energy $w(400^-) = 500 \\mu$ J. At $t = 400^+$ ms, switch B closes, shorting C. $v_C(400^+) = 0$ V. Energy $w(400^+) = 0$ J. For $400 < t < 800$ ms, it charges again. At $t = 700$ ms (300 ms into charging, $30\\tau$), $v_C(700) \\approx 10$ V. Energy $w(700) = 500 \\mu$ J.",
       "answer": "$w(0^-) = 0\\ \\text{J}$, $w(0^+) = 0\\ \\text{J}$, $w(200\\ \\text{ms}) = 500\\ \\mu\\text{J}$, $w(400^-) = 500\\ \\mu\\text{J}$, $w(400^+) = 0\\ \\text{J}$, $w(700\\ \\text{ms}) = 500\\ \\mu\\text{J}$.",
       "set": 6
     },

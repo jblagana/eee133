@@ -7,7 +7,7 @@
       "question": "In the general first-order solution $x(t) = x(\\infty) + [x(0^+) - x(\\infty)] e^{-t/\\tau}$, what does the term $x(\\infty)$ represent?",
       "type": "mcq",
       "options": [
-        "The initial value of the state variable at t = 0-",
+        "The initial value of the state variable at $t = 0^+$",
         "The steady-state value of the state variable as t approaches infinity",
         "The time constant of the circuit",
         "The natural response component of the solution"
@@ -21,10 +21,10 @@
       "question": "For a source-free RC circuit, the voltage across the capacitor is given by $v_C(t) = V_0 e^{-t/RC}$. What is the value of $v_C(t)$ at $t = RC$?",
       "type": "mcq",
       "options": [
-        "0.368 V0",
-        "0.632 V0",
-        "0.5 V0",
-        "0.135 V0"
+        "0.368 $V_0$",
+        "0.632 $V_0$",
+        "0.5 $V_0$",
+        "0.135 $V_0$"
       ],
       "answer": "A",
       "explanation": "Substituting $t = \\tau = RC$ into the exponential decay equation yields $e^{-1}$, which is approximately $0.368$.",
@@ -44,7 +44,7 @@
     },
     {
       "id": "C04",
-      "question": "In a source-free RL circuit, if the resistance R is doubled, what happens to the time constant tau?",
+      "question": "In a source-free RL circuit, if the resistance R is doubled, what happens to the time constant $\\tau$?",
       "type": "mcq",
       "options": [
         "It is doubled",
@@ -100,7 +100,7 @@
     },
     {
       "id": "C08",
-      "question": "The time constant tau for an RC circuit is defined as the product of the Thevenin resistance seen by the capacitor and the capacitance. Is this statement true or false?",
+      "question": "The time constant $\\tau$ for an RC circuit is defined as the product of the Thevenin resistance seen by the capacitor and the capacitance. Is this statement true or false?",
       "type": "tf",
       "options": [
         "True",
@@ -115,10 +115,10 @@
       "question": "For a first-order circuit, the half-life of the exponential response (time for the variable to drop to half its initial value in a source-free circuit) is given by which expression?",
       "type": "mcq",
       "options": [
-        "tau ln(2)",
-        "tau / ln(2)",
-        "2 tau",
-        "tau ln(10)"
+        "$\\tau \\ln(2)$",
+        "$\\frac{\\tau}{\\ln(2)}$",
+        "$2\\tau$",
+        "$\\tau \\ln(10)$"
       ],
       "answer": "A",
       "explanation": "Setting $e^{-t/\\tau} = 0.5$ and solving for $t$ gives $t = -\\tau \\ln(0.5) = \\tau \\ln(2)$.",
@@ -140,7 +140,7 @@
     },
     {
       "id": "C11",
-      "question": "If a circuit has been in a steady state for a long time before t = 0, what is the value of the current through a capacitor at t = 0-?",
+      "question": "If a circuit has been in a steady state for a long time before $t = 0$, what is the value of the current through a capacitor at $t = 0^-$?",
       "type": "mcq",
       "options": [
         "Maximum",
@@ -154,7 +154,7 @@
     },
     {
       "id": "C12",
-      "question": "The unit step function u(t) is defined as 0 for t < 0 and 1 for t > 0. Is this statement true or false?",
+      "question": "The unit step function $u(t)$ is defined as $0$ for $t < 0$ and $1$ for $t > 0$. Is this statement true or false?",
       "type": "tf",
       "options": [
         "True",
@@ -169,10 +169,10 @@
       "question": "In a source-free RL circuit, the inductor current decays as $i_L(t) = I_0 e^{-t/\\tau}$. What is the value of $i_L(t)$ at $t = 2\\tau$?",
       "type": "mcq",
       "options": [
-        "0.368 I0",
-        "0.135 I0",
-        "0.05 I0",
-        "0.5 I0"
+        "0.368 $I_0$",
+        "0.135 $I_0$",
+        "0.05 $I_0$",
+        "0.5 $I_0$"
       ],
       "answer": "B",
       "explanation": "Substituting $t = 2\\tau$ into the equation yields $e^{-2}$, which is approximately $0.135$.",
@@ -180,7 +180,7 @@
     },
     {
       "id": "C14",
-      "question": "Which of the following statements about the Thevenin resistance Rth used to calculate tau is correct?",
+      "question": "Which of the following statements about the Thevenin resistance $R_{th}$ used to calculate $\\tau$ is correct?",
       "type": "mcq",
       "options": [
         "It is the resistance of the energy storage element itself",
@@ -189,7 +189,7 @@
         "It is the resistance of the voltage source"
       ],
       "answer": "B",
-      "explanation": "To find tau, one must calculate the Thevenin equivalent resistance looking into the terminals of the capacitor or inductor with all independent sources deactivated.",
+      "explanation": "To find $\\tau$, one must calculate the Thevenin equivalent resistance looking into the terminals of the capacitor or inductor with all independent sources deactivated.",
       "set": 3
     },
     {
@@ -209,10 +209,10 @@
       "question": "What is the time required to dissipate 95% of the initial energy in a source-free first-order circuit?",
       "type": "mcq",
       "options": [
-        "1 tau",
-        "2 tau",
-        "3 tau",
-        "4 tau"
+        "1$\\tau$",
+        "2$\\tau$",
+        "3$\\tau$",
+        "4$\\tau$"
       ],
       "answer": "C",
       "explanation": "The decay of voltage in a first-order circuit is characterized by the exponential function $v(t) = V_0 e^{-t/\\tau}$. At one time constant ($t = \\tau$), the voltage decays to $e^{-1} \\approx 0.368$ of its initial value, meaning $63.2\\%$ of the initial voltage has dissipated. At two time constants ($t = 2\\tau$), the voltage is $e^{-2} \\approx 0.135$ of the initial value, corresponding to an $86.5\\%$ reduction. At three time constants ($t = 3\\tau$), the voltage decays to $e^{-3} \\approx 0.05$ of its initial value. Consequently, $95\\%$ of the initial voltage has dissipated after three time constants.",
@@ -220,13 +220,13 @@
     },
     {
       "id": "C17",
-      "question": "In a source-free RC circuit, what is the value of the capacitor voltage at t = 3 tau?",
+      "question": "In a source-free RC circuit, what is the value of the capacitor voltage at $t = 3\\tau$?",
       "type": "mcq",
       "options": [
-        "0.368 V0",
-        "0.135 V0",
-        "0.05 V0",
-        "0.018 V0"
+        "$0.368 V_0$",
+        "$0.135 V_0$",
+        "$0.05 V_0$",
+        "$0.018 V_0$"
       ],
       "answer": "C",
       "explanation": "The exponential decay factor $e^{-3}$ is approximately $0.05$, meaning $5\\%$ of the initial voltage remains.",
@@ -260,7 +260,7 @@
     },
     {
       "id": "C20",
-      "question": "If the capacitance C in a source-free RC circuit is doubled, what happens to the time constant tau?",
+      "question": "If the capacitance $C$ in a source-free $RC$ circuit is doubled, what happens to the time constant $\\tau$?",
       "type": "mcq",
       "options": [
         "It is halved",
@@ -314,13 +314,13 @@
     },
     {
       "id": "C24",
-      "question": "The time to dissipate a fraction f of the initial energy in a source-free circuit is given by t = -tau/2 ln(1-f). If f = 0.5, what is t?",
+      "question": "The time to dissipate a fraction $f$ of the initial energy in a source-free circuit is given by $t = -\\frac{\\tau}{2} \\ln(1-f)$. If $f = 0.5$, what is $t$?",
       "type": "mcq",
       "options": [
-        "tau ln(2)",
-        "tau/2 ln(2)",
-        "2 tau",
-        "tau ln(10)"
+        "$\\tau \\ln(2)$",
+        "$\\frac{\\tau}{2} \\ln(2)$",
+        "$2\\tau$",
+        "$\\tau \\ln(10)$"
       ],
       "answer": "B",
       "explanation": "Substituting $f = 0.5$ into the formula yields:\n$$ t = -\\frac{\\tau}{2} \\ln(0.5) = \\frac{\\tau}{2} \\ln(2) $$",
@@ -328,7 +328,7 @@
     },
     {
       "id": "C25",
-      "question": "In a circuit with a switch that closes at t = 0, the source is described as V u(t). What is the value of the source voltage for t < 0?",
+      "question": "In a circuit with a switch that closes at $t = 0$, the source is described as $V u(t)$. What is the value of the source voltage for $t < 0$?",
       "type": "mcq",
       "options": [
         "V",
@@ -342,7 +342,7 @@
     },
     {
       "id": "C26",
-      "question": "The initial condition x(0+) is found by analyzing the circuit at t = 0+ with the capacitor replaced by a voltage source and the inductor replaced by a current source. Is this statement true or false?",
+      "question": "The initial condition $x(0^+)$ is found by analyzing the circuit at $t = 0^+$ with the capacitor replaced by a voltage source and the inductor replaced by a current source. Is this statement true or false?",
       "type": "tf",
       "options": [
         "True",
@@ -357,10 +357,10 @@
       "question": "In a source-free RL circuit, the energy stored in the inductor decays as $w(t) = w(0) e^{-2t/\\tau}$. What is the time constant for the energy decay?",
       "type": "mcq",
       "options": [
-        "tau",
-        "tau/2",
-        "2 tau",
-        "tau/4"
+        "$\\tau$",
+        "$\\frac{\\tau}{2}$",
+        "$2\\tau$",
+        "$\\frac{\\tau}{4}$"
       ],
       "answer": "B",
       "explanation": "The exponent is $-2t/\\tau$, which can be written as $-t/(\\tau/2)$, so the effective time constant for energy decay is $\\tau/2$.",
@@ -371,9 +371,9 @@
       "question": "If a first-order circuit is source-free, what is the value of x(infinity) in the general solution?",
       "type": "mcq",
       "options": [
-        "x(0+)",
+        "$x(0^+)$",
         "0",
-        "tau",
+        "$\\tau$",
         "1"
       ],
       "answer": "B",
@@ -382,7 +382,7 @@
     },
     {
       "id": "C29",
-      "question": "The 10% point of an exponential decay (time to reach 10% of initial value) is given by t = tau ln(10). Is this statement true or false?",
+      "question": "The 10% point of an exponential decay (time to reach 10% of initial value) is given by $t = \\tau \\ln(10)$. Is this statement true or false?",
       "type": "tf",
       "options": [
         "True",
@@ -408,7 +408,7 @@
   "problems": [
     {
       "id": "P01",
-      "question": "A circuit consists of a 12 V DC source, a 40 Ω resistor, and a 0.4 H inductor in series. A switch in series with the source has been closed for a long time and opens at t = 0. (a) Find the inductor current i(t) for t >= 0+. (b) Determine the percentage of the initial energy stored in the inductor that is dissipated by the resistor after one time constant (t = τ).",
+      "question": "A circuit consists of a 12 V DC source, a 40 Ω resistor, and a 0.4 H inductor in series. A switch in series with the source has been closed for a long time and opens at $t = 0$. (a) Find the inductor current $i(t)$ for $t \\ge 0^+$. (b) Determine the percentage of the initial energy stored in the inductor that is dissipated by the resistor after one time constant ($t = \\tau$).",
       "source_base": "N1",
       "circuit_spec": {
         "type": "series",
@@ -436,7 +436,7 @@
     },
     {
       "id": "P02",
-      "question": "A circuit contains a 10 V DC source, a 50 Ω resistor, and a 0.5 H inductor in series. A switch in series with the source has been open for a long time and closes at t = 0. (a) Find the inductor current i(0+) and i(∞). (b) Find the expression for i(t) for t >= 0. (c) Calculate the time required for the current to reach 90% of its final value.",
+      "question": "A circuit contains a 10 V DC source, a 50 Ω resistor, and a 0.5 H inductor in series. A switch in series with the source has been open for a long time and closes at $t = 0$. (a) Find the inductor current $i(0^+)$ and $i(\\infty)$. (b) Find the expression for $i(t)$ for $t \\ge 0$. (c) Calculate the time required for the current to reach 90% of its final value.",
       "source_base": "N2",
       "circuit_spec": {
         "type": "series",
@@ -536,7 +536,7 @@
     },
     {
       "id": "P06",
-      "question": "A circuit consists of a 20 V DC source, a 100 Ω resistor, and a 50 mH inductor in series. A switch in series with the source has been closed for a long time and opens at t = 0. Find the voltage across the inductor, $v_L(t)$, for t >= 0+.",
+      "question": "A circuit consists of a 20 V DC source, a 100 Ω resistor, and a 50 mH inductor in series. A switch in series with the source has been closed for a long time and opens at $t = 0$. Find the voltage across the inductor, $v_L(t)$, for $t \\ge 0^+$.",
       "source_base": "N6",
       "circuit_spec": {
         "type": "series",
@@ -600,7 +600,7 @@
     },
     {
       "id": "P08",
-      "question": "A circuit consists of a 100 mA DC current source connected to a parallel combination of two branches. Branch 1 has a resistor R1 = 20 kΩ. Branch 2 has a resistor R2 = 5 kΩ in series with a capacitor C = 0.2 mF. A switch in series with the current source has been open for a long time and closes at t = 0. (a) Find the current i1(0+) through R1. (b) Find the current i2(0+) through the capacitor branch. (c) Find the expression for i1(t) for t >= 0.",
+      "question": "A circuit consists of a 100 mA DC current source connected to a parallel combination of two branches. Branch 1 has a resistor $R_1 = 20 \\text{ k}\\Omega$. Branch 2 has a resistor $R_2 = 5 \\text{ k}\\Omega$ in series with a capacitor $C = 0.2 \\text{ mF}$. A switch in series with the current source has been open for a long time and closes at $t = 0$. (a) Find the current $i_1(0^+)$ through $R_1$. (b) Find the current $i_2(0^+)$ through the capacitor branch. (c) Find the expression for $i_1(t)$ for $t \\ge 0$.",
       "source_base": "N8",
       "circuit_spec": {
         "type": "parallel",
@@ -662,22 +662,38 @@
     },
     {
       "id": "P10",
-      "question": "A circuit consists of a 30 V DC source, a resistor R1 = 10 kΩ, and a resistor R2 = 30 kΩ in series. A capacitor C = 5 nF is connected in parallel with R2. A switch in series with the source has been closed for a long time and opens at t = 0. Find the voltage across the capacitor, $v_C(t)$, for t >= 0.",
+      "question": "A circuit consists of a 30 V DC source, a resistor $R_1 = 10 \\text{ k}\\Omega$, and a resistor $R_2 = 30 \\text{ k}\\Omega$ in series. A capacitor $C = 5 \\text{ nF}$ is connected in parallel with $R_2$. A switch in series with the source has been closed for a long time and opens at $t = 0$. Find the voltage across the capacitor, $v_C(t)$, for $t \\ge 0$.",
       "source_base": "N10",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "ladder",
+        "source": {
+          "kind": "Vdc",
+          "value": "30 V"
+        },
+        "stages": [
           {
-            "kind": "Vdc",
-            "value": "30 V"
+            "series": [
+              {
+                "kind": "R",
+                "value": "10 kΩ"
+              }
+            ]
           },
           {
-            "kind": "R",
-            "value": "10 kΩ"
-          },
-          {
-            "kind": "R",
-            "value": "30 kΩ"
+            "parallel": [
+              [
+                {
+                  "kind": "R",
+                  "value": "30 kΩ"
+                }
+              ],
+              [
+                {
+                  "kind": "C",
+                  "value": "5 nF"
+                }
+              ]
+            ]
           }
         ],
         "current_label": "i",
@@ -920,7 +936,7 @@
     },
     {
       "id": "P19",
-      "question": "A source-free RL network consists of an inductor L = 2 H in parallel with two resistors. Resistor R1 = 4 Ω is in series with a switch, and Resistor R2 = 12 Ω is always connected. The switch is open for t < 0 and closes at t = 0. The initial inductor current is i(0) = 6 A. (a) Find the time constant for t > 0. (b) Find the inductor current i(t) for t >= 0.",
+      "question": "A source-free RL network consists of an inductor $L = 2$ H in parallel with two resistors. Resistor $R_1 = 4$ Ω is in series with a switch, and Resistor $R_2 = 12$ Ω is always connected. The switch is open for $t < 0$ and closes at $t = 0$. The initial inductor current is $i(0) = 6$ A. (a) Find the time constant for $t > 0$. (b) Find the inductor current $i(t)$ for $t \\ge 0$.",
       "source_base": "H4",
       "circuit_spec": {
         "type": "parallel",
@@ -984,7 +1000,7 @@
     },
     {
       "id": "P21",
-      "question": "Design a series RC circuit with a resistor R and a capacitor C. The capacitor voltage is v(0) = 12 V and v(6 ms) = 1.5 V. (a) Determine the time constant tau. (b) If R = 2 kΩ, calculate the required capacitance C.",
+      "question": "Design a series RC circuit with a resistor $R$ and a capacitor $C$. The capacitor voltage is $v(0) = 12$ V and $v(6 \\text{ ms}) = 1.5$ V. (a) Determine the time constant $\\tau$. (b) If $R = 2$ kΩ, calculate the required capacitance $C$.",
       "source_base": "H6",
       "circuit_spec": {
         "type": "series",
@@ -1008,7 +1024,7 @@
     },
     {
       "id": "P22",
-      "question": "A 24 V DC source is connected to a series RC circuit via a switch that opens at t = 0 after being closed for a long time. The resistor is 4 kΩ and the capacitor is 2 µF. (a) Find the time constant tau. (b) Determine the capacitor voltage v(t) for t > 0. (c) Calculate the energy stored in the capacitor at t = 10 ms.",
+      "question": "A 24 V DC source is connected to a series RC circuit via a switch that opens at $t = 0$ after being closed for a long time. The resistor is 4 kΩ and the capacitor is 2 µF. (a) Find the time constant $\\tau$. (b) Determine the capacitor voltage $v(t)$ for $t > 0$. (c) Calculate the energy stored in the capacitor at $t = 10$ ms.",
       "source_base": "H7",
       "circuit_spec": {
         "type": "series",
@@ -1065,7 +1081,7 @@
       "circuit_spec": {
         "type": "parallel",
         "source": {
-          "kind": "Iac",
+          "kind": "Idc",
           "value": "2 mA"
         },
         "branches": [
@@ -1094,22 +1110,38 @@
     },
     {
       "id": "P25",
-      "question": "An RL circuit consists of a 1 mH inductor in series with a resistor network. The network is formed by a 2 kΩ resistor in parallel with a 4 kΩ resistor, and this combination is in series with a 1 kΩ resistor. The initial inductor current is $i_L(0^-) = 4$ mA. (a) Find the Thevenin resistance $R_{th}$ seen by the inductor. (b) Determine the time constant tau. (c) Find the inductor current $i_L(t)$ for t > 0.",
+      "question": "An RL circuit consists of a 1 mH inductor in series with a resistor network. The network is formed by a 2 kΩ resistor in parallel with a 4 kΩ resistor, and this combination is in series with a 1 kΩ resistor. The initial inductor current is $i_L(0^-) = 4$ mA. (a) Find the Thevenin resistance $R_{th}$ seen by the inductor. (b) Determine the time constant $\\tau$. (c) Find the inductor current $i_L(t)$ for $t > 0$.",
       "source_base": "H10",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "ladder",
+        "stages": [
           {
-            "kind": "R",
-            "value": "1 kΩ"
+            "parallel": [
+              [
+                {
+                  "kind": "R",
+                  "value": "2 kΩ"
+                }
+              ],
+              [
+                {
+                  "kind": "R",
+                  "value": "4 kΩ"
+                }
+              ]
+            ]
           },
           {
-            "kind": "R",
-            "value": "2 kΩ || 4 kΩ"
-          },
-          {
-            "kind": "L",
-            "value": "1 mH"
+            "series": [
+              {
+                "kind": "R",
+                "value": "1 kΩ"
+              },
+              {
+                "kind": "L",
+                "value": "1 mH"
+              }
+            ]
           }
         ],
         "current_label": "i_L",
@@ -1160,7 +1192,7 @@
     },
     {
       "id": "P27",
-      "question": "A circuit contains a 5 A DC current source in parallel with a 4 Ω resistor. This combination is connected to a parallel pair of inductors: L1 = 2 H and L2 = 6 H. A switch connects the inductor pair to the source at t = 0. (a) Find the equivalent inductance $L_{eq}$. (b) Find the time constant tau. (c) Determine the current $i_1(t)$ through L1 for t > 0.",
+      "question": "A circuit contains a 5 A DC current source in parallel with a 4 Ω resistor. This combination is connected to a parallel pair of inductors: $L_1 = 2$ H and $L_2 = 6$ H. A switch connects the inductor pair to the source at $t = 0$. (a) Find the equivalent inductance $L_{eq}$. (b) Find the time constant $\\tau$. (c) Determine the current $i_1(t)$ through $L_1$ for $t > 0$.",
       "source_base": "H12",
       "circuit_spec": {
         "type": "parallel",
@@ -1220,7 +1252,7 @@
     },
     {
       "id": "P29",
-      "question": "Design a source-free RL circuit such that the voltage across the resistor is $v_R(0) = 10$ V and $v_R(10 \\text{ ms}) = 3.68$ V. (a) Determine the time constant tau. (b) If the inductor L is 5 mH, find the resistance R. (c) Find the initial inductor current $i_L(0)$ if R = 100 Ω.",
+      "question": "Design a source-free RL circuit such that the voltage across the resistor is $v_R(0) = 10$ V and $v_R(10 \\text{ ms}) = 3.68$ V. (a) Determine the time constant $\\tau$. (b) If the inductor L is 5 mH, find the resistance R. (c) Find the initial inductor current $i_L(0)$ if R = 100 Ω.",
       "source_base": "H14",
       "circuit_spec": {
         "type": "series",
@@ -1249,7 +1281,7 @@
       "circuit_spec": {
         "type": "parallel",
         "source": {
-          "kind": "Iac",
+          "kind": "Idc",
           "value": "2 mA"
         },
         "branches": [

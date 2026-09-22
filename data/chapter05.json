@@ -8,7 +8,7 @@
       "type": "mcq",
       "options": [
         "$v_{out}(t) = -\\frac{1}{R_1 C_f} \\int_{0}^{t} v_s(\\tau) d\\tau + v_{out}(0)$",
-        "vout(t) = -R1 Cf (dvs/dt)",
+        "$v_{out}(t) = -R_1 C_f \\frac{dv_s}{dt}$",
         "vout(t) = -(Rf/R1) vs(t)",
         "$v_{out}(t) = \\frac{1}{R_1 C_f} \\int_{0}^{t} v_s(\\tau) d\\tau$"
       ],
@@ -18,7 +18,7 @@
     },
     {
       "id": "C02",
-      "question": "An ideal op-amp integrator is connected to a constant DC input voltage Vs. What happens to the output voltage over time?",
+      "question": "An ideal op-amp integrator is connected to a constant DC input voltage $V_s$. What happens to the output voltage over time?",
       "type": "tf",
       "options": [
         "True",
@@ -70,7 +70,7 @@
     },
     {
       "id": "C06",
-      "question": "In a first-order RC circuit with a pulse input of width Tw, if the time constant tau is much smaller than Tw (tau << Tw), what is the behavior of the capacitor voltage vC?",
+      "question": "In a first-order RC circuit with a pulse input of width $T_w$, if the time constant $\\tau$ is much smaller than $T_w$ ($\\tau \\ll T_w$), what is the behavior of the capacitor voltage $v_C$?",
       "type": "mcq",
       "options": [
         "vC remains constant at zero",
@@ -79,26 +79,26 @@
         "vC oscillates at the pulse frequency"
       ],
       "answer": "B",
-      "explanation": "When tau is much smaller than the pulse width, the capacitor charges and discharges quickly, causing vC to follow the input pulse shape closely, acting as a differentiator at the edges.",
+      "explanation": "When $\\tau$ is much smaller than the pulse width, the capacitor charges and discharges quickly, causing $v_C$ to follow the input pulse shape closely, acting as a differentiator at the edges.",
       "set": 2
     },
     {
       "id": "C07",
-      "question": "In a first-order RC circuit with a pulse input of width Tw, if the time constant tau is much larger than Tw (tau >> Tw), what is the approximate peak voltage across the capacitor vC for a 0 to Vin pulse?",
+      "question": "In a first-order RC circuit with a pulse input of width $T_w$, if the time constant $\\tau$ is much larger than $T_w$ ($\\tau \\gg T_w$), what is the approximate peak voltage across the capacitor $v_C$ for a 0 to $V_{in}$ pulse?",
       "type": "mcq",
       "options": [
-        "Vin",
-        "Vin * (tau / Tw)",
-        "Vin * (Tw / tau)",
+        "$V_{in}$",
+        "$V_{in} \\cdot (\\tau / T_w)$",
+        "$V_{in} \\cdot (T_w / \\tau)$",
         "0 V"
       ],
       "answer": "C",
-      "explanation": "When tau >> Tw, the capacitor charges only slightly during the pulse duration. The peak voltage is approximately the initial slope times the time, which is (Vin/tau) * Tw, or Vin * (Tw/tau).",
+      "explanation": "When $\\tau \\gg T_w$, the capacitor charges only slightly during the pulse duration. The peak voltage is approximately the initial slope times the time, which is $(V_{in}/\\tau) \\cdot T_w$, or $V_{in} \\cdot (T_w/\\tau)$.",
       "set": 2
     },
     {
       "id": "C08",
-      "question": "A 0-5 V pulse of width 1 ms is applied to a series RC circuit with output taken across the capacitor. If the time constant tau is 100 ms, what is the approximate peak voltage across the capacitor?",
+      "question": "A $0$-$5$ V pulse of width $1$ ms is applied to a series RC circuit with output taken across the capacitor. If the time constant $\\tau$ is $100$ ms, what is the approximate peak voltage across the capacitor?",
       "type": "mcq",
       "options": [
         "5 V",
@@ -126,13 +126,13 @@
     },
     {
       "id": "C10",
-      "question": "The time t for an RC circuit to charge from a lower threshold Vlow to a higher threshold Vhigh towards a supply voltage Vs is given by which formula?",
+      "question": "The time $t$ for an RC circuit to charge from a lower threshold $V_{low}$ to a higher threshold $V_{high}$ towards a supply voltage $V_s$ is given by which formula?",
       "type": "mcq",
       "options": [
-        "t = RC ln((Vs - Vlow)/(Vs - Vhigh))",
-        "t = RC ln((Vhigh - Vlow)/Vs)",
-        "t = RC ln(Vs/(Vhigh - Vlow))",
-        "t = RC (Vhigh - Vlow) / Vs"
+        "$t = RC \\ln\\!\\left(\\frac{V_s - V_{low}}{V_s - V_{high}}\\right)$",
+        "$t = RC \\ln\\!\\left(\\frac{V_{high} - V_{low}}{V_s}\\right)$",
+        "$t = RC \\ln\\!\\left(\\frac{V_s}{V_{high} - V_{low}}\\right)$",
+        "$t = RC \\frac{V_{high} - V_{low}}{V_s}$"
       ],
       "answer": "A",
       "explanation": "The standard RC charging equation, solved for the time interval between two voltage levels, is given by:\n\n$$t = RC \\ln\\left(\\frac{V_s - V_{\\text{start}}}{V_s - V_{\\text{end}}}\\right)$$\n\nwhere $V_{\\text{start}}$ corresponds to $V_{\\text{low}}$ and $V_{\\text{end}}$ corresponds to $V_{\\text{high}}$.",
@@ -140,14 +140,14 @@
     },
     {
       "id": "C11",
-      "question": "In a pacemaker circuit that charges a capacitor to a threshold Vmax from a supply Vs, the time to reach the threshold is t = RC ln(Vs/(Vs - Vmax)). If Vmax is increased, what happens to the time t?",
+      "question": "In a pacemaker circuit that charges a capacitor to a threshold $V_{max}$ from a supply $V_s$, the time to reach the threshold is $t = RC \\ln\\!\\left(\\frac{V_s}{V_s - V_{max}}\\right)$. If $V_{max}$ is increased, what happens to the time $t$?",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "True",
-      "explanation": "As Vmax increases, the denominator (Vs - Vmax) decreases, making the argument of the logarithm larger. Since the natural logarithm is an increasing function, the time t increases.",
+      "explanation": "As $V_{max}$ increases, the denominator ($V_s - V_{max}$) decreases, making the argument of the logarithm larger. Since the natural logarithm is an increasing function, the time $t$ increases.",
       "set": 3
     },
     {
@@ -194,7 +194,7 @@
     },
     {
       "id": "C15",
-      "question": "In a first-order RC high-pass filter (differentiator), the condition for effective differentiation is that the time constant tau is much smaller than the rise time of the input signal.",
+      "question": "In a first-order RC high-pass filter (differentiator), the condition for effective differentiation is that the time constant $\\tau$ is much smaller than the rise time of the input signal.",
       "type": "tf",
       "options": [
         "True",
@@ -206,14 +206,14 @@
     },
     {
       "id": "C16",
-      "question": "In a first-order RC low-pass filter (integrator), the condition for effective integration is that the time constant tau is much larger than the pulse width of the input signal.",
+      "question": "In a first-order RC low-pass filter (integrator), the condition for effective integration is that the time constant $\\tau$ is much larger than the pulse width of the input signal.",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "True",
-      "explanation": "For integration, the capacitor must charge slowly relative to the input pulse duration, which requires a large time constant tau >> Tw.",
+      "explanation": "For integration, the capacitor must charge slowly relative to the input pulse duration, which requires a large time constant $\\tau \\gg T_w$.",
       "set": 4
     },
     {
@@ -232,7 +232,7 @@
     },
     {
       "id": "C18",
-      "question": "If the input pulse width Tw in an RC integrator is doubled while keeping tau constant and tau >> Tw, what happens to the peak capacitor voltage?",
+      "question": "If the input pulse width $T_w$ in an RC integrator is doubled while keeping $\\tau$ constant and $\\tau \\gg T_w$, what happens to the peak capacitor voltage?",
       "type": "mcq",
       "options": [
         "It is halved",
@@ -241,7 +241,7 @@
         "It is quadrupled"
       ],
       "answer": "C",
-      "explanation": "The peak voltage is approximately Vin * (Tw/tau). If Tw is doubled, the numerator doubles, so the peak voltage doubles.",
+      "explanation": "The peak voltage is approximately $V_{in} \\cdot \\frac{T_w}{\\tau}$. If $T_w$ is doubled, the numerator doubles, so the peak voltage doubles.",
       "set": 4
     },
     {
@@ -260,7 +260,7 @@
     },
     {
       "id": "C20",
-      "question": "The time constant tau of an RC circuit is defined as the product of resistance and capacitance.",
+      "question": "The time constant $\\tau$ of an RC circuit is defined as the product of resistance and capacitance.",
       "type": "tf",
       "options": [
         "True",
@@ -279,12 +279,12 @@
         "False"
       ],
       "answer": "False",
-      "explanation": "The slope of the ramp is determined by Vs/(R1 Cf). The initial condition vout(0) only shifts the starting point of the ramp, not its slope.",
+      "explanation": "The slope of the ramp is determined by $\\frac{V_s}{R_1 C_f}$. The initial condition $v_{out}(0)$ only shifts the starting point of the ramp, not its slope.",
       "set": 5
     },
     {
       "id": "C22",
-      "question": "In a pacemaker circuit, if the supply voltage Vs is increased while Vmax and RC remain constant, what happens to the time to reach the threshold?",
+      "question": "In a pacemaker circuit, if the supply voltage $V_s$ is increased while $V_{max}$ and $RC$ remain constant, what happens to the time to reach the threshold?",
       "type": "mcq",
       "options": [
         "It increases",
@@ -310,7 +310,7 @@
     },
     {
       "id": "C24",
-      "question": "In a first-order RC circuit, if the time constant tau is equal to the pulse width Tw, the output across the capacitor will be a perfect replica of the input pulse.",
+      "question": "In a first-order RC circuit, if the time constant $\\tau$ is equal to the pulse width $T_w$, the output across the capacitor will be a perfect replica of the input pulse.",
       "type": "tf",
       "options": [
         "True",
@@ -322,13 +322,13 @@
     },
     {
       "id": "C25",
-      "question": "The formula for the time to charge an RC circuit from 0 to a threshold Vmax with supply Vs is t = RC ln(Vs/(Vs - Vmax)). What is the time if Vmax = Vs/2?",
+      "question": "The formula for the time to charge an RC circuit from 0 to a threshold $V_{max}$ with supply $V_s$ is $t = RC \\ln\\!\\left(\\frac{V_s}{V_s - V_{max}}\\right)$. What is the time if $V_{max} = V_s/2$?",
       "type": "mcq",
       "options": [
-        "RC ln(2)",
-        "RC ln(1/2)",
-        "RC ln(4)",
-        "RC ln(1)"
+        "$RC \\ln(2)$",
+        "$RC \\ln(1/2)$",
+        "$RC \\ln(4)$",
+        "$RC \\ln(1)$"
       ],
       "answer": "A",
       "explanation": "Substituting $V_{\\text{max}} = \\frac{V_s}{2}$ into the formula gives\n$$ t = RC \\ln\\left(\\frac{V_s}{V_s - \\frac{V_s}{2}}\\right) = RC \\ln\\left(\\frac{V_s}{\\frac{V_s}{2}}\\right) = RC \\ln(2) $$",
@@ -350,7 +350,7 @@
     },
     {
       "id": "C27",
-      "question": "If the capacitance C in an RC integrator is doubled, what happens to the time constant tau?",
+      "question": "If the capacitance C in an RC integrator is doubled, what happens to the time constant $\\tau$?",
       "type": "mcq",
       "options": [
         "It is halved",
@@ -364,14 +364,14 @@
     },
     {
       "id": "C28",
-      "question": "In a symmetric astable multivibrator, the frequency is independent of the supply voltage Vs.",
+      "question": "In a symmetric astable multivibrator, the frequency is independent of the supply voltage $V_s$.",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "True",
-      "explanation": "The timing is determined by the RC time constant and the resistor ratios that set the threshold fractions. The absolute value of Vs cancels out in the logarithmic time equations for symmetric thresholds.",
+      "explanation": "The timing is determined by the $RC$ time constant and the resistor ratios that set the threshold fractions. The absolute value of $V_s$ cancels out in the logarithmic time equations for symmetric thresholds.",
       "set": 6
     },
     {

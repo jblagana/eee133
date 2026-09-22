@@ -18,25 +18,25 @@
     },
     {
       "id": "C02",
-      "question": "Does the presence of a dc source in a second-order circuit change the characteristic equation or the damping factor alpha?",
+      "question": "Does the presence of a dc source in a second-order circuit change the characteristic equation or the damping factor $\\alpha$?",
       "type": "tf",
       "options": [
         "True",
         "False"
       ],
       "answer": "False",
-      "explanation": "The characteristic equation is derived from the homogeneous part of the differential equation, which is found by turning off independent sources; thus, the dc source does not affect alpha, w0, or the damping case.",
+      "explanation": "The characteristic equation is derived from the homogeneous part of the differential equation, which is found by turning off independent sources; thus, the dc source does not affect $\\alpha$, $\\omega_0$, or the damping case.",
       "set": 1
     },
     {
       "id": "C03",
-      "question": "For a series RLC circuit, the damping factor alpha is calculated using which formula?",
+      "question": "For a series RLC circuit, the damping factor $\\alpha$ is calculated using which formula?",
       "type": "mcq",
       "options": [
-        "alpha = 1/(2RC)",
-        "alpha = R/(2L)",
-        "alpha = 1/sqrt(LC)",
-        "alpha = R/L"
+        "$\\alpha = \\frac{1}{2RC}$",
+        "$\\alpha = \\frac{R}{2L}$",
+        "$\\alpha = \\frac{1}{\\sqrt{LC}}$",
+        "$\\alpha = \\frac{R}{L}$"
       ],
       "answer": "B",
       "explanation": "In a series RLC circuit, the damping factor is defined as $\\alpha = \\frac{R}{2L}$, while the resonant frequency is $\\omega_0 = \\frac{1}{\\sqrt{LC}}$.",
@@ -44,13 +44,13 @@
     },
     {
       "id": "C04",
-      "question": "In a parallel RLC circuit, increasing the resistance R results in which change to the damping factor alpha?",
+      "question": "In a parallel RLC circuit, increasing the resistance R results in which change to the damping factor $\\alpha$?",
       "type": "mcq",
       "options": [
-        "alpha increases, making the circuit more damped",
-        "alpha decreases, making the circuit more oscillatory",
-        "alpha remains constant regardless of R",
-        "alpha becomes negative"
+        "$\\alpha$ increases, making the circuit more damped",
+        "$\\alpha$ decreases, making the circuit more oscillatory",
+        "$\\alpha$ remains constant regardless of R",
+        "$\\alpha$ becomes negative"
       ],
       "answer": "B",
       "explanation": "For a parallel RLC circuit, $\\alpha = \\frac{1}{2RC}$; therefore, increasing $R$ decreases $\\alpha$, which moves the circuit toward underdamping and more oscillatory behavior.",
@@ -72,7 +72,7 @@
     },
     {
       "id": "C06",
-      "question": "The capacitor voltage vC(t) and inductor current iL(t) can change instantaneously at t = 0+ if a switch is operated.",
+      "question": "The capacitor voltage $v_C(t)$ and inductor current $i_L(t)$ can change instantaneously at $t = 0^+$ if a switch is operated.",
       "type": "tf",
       "options": [
         "True",
@@ -84,13 +84,13 @@
     },
     {
       "id": "C07",
-      "question": "To determine the initial derivative dvC/dt at t = 0+, one must analyze the circuit at t = 0+ by replacing the capacitor with which equivalent element?",
+      "question": "To determine the initial derivative $\\frac{dv_C}{dt}$ at $t = 0^+$, one must analyze the circuit at $t = 0^+$ by replacing the capacitor with which equivalent element?",
       "type": "mcq",
       "options": [
         "A short circuit",
         "An open circuit",
-        "A voltage source with value vC(0+)",
-        "A current source with value iC(0+)"
+        "A voltage source with value $v_C(0^+)$",
+        "A current source with value $i_C(0^+)$"
       ],
       "answer": "C",
       "explanation": "At $t = 0^+$, the capacitor acts as a voltage source with value $v_C(0^+)$ because its voltage is fixed, allowing the calculation of the initial current and thus the derivative $\\frac{dv_C}{dt} = \\frac{i_C(0^+)}{C}$.",
@@ -98,13 +98,13 @@
     },
     {
       "id": "C08",
-      "question": "For a critically damped second-order circuit, the relationship between alpha and w0 is:",
+      "question": "For a critically damped second-order circuit, the relationship between $\\alpha$ and $\\omega_0$ is:",
       "type": "mcq",
       "options": [
-        "alpha > w0",
-        "alpha < w0",
-        "alpha = w0",
-        "alpha = 2w0"
+        "$\\alpha > \\omega_0$",
+        "$\\alpha < \\omega_0$",
+        "$\\alpha = \\omega_0$",
+        "$\\alpha = 2\\omega_0$"
       ],
       "answer": "C",
       "explanation": "Critical damping occurs when the characteristic roots are real and repeated, which happens when $\\alpha = \\omega_0$.",
@@ -124,13 +124,13 @@
     },
     {
       "id": "C10",
-      "question": "In a series RLC step response, the final capacitor voltage vC(inf) is determined by:",
+      "question": "In a series RLC step response, the final capacitor voltage $v_C(\\infty)$ is determined by:",
       "type": "mcq",
       "options": [
         "The initial inductor current",
-        "The damping factor alpha",
+        "The damping factor $\\alpha$",
         "The dc source voltage and the resistive voltage divider at steady state",
-        "The resonant frequency w0"
+        "The resonant frequency $\\omega_0$"
       ],
       "answer": "C",
       "explanation": "At t -> infinity, the inductor is a short and the capacitor is an open; the final voltage is determined by the dc source and the resistive network (voltage divider) in the steady-state circuit.",
@@ -164,7 +164,7 @@
     },
     {
       "id": "C13",
-      "question": "The damping factor alpha for a parallel RLC circuit is given by:",
+      "question": "The damping factor $\\alpha$ for a parallel RLC circuit is given by:",
       "type": "mcq",
       "options": [
         "R/(2L)",
@@ -178,13 +178,13 @@
     },
     {
       "id": "C14",
-      "question": "If a second-order circuit is underdamped, the damped natural frequency wd is calculated as:",
+      "question": "If a second-order circuit is underdamped, the damped natural frequency $\\omega_d$ is calculated as:",
       "type": "mcq",
       "options": [
         "$\\sqrt{\\alpha^2 - \\omega_0^2}$",
         "$\\sqrt{\\omega_0^2 - \\alpha^2}$",
-        "w0 - alpha",
-        "alpha + w0"
+        "$\\omega_0 - \\alpha$",
+        "$\\alpha + \\omega_0$"
       ],
       "answer": "B",
       "explanation": "For underdamped circuits ($\\alpha < \\omega_0$), the damped frequency is $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2}$, which determines the oscillation period.",
@@ -192,7 +192,7 @@
     },
     {
       "id": "C15",
-      "question": "The derivative diL/dt at t = 0+ can be determined directly from the initial inductor current iL(0+).",
+      "question": "The derivative $\\frac{di_L}{dt}$ at $t = 0^+$ can be determined directly from the initial inductor current $i_L(0^+)$.",
       "type": "tf",
       "options": [
         "True",
@@ -210,7 +210,7 @@
         "Find the steady-state value $x_{ss}$",
         "Write the second-order differential equation",
         "Solve for the constants A1 and A2",
-        "Calculate the damping factor alpha"
+        "Calculate the damping factor $\\alpha$"
       ],
       "answer": "B",
       "explanation": "The first step is to derive the second-order differential equation governing the circuit variable, which allows for the subsequent identification of the characteristic equation.",
@@ -249,10 +249,10 @@
       "question": "The settling time of a second-order circuit's transient response is approximately:",
       "type": "mcq",
       "options": [
-        "1/alpha",
-        "2/alpha",
-        "4/alpha",
-        "10/alpha"
+        "$\\frac{1}{\\alpha}$",
+        "$\\frac{2}{\\alpha}$",
+        "$\\frac{4}{\\alpha}$",
+        "$\\frac{10}{\\alpha}$"
       ],
       "answer": "C",
       "explanation": "The transient envelope decays as $e^{-\\alpha t}$; it is considered settled (within $\\sim 2\\%$ of the final value) when $e^{-\\alpha t}$ is small, which occurs at $t \\approx \\frac{4}{\\alpha}$.",
@@ -272,13 +272,13 @@
     },
     {
       "id": "C21",
-      "question": "The initial conditions vC(0+) and iL(0+) are determined by the circuit state at:",
+      "question": "The initial conditions $v_C(0^+)$ and $i_L(0^+)$ are determined by the circuit state at:",
       "type": "mcq",
       "options": [
         "t = infinity",
-        "t = 0- (just before switching)",
+        "$t = 0^-$ (just before switching)",
         "t = 1 second",
-        "t = 0+ (just after switching) without continuity"
+        "$t = 0^+$ (just after switching) without continuity"
       ],
       "answer": "B",
       "explanation": "Due to continuity, $v_C(0^+) = v_C(0^-)$ and $i_L(0^+) = i_L(0^-)$; thus, the initial conditions are determined by the steady-state or transient state of the circuit just before the switch operation.",
@@ -286,7 +286,7 @@
     },
     {
       "id": "C22",
-      "question": "For a series RLC circuit, the resonant frequency w0 is given by:",
+      "question": "For a series RLC circuit, the resonant frequency $\\omega_0$ is given by:",
       "type": "mcq",
       "options": [
         "1/sqrt(LC)",
@@ -300,7 +300,7 @@
     },
     {
       "id": "C23",
-      "question": "If alpha = 0 in a second-order circuit, the response is:",
+      "question": "If $\\alpha = 0$ in a second-order circuit, the response is:",
       "type": "mcq",
       "options": [
         "Overdamped",
@@ -318,8 +318,8 @@
       "type": "mcq",
       "options": [
         "$x_{ss}$ and $\\alpha$",
-        "x(0+) and dx/dt at t = 0+",
-        "w0 and wd",
+        "$x(0^+)$ and $\\frac{dx}{dt}$ at $t = 0^+$",
+        "$\\omega_0$ and $\\omega_d$",
         "The source voltage and resistance"
       ],
       "answer": "B",
@@ -328,7 +328,7 @@
     },
     {
       "id": "C25",
-      "question": "In a parallel RLC circuit, increasing the capacitance C will increase the damping factor alpha.",
+      "question": "In a parallel RLC circuit, increasing the capacitance C will increase the damping factor $\\alpha$.",
       "type": "tf",
       "options": [
         "True",
@@ -343,10 +343,10 @@
       "question": "The period of oscillation Td for an underdamped second-order circuit is given by:",
       "type": "mcq",
       "options": [
-        "2 pi / w0",
-        "2 pi / alpha",
-        "2 pi / wd",
-        "pi / wd"
+        "$\\frac{2\\pi}{\\omega_0}$",
+        "$\\frac{2\\pi}{\\alpha}$",
+        "$\\frac{2\\pi}{\\omega_d}$",
+        "$\\frac{\\pi}{\\omega_d}$"
       ],
       "answer": "C",
       "explanation": "The damped oscillation period is determined by the damped frequency $\\omega_d$, so $T_d = \\frac{2\\pi}{\\omega_d}$.",
@@ -354,7 +354,7 @@
     },
     {
       "id": "C27",
-      "question": "A dc source stepped at t = 0 affects the initial conditions vC(0+) and iL(0+).",
+      "question": "A dc source stepped at $t = 0$ affects the initial conditions $v_C(0^+)$ and $i_L(0^+)$.",
       "type": "tf",
       "options": [
         "True",
@@ -392,12 +392,12 @@
     },
     {
       "id": "C30",
-      "question": "The damping case (over, critical, or under) is determined by comparing alpha with:",
+      "question": "The damping case (over, critical, or under) is determined by comparing $\\alpha$ with:",
       "type": "mcq",
       "options": [
         "The source voltage $V_S$",
         "The initial current iL(0)",
-        "The resonant frequency w0",
+        "The resonant frequency $\\omega_0$",
         "The resistance R"
       ],
       "answer": "C",
@@ -1685,7 +1685,7 @@
         "voltage_label": "v_C",
         "note": "Switch opens at t=0, source-free RLC loop"
       },
-      "solution": "1. Initial Conditions: For t < 0, switch closed, DC steady state. The capacitor is an open circuit and blocks DC current, so $v_C(0^-) = 30$ V and $i_L(0^-) = 0$ A. Thus $v_C(0^+) = 30$ V, $i_L(0^+) = 0$ A.\n2. Final Values: For t ≥ 0, source-free. All energy dissipates. $v_C(\\infty) = 0$ V, $i_L(\\infty) = 0$ A.\n3. Circuit Parameters:\n$$ \\alpha = \\frac{R}{2L} = \\frac{100}{2(2)} = 25 \\text{ rad/s} $$\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{2 \\times 0.01}} = \\frac{1}{\\sqrt{0.02}} \\approx 7.071 \\text{ rad/s} $$\n4. Damping Type: $\\alpha > \\omega_0$ (25 > 7.071), overdamped. Roots:\n$$ s_{1,2} = -25 \\pm \\sqrt{25^2 - 7.071^2} = -25 \\pm \\sqrt{625 - 50} = -25 \\pm \\sqrt{575} \\approx -25 \\pm 23.979 $$\n$s_1 \\approx -1.021$ rad/s, $s_2 \\approx -48.979$ rad/s.\n5. General Solution: $v_C(t) = A_1 e^{-1.021 t} + A_2 e^{-48.979 t}$.\n6. Applying Initial Conditions: $v_C(0) = A_1 + A_2 = 30$. $\\frac{dv_C(0)}{dt} = \\frac{i_L(0)}{C} = \\frac{0}{0.01} = 0$ V/s.\n$$ -1.021 A_1 - 48.979 A_2 = 0 $$\nWith $A_1 = 30 - A_2$: $-1.021(30 - A_2) - 48.979 A_2 = 0 \\Rightarrow -30.63 - 47.958 A_2 = 0 \\Rightarrow A_2 \\approx -0.639$, $A_1 \\approx 30.639$.\n7. Final Expression: $v_C(t) = 30.64 e^{-1.021 t} - 0.64 e^{-48.98 t}$ V for t ≥ 0+.",
+      "solution": "1. Initial Conditions: For $t < 0$, switch closed, DC steady state. The capacitor is an open circuit and blocks DC current, so $v_C(0^-) = 30$ V and $i_L(0^-) = 0$ A. Thus $v_C(0^+) = 30$ V, $i_L(0^+) = 0$ A.\n2. Final Values: For $t \\ge 0$, source-free. All energy dissipates. $v_C(\\infty) = 0$ V, $i_L(\\infty) = 0$ A.\n3. Circuit Parameters:\n$$ \\alpha = \\frac{R}{2L} = \\frac{100}{2(2)} = 25 \\text{ rad/s} $$\n$$ \\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{2 \\times 0.01}} = \\frac{1}{\\sqrt{0.02}} \\approx 7.071 \\text{ rad/s} $$\n4. Damping Type: $\\alpha > \\omega_0$ (25 > 7.071), overdamped. Roots:\n$$ s_{1,2} = -25 \\pm \\sqrt{25^2 - 7.071^2} = -25 \\pm \\sqrt{625 - 50} = -25 \\pm \\sqrt{575} \\approx -25 \\pm 23.979 $$\n$s_1 \\approx -1.021$ rad/s, $s_2 \\approx -48.979$ rad/s.\n5. General Solution: $v_C(t) = A_1 e^{-1.021 t} + A_2 e^{-48.979 t}$.\n6. Applying Initial Conditions: $v_C(0) = A_1 + A_2 = 30$. $\\frac{dv_C(0)}{dt} = \\frac{i_L(0)}{C} = \\frac{0}{0.01} = 0$ V/s.\n$$ -1.021 A_1 - 48.979 A_2 = 0 $$\nWith $A_1 = 30 - A_2$: $-1.021(30 - A_2) - 48.979 A_2 = 0 \\Rightarrow -30.63 - 47.958 A_2 = 0 \\Rightarrow A_2 \\approx -0.639$, $A_1 \\approx 30.639$.\n7. Final Expression: $v_C(t) = 30.64 e^{-1.021 t} - 0.64 e^{-48.98 t}$ V for $t \\ge 0^+$.",
       "answer": "$$v_C(t) = 30.64 e^{-1.021 t} - 0.64 e^{-48.98 t} \\text{ V}$$",
       "set": 4,
       "parts": [
@@ -1865,7 +1865,7 @@
       "circuit_spec": {
         "type": "parallel",
         "source": {
-          "kind": "Iac",
+          "kind": "Idc",
           "value": "i1(t)=8-10u(t) mA"
         },
         "branches": [

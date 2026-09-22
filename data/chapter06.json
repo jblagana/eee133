@@ -4,7 +4,7 @@
   "conceptual": [
     {
       "id": "C01",
-      "question": "In a parallel RLC circuit, if the resistance R is increased while L and C remain constant, what happens to the neper frequency alpha?",
+      "question": "In a parallel RLC circuit, if the resistance $R$ is increased while $L$ and $C$ remain constant, what happens to the neper frequency $\\alpha$?",
       "type": "mcq",
       "options": [
         "Alpha increases",
@@ -18,7 +18,7 @@
     },
     {
       "id": "C02",
-      "question": "In a series RLC circuit, if the resistance R is increased while L and C remain constant, what happens to the neper frequency alpha?",
+      "question": "In a series RLC circuit, if the resistance $R$ is increased while $L$ and $C$ remain constant, what happens to the neper frequency $\\alpha$?",
       "type": "mcq",
       "options": [
         "Alpha increases",
@@ -46,13 +46,13 @@
     },
     {
       "id": "C04",
-      "question": "For a second-order circuit to be critically damped, the relationship between the neper frequency alpha and the resonant frequency w0 must be:",
+      "question": "For a second-order circuit to be critically damped, the relationship between the neper frequency $\\alpha$ and the resonant frequency $\\omega_0$ must be:",
       "type": "mcq",
       "options": [
-        "alpha > w0",
-        "alpha < w0",
-        "alpha = w0",
-        "alpha = 2w0"
+        "$\\alpha > \\omega_0$",
+        "$\\alpha < \\omega_0$",
+        "$\\alpha = \\omega_0$",
+        "$\\alpha = 2\\omega_0$"
       ],
       "answer": "C",
       "explanation": "Critical damping occurs when the discriminant of the characteristic equation is zero, which requires $\\alpha^2 - \\omega_0^2 = 0$, or equivalently $\\alpha = \\omega_0$. This results in a repeated real root.",
@@ -60,13 +60,13 @@
     },
     {
       "id": "C05",
-      "question": "In an underdamped second-order circuit, the damped natural frequency wd is calculated as:",
+      "question": "In an underdamped second-order circuit, the damped natural frequency $\\omega_d$ is calculated as:",
       "type": "mcq",
       "options": [
         "$\\sqrt{\\omega_0^2 + \\alpha^2}$",
         "$\\sqrt{\\omega_0^2 - \\alpha^2}$",
-        "w0 - alpha",
-        "w0 / alpha"
+        "$\\omega_0 - \\alpha$",
+        "$\\frac{\\omega_0}{\\alpha}$"
       ],
       "answer": "B",
       "explanation": "When $\\alpha < \\omega_0$, the roots are complex conjugates with an imaginary part equal to $\\sqrt{\\omega_0^2 - \\alpha^2}$. This imaginary part is defined as the damped natural frequency $\\omega_d$.",
@@ -77,10 +77,10 @@
       "question": "The natural response of an underdamped circuit is characterized by a decaying sinusoid with a period Td given by:",
       "type": "mcq",
       "options": [
-        "2pi / w0",
-        "2pi / alpha",
-        "2pi / wd",
-        "pi / wd"
+        "$\\frac{2\\pi}{\\omega_0}$",
+        "$\\frac{2\\pi}{\\alpha}$",
+        "$\\frac{2\\pi}{\\omega_d}$",
+        "$\\frac{\\pi}{\\omega_d}$"
       ],
       "answer": "C",
       "explanation": "The oscillatory component of the underdamped response is governed by the damped natural frequency $\\omega_d$. Therefore, the period of oscillation is $T_d = \\frac{2\\pi}{\\omega_d}$.",
@@ -102,13 +102,13 @@
     },
     {
       "id": "C08",
-      "question": "In a parallel RLC circuit, the initial derivative of the capacitor voltage dv/dt|0+ is determined by the initial currents through the resistor and inductor. If v(0+) = V0 and iL(0+) = I0, which expression correctly represents dv/dt|0+?",
+      "question": "In a parallel RLC circuit, the initial derivative of the capacitor voltage $\\left.\\frac{dv}{dt}\\right|_{0^+}$ is determined by the initial currents through the resistor and inductor. If $v(0^+) = V_0$ and $i_L(0^+) = I_0$, which expression correctly represents $\\left.\\frac{dv}{dt}\\right|_{0^+}$?",
       "type": "mcq",
       "options": [
-        "-V0/(RC) - I0/C",
-        "V0/(RC) + I0/C",
-        "-V0/(RC) + I0/C",
-        "V0/(RC) - I0/C"
+        "$-\\frac{V_0}{RC} - \\frac{I_0}{C}$",
+        "$\\frac{V_0}{RC} + \\frac{I_0}{C}$",
+        "$-\\frac{V_0}{RC} + \\frac{I_0}{C}$",
+        "$\\frac{V_0}{RC} - \\frac{I_0}{C}$"
       ],
       "answer": "A",
       "explanation": "Applying KCL at the top node of a parallel RLC circuit: $i_C + i_R + i_L = 0$. Thus, $i_C(0^+) = -i_R(0^+) - i_L(0^+) = -\\frac{V_0}{R} - I_0$. Since $i_C = C \\frac{dv}{dt}$, $\\left. \\frac{dv}{dt} \\right|_{0^+} = \\frac{-\\frac{V_0}{R} - I_0}{C} = -\\frac{V_0}{RC} - \\frac{I_0}{C}$.",
@@ -116,13 +116,13 @@
     },
     {
       "id": "C09",
-      "question": "For a series RLC circuit, the initial derivative of the capacitor voltage dvC/dt|0+ is equal to:",
+      "question": "For a series RLC circuit, the initial derivative of the capacitor voltage $\\left.\\frac{dv_C}{dt}\\right|_{0^+}$ is equal to:",
       "type": "mcq",
       "options": [
-        "I0/L",
-        "I0/C",
-        "-I0/C",
-        "V0/L"
+        "$\\frac{I_0}{L}$",
+        "$\\frac{I_0}{C}$",
+        "$-\\frac{I_0}{C}$",
+        "$\\frac{V_0}{L}$"
       ],
       "answer": "B",
       "explanation": "In a series RLC circuit, the current through the capacitor is identical to the inductor current, $i_C(t) = i_L(t) = i(t)$. Since $i_C = C \\frac{dv_C}{dt}$, it follows that $\\left. \\frac{dv_C}{dt} \\right|_{0^+} = \\frac{i(0^+)}{C} = \\frac{I_0}{C}$.",
@@ -133,10 +133,10 @@
       "question": "In an overdamped parallel RLC circuit, the general form of the natural response $v(t)$ is $A_1 e^{s_1 t} + A_2 e^{s_2 t}$. The constant $A_1$ is determined by the initial voltage $V_0$ and the other constant $A_2$. Which equation is used to solve for $A_1$ and $A_2$?",
       "type": "mcq",
       "options": [
-        "A1 + A2 = V0 and s1 A1 + s2 A2 = dv/dt|0+",
-        "A1 - A2 = V0 and s1 A1 - s2 A2 = dv/dt|0+",
-        "A1 + A2 = dv/dt|0+ and s1 A1 + s2 A2 = V0",
-        "A1 = V0 and A2 = dv/dt|0+"
+        "$A_1 + A_2 = V_0$ and $s_1 A_1 + s_2 A_2 = \\left.\\frac{dv}{dt}\\right|_{0^+}$",
+        "$A_1 - A_2 = V_0$ and $s_1 A_1 - s_2 A_2 = \\left.\\frac{dv}{dt}\\right|_{0^+}$",
+        "$A_1 + A_2 = \\left.\\frac{dv}{dt}\\right|_{0^+}$ and $s_1 A_1 + s_2 A_2 = V_0$",
+        "$A_1 = V_0$ and $A_2 = \\left.\\frac{dv}{dt}\\right|_{0^+}$"
       ],
       "answer": "A",
       "explanation": "The constants are determined by applying the initial conditions. At $t=0$, $v(0) = A_1 + A_2 = V_0$. The derivative is given by $v'(t) = s_1 A_1 e^{s_1 t} + s_2 A_2 e^{s_2 t}$, so $v'(0) = s_1 A_1 + s_2 A_2 = \\left. \\frac{dv}{dt} \\right|_{0^+}$.",
@@ -147,10 +147,10 @@
       "question": "For an underdamped parallel RLC circuit, the natural response is $v(t) = e^{-\\alpha t} (A_1 \\cos \\omega_d t + A_2 \\sin \\omega_d t)$. The constant $A_1$ is equal to:",
       "type": "mcq",
       "options": [
-        "V0",
-        "dv/dt|0+",
-        "alpha V0",
-        "wd V0"
+        "$V_0$",
+        "$\\left.\\frac{dv}{dt}\\right|_{0^+}$",
+        "$\\alpha V_0$",
+        "$\\omega_d V_0$"
       ],
       "answer": "A",
       "explanation": "Evaluating the response at $t=0$, $v(0) = e^{0} (A_1 \\cos 0 + A_2 \\sin 0) = A_1$. Since $v(0) = V_0$, it follows that $A_1 = V_0$.",
@@ -161,10 +161,10 @@
       "question": "For an underdamped parallel RLC circuit, the constant $A_2$ in the response $v(t) = e^{-\\alpha t} (A_1 \\cos \\omega_d t + A_2 \\sin \\omega_d t)$ is calculated using:",
       "type": "mcq",
       "options": [
-        "(dv/dt|0+ - alpha V0) / wd",
-        "(dv/dt|0+ + alpha V0) / wd",
-        "(dv/dt|0+ + alpha V0) * wd",
-        "dv/dt|0+ / wd"
+        "$\\left.\\frac{dv}{dt}\\right|_{0^+} - \\alpha V_0) / \\omega_d$",
+        "$\\left.\\frac{dv}{dt}\\right|_{0^+} + \\alpha V_0) / \\omega_d$",
+        "$\\left.\\frac{dv}{dt}\\right|_{0^+} + \\alpha V_0) * \\omega_d$",
+        "$\\left.\\frac{dv}{dt}\\right|_{0^+} / \\omega_d$"
       ],
       "answer": "B",
       "explanation": "Differentiating $v(t)$ and evaluating at $t=0$ yields $\\left.\\frac{dv}{dt}\\right|_{0^+} = -\\alpha A_1 + \\omega_d A_2$. Substituting $A_1 = V_0$ gives $\\left.\\frac{dv}{dt}\\right|_{0^+} = -\\alpha V_0 + \\omega_d A_2$. Solving for $A_2$ yields $A_2 = \\frac{\\left.\\frac{dv}{dt}\\right|_{0^+} + \\alpha V_0}{\\omega_d}$.",
@@ -175,10 +175,10 @@
       "question": "In a series RLC circuit, the natural response current $i(t)$ for the underdamped case is $i(t) = e^{-\\alpha t} (B_1 \\cos \\omega_d t + B_2 \\sin \\omega_d t)$. The constant $B_1$ is equal to:",
       "type": "mcq",
       "options": [
-        "V0",
-        "I0",
-        "dv/dt|0+",
-        "alpha I0"
+        "$V_0$",
+        "$I_0$",
+        "$\\left.\\frac{dv}{dt}\\right|_{0^+}$",
+        "$\\alpha I_0$"
       ],
       "answer": "B",
       "explanation": "Evaluating the current response at $t=0$, $i(0) = e^{0} (B_1 \\cos 0 + B_2 \\sin 0) = B_1$. Since the initial inductor current is $i(0) = I_0$, it follows that $B_1 = I_0$.",
@@ -186,7 +186,7 @@
     },
     {
       "id": "C14",
-      "question": "The resonant frequency w0 for both series and parallel RLC circuits is given by:",
+      "question": "The resonant frequency $\\omega_0$ for both series and parallel RLC circuits is given by:",
       "type": "mcq",
       "options": [
         "1/sqrt(LC)",
@@ -209,7 +209,7 @@
         "Constant amplitude oscillations"
       ],
       "answer": "B",
-      "explanation": "Overdamping (alpha > w0) results in two distinct real negative roots. The response is a sum of two decaying exponentials with no imaginary part, meaning there is no oscillation. It is slower than critical damping.",
+      "explanation": "Overdamping ($\\alpha > \\omega_0$) results in two distinct real negative roots. The response is a sum of two decaying exponentials with no imaginary part, meaning there is no oscillation. It is slower than critical damping.",
       "set": 3
     },
     {
@@ -217,10 +217,10 @@
       "question": "The settling time for a second-order circuit's natural response to decay to approximately 1.8% of its initial value is roughly:",
       "type": "mcq",
       "options": [
-        "1/alpha",
-        "2/alpha",
-        "4/alpha",
-        "10/alpha"
+        "$\\frac{1}{\\alpha}$",
+        "$\\frac{2}{\\alpha}$",
+        "$\\frac{4}{\\alpha}$",
+        "$\\frac{10}{\\alpha}$"
       ],
       "answer": "C",
       "explanation": "The envelope of the response decays as $e^{-\\alpha t}$. Setting $e^{-\\alpha t} = 0.018$ (approximately $1.8\\%$) yields $-\\alpha t = \\ln(0.018) \\approx -4$. Therefore, the settling time is approximately $t = \\frac{4}{\\alpha}$.",
@@ -298,7 +298,7 @@
     },
     {
       "id": "C22",
-      "question": "If alpha = 0 in a second-order circuit, the circuit is considered:",
+      "question": "If $\\alpha = 0$ in a second-order circuit, the circuit is considered:",
       "type": "mcq",
       "options": [
         "Overdamped",
@@ -326,12 +326,12 @@
     },
     {
       "id": "C24",
-      "question": "In an underdamped circuit, the damped natural frequency wd is always:",
+      "question": "In an underdamped circuit, the damped natural frequency $\\omega_d$ is always:",
       "type": "mcq",
       "options": [
-        "Greater than w0",
-        "Less than w0",
-        "Equal to w0",
+        "Greater than $\\omega_0$",
+        "Less than $\\omega_0$",
+        "Equal to $\\omega_0$",
         "Zero"
       ],
       "answer": "B",
@@ -340,7 +340,7 @@
     },
     {
       "id": "C25",
-      "question": "The neper frequency alpha represents the:",
+      "question": "The neper frequency $\\alpha$ represents the:",
       "type": "mcq",
       "options": [
         "Frequency of oscillation",
@@ -386,8 +386,8 @@
       "type": "mcq",
       "options": [
         "2alpha",
-        "alpha",
-        "w0",
+        "$\\alpha$",
+        "$\\omega_0$",
         "2w0"
       ],
       "answer": "A",
@@ -396,7 +396,7 @@
     },
     {
       "id": "C29",
-      "question": "For a parallel RLC circuit, if L is increased while R and C remain constant, what happens to the resonant frequency w0?",
+      "question": "For a parallel RLC circuit, if L is increased while R and C remain constant, what happens to the resonant frequency $\\omega_0$?",
       "type": "mcq",
       "options": [
         "It increases",
@@ -413,10 +413,10 @@
       "question": "In an underdamped response, the time constant of the decaying envelope is given by:",
       "type": "mcq",
       "options": [
-        "1/wd",
-        "1/alpha",
-        "1/w0",
-        "2pi/alpha"
+        "$\\frac{1}{\\omega_d}$",
+        "$\\frac{1}{\\alpha}$",
+        "$\\frac{1}{\\omega_0}$",
+        "$\\frac{2\\pi}{\\alpha}$"
       ],
       "answer": "B",
       "explanation": "The amplitude of the underdamped response decays according to the factor $e^{-\\alpha t}$. The time constant $\\tau$ for an exponential decay $e^{-t/\\tau}$ is $\\frac{1}{\\alpha}$.",
@@ -818,7 +818,7 @@
     },
     {
       "id": "P12",
-      "question": "A circuit consists of a 10 V DC source connected to a series combination of a 2 kΩ resistor and a 1 H inductor. At t = 0, a switch moves to connect this branch in parallel with a 0.5 mF capacitor and a 4 kΩ resistor, forming a source-free parallel RLC circuit. The inductor current just before switching is 5 mA. Find the voltage across the capacitor v(t) for t >= 0.",
+      "question": "A circuit consists of a 10 V DC source connected to a series combination of a 2 kΩ resistor and a 1 H inductor. At $t = 0$, a switch moves to connect this branch in parallel with a 0.5 mF capacitor and a 4 kΩ resistor, forming a source-free parallel RLC circuit. The inductor current just before switching is 5 mA. Find the voltage across the capacitor $v(t)$ for $t \\ge 0$.",
       "source_base": "N12",
       "circuit_spec": {
         "type": "parallel",
@@ -844,7 +844,7 @@
         ],
         "note": "Source-free parallel RLC. i_L(0)=5 mA, v_C(0)=0."
       },
-      "solution": "At t = 0-, the inductor current is $i_L(0-) = 5$ mA. Since inductor current cannot change instantaneously, $i_L(0+) = 5$ mA. The capacitor voltage is initially zero, $v_C(0+) = 0$ V. The circuit for t >= 0 is a source-free parallel RLC with $R = 4$ kΩ, $L = 1$ H, and $C = 0.5$ mF. Calculate $\\alpha = \\frac{1}{2RC} = \\frac{1}{2(4000)(0.5 \\times 10^{-3})} = \\frac{1}{4} = 0.25$ Np/s. Calculate $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{1(0.5 \\times 10^{-3})}} = \\frac{1}{\\sqrt{0.0005}} \\approx 44.72$ rad/s. Since $\\alpha < \\omega_0$, the response is underdamped. $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{2000 - 0.0625} \\approx 44.72$ rad/s. The voltage response is $v(t) = e^{-0.25t}(A_1 \\cos 44.72t + A_2 \\sin 44.72t)$. Using $v(0) = 0$, we get $A_1 = 0$. So $v(t) = A_2 e^{-0.25t} \\sin 44.72t$. To find $A_2$, use $v'(0)$. From KCL at the top node: $i_C + i_R + i_L = 0 \\implies C v' + \\frac{v}{R} + i_L = 0$. At t=0, $C v'(0) + 0 + 0.005 = 0 \\implies v'(0) = -\\frac{0.005}{C} = -\\frac{0.005}{0.5 \\times 10^{-3}} = -10$ V/s. Differentiating $v(t)$: $v'(t) = A_2 [ -0.25 e^{-0.25t} \\sin 44.72t + 44.72 e^{-0.25t} \\cos 44.72t ]$. At t=0, $v'(0) = 44.72 A_2$. Thus $44.72 A_2 = -10 \\implies A_2 = -0.2236$. Therefore, $v(t) = -0.2236 e^{-0.25t} \\sin 44.72t$ V.",
+      "solution": "At $t = 0^-$, the inductor current is $i_L(0^-) = 5$ mA. Since inductor current cannot change instantaneously, $i_L(0^+) = 5$ mA. The capacitor voltage is initially zero, $v_C(0^+) = 0$ V. The circuit for $t \\ge 0$ is a source-free parallel RLC with $R = 4$ kΩ, $L = 1$ H, and $C = 0.5$ mF. Calculate $\\alpha = \\frac{1}{2RC} = \\frac{1}{2(4000)(0.5 \\times 10^{-3})} = \\frac{1}{4} = 0.25$ Np/s. Calculate $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{1(0.5 \\times 10^{-3})}} = \\frac{1}{\\sqrt{0.0005}} \\approx 44.72$ rad/s. Since $\\alpha < \\omega_0$, the response is underdamped. $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{2000 - 0.0625} \\approx 44.72$ rad/s. The voltage response is $v(t) = e^{-0.25t}(A_1 \\cos 44.72t + A_2 \\sin 44.72t)$. Using $v(0) = 0$, we get $A_1 = 0$. So $v(t) = A_2 e^{-0.25t} \\sin 44.72t$. To find $A_2$, use $v'(0)$. From KCL at the top node: $i_C + i_R + i_L = 0 \\implies C v' + \\frac{v}{R} + i_L = 0$. At $t=0$, $C v'(0) + 0 + 0.005 = 0 \\implies v'(0) = -\\frac{0.005}{C} = -\\frac{0.005}{0.5 \\times 10^{-3}} = -10$ V/s. Differentiating $v(t)$: $v'(t) = A_2 [ -0.25 e^{-0.25t} \\sin 44.72t + 44.72 e^{-0.25t} \\cos 44.72t ]$. At $t=0$, $v'(0) = 44.72 A_2$. Thus $44.72 A_2 = -10 \\implies A_2 = -0.2236$. Therefore, $v(t) = -0.2236 e^{-0.25t} \\sin 44.72t$ V.",
       "answer": "$v(t) = -0.224 e^{-0.25t} \\sin(44.72t) \\text{ V}$",
       "set": 3
     },
@@ -942,7 +942,7 @@
     },
     {
       "id": "P16",
-      "question": "A circuit contains a 12 V DC source in series with a 4 Ω resistor and a 2 H inductor. At t = 0, a switch changes position to disconnect the source and connect the inductor in parallel with a 1 F capacitor and a 2 Ω resistor. The inductor current just before switching is 3 A. Find the voltage across the capacitor v(t) for t >= 0.",
+      "question": "A circuit contains a 12 V DC source in series with a 4 Ω resistor and a 2 H inductor. At $t = 0$, a switch changes position to disconnect the source and connect the inductor in parallel with a 1 F capacitor and a 2 Ω resistor. The inductor current just before switching is 3 A. Find the voltage across the capacitor $v(t)$ for $t \\ge 0$.",
       "source_base": "N16",
       "circuit_spec": {
         "type": "parallel",
@@ -968,7 +968,7 @@
         ],
         "note": "Source-free parallel RLC. i_L(0)=3 A, v_C(0)=0."
       },
-      "solution": "At t = 0-, $i_L(0-) = 3$ A. Thus $i_L(0+) = 3$ A. $v_C(0+) = 0$ V. For t >= 0, the circuit is a source-free parallel RLC with $R = 2$ Ω, $L = 2$ H, $C = 1$ F. $\\alpha = \\frac{1}{2RC} = \\frac{1}{2(2)(1)} = 0.25$ Np/s. $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{2(1)}} = 0.707$ rad/s. Since $\\alpha < \\omega_0$, the response is underdamped. $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{0.5 - 0.0625} = \\sqrt{0.4375} \\approx 0.6614$ rad/s. The voltage response is $v(t) = e^{-0.25t}(A_1 \\cos 0.6614t + A_2 \\sin 0.6614t)$. Using $v(0) = 0$, $A_1 = 0$. So $v(t) = A_2 e^{-0.25t} \\sin 0.6614t$. Use $v'(0)$. KCL: $C v' + \\frac{v}{R} + i_L = 0$. At t=0, $1 \\cdot v'(0) + 0 + 3 = 0 \\implies v'(0) = -3$ V/s. Differentiate $v(t)$: $v'(t) = A_2 [ -0.25 e^{-0.25t} \\sin 0.6614t + 0.6614 e^{-0.25t} \\cos 0.6614t ]$. At t=0, $v'(0) = 0.6614 A_2$. Thus $0.6614 A_2 = -3 \\implies A_2 = -4.536$. Therefore, $v(t) = -4.536 e^{-0.25t} \\sin 0.6614t$ V.",
+      "solution": "At $t = 0^-$, $i_L(0^-) = 3$ A. Thus $i_L(0^+) = 3$ A. $v_C(0^+) = 0$ V. For $t \\ge 0$, the circuit is a source-free parallel RLC with $R = 2$ Ω, $L = 2$ H, $C = 1$ F. $\\alpha = \\frac{1}{2RC} = \\frac{1}{2(2)(1)} = 0.25$ Np/s. $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{2(1)}} = 0.707$ rad/s. Since $\\alpha < \\omega_0$, the response is underdamped. $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{0.5 - 0.0625} = \\sqrt{0.4375} \\approx 0.6614$ rad/s. The voltage response is $v(t) = e^{-0.25t}(A_1 \\cos 0.6614t + A_2 \\sin 0.6614t)$. Using $v(0) = 0$, $A_1 = 0$. So $v(t) = A_2 e^{-0.25t} \\sin 0.6614t$. Use $v'(0)$. KCL: $C v' + \\frac{v}{R} + i_L = 0$. At $t=0$, $1 \\cdot v'(0) + 0 + 3 = 0 \\implies v'(0) = -3$ V/s. Differentiate $v(t)$: $v'(t) = A_2 [ -0.25 e^{-0.25t} \\sin 0.6614t + 0.6614 e^{-0.25t} \\cos 0.6614t ]$. At $t=0$, $v'(0) = 0.6614 A_2$. Thus $0.6614 A_2 = -3 \\implies A_2 = -4.536$. Therefore, $v(t) = -4.536 e^{-0.25t} \\sin 0.6614t$ V.",
       "answer": "$v(t) = -4.54 e^{-0.25t} \\sin(0.661t) \\text{ V}$",
       "set": 4
     },
