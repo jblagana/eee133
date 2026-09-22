@@ -42,16 +42,16 @@ _Provenance: which textbook problem each generated item derives from._
 | P02 | `N18` | Nils & Riedel 12e | NR Prob 8.9 (Sec 8.1) | A source-free parallel RLC circuit has $L = 10$ mH, $C = 1$ $\mu$F, and a resistor $R$… |
 | P03 | `N19` | Nils & Riedel 12e | NR Prob 8.10 (Sec 8.1) | A source-free parallel RLC circuit has $L = 0.4$ H and $C = 10$ $\mu$F, and its… |
 | P04 | `N20` | Nils & Riedel 12e | NR Prob 8.5 (Sec 8.1) | A source-free parallel RLC circuit has $R = 2$ k$\Omega$, $L = 250$ mH, and $C = 10$ nF.… |
-| P05 | `N21` | Nils & Riedel 12e | NR Prob 8.6 (Sec 8.1) | A source-free parallel RLC circuit has $L = 50$ mH and $C = 50$ nF, and its resistance is… |
+| P05 | `N24` | Nils & Riedel 12e | Sec 8.3 complete response, unbalanced bridge RLC (original circuit for practice) | At $t = 0$ the switch closes, connecting a $24$ V dc source to an unbalanced Wheatstone bridge… |
 | P06 | `H15` | Hayt 8e | H 8e Examples 9.10-9.11 (Sec 9.6; topology reconstructed from the worked text) | In the two-loop RLC circuit shown, a current source $4u(t)$ A feeds node A and a $5$ A… |
 | P07 | `H16` | Hayt 8e | H 8e Example 9.10 (Sec 9.6; same circuit as [H15]) | In the same two-source RLC circuit as the previous problem ($R = 30$ $\Omega$ between… |
-| P08 | `N22` | Nils & Riedel 12e | NR Prob 8.7 (Sec 8.1) | A source-free parallel RLC circuit has $R = 12500/3$ $\Omega$, $L = 250$ mH, and $C = 10$… |
+| P08 | `N25` | Nils & Riedel 12e | Sec 8.3 complete response, two-stage L network (original circuit for practice) | At $t = 0$ the switch closes, connecting a $48$ V dc source through a series $6$ $\Omega$ resistor and $1$ H inductor to node B… |
 | P09 | `N9` | Nils & Riedel 12e | NR Prob 8.49 (Sec 8.3) | The switch has been in position a for a long time, where a $100$ V source charged the $2$… |
 | P10 | `N10` | Nils & Riedel 12e | NR Prob 8.52 (Sec 8.3) | The switch has been in position a for a long time, where a $28$ V source charged the $8$… |
 | P11 | `N11` | Nils & Riedel 12e | NR Prob 8.53 (Sec 8.3) | A series RLC circuit consists of a DC voltage source, a resistor R = 100 Ω, an inductor L… |
 | P12 | `N12` | Nils & Riedel 12e | NR Prob 8.17 (Sec 8.3) | Consider a series RLC circuit with a 100 V DC source, a resistor R = 2 kΩ, an inductor L… |
 | P13 | `N13` | Nils & Riedel 12e | NR Prob 8.21 (Sec 8.3) | A circuit contains a 75 V DC source, a resistor R_1 = 6 kΩ, an inductor L = 12.5 H, and a… |
-| P14 | `N14` | Nils & Riedel 12e | NR Prob 8.41 (Sec 8.4) | A source-free series RLC circuit has a capacitor C = 31.25 nF. The initial energy stored… |
+| P14 | `H17` | Hayt 8e | Sec 9.6 complete response, two-feed crossbar RLC (original circuit for practice) | At $t = 0$ the switch closes, connecting a $36$ V dc source to node P of the network shown… |
 | P15 | `N15` | Nils & Riedel 12e | NR Prob 8.42 (Sec 8.4) | A source-free series RLC circuit has L = 250 mH and C = 160 nF. The resistance R is… |
 | P16 | `N16` | Nils & Riedel 12e | NR Prob 8.38 (Sec 8.4) | A series RLC circuit consists of a 250 V DC source, a resistor R = 1 kΩ, an inductor L =… |
 | P17 | `N17` | Nils & Riedel 12e | NR Prob 8.46 (Sec 8.4) | A circuit contains a 30 V DC source, a resistor R = 100 Ω, an inductor L = 2 H, and a… |
