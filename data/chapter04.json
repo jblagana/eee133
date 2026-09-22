@@ -375,20 +375,110 @@
       "question": "A circuit consists of a $10\\text{ mA}$ DC current source in parallel with a $5\\text{ k}\\Omega$ resistor. This combination is connected in series with an equivalent inductance of $100\\text{ mH}$. A switch has been in position 'a' for a long time, connecting the source and resistor to the inductor. At $t = 0$, the switch moves to position 'b', disconnecting the source and resistor and connecting the inductor to a $2\\text{ k}\\Omega$ resistor. Find the voltage across the inductor, $v_L(t)$, for $t \\ge 0^+$.",
       "source_base": "N1",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "netlist",
+        "nodes": {
+          "S": [
+            60,
+            180
+          ],
+          "A": [
+            60,
+            40
+          ],
+          "M0": [
+            170,
+            180
+          ],
+          "B": [
+            170,
+            40
+          ],
+          "C": [
+            300,
+            40
+          ],
+          "D": [
+            300,
+            180
+          ],
+          "F": [
+            460,
+            40
+          ],
+          "E": [
+            460,
+            180
+          ]
+        },
+        "edges": [
           {
-            "kind": "L",
-            "value": "100 mH"
+            "from": "S",
+            "to": "A",
+            "comp": {
+              "kind": "Idc",
+              "value": "10 mA"
+            }
           },
           {
-            "kind": "R",
-            "value": "2 kΩ"
+            "from": "S",
+            "to": "M0"
+          },
+          {
+            "from": "M0",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "5 kΩ"
+            }
+          },
+          {
+            "from": "A",
+            "to": "B"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "comp": {
+              "kind": "switch",
+              "value": "a→b at t=0"
+            }
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "comp": {
+              "kind": "L",
+              "value": "100 mH"
+            }
+          },
+          {
+            "from": "D",
+            "to": "E"
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "comp": {
+              "kind": "R",
+              "value": "2 kΩ"
+            }
+          },
+          {
+            "from": "F",
+            "to": "C"
           }
         ],
-        "current_label": "i_L",
-        "voltage_label": "v_L",
-        "note": "Switch moves a→b at t=0; iL(0) = 10 mA; decay through 2 kΩ, τ = 50 µs."
+        "labels": [
+          {
+            "at": "C",
+            "text": "v_L"
+          },
+          {
+            "at": "D",
+            "text": "i_L"
+          }
+        ],
+        "note": "Switch moves a→b at t=0, isolating the 10 mA source; iL(0) = 10 mA; τ = 50 µs."
       },
       "solution": "1. **Initial Condition**\nFor $t < 0$, the circuit is in DC steady state. The inductor acts as a short circuit. The 10 mA current source is in parallel with the 5 kΩ resistor, and this combination is in series with the inductor. The current through the inductor is established by the source:\n$$i_L(0^-) = 10 \\text{ mA}$$\nDue to the continuity of inductor current:\n$$i_L(0^+) = i_L(0^-) = 10 \\text{ mA}$$\n\n2. **Final Condition**\nFor $t > 0$, the source is disconnected, and the inductor is connected in a loop with a 2 kΩ resistor. The energy stored in the inductor dissipates through the resistor, resulting in a final current of:\n$$i_L(\\infty) = 0 \\text{ A}$$\n\n3. **Time Constant**\nThe equivalent resistance seen by the inductor is $R_{eq} = 2 \\text{ k}\\Omega$. Given $L = 100 \\text{ mH}$, the time constant $\\tau$ is:\n$$\\tau = \\frac{L}{R_{eq}} = \\frac{0.1 \\text{ H}}{2000 \\ \\Omega} = 50 \\times 10^{-6} \\text{ s} = 50 \\ \\mu\\text{s}$$\n\n4. **Current Expression**\nThe current $i_L(t)$ for $t \\ge 0$ is given by the first-order transient response formula:\n$$i_L(t) = i_L(\\infty) + [i_L(0^+) - i_L(\\infty)]e^{-t/\\tau}$$\nSubstituting the known values:\n$$i_L(t) = 0 + (0.01 - 0)e^{-t/50\\mu}$$\n$$i_L(t) = 10 e^{-20000t} \\text{ mA}$$\n\n5. **Voltage Expression**\nThe voltage across the inductor is determined by:\n$$v_L(t) = L \\frac{di_L}{dt}$$\nDifferentiating the current expression (converting to Amperes for calculation):\n$$\\frac{di_L}{dt} = \\frac{d}{dt} \\left( 10 \\times 10^{-3} e^{-20000t} \\right) = 10 \\times 10^{-3} \\times (-20000) e^{-20000t} = -200 e^{-20000t} \\text{ A/s}$$\nCalculating the voltage:\n$$v_L(t) = 0.1 \\times (-200 e^{-20000t}) = -20 e^{-20000t} \\text{ V}$$",
       "answer": "$v_L(t) = -20 e^{-20000t} \\text{ V}$ for $t \\ge 0+$",
@@ -399,20 +489,110 @@
       "question": "Consider the circuit from P01. Calculate (a) the total energy dissipated in the 2 kΩ resistor after the switch moves at t=0, and (b) the energy trapped in the inductor as t approaches infinity.",
       "source_base": "N2",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "netlist",
+        "nodes": {
+          "S": [
+            60,
+            180
+          ],
+          "A": [
+            60,
+            40
+          ],
+          "M0": [
+            170,
+            180
+          ],
+          "B": [
+            170,
+            40
+          ],
+          "C": [
+            300,
+            40
+          ],
+          "D": [
+            300,
+            180
+          ],
+          "F": [
+            460,
+            40
+          ],
+          "E": [
+            460,
+            180
+          ]
+        },
+        "edges": [
           {
-            "kind": "L",
-            "value": "100 mH"
+            "from": "S",
+            "to": "A",
+            "comp": {
+              "kind": "Idc",
+              "value": "10 mA"
+            }
           },
           {
-            "kind": "R",
-            "value": "2 kΩ"
+            "from": "S",
+            "to": "M0"
+          },
+          {
+            "from": "M0",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "5 kΩ"
+            }
+          },
+          {
+            "from": "A",
+            "to": "B"
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "comp": {
+              "kind": "switch",
+              "value": "a→b at t=0"
+            }
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "comp": {
+              "kind": "L",
+              "value": "100 mH"
+            }
+          },
+          {
+            "from": "D",
+            "to": "E"
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "comp": {
+              "kind": "R",
+              "value": "2 kΩ"
+            }
+          },
+          {
+            "from": "F",
+            "to": "C"
           }
         ],
-        "current_label": "i_L",
-        "voltage_label": "v_L",
-        "note": "RL decay circuit. Initial current 10 mA."
+        "labels": [
+          {
+            "at": "C",
+            "text": "v_L"
+          },
+          {
+            "at": "D",
+            "text": "i_L"
+          }
+        ],
+        "note": "Same loop as P01 after t=0 (source isolated); iL(0) = 10 mA; w(0) = 5 µJ."
       },
       "solution": "1. Initial Energy: The energy stored in the inductor at t=0 is $w(0) = \\frac{1}{2} L i_L(0)^2$. \n$i_L(0) = 10$ mA = 0.01 A. \n$w(0) = 0.5 \\times 0.1 \\times (0.01)^2 = 0.5 \\times 0.1 \\times 10^{-4} = 5 \\times 10^{-6}$ J = 5 µJ. \n2. Final Energy: As t -> infinity, the current decays to 0 A. \n$w(\\infty) = \\frac{1}{2} L (0)^2 = 0$ J. \n3. Energy Dissipated: The total energy dissipated in the resistor is the difference between the initial and final stored energy. \n$w_{diss} = w(0) - w(\\infty) = 5 \\mu J - 0 = 5 \\mu J$. \n4. Trapped Energy: The energy trapped in the inductor at t -> infinity is $w(\\infty) = 0$ J.",
       "answer": "(a) $5\\ \\mu\\text{J}$, (b) $0\\ \\text{J}$",
@@ -447,28 +627,118 @@
       "question": "A circuit contains two inductors, $L_1 = 4 \\text{ H}$ and $L_2 = 12 \\text{ H}$, connected in parallel. A $20 \\text{ A}$ DC current source is connected in parallel with this combination. A switch has been in position 'a' for a long time, connecting the source to the inductors. At $t = 0$, the switch moves to position 'b', disconnecting the source and connecting the inductor combination to a $10\\ \\Omega$ resistor. Find the voltage across the inductors, $v(t)$, for $t \\ge 0^+$.",
       "source_base": "N4",
       "circuit_spec": {
-        "type": "parallel",
-        "branches": [
-          [
-            {
-              "kind": "R",
-              "value": "10 Ω"
-            }
+        "type": "netlist",
+        "nodes": {
+          "S": [
+            60,
+            180
           ],
-          [
-            {
+          "A": [
+            60,
+            40
+          ],
+          "C": [
+            175,
+            40
+          ],
+          "T1": [
+            250,
+            40
+          ],
+          "B1": [
+            250,
+            180
+          ],
+          "T2": [
+            360,
+            40
+          ],
+          "B2": [
+            360,
+            180
+          ],
+          "T3": [
+            470,
+            40
+          ],
+          "B3": [
+            470,
+            180
+          ]
+        },
+        "edges": [
+          {
+            "from": "S",
+            "to": "A",
+            "comp": {
+              "kind": "Idc",
+              "value": "20 A"
+            }
+          },
+          {
+            "from": "A",
+            "to": "C",
+            "comp": {
+              "kind": "switch",
+              "value": "a→b at t=0"
+            }
+          },
+          {
+            "from": "C",
+            "to": "T1"
+          },
+          {
+            "from": "T1",
+            "to": "B1",
+            "comp": {
               "kind": "L",
               "value": "4 H"
             }
-          ],
-          [
-            {
+          },
+          {
+            "from": "T1",
+            "to": "T2"
+          },
+          {
+            "from": "T2",
+            "to": "B2",
+            "comp": {
               "kind": "L",
               "value": "12 H"
             }
-          ]
+          },
+          {
+            "from": "T2",
+            "to": "T3"
+          },
+          {
+            "from": "T3",
+            "to": "B3",
+            "comp": {
+              "kind": "R",
+              "value": "10 Ω"
+            }
+          },
+          {
+            "from": "S",
+            "to": "B1"
+          },
+          {
+            "from": "B1",
+            "to": "B2"
+          },
+          {
+            "from": "B2",
+            "to": "B3"
+          }
         ],
-        "note": "Source disconnected at t=0; decay through 10 Ω (Leq = 3 H, τ = 0.3 s)."
+        "labels": [
+          {
+            "at": "T1",
+            "text": "v"
+          }
+        ],
+        "note": "Switch moves a→b at t=0, isolating the 20 A source; Leq = 3 H, τ = 0.3 s."
       },
       "solution": "1. Initial Conditions: For t < 0, DC steady state. Inductors are shorts. The 20 A source splits between L1 and L2. \nCurrent divider: $i_1(0^-) = 20 \\times \\frac{L_2}{L_1 + L_2} = 20 \\times \\frac{12}{4 + 12} = 20 \\times \\frac{12}{16} = 15$ A. \n$i_2(0^-) = 20 \\times \\frac{L_1}{L_1 + L_2} = 20 \\times \\frac{4}{16} = 5$ A. \nTotal current $i_{total}(0^-) = 20$ A. \n2. Final Conditions: For t > 0, the source is disconnected and the inductors are connected in parallel across the 10 Ω resistor. \n$i_{total}(\\infty) = 0$ A. \n3. Equivalent Inductance: Parallel inductors $L_{eq} = \\frac{L_1 L_2}{L_1 + L_2} = \\frac{4 \\times 12}{16} = 3$ H. \n4. Time Constant: $\\tau = L_{eq} / R = 3 / 10 = 0.3$ s. \n5. Total Current: $i_{total}(t) = 20 e^{-t/0.3} = 20 e^{-3.333t}$ A. \n6. Voltage: The voltage across the parallel combination is $v(t) = L_{eq} \\frac{di_{total}}{dt}$. \n$\\frac{di_{total}}{dt} = 20 \\times (-3.333) e^{-3.333t} = -66.66 e^{-3.333t}$ A/s. \n$v(t) = 3 \\times (-66.66 e^{-3.333t}) = -200 e^{-3.333t}$ V. \nAlternatively, $v(t) = -R i_{total}(t) = -10 \\times 20 e^{-3.333t} = -200 e^{-3.333t}$ V.",
       "answer": "$v(t) = -200 e^{-3.33t} \\text{ V}$ for $t \\ge 0^+$",
@@ -479,20 +749,98 @@
       "question": "A circuit consists of a 100 V DC source in series with a 20 kΩ resistor and a 5 µF capacitor. A switch has been in position 'a' for a long time, connecting the source to the RC series circuit. At $t=0$, the switch moves to position 'b', disconnecting the source and connecting the capacitor to a 10 kΩ resistor. Find the voltage across the capacitor, $v_C(t)$, for $t \\ge 0$.",
       "source_base": "N5",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "netlist",
+        "nodes": {
+          "S": [
+            40,
+            180
+          ],
+          "A": [
+            40,
+            40
+          ],
+          "B": [
+            165,
+            40
+          ],
+          "T": [
+            255,
+            40
+          ],
+          "G": [
+            255,
+            180
+          ],
+          "X": [
+            470,
+            40
+          ],
+          "D": [
+            470,
+            180
+          ]
+        },
+        "edges": [
           {
-            "kind": "C",
-            "value": "5 µF"
+            "from": "S",
+            "to": "A",
+            "comp": {
+              "kind": "Vdc",
+              "value": "100 V"
+            }
           },
           {
-            "kind": "R",
-            "value": "10 kΩ"
+            "from": "A",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "20 kΩ"
+            }
+          },
+          {
+            "from": "B",
+            "to": "T",
+            "comp": {
+              "kind": "switch",
+              "value": "a→b at t=0"
+            }
+          },
+          {
+            "from": "T",
+            "to": "G",
+            "comp": {
+              "kind": "C",
+              "value": "5 µF"
+            }
+          },
+          {
+            "from": "T",
+            "to": "X"
+          },
+          {
+            "from": "X",
+            "to": "D",
+            "comp": {
+              "kind": "R",
+              "value": "10 kΩ"
+            }
+          },
+          {
+            "from": "S",
+            "to": "G"
+          },
+          {
+            "from": "G",
+            "to": "D"
           }
         ],
-        "current_label": "i",
-        "voltage_label": "v_C",
-        "note": "Switch moves a→b at t=0; vC(0) = 100 V; discharge through 10 kΩ, τ = 50 ms."
+        "labels": [
+          {
+            "at": "T",
+            "text": "v_C"
+          }
+        ],
+        "note": "Switch moves a→b at t=0, isolating the 100 V source; vC(0) = 100 V; τ = 50 ms."
       },
       "solution": "1. Initial Condition: For t < 0, DC steady state. Capacitor is an open circuit. The voltage across the capacitor is the source voltage. \n$v_C(0^-) = 100$ V. \nSince capacitor voltage is continuous, $v_C(0^+) = 100$ V. \n2. Final Condition: For t > 0, the source is disconnected. The capacitor discharges through the 10 kΩ resistor. \n$v_C(\\infty) = 0$ V. \n3. Time Constant: $\\tau = R C = 10,000 \\times 5 \\times 10^{-6} = 0.05$ s = 50 ms. \n4. Voltage Expression: $v_C(t) = v_C(\\infty) + [v_C(0) - v_C(\\infty)]e^{-t/\\tau}$. \n$v_C(t) = 0 + (100 - 0)e^{-t/0.05} = 100 e^{-20t}$ V.",
       "answer": "$v_C(t) = 100 e^{-20t} \\text{ V}$ for $t \\geq 0$",
@@ -531,20 +879,98 @@
       "question": "A circuit consists of a $100\\text{ V}$ DC source, a $20\\text{ k}\\Omega$ resistor, and a $5\\text{ \\mu F}$ capacitor connected in series. A switch has been closed for a long time, establishing steady-state conditions. At $t=0$, the switch opens, disconnecting the source and leaving the capacitor connected in series with a $40\\text{ k}\\Omega$ resistor. Determine the time, in milliseconds, after the switch opens until the energy stored in the capacitor is $10\\%$ of its initial value.",
       "source_base": "N7",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "netlist",
+        "nodes": {
+          "S": [
+            40,
+            180
+          ],
+          "A": [
+            40,
+            40
+          ],
+          "B": [
+            165,
+            40
+          ],
+          "T": [
+            255,
+            40
+          ],
+          "G": [
+            255,
+            180
+          ],
+          "X": [
+            470,
+            40
+          ],
+          "D": [
+            470,
+            180
+          ]
+        },
+        "edges": [
           {
-            "kind": "C",
-            "value": "5 µF"
+            "from": "S",
+            "to": "A",
+            "comp": {
+              "kind": "Vdc",
+              "value": "100 V"
+            }
           },
           {
-            "kind": "R",
-            "value": "40 kΩ"
+            "from": "A",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "20 kΩ"
+            }
+          },
+          {
+            "from": "B",
+            "to": "T",
+            "comp": {
+              "kind": "switch",
+              "value": "open at t=0"
+            }
+          },
+          {
+            "from": "T",
+            "to": "G",
+            "comp": {
+              "kind": "C",
+              "value": "5 µF"
+            }
+          },
+          {
+            "from": "T",
+            "to": "X"
+          },
+          {
+            "from": "X",
+            "to": "D",
+            "comp": {
+              "kind": "R",
+              "value": "40 kΩ"
+            }
+          },
+          {
+            "from": "S",
+            "to": "G"
+          },
+          {
+            "from": "G",
+            "to": "D"
           }
         ],
-        "current_label": "i",
-        "voltage_label": "v_C",
-        "note": "RC discharge. Initial voltage 100 V. Discharge through 40 kΩ."
+        "labels": [
+          {
+            "at": "T",
+            "text": "v_C"
+          }
+        ],
+        "note": "Switch opens at t=0, isolating the 100 V source; vC(0) = 100 V; τ = 200 ms."
       },
       "solution": "1. Initial Condition: $v_C(0) = 100$ V. \n2. Final Condition: $v_C(\\infty) = 0$ V. \n3. Time Constant: $\\tau = R C = 40,000 \\times 5 \\times 10^{-6} = 0.2$ s = 200 ms. \n4. Energy Condition: We interpret the request as finding the time when the remaining energy is 10% of the initial energy (i.e., 90% dissipated). \n$w(t) = 0.10 w(0)$. \n$\\frac{1}{2} C v_C(t)^2 = 0.10 \\times \\frac{1}{2} C v_C(0)^2$. \n$v_C(t)^2 = 0.10 v_C(0)^2$. \n$v_C(t) = \\sqrt{0.10} v_C(0) = 0.3162 \\times 100 = 31.62$ V. \n5. Solve for t: \n$v_C(t) = 100 e^{-t/0.2}$. \n$31.62 = 100 e^{-t/0.2}$. \n$0.3162 = e^{-t/0.2}$. \n$\\ln(0.3162) = -t/0.2$. \n$t = -0.2 \\ln(0.3162) = -0.2 \\times (-1.1513) = 0.2303$ s = 230.3 ms.",
       "answer": "$230.3 \\text{ ms}$",
@@ -583,22 +1009,130 @@
       "question": "Two capacitors, $C_1 = 2 \\ \\mu F$ and $C_2 = 6 \\ \\mu F$, are connected in parallel. A 100 V DC source is connected in series with a 10 kΩ resistor to this parallel combination. A switch has been in position 'a' for a long time, charging the capacitors. At $t = 0$, the switch moves to position 'b', disconnecting the source and resistor, leaving the capacitors in a closed loop with each other (and a 5 kΩ resistor in series with the loop). Find (a) the voltage across the capacitors, $v(t)$, for $t \\ge 0^+$, and (b) the energy trapped in the capacitors as $t \\to \\infty$.",
       "source_base": "N9",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "netlist",
+        "nodes": {
+          "S": [
+            40,
+            180
+          ],
+          "A": [
+            40,
+            40
+          ],
+          "B": [
+            150,
+            40
+          ],
+          "T": [
+            240,
+            40
+          ],
+          "T1": [
+            330,
+            40
+          ],
+          "G1": [
+            330,
+            180
+          ],
+          "T2": [
+            420,
+            40
+          ],
+          "G2": [
+            420,
+            180
+          ],
+          "T3": [
+            510,
+            40
+          ],
+          "G3": [
+            510,
+            180
+          ]
+        },
+        "edges": [
           {
-            "kind": "C",
-            "value": "2 µF"
+            "from": "S",
+            "to": "A",
+            "comp": {
+              "kind": "Vdc",
+              "value": "100 V"
+            }
           },
           {
-            "kind": "C",
-            "value": "6 µF"
+            "from": "A",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "10 kΩ"
+            }
           },
           {
-            "kind": "R",
-            "value": "5 kΩ"
+            "from": "B",
+            "to": "T",
+            "comp": {
+              "kind": "switch",
+              "value": "a→b at t=0"
+            }
+          },
+          {
+            "from": "T",
+            "to": "T1"
+          },
+          {
+            "from": "T1",
+            "to": "T2"
+          },
+          {
+            "from": "T2",
+            "to": "T3"
+          },
+          {
+            "from": "T1",
+            "to": "G1",
+            "comp": {
+              "kind": "C",
+              "value": "2 µF"
+            }
+          },
+          {
+            "from": "T2",
+            "to": "G2",
+            "comp": {
+              "kind": "C",
+              "value": "6 µF"
+            }
+          },
+          {
+            "from": "T3",
+            "to": "G3",
+            "comp": {
+              "kind": "R",
+              "value": "5 kΩ"
+            }
+          },
+          {
+            "from": "S",
+            "to": "G1"
+          },
+          {
+            "from": "G1",
+            "to": "G2"
+          },
+          {
+            "from": "G2",
+            "to": "G3"
           }
         ],
-        "note": "After t=0: the capacitors (8 µF total) discharge through 5 kΩ; v(0) = 100 V, τ = 40 ms."
+        "labels": [
+          {
+            "at": "T2",
+            "text": "v"
+          }
+        ],
+        "note": "Switch moves a→b at t=0, isolating the 100 V source; Ceq = 8 µF, v(0) = 100 V; τ = 40 ms."
       },
       "solution": "1. Initial Condition: For t < 0, DC steady state. Capacitors are open. Voltage across each is 100 V. \n$v_1(0^-) = 100$ V, $v_2(0^-) = 100$ V. \nTotal charge $Q(0) = C_1 v_1 + C_2 v_2 = 2\\mu(100) + 6\\mu(100) = 800 \\mu C$. \n2. Final Condition: For t > 0, the capacitors discharge through the 5 kΩ resistor. \n$v(\\infty) = 0$ V. \n3. Equivalent Capacitance: Parallel capacitors $C_{eq} = C_1 + C_2 = 2 + 6 = 8$ µF. \n4. Time Constant: $\\tau = R C_{eq} = 5,000 \\times 8 \\times 10^{-6} = 0.04$ s = 40 ms. \n5. Voltage Expression: $v(t) = v(\\infty) + [v(0) - v(\\infty)]e^{-t/\\tau}$. \n$v(t) = 0 + (100 - 0)e^{-t/0.04} = 100 e^{-25t}$ V. \n6. Trapped Energy: As t -> infinity, v -> 0. \n$w(\\infty) = 0$ J.",
       "answer": "(a) $v(t) = 100 e^{-25t} \\text{ V}$, (b) $0 \\text{ J}$",
@@ -771,24 +1305,98 @@
       "question": "A make-before-break switch is in position 'a' for a long time, connecting a 10 V source to a 5 k$\\Omega$ resistor and a 1 $\\mu$F capacitor in series. At $t=0$, the switch moves to position 'b', connecting the capacitor to a 10 k$\\Omega$ resistor. Determine $v_C(t)$ for all $t$ and the energy stored in the capacitor at $t = 5 \\text{ ms}$.",
       "source_base": "H1",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "netlist",
+        "nodes": {
+          "S": [
+            40,
+            180
+          ],
+          "A": [
+            40,
+            40
+          ],
+          "B": [
+            165,
+            40
+          ],
+          "T": [
+            255,
+            40
+          ],
+          "G": [
+            255,
+            180
+          ],
+          "X": [
+            470,
+            40
+          ],
+          "D": [
+            470,
+            180
+          ]
+        },
+        "edges": [
           {
-            "kind": "Vdc",
-            "value": "10 V"
+            "from": "S",
+            "to": "A",
+            "comp": {
+              "kind": "Vdc",
+              "value": "10 V"
+            }
           },
           {
-            "kind": "R",
-            "value": "5 kΩ"
+            "from": "A",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "5 kΩ"
+            }
           },
           {
-            "kind": "C",
-            "value": "1 uF"
+            "from": "B",
+            "to": "T",
+            "comp": {
+              "kind": "switch",
+              "value": "a→b at t=0"
+            }
+          },
+          {
+            "from": "T",
+            "to": "G",
+            "comp": {
+              "kind": "C",
+              "value": "1 µF"
+            }
+          },
+          {
+            "from": "T",
+            "to": "X"
+          },
+          {
+            "from": "X",
+            "to": "D",
+            "comp": {
+              "kind": "R",
+              "value": "10 kΩ"
+            }
+          },
+          {
+            "from": "S",
+            "to": "G"
+          },
+          {
+            "from": "G",
+            "to": "D"
           }
         ],
-        "current_label": "i",
-        "voltage_label": "v_C",
-        "note": "Switch moves to 10k resistor at t=0"
+        "labels": [
+          {
+            "at": "T",
+            "text": "v_C"
+          }
+        ],
+        "note": "Switch moves a→b at t=0, isolating the 10 V source; vC(0) = 10 V; τ = 10 ms."
       },
       "solution": "For $t < 0$, the switch is at 'a'. The capacitor is fully charged to the source voltage: $v_C(0^-) = 10 \\text{ V}$. For $t > 0$, the switch is at 'b'. The capacitor discharges through the 10 k$\\Omega$ resistor. The time constant is $\\tau = R C = 10,000 \\times 10^{-6} = 10 \\text{ ms}$. The voltage is $v_C(t) = v_C(0) e^{-t/\\tau} = 10 e^{-t/10} \\text{ V}$ (t in ms). At $t = 5 \\text{ ms}$, $v_C(5) = 10 e^{-0.5} \\approx 6.065 \\text{ V}$. The energy is $w = \\frac{1}{2} C v_C^2 = 0.5 \\times 10^{-6} \\times (6.065)^2 \\approx 0.5 \\times 10^{-6} \\times 36.78 = 18.39 \\mu\\text{J}$.",
       "answer": "$v_C(t) = 10e^{-t/10\\,\\text{ms}}\\,\\text{V}$; $w(5\\,\\text{ms}) \\approx 18.39\\,\\mu\\text{J}$",
