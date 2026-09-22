@@ -867,7 +867,8 @@
             "comp": {
               "kind": "C",
               "value": "1 F"
-            }
+            },
+            "arrow": "i"
           },
           {
             "from": "G1",
@@ -881,11 +882,13 @@
         "labels": [
           {
             "at": "A",
-            "text": "A"
+            "text": "A",
+            "side": "left"
           },
           {
             "at": "B",
-            "text": "B"
+            "text": "B",
+            "side": "right"
           }
         ],
         "note": "Bridge arm: 1 H in series with 1 F between mid-nodes A and B"
