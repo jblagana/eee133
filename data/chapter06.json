@@ -430,10 +430,6 @@
       "source_base": "N1",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "Initial Energy"
-        },
         "branches": [
           [
             {
@@ -466,10 +462,6 @@
       "source_base": "N2",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "Natural Response"
-        },
         "branches": [
           [
             {
@@ -502,10 +494,6 @@
       "source_base": "N3",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "Natural Response"
-        },
         "branches": [
           [
             {
@@ -538,10 +526,6 @@
       "source_base": "N4",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "V0, I0"
-        },
         "branches": [
           [
             {
@@ -574,10 +558,6 @@
       "source_base": "N5",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "Initial Energy"
-        },
         "branches": [
           [
             {
@@ -610,10 +590,6 @@
       "source_base": "N6",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "Initial Energy"
-        },
         "branches": [
           [
             {
@@ -646,10 +622,6 @@
       "source_base": "N7",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "Initial Energy"
-        },
         "branches": [
           [
             {
@@ -682,10 +654,6 @@
       "source_base": "N8",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "Natural Response"
-        },
         "branches": [
           [
             {
@@ -718,10 +686,6 @@
       "source_base": "N9",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "Initial Energy"
-        },
         "branches": [
           [
             {
@@ -754,10 +718,6 @@
       "source_base": "N10",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "load",
-          "value": "V0, I0"
-        },
         "branches": [
           [
             {
@@ -818,7 +778,7 @@
     },
     {
       "id": "P12",
-      "question": "A circuit consists of a 10 V DC source connected to a series combination of a 2 kΩ resistor and a 1 H inductor. At $t = 0$, a switch moves to connect this branch in parallel with a 0.5 mF capacitor and a 4 kΩ resistor, forming a source-free parallel RLC circuit. The inductor current just before switching is 5 mA. Find the voltage across the capacitor $v(t)$ for $t \\ge 0$.",
+      "question": "A 10 V DC source in series with a 2 kΩ resistor feeds a 1 H inductor, and the circuit has been in DC steady state, so the inductor current is 5 mA. At $t = 0$, a switch moves so that the inductor is connected in parallel with a 0.5 mF capacitor and a 4 kΩ resistor, while the source and the 2 kΩ resistor are disconnected, forming a source-free parallel RLC circuit. The initial capacitor voltage is zero. Find the voltage across the capacitor $v(t)$ for $t \\ge 0$.",
       "source_base": "N12",
       "circuit_spec": {
         "type": "parallel",
@@ -842,7 +802,7 @@
             }
           ]
         ],
-        "note": "Source-free parallel RLC. i_L(0)=5 mA, v_C(0)=0."
+        "note": "Source-free parallel RLC (source and 2 kΩ disconnected at t=0). i_L(0) = 5 mA, v_C(0) = 0."
       },
       "solution": "At $t = 0^-$, the inductor current is $i_L(0^-) = 5$ mA. Since inductor current cannot change instantaneously, $i_L(0^+) = 5$ mA. The capacitor voltage is initially zero, $v_C(0^+) = 0$ V. The circuit for $t \\ge 0$ is a source-free parallel RLC with $R = 4$ kΩ, $L = 1$ H, and $C = 0.5$ mF. Calculate $\\alpha = \\frac{1}{2RC} = \\frac{1}{2(4000)(0.5 \\times 10^{-3})} = \\frac{1}{4} = 0.25$ Np/s. Calculate $\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{1(0.5 \\times 10^{-3})}} = \\frac{1}{\\sqrt{0.0005}} \\approx 44.72$ rad/s. Since $\\alpha < \\omega_0$, the response is underdamped. $\\omega_d = \\sqrt{\\omega_0^2 - \\alpha^2} = \\sqrt{2000 - 0.0625} \\approx 44.72$ rad/s. The voltage response is $v(t) = e^{-0.25t}(A_1 \\cos 44.72t + A_2 \\sin 44.72t)$. Using $v(0) = 0$, we get $A_1 = 0$. So $v(t) = A_2 e^{-0.25t} \\sin 44.72t$. To find $A_2$, use $v'(0)$. From KCL at the top node: $i_C + i_R + i_L = 0 \\implies C v' + \\frac{v}{R} + i_L = 0$. At $t=0$, $C v'(0) + 0 + 0.005 = 0 \\implies v'(0) = -\\frac{0.005}{C} = -\\frac{0.005}{0.5 \\times 10^{-3}} = -10$ V/s. Differentiating $v(t)$: $v'(t) = A_2 [ -0.25 e^{-0.25t} \\sin 44.72t + 44.72 e^{-0.25t} \\cos 44.72t ]$. At $t=0$, $v'(0) = 44.72 A_2$. Thus $44.72 A_2 = -10 \\implies A_2 = -0.2236$. Therefore, $v(t) = -0.2236 e^{-0.25t} \\sin 44.72t$ V.",
       "answer": "$v(t) = -0.224 e^{-0.25t} \\sin(44.72t) \\text{ V}$",
@@ -1369,24 +1329,39 @@
       "question": "A circuit consists of a 10 V DC source in series with a 5 Ω resistor, connected to a parallel combination of a 2 H inductor and a 100 µF capacitor. The switch has been closed for a long time and opens at t=0. Determine: (a) $i_L(0^-)$, (b) $v_C(0^-)$, (c) $i_L(0^+)$, (d) $v_C(0^+)$, (e) $i_C(0^+)$, (f) $\\frac{dv_C}{dt}(0^+)$.",
       "source_base": "H10",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "ladder",
+        "source": {
+          "kind": "Vdc",
+          "value": "10 V"
+        },
+        "stages": [
           {
-            "kind": "Vdc",
-            "value": "10 V"
+            "series": [
+              {
+                "kind": "R",
+                "value": "5 Ω"
+              }
+            ]
           },
           {
-            "kind": "R",
-            "value": "5 Ω"
-          },
-          {
-            "kind": "load",
-            "value": "L||C"
+            "parallel": [
+              [
+                {
+                  "kind": "L",
+                  "value": "2 H"
+                }
+              ],
+              [
+                {
+                  "kind": "C",
+                  "value": "100 µF"
+                }
+              ]
+            ]
           }
         ],
         "current_label": "i",
-        "voltage_label": "v",
-        "note": "Source connected to parallel LC load via R"
+        "note": "Switch in series with the source opens at t=0 → ideal parallel LC (α = 0)."
       },
       "solution": "For $t < 0$, the switch is closed and the circuit is in DC steady state. The inductor acts as a short circuit and the capacitor acts as an open circuit.\n\n(a) The current flows through the inductor. The total resistance is 5 Ω.\n$$i_L(0^-) = \\frac{V}{R} = \\frac{10}{5} = 2 \\text{ A}$$\n\n(b) The voltage across the parallel combination is the voltage across the inductor (short), which is 0 V.\n$$v_C(0^-) = 0 \\text{ V}$$\n\nAt $t = 0^+$, inductor current and capacitor voltage are continuous.\n\n(c)\n$$i_L(0^+) = i_L(0^-) = 2 \\text{ A}$$\n\n(d)\n$$v_C(0^+) = v_C(0^-) = 0 \\text{ V}$$\n\n(e) The switch opens at $t=0$, disconnecting the source. The resistor is in series with the source; therefore, when the switch opens, the source and resistor are disconnected. The remaining circuit consists of the inductor and capacitor in parallel. For $t>0$, this is an ideal LC circuit (undamped).\n$$\\alpha = 0$$\n$$\\omega_0 = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{2 \\cdot 100 \\cdot 10^{-6}}} = \\frac{1}{\\sqrt{200 \\cdot 10^{-6}}} = \\frac{1}{\\sqrt{2 \\cdot 10^{-4}}} = \\frac{1}{0.01414} \\approx 70.71 \\text{ rad/s}$$\n\nKCL at the top node for $t>0$:\n$$i_C + i_L = 0 \\quad (\\text{since no external current})$$\n$$i_C(0^+) = -i_L(0^+) = -2 \\text{ A}$$\n\n(f)\n$$\\frac{dv_C}{dt}(0^+) = \\frac{i_C(0^+)}{C} = \\frac{-2}{100 \\cdot 10^{-6}} = -20000 \\text{ V/s}$$",
       "answer": "$i_L(0^-) = 2\\,\\text{A}$, $v_C(0^-) = 0\\,\\text{V}$, $i_L(0^+) = 2\\,\\text{A}$, $v_C(0^+) = 0\\,\\text{V}$, $i_C(0^+) = -2\\,\\text{A}$, $\\frac{dv}{dt}(0^+) = -20\\,\\text{kV/s}$",

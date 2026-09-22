@@ -372,7 +372,7 @@
   "problems": [
     {
       "id": "P01",
-      "question": "A circuit consists of a $10\\text{ mA}$ DC current source in parallel with a $5\\text{ k}\\Omega$ resistor. This combination is connected in series with an equivalent inductance of $100\\text{ mH}$. A switch has been in position 'a' for a long time, connecting the source and resistor to the inductor. At $t = 0$, the switch moves to position 'b', disconnecting the source and resistor and short-circuiting the inductor. Find the voltage across the inductor, $v_L(t)$, for $t \\ge 0^+$.",
+      "question": "A circuit consists of a $10\\text{ mA}$ DC current source in parallel with a $5\\text{ k}\\Omega$ resistor. This combination is connected in series with an equivalent inductance of $100\\text{ mH}$. A switch has been in position 'a' for a long time, connecting the source and resistor to the inductor. At $t = 0$, the switch moves to position 'b', disconnecting the source and resistor and connecting the inductor to a $2\\text{ k}\\Omega$ resistor. Find the voltage across the inductor, $v_L(t)$, for $t \\ge 0^+$.",
       "source_base": "N1",
       "circuit_spec": {
         "type": "series",
@@ -380,11 +380,15 @@
           {
             "kind": "L",
             "value": "100 mH"
+          },
+          {
+            "kind": "R",
+            "value": "2 kΩ"
           }
         ],
         "current_label": "i_L",
         "voltage_label": "v_L",
-        "note": "Inductor shorted at t=0. Initial current determined by pre-switch steady state: 10 mA source || 5 kΩ."
+        "note": "Switch moves a→b at t=0; iL(0) = 10 mA; decay through 2 kΩ, τ = 50 µs."
       },
       "solution": "1. **Initial Condition**\nFor $t < 0$, the circuit is in DC steady state. The inductor acts as a short circuit. The 10 mA current source is in parallel with the 5 kΩ resistor, and this combination is in series with the inductor. The current through the inductor is established by the source:\n$$i_L(0^-) = 10 \\text{ mA}$$\nDue to the continuity of inductor current:\n$$i_L(0^+) = i_L(0^-) = 10 \\text{ mA}$$\n\n2. **Final Condition**\nFor $t > 0$, the source is disconnected, and the inductor is connected in a loop with a 2 kΩ resistor. The energy stored in the inductor dissipates through the resistor, resulting in a final current of:\n$$i_L(\\infty) = 0 \\text{ A}$$\n\n3. **Time Constant**\nThe equivalent resistance seen by the inductor is $R_{eq} = 2 \\text{ k}\\Omega$. Given $L = 100 \\text{ mH}$, the time constant $\\tau$ is:\n$$\\tau = \\frac{L}{R_{eq}} = \\frac{0.1 \\text{ H}}{2000 \\ \\Omega} = 50 \\times 10^{-6} \\text{ s} = 50 \\ \\mu\\text{s}$$\n\n4. **Current Expression**\nThe current $i_L(t)$ for $t \\ge 0$ is given by the first-order transient response formula:\n$$i_L(t) = i_L(\\infty) + [i_L(0^+) - i_L(\\infty)]e^{-t/\\tau}$$\nSubstituting the known values:\n$$i_L(t) = 0 + (0.01 - 0)e^{-t/50\\mu}$$\n$$i_L(t) = 10 e^{-20000t} \\text{ mA}$$\n\n5. **Voltage Expression**\nThe voltage across the inductor is determined by:\n$$v_L(t) = L \\frac{di_L}{dt}$$\nDifferentiating the current expression (converting to Amperes for calculation):\n$$\\frac{di_L}{dt} = \\frac{d}{dt} \\left( 10 \\times 10^{-3} e^{-20000t} \\right) = 10 \\times 10^{-3} \\times (-20000) e^{-20000t} = -200 e^{-20000t} \\text{ A/s}$$\nCalculating the voltage:\n$$v_L(t) = 0.1 \\times (-200 e^{-20000t}) = -20 e^{-20000t} \\text{ V}$$",
       "answer": "$v_L(t) = -20 e^{-20000t} \\text{ V}$ for $t \\ge 0+$",
@@ -416,15 +420,11 @@
     },
     {
       "id": "P03",
-      "question": "A 24 V DC source is connected in series with a 4 Ω resistor and a 12 mH inductor. The circuit has been operating for a long time. At t=0, the terminals across the inductor are short-circuited. Find (a) the initial current in the short, (b) the final current in the short, and (c) the time in microseconds after the short until the current reaches 50% of its initial value.",
+      "question": "A 24 V DC source is connected in series with a 4 Ω resistor and a 12 mH inductor. The circuit has been operating for a long time. At t=0, the source is inadvertently short-circuited at its terminals, leaving the $4\\ \\Omega$ resistor and the $12$ mH inductor in a closed loop. Find (a) the initial current in the short, (b) the final current in the short, and (c) the time in microseconds after the short until the current reaches 50% of its initial value.",
       "source_base": "N3",
       "circuit_spec": {
         "type": "series",
         "components": [
-          {
-            "kind": "Vdc",
-            "value": "24 V"
-          },
           {
             "kind": "R",
             "value": "4 Ω"
@@ -436,23 +436,25 @@
         ],
         "current_label": "i",
         "voltage_label": "v_L",
-        "note": "RL circuit. Short across L at t=0. Note: If L is shorted, the source and R are still in the loop? No, 'short-circuited at terminals a,b' usually means the load is shorted. If the inductor is the load, shorting it bypasses it. But the problem asks for current in the short. Let's assume the short is across the inductor, so the inductor is in parallel with a short. The current through the short is the inductor current. The source and resistor are in series with the parallel combination. Since the short has 0 resistance, the total resistance is R=4Ω. The inductor current is continuous."
+        "note": "Source short-circuited at t=0; R–L loop with i(0) = 6 A, τ = 3 ms."
       },
-      "solution": "1. Initial Condition: For $t < 0$, the inductor behaves as a short circuit under DC steady-state conditions. The current is determined by the source voltage and the series resistance:\n$$i(0^-) = \\frac{V}{R} = \\frac{24}{4} = 6 \\text{ A}$$\nSince inductor current is continuous, $i(0^+) = 6$ A.\n\n2. Final Condition: At $t = 0$, the 24 V source is replaced by a short circuit. The resulting circuit consists of the 4 $\\Omega$ resistor and the 12 mH inductor in series, forming a closed loop. With no independent source driving the circuit, the final current is:\n$$i(\\infty) = 0 \\text{ A}$$\n\n3. Time Constant: The time constant $\\tau$ for the RL circuit is calculated as:\n$$\\tau = \\frac{L}{R} = \\frac{0.012}{4} = 0.003 \\text{ s} = 3 \\text{ ms} = 3000 \\text{ \\mu s}$$\n\n4. Current Expression: The current for $t \\ge 0$ is given by the natural response:\n$$i(t) = i(\\infty) + [i(0^+) - i(\\infty)]e^{-t/\\tau}$$\nSubstituting the known values:\n$$i(t) = 0 + (6 - 0)e^{-t/3000\\mu} = 6 e^{-t/3000\\mu} \\text{ A}$$\n\n5. Time to 50%: Determine the time $t$ at which the current decays to 50% of its initial value, i.e., $i(t) = 3$ A.\n$$3 = 6 e^{-t/3000\\mu}$$\n$$0.5 = e^{-t/3000\\mu}$$\nTaking the natural logarithm of both sides:\n$$\\ln(0.5) = -\\frac{t}{3000\\mu}$$\n$$t = -3000\\mu \\ln(0.5) = 3000\\mu \\ln(2)$$\n$$t \\approx 3000 \\times 0.6931 = 2079.3 \\text{ \\mu s}$$",
+      "solution": "1. Initial Condition: For $t < 0$, the inductor behaves as a short circuit under DC steady-state conditions. The current is determined by the source voltage and the series resistance:\n$$i(0^-) = \\frac{V}{R} = \\frac{24}{4} = 6 \\text{ A}$$\nSince inductor current is continuous, $i(0^+) = 6$ A.\n\n2. Final Condition: At $t = 0$, the 24 V source is replaced by a short circuit. The resulting circuit consists of the 4 $\\Omega$ resistor and the 12 mH inductor in series, forming a closed loop. With no independent source driving the circuit, the final current is:\n$$i(\\infty) = 0 \\text{ A}$$\n\n3. Time Constant: The time constant $\\tau$ for the RL circuit is calculated as:\n$$\\tau = \\frac{L}{R} = \\frac{0.012}{4} = 0.003 \\text{ s} = 3 \\text{ ms} = 3000 \\text{ \\mu s}$$\n\n4. Current Expression: The current for $t \\ge 0$ is given by the natural response:\n$$i(t) = i(\\infty) + [i(0^+) - i(\\infty)]e^{-t/\\tau}$$\nSubstituting the known values:\n$$i(t) = 0 + (6 - 0)e^{-t/3\\,\\text{ms}} = 6 e^{-t/3\\,\\text{ms}} \\text{ A}$$\n\n5. Time to 50%: Determine the time $t$ at which the current decays to 50% of its initial value, i.e., $i(t) = 3$ A.\n$$3 = 6 e^{-t/3\\,\\text{ms}}$$\n$$0.5 = e^{-t/3\\,\\text{ms}}$$\nTaking the natural logarithm of both sides:\n$$\\ln(0.5) = -\\frac{t}{3\\,\\text{ms}}$$\n$$t = -3\\,\\text{ms}\\,\\ln(0.5) = 3\\,\\text{ms}\\,\\ln 2$$\n$$t \\approx 3\\,\\text{ms} \\times 0.6931 = 2.079\\,\\text{ms} = 2079\\,\\mu\\text{s}$$",
       "answer": "(a) $6\\ \\text{A}$, (b) $0\\ \\text{A}$, (c) $2079\\ \\mu\\text{s}$",
       "set": 1
     },
     {
       "id": "P04",
-      "question": "A circuit contains two inductors, $L_1 = 4 \\text{ H}$ and $L_2 = 12 \\text{ H}$, connected in parallel. A $20 \\text{ A}$ DC current source is connected in parallel with this combination. A switch has been in position 'a' for a long time, connecting the source to the inductors. At $t = 0$, the switch moves to position 'b', disconnecting the source and shorting the inductor combination. Find the voltage across the inductors, $v(t)$, for $t \\ge 0^+$.",
+      "question": "A circuit contains two inductors, $L_1 = 4 \\text{ H}$ and $L_2 = 12 \\text{ H}$, connected in parallel. A $20 \\text{ A}$ DC current source is connected in parallel with this combination. A switch has been in position 'a' for a long time, connecting the source to the inductors. At $t = 0$, the switch moves to position 'b', disconnecting the source and connecting the inductor combination to a $10\\ \\Omega$ resistor. Find the voltage across the inductors, $v(t)$, for $t \\ge 0^+$.",
       "source_base": "N4",
       "circuit_spec": {
         "type": "parallel",
-        "source": {
-          "kind": "Idc",
-          "value": "20 A"
-        },
         "branches": [
+          [
+            {
+              "kind": "R",
+              "value": "10 Ω"
+            }
+          ],
           [
             {
               "kind": "L",
@@ -466,9 +468,9 @@
             }
           ]
         ],
-        "note": "Parallel inductors. Source disconnected at t=0, inductors shorted. Wait, if shorted, no decay. Let's add a resistor. Let's say at t=0, they are connected to a 10 Ω resistor."
+        "note": "Source disconnected at t=0; decay through 10 Ω (Leq = 3 H, τ = 0.3 s)."
       },
-      "solution": "1. Initial Conditions: For t < 0, DC steady state. Inductors are shorts. The 20 A source splits between L1 and L2. \nCurrent divider: $i_1(0^-) = 20 \\times \\frac{L_2}{L_1 + L_2} = 20 \\times \\frac{12}{4 + 12} = 20 \\times \\frac{12}{16} = 15$ A. \n$i_2(0^-) = 20 \\times \\frac{L_1}{L_1 + L_2} = 20 \\times \\frac{4}{16} = 5$ A. \nTotal current $i_{total}(0^-) = 20$ A. \n2. Final Conditions: For t > 0, the source is disconnected and the inductors are connected in parallel across a 10 Ω resistor (modified topology for decay). \n$i_{total}(\\infty) = 0$ A. \n3. Equivalent Inductance: Parallel inductors $L_{eq} = \\frac{L_1 L_2}{L_1 + L_2} = \\frac{4 \\times 12}{16} = 3$ H. \n4. Time Constant: $\\tau = L_{eq} / R = 3 / 10 = 0.3$ s. \n5. Total Current: $i_{total}(t) = 20 e^{-t/0.3} = 20 e^{-3.333t}$ A. \n6. Voltage: The voltage across the parallel combination is $v(t) = L_{eq} \\frac{di_{total}}{dt}$. \n$\\frac{di_{total}}{dt} = 20 \\times (-3.333) e^{-3.333t} = -66.66 e^{-3.333t}$ A/s. \n$v(t) = 3 \\times (-66.66 e^{-3.333t}) = -200 e^{-3.333t}$ V. \nAlternatively, $v(t) = -R i_{total}(t) = -10 \\times 20 e^{-3.333t} = -200 e^{-3.333t}$ V.",
+      "solution": "1. Initial Conditions: For t < 0, DC steady state. Inductors are shorts. The 20 A source splits between L1 and L2. \nCurrent divider: $i_1(0^-) = 20 \\times \\frac{L_2}{L_1 + L_2} = 20 \\times \\frac{12}{4 + 12} = 20 \\times \\frac{12}{16} = 15$ A. \n$i_2(0^-) = 20 \\times \\frac{L_1}{L_1 + L_2} = 20 \\times \\frac{4}{16} = 5$ A. \nTotal current $i_{total}(0^-) = 20$ A. \n2. Final Conditions: For t > 0, the source is disconnected and the inductors are connected in parallel across the 10 Ω resistor. \n$i_{total}(\\infty) = 0$ A. \n3. Equivalent Inductance: Parallel inductors $L_{eq} = \\frac{L_1 L_2}{L_1 + L_2} = \\frac{4 \\times 12}{16} = 3$ H. \n4. Time Constant: $\\tau = L_{eq} / R = 3 / 10 = 0.3$ s. \n5. Total Current: $i_{total}(t) = 20 e^{-t/0.3} = 20 e^{-3.333t}$ A. \n6. Voltage: The voltage across the parallel combination is $v(t) = L_{eq} \\frac{di_{total}}{dt}$. \n$\\frac{di_{total}}{dt} = 20 \\times (-3.333) e^{-3.333t} = -66.66 e^{-3.333t}$ A/s. \n$v(t) = 3 \\times (-66.66 e^{-3.333t}) = -200 e^{-3.333t}$ V. \nAlternatively, $v(t) = -R i_{total}(t) = -10 \\times 20 e^{-3.333t} = -200 e^{-3.333t}$ V.",
       "answer": "$v(t) = -200 e^{-3.33t} \\text{ V}$ for $t \\ge 0^+$",
       "set": 1
     },
@@ -482,11 +484,15 @@
           {
             "kind": "C",
             "value": "5 µF"
+          },
+          {
+            "kind": "R",
+            "value": "10 kΩ"
           }
         ],
         "current_label": "i",
         "voltage_label": "v_C",
-        "note": "RC discharge. Initial voltage determined by pre-switch steady state."
+        "note": "Switch moves a→b at t=0; vC(0) = 100 V; discharge through 10 kΩ, τ = 50 ms."
       },
       "solution": "1. Initial Condition: For t < 0, DC steady state. Capacitor is an open circuit. The voltage across the capacitor is the source voltage. \n$v_C(0^-) = 100$ V. \nSince capacitor voltage is continuous, $v_C(0^+) = 100$ V. \n2. Final Condition: For t > 0, the source is disconnected. The capacitor discharges through the 10 kΩ resistor. \n$v_C(\\infty) = 0$ V. \n3. Time Constant: $\\tau = R C = 10,000 \\times 5 \\times 10^{-6} = 0.05$ s = 50 ms. \n4. Voltage Expression: $v_C(t) = v_C(\\infty) + [v_C(0) - v_C(\\infty)]e^{-t/\\tau}$. \n$v_C(t) = 0 + (100 - 0)e^{-t/0.05} = 100 e^{-20t}$ V.",
       "answer": "$v_C(t) = 100 e^{-20t} \\text{ V}$ for $t \\geq 0$",
@@ -530,6 +536,10 @@
           {
             "kind": "C",
             "value": "5 µF"
+          },
+          {
+            "kind": "R",
+            "value": "40 kΩ"
           }
         ],
         "current_label": "i",
@@ -573,26 +583,22 @@
       "question": "Two capacitors, $C_1 = 2 \\ \\mu F$ and $C_2 = 6 \\ \\mu F$, are connected in parallel. A 100 V DC source is connected in series with a 10 kΩ resistor to this parallel combination. A switch has been in position 'a' for a long time, charging the capacitors. At $t = 0$, the switch moves to position 'b', disconnecting the source and resistor, leaving the capacitors in a closed loop with each other (and a 5 kΩ resistor in series with the loop). Find (a) the voltage across the capacitors, $v(t)$, for $t \\ge 0^+$, and (b) the energy trapped in the capacitors as $t \\to \\infty$.",
       "source_base": "N9",
       "circuit_spec": {
-        "type": "parallel",
-        "source": {
-          "kind": "Vdc",
-          "value": "100 V"
-        },
-        "branches": [
-          [
-            {
-              "kind": "C",
-              "value": "2 µF"
-            }
-          ],
-          [
-            {
-              "kind": "C",
-              "value": "6 µF"
-            }
-          ]
+        "type": "series",
+        "components": [
+          {
+            "kind": "C",
+            "value": "2 µF"
+          },
+          {
+            "kind": "C",
+            "value": "6 µF"
+          },
+          {
+            "kind": "R",
+            "value": "5 kΩ"
+          }
         ],
-        "note": "Parallel capacitors. Source disconnected at t=0. Discharge through 5 kΩ resistor."
+        "note": "After t=0: the capacitors (8 µF total) discharge through 5 kΩ; v(0) = 100 V, τ = 40 ms."
       },
       "solution": "1. Initial Condition: For t < 0, DC steady state. Capacitors are open. Voltage across each is 100 V. \n$v_1(0^-) = 100$ V, $v_2(0^-) = 100$ V. \nTotal charge $Q(0) = C_1 v_1 + C_2 v_2 = 2\\mu(100) + 6\\mu(100) = 800 \\mu C$. \n2. Final Condition: For t > 0, the capacitors discharge through the 5 kΩ resistor. \n$v(\\infty) = 0$ V. \n3. Equivalent Capacitance: Parallel capacitors $C_{eq} = C_1 + C_2 = 2 + 6 = 8$ µF. \n4. Time Constant: $\\tau = R C_{eq} = 5,000 \\times 8 \\times 10^{-6} = 0.04$ s = 40 ms. \n5. Voltage Expression: $v(t) = v(\\infty) + [v(0) - v(\\infty)]e^{-t/\\tau}$. \n$v(t) = 0 + (100 - 0)e^{-t/0.04} = 100 e^{-25t}$ V. \n6. Trapped Energy: As t -> infinity, v -> 0. \n$w(\\infty) = 0$ J.",
       "answer": "(a) $v(t) = 100 e^{-25t} \\text{ V}$, (b) $0 \\text{ J}$",
@@ -846,7 +852,7 @@
     },
     {
       "id": "P19",
-      "question": "A capacitor $C = 1 \\mu\\text{F}$ is initially discharged. It is connected to a circuit that presents a negative resistance of $-100 \\Omega$ to its terminals. The resistor in the circuit is rated for 1 W. Determine the time when the power dissipated in the 100 $\\Omega$ resistor exceeds 1 W.",
+      "question": "A capacitor $C = 1 \\mu\\text{F}$ is connected to an active circuit that presents a net negative resistance of $-100\\ \\Omega$ to its terminals; the circuit contains a physical resistor of $100\\ \\Omega$ rated for 1 W. Assume the capacitor voltage starts at $v_C(0) = 1$ V (a noise kick). Determine the time when the power dissipated in the 100 $\\Omega$ resistor exceeds 1 W.",
       "source_base": "H4",
       "circuit_spec": {
         "type": "series",
@@ -862,9 +868,9 @@
         ],
         "current_label": "i",
         "voltage_label": "v_C",
-        "note": "Negative resistance effect modeled as R=-100 for dynamics, but power calc uses physical R=100? No, base says 'wired upside down' implying active element. Let's assume the 'negative resistance' is the dynamic behavior, but the physical resistor is 100 ohm. Wait, if R_th is negative, the voltage grows. The power in the physical resistor is v^2/R_phys. Let's assume the physical resistor is 100 ohm and the active part makes the total R_th negative. Let's simplify: The voltage grows as v(t) = V0 e^{t/tau}. If V0 is small, it grows. Let's assume an initial kick or noise starts it. Let's assume v(0)=1V for calculation. tau = 100 * 1uF = 100us. v(t) = 1 e^{t/100us}. Power p = v^2/100. p > 1 => v^2 > 100 => v > 10V. 10 = 1 e^{t/100us} => ln(10) = t/100us => t = 100us * ln(10) ≈ 230us."
+        "note": "Active circuit with negative R_th: v_C(t) = v_C(0) e^{t/τ}, τ = 100 µs; the physical 100 Ω resistor dissipates the power."
       },
-      "solution": "Assume the circuit dynamics are governed by a negative time constant with $|\\tau| = 100 \\mu\\text{s}$ due to the active component, and the physical resistor dissipating power is $R = 100 \\Omega$. Let the initial voltage be $v_C(0) = 1 \\text{ V}$ (triggered by noise). The voltage grows as $v_C(t) = 1 \\cdot e^{t/100\\mu}$. The power dissipated in the 100 $\\Omega$ resistor is $p(t) = \\frac{v_C(t)^2}{100}$. We require $p(t) > 1 \\text{ W}$. $\\frac{e^{2t/100\\mu}}{100} > 1 \\Rightarrow e^{2t/100\\mu} > 100 \\Rightarrow 2t/100\\mu > \\ln(100) \\Rightarrow t > \\frac{100\\mu}{2} \\ln(100) = 50\\mu \\cdot 4.605 \\approx 230.25 \\mu\\text{s}$.",
+      "solution": "Assume the circuit dynamics are governed by a negative time constant with $|\\tau| = 100 \\mu\\text{s}$ due to the active component, and the physical resistor dissipating power is $R = 100 \\Omega$. The initial voltage is $v_C(0) = 1\\ \\text{V}$ (noise kick). The voltage grows as $v_C(t) = 1 \\cdot e^{t/(100\\ \\mu\\text{s})}$. The power dissipated in the 100 $\\Omega$ resistor is $p(t) = \\frac{v_C(t)^2}{100}$. We require $p(t) > 1 \\text{ W}$. $\\frac{e^{2t/(100\\ \\mu\\text{s})}}{100} > 1 \\Rightarrow e^{2t/(100\\ \\mu\\text{s})} > 100 \\Rightarrow 2t/(100\\ \\mu\\text{s}) > \\ln(100) \\Rightarrow t > \\frac{100\\ \\mu\\text{s}}{2} \\ln(100) = 50\\ \\mu\\text{s} \\times 4.605 \\approx 230.25 \\mu\\text{s}$.",
       "answer": "$t \\approx 230.25 \\text{ }\\mu\\text{s}$",
       "set": 4
     },

@@ -640,21 +640,17 @@
         "type": "series",
         "components": [
           {
-            "kind": "Vdc",
-            "value": "10 V"
+            "kind": "C",
+            "value": "10 nF"
           },
           {
             "kind": "R",
-            "value": "40 kΩ"
-          },
-          {
-            "kind": "C",
-            "value": "10 nF"
+            "value": "60 kΩ"
           }
         ],
         "current_label": "i",
         "voltage_label": "v_C",
-        "note": "Switch opens at t=0. C discharges through R2=60kΩ."
+        "note": "Switch opens at t=0; C discharges through R2 = 60 kΩ, τ = 0.6 ms."
       },
       "solution": "(a) For t < 0, the switch is closed and the circuit is in DC steady state. The capacitor acts as an open circuit. The voltage across the capacitor is equal to the source voltage. $v_C(0^-) = 10$ V. Thus, $v_C(0^+) = 10$ V. (b) For t > 0, the source and R1 are disconnected. The capacitor discharges through R2 = 60 kΩ. The time constant is $\\tau = R_2 C = 60000 \\times 10 \\times 10^{-9} = 600 \\times 10^{-6} = 0.6$ ms. (c) The voltage decays as $v(t) = v_C(0^+) e^{-t/\\tau} = 10 e^{-t/0.0006} = 10 e^{-1666.7t}$ V. (d) The energy stored in the capacitor is $w(t) = \\frac{1}{2} C v(t)^2 = \\frac{1}{2} C v_C(0^+)^2 e^{-2t/\\tau} = w(0) e^{-2t/\\tau}$. We want to dissipate 75% of the initial energy, which means 25% of the energy remains. So, $w(t) = 0.25 w(0)$. This implies $e^{-2t/\\tau} = 0.25$. Taking the natural log: $-\\frac{2t}{\\tau} = \\ln(0.25) = -\\ln(4)$. So, $\\frac{2t}{\\tau} = \\ln(4)$. $t = \\frac{\\tau \\ln(4)}{2} = \\frac{0.6 \\text{ ms} \\times 1.3863}{2} \\approx 0.4159$ ms.",
       "answer": "(a) $10\\ \\text{V}$; (b) $0.6\\ \\text{ms}$; (c) $v(t) = 10e^{-1666.7t}\\ \\text{V}$; (d) $0.416\\ \\text{ms}$",
@@ -804,14 +800,6 @@
         "type": "series",
         "components": [
           {
-            "kind": "Vdc",
-            "value": "20 V"
-          },
-          {
-            "kind": "R",
-            "value": "2 kΩ"
-          },
-          {
             "kind": "C",
             "value": "1 µF"
           },
@@ -822,7 +810,7 @@
         ],
         "current_label": "i",
         "voltage_label": "v_C",
-        "note": "Switch moves from a (charge) to b (discharge) at t=0."
+        "note": "Switch moves a→b at t=0; vC(0) = 20 V; discharge through 4 kΩ, τ = 4 ms."
       },
       "solution": "(a) For $t < 0$, the switch is in position 'a'. The capacitor charges to the source voltage, resulting in an initial voltage of $v_C(0) = 20 \\text{ V}$.\n\n(b) For $t > 0$, the switch is in position 'b'. The source is disconnected, and the capacitor discharges through the $4 \\text{ k}\\Omega$ resistor. The final voltage is $v_C(\\infty) = 0 \\text{ V}$.\n\n(c) The time constant for $t > 0$ is $\\tau = R_{\\text{discharge}} C = (4 \\times 10^3 \\Omega)(1 \\times 10^{-6} \\text{ F}) = 4 \\times 10^{-3} \\text{ s} = 4 \\text{ ms}$.\n\n(d) The voltage expression for $t > 0$ is:\n$$v_C(t) = v_C(\\infty) + [v_C(0) - v_C(\\infty)] e^{-t/\\tau}$$\nSubstituting the known values:\n$$v_C(t) = 0 + [20 - 0] e^{-t/0.004} = 20 e^{-250t} \\text{ V}$$\nThe voltage $v_C(t)$ approaches zero asymptotically as $t \\to \\infty$. Therefore, the time required for the voltage to reach zero is $t = \\infty$.",
       "answer": "(a) $20\\ \\text{V}$; (b) $0\\ \\text{V}$; (c) $4\\ \\text{ms}$; (d) $t$ approaches $\\infty$",

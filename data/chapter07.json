@@ -890,7 +890,7 @@
         ],
         "note": "Bridge arm: 1 H in series with 1 F between mid-nodes A and B"
       },
-      "solution": "Switch closed for $t \\ge 0$; zero initial conditions: $i(0^+) = 0$, $v_C(0^+) = 0$.\n\\nFor $t > 0$, KCL at A and B (with $i$ the bridge current from A to B) gives $v_A = 1.5(12 - i) = 18 - 1.5\\,i$ and $v_B = 12 + i$. The bridge KVL $v_A - v_L - v_C - v_B = 0$ gives $v_L = 6 - v_C - 2.5\\,i$, so $L\\,di/dt = 6 - v_C - 2.5\\,i$ and $C\\,dv_C/dt = i$. Eliminating $v_C$: $i'' + 2.5\\,i' + i = 0$, i.e. $s^2 + 2.5s + 1 = 0$ with roots $s_1 = -0.5$ and $s_2 = -2$ (overdamped).\n\\n$i(t) = Ae^{-t/2} + Be^{-2t}$: $i(0^+) = 0 \\Rightarrow A + B = 0$, and $i'(0^+) = v_L(0^+)/L = 6 - 0 - 0 = 6$ A/s (since $v_A(0^+) = 18$, $v_B(0^+) = 12$, $v_C(0^+) = 0$), so $-0.5A - 2B = 6 \\Rightarrow A = 4$, $B = -4$.\n\\n$i(t) = 4e^{-t/2} - 4e^{-2t}$ A. For the capacitor: $v_C(\\infty) = 6$ V (dc: no bridge current, $v_A(\\infty) = 18 - 0 = 18$ V, $v_B(\\infty) = 12$ V), so $v_C(t) = 6 + Ce^{-t/2} + De^{-2t}$ with $C + D = -6$ and $v_C'(0^+) = i(0^+) = 0 \\Rightarrow -0.5C - 2D = 0 \\Rightarrow C = -8$, $D = 2$. Hence $v_C(t) = 6 - 8e^{-t/2} + 2e^{-2t}$ V. Check: $v_C'(t) = 4e^{-t/2} - 4e^{-2t} = i(t)$.",
+      "solution": "Switch closed for $t \\ge 0$; zero initial conditions: $i(0^+) = 0$, $v_C(0^+) = 0$.\n\nFor $t > 0$, KCL at A and B (with $i$ the bridge current from A to B) gives $v_A = 1.5(12 - i) = 18 - 1.5\\,i$ and $v_B = 12 + i$. The bridge KVL $v_A - v_L - v_C - v_B = 0$ gives $v_L = 6 - v_C - 2.5\\,i$, so $L\\,di/dt = 6 - v_C - 2.5\\,i$ and $C\\,dv_C/dt = i$. Eliminating $v_C$: $i'' + 2.5\\,i' + i = 0$, i.e. $s^2 + 2.5s + 1 = 0$ with roots $s_1 = -0.5$ and $s_2 = -2$ (overdamped).\n\n$i(t) = Ae^{-t/2} + Be^{-2t}$: $i(0^+) = 0 \\Rightarrow A + B = 0$, and $i'(0^+) = v_L(0^+)/L = 6 - 0 - 0 = 6$ A/s (since $v_A(0^+) = 18$, $v_B(0^+) = 12$, $v_C(0^+) = 0$), so $-0.5A - 2B = 6 \\Rightarrow A = 4$, $B = -4$.\n\n$i(t) = 4e^{-t/2} - 4e^{-2t}$ A. For the capacitor: $v_C(\\infty) = 6$ V (dc: no bridge current, $v_A(\\infty) = 18 - 0 = 18$ V, $v_B(\\infty) = 12$ V), so $v_C(t) = 6 + Ce^{-t/2} + De^{-2t}$ with $C + D = -6$ and $v_C'(0^+) = i(0^+) = 0 \\Rightarrow -0.5C - 2D = 0 \\Rightarrow C = -8$, $D = 2$. Hence $v_C(t) = 6 - 8e^{-t/2} + 2e^{-2t}$ V. Check: $v_C'(t) = 4e^{-t/2} - 4e^{-2t} = i(t)$.",
       "answer": "$s_1 = -0.5$, $s_2 = -2$; $i(t) = 4e^{-t/2} - 4e^{-2t}$ A; $v_C(t) = 6 - 8e^{-t/2} + 2e^{-2t}$ V.",
       "set": 1,
       "difficulty": "hard",
@@ -1339,7 +1339,7 @@
         ],
         "note": "C and R share the output node B"
       },
-      "solution": "Switch closed for $t \\ge 0$; zero initial conditions: $i_L(0^+) = 0$, $v(0^+) = 0$.\n\\nFor $t > 0$: $v_A = 48 - 6\\,i_L$ (node between the resistor and inductor), the KVL $48 - 6\\,i_L - v = L\\,di_L/dt = i_L'$, and KCL at B: $i_L = v/2 + 0.25\\,v'$, i.e. $v' = 4\\,i_L - 2v$.\n\\nNatural response (source off): $v = -i_L' - 6\\,i_L$ and $v' = -i_L'' - 6\\,i_L' = 4\\,i_L + 2\\,i_L'$ $\\Rightarrow i_L'' + 8\\,i_L' + 16\\,i_L = 0$, a repeated root $s = -4$ (critically damped).\n\\nForced (dc) values: $i_L(\\infty) = 48/(6+2) = 6$ A and $v(\\infty) = 2 \\times 6 = 12$ V.\n\\n$i_L(t) = 6 + (A + Bt)e^{-4t}$: $i_L(0^+) = 0 \\Rightarrow A = -6$, and $i_L'(0^+) = 48 - 6(0) - 0 = 48$ A/s with $i_L'(0^+) = B - 4A = B + 24 \\Rightarrow B = 24$.\n\\n$i_L(t) = 6 + 6(4t - 1)e^{-4t}$ A. Likewise $v(t) = 12 + (C + Dt)e^{-4t}$: $v(0^+) = 0 \\Rightarrow C = -12$, and $v'(0^+) = 4(0) - 2(0) = 0 = D - 4C = D + 48 \\Rightarrow D = -48$.\n\\n$v(t) = 12 - 12(4t + 1)e^{-4t}$ V. Check at $t = 0.125$ s: $48 - 6\\,i_L - v = 21.84$ V/s $= i_L'(t)$ and $4\\,i_L - 2v = 14.56$ V/s $= v'(t)$.",
+      "solution": "Switch closed for $t \\ge 0$; zero initial conditions: $i_L(0^+) = 0$, $v(0^+) = 0$.\n\nFor $t > 0$: $v_A = 48 - 6\\,i_L$ (node between the resistor and inductor), the KVL $48 - 6\\,i_L - v = L\\,di_L/dt = i_L'$, and KCL at B: $i_L = v/2 + 0.25\\,v'$, i.e. $v' = 4\\,i_L - 2v$.\n\nNatural response (source off): $v = -i_L' - 6\\,i_L$ and $v' = -i_L'' - 6\\,i_L' = 4\\,i_L + 2\\,i_L'$ $\\Rightarrow i_L'' + 8\\,i_L' + 16\\,i_L = 0$, a repeated root $s = -4$ (critically damped).\n\nForced (dc) values: $i_L(\\infty) = 48/(6+2) = 6$ A and $v(\\infty) = 2 \\times 6 = 12$ V.\n\n$i_L(t) = 6 + (A + Bt)e^{-4t}$: $i_L(0^+) = 0 \\Rightarrow A = -6$, and $i_L'(0^+) = 48 - 6(0) - 0 = 48$ A/s with $i_L'(0^+) = B - 4A = B + 24 \\Rightarrow B = 24$.\n\n$i_L(t) = 6 + 6(4t - 1)e^{-4t}$ A. Likewise $v(t) = 12 + (C + Dt)e^{-4t}$: $v(0^+) = 0 \\Rightarrow C = -12$, and $v'(0^+) = 4(0) - 2(0) = 0 = D - 4C = D + 48 \\Rightarrow D = -48$.\n\n$v(t) = 12 - 12(4t + 1)e^{-4t}$ V. Check at $t = 0.125$ s: $48 - 6\\,i_L - v = 21.84$ V/s $= i_L'(t)$ and $4\\,i_L - 2v = 14.56$ V/s $= v'(t)$.",
       "answer": "$i_L(t) = 6 + 6(4t - 1)e^{-4t}$ A; $v(t) = 12 - 12(4t + 1)e^{-4t}$ V (critically damped, repeated root $s = -4$).",
       "set": 2,
       "difficulty": "hard",
@@ -1736,7 +1736,7 @@
         ],
         "note": "L from A and C from B to the reference node"
       },
-      "solution": "Switch closed for $t \\ge 0$; zero initial conditions: $i_L(0^+) = 0$, $v_B(0^+) = 0$.\n\\nFor $t > 0$, KCL at A and B (with $v_A = 2\\,di_L/dt$): $(36 - v_A)/2 + (v_B - v_A) = i_L$ and $(36 - v_B) + (v_A - v_B) = v_B'$. Eliminating $v_A$ and $v_B$ gives $3\\,i_L'' + 5\\,i_L' + 2\\,i_L = 72$, whose characteristic equation $(3s + 2)(s + 1) = 0$ has roots $s_1 = -1$ and $s_2 = -2/3$ (overdamped).\n\\nForced (dc) values: $v_A(\\infty) = 0$ (inductor short), $v_B(\\infty) = 18$ V (from $v_B' = 0$), $i_L(\\infty) = 36 + 18 = 36$ A.\n\\n$i_L(t) = 36 + Ae^{-t} + Be^{-2t/3}$: $A + B = -36$, and $i_L'(0^+) = v_A(0^+)/2 = 6$ A/s (KCL at A at $0^+$ with $i_L = 0$, $v_B = 0$: $(36 - v_A)/2 - v_A = 0 \\Rightarrow v_A(0^+) = 12$ V), so $-A - (2/3)B = 6 \\Rightarrow A = 54$, $B = -90$. Hence $i_L(t) = 36 + 54e^{-t} - 90e^{-2t/3}$ A.\n\\n$v_B(t) = 18 + Ce^{-t} + De^{-2t/3}$: $C + D = -18$, and $v_B'(0^+) = 36 + v_A(0^+) = 48$ V/s, so $-C - (2/3)D = 48 \\Rightarrow C = -108$, $D = 90$. Hence $v_B(t) = 18 - 108e^{-t} + 90e^{-2t/3}$ V. Check at $t = 1.5$ s: KCL at B gives $v_B' = 2.03$ V/s from the circuit and $108e^{-1.5} - 60e^{-1} = 2.03$ V/s from the expression.",
+      "solution": "Switch closed for $t \\ge 0$; zero initial conditions: $i_L(0^+) = 0$, $v_B(0^+) = 0$.\n\nFor $t > 0$, KCL at A and B (with $v_A = 2\\,di_L/dt$): $(36 - v_A)/2 + (v_B - v_A) = i_L$ and $(36 - v_B) + (v_A - v_B) = v_B'$. Eliminating $v_A$ and $v_B$ gives $3\\,i_L'' + 5\\,i_L' + 2\\,i_L = 72$, whose characteristic equation $(3s + 2)(s + 1) = 0$ has roots $s_1 = -1$ and $s_2 = -2/3$ (overdamped).\n\nForced (dc) values: $v_A(\\infty) = 0$ (inductor short), $v_B(\\infty) = 18$ V (from $v_B' = 0$), $i_L(\\infty) = 36 + 18 = 36$ A.\n\n$i_L(t) = 36 + Ae^{-t} + Be^{-2t/3}$: $A + B = -36$, and $i_L'(0^+) = v_A(0^+)/2 = 6$ A/s (KCL at A at $0^+$ with $i_L = 0$, $v_B = 0$: $(36 - v_A)/2 - v_A = 0 \\Rightarrow v_A(0^+) = 12$ V), so $-A - (2/3)B = 6 \\Rightarrow A = 54$, $B = -90$. Hence $i_L(t) = 36 + 54e^{-t} - 90e^{-2t/3}$ A.\n\n$v_B(t) = 18 + Ce^{-t} + De^{-2t/3}$: $C + D = -18$, and $v_B'(0^+) = 36 + v_A(0^+) = 48$ V/s, so $-C - (2/3)D = 48 \\Rightarrow C = -108$, $D = 90$. Hence $v_B(t) = 18 - 108e^{-t} + 90e^{-2t/3}$ V. Check at $t = 1.5$ s: KCL at B gives $v_B' = 2.03$ V/s from the circuit and $108e^{-1.5} - 60e^{-1} = 2.03$ V/s from the expression.",
       "answer": "$s_1 = -1$, $s_2 = -2/3$; $di_L/dt(0^+) = 6$ A/s; $i_L(t) = 36 + 54e^{-t} - 90e^{-2t/3}$ A; $v_B(t) = 18 - 108e^{-t} + 90e^{-2t/3}$ V; $i_L(\\infty) = 36$ A, $v_B(\\infty) = 18$ V.",
       "set": 3,
       "parts": [
@@ -2507,7 +2507,7 @@
         {
           "ask": "Find $dv_C/dt\\big|_{0^+}$.",
           "options": [
-            "0 V/s",
+            "$0$ V/s",
             "$2$ MV/s",
             "$2000$ V/s",
             "$-2$ MV/s"
@@ -2522,7 +2522,7 @@
           "ask": "Find $di_L/dt\\big|_{0^+}$.",
           "options": [
             "$-0.05$ A/s",
-            "0 A/s",
+            "$0$ A/s",
             "$0.05$ A/s",
             "$50$ A/s"
           ],
