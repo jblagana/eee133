@@ -48,7 +48,7 @@ window.MathJax = {
   <div class="q-id">C01 · Multiple Choice</div>
   <p class="q-text">For an ideal inverting op-amp integrator with input resistor R1 and feedback capacitor Cf, what is the mathematical relationship between the output voltage vout(t) and the input voltage vs(t)?</p>
   <div class="opt-grid">
-    <button class="opt-btn" data-val="A">$v_{out}(t) = -\frac{1}{R_1 C_f} \int_{0}^{t} v_s(\tau) d\tau + v_{out}(0)$</button><button class="opt-btn" data-val="B">$v_{out}(t) = -R_1 C_f \frac{dv_s}{dt}$</button><button class="opt-btn" data-val="C">vout(t) = -(Rf/R1) vs(t)</button><button class="opt-btn" data-val="D">$v_{out}(t) = \frac{1}{R_1 C_f} \int_{0}^{t} v_s(\tau) d\tau$</button>
+    <button class="opt-btn" data-val="A">$v_{out}(t) = -\frac{1}{R_1 C_f} \int_{0}^{t} v_s(\tau) d\tau + v_{out}(0)$</button><button class="opt-btn" data-val="B">$v_{out}(t) = -R_1 C_f \frac{dv_s}{dt}$</button><button class="opt-btn" data-val="C">$v_{out}(t) = -\frac{R_f}{R_1} v_s(t)$</button><button class="opt-btn" data-val="D">$v_{out}(t) = \frac{1}{R_1 C_f} \int_{0}^{t} v_s(\tau) d\tau$</button>
   </div>
   <button class="check-btn" disabled>Check Answer</button>
   <div class="q-feedback"></div>
@@ -319,7 +319,7 @@ where $V_{\text{start}}$ corresponds to $V_{\text{low}}$ and $V_{\text{end}}$ co
   <div class="q-id">C13 · Multiple Choice</div>
   <p class="q-text">An ideal op-amp integrator with a DC input will eventually saturate. What is the primary reason for this saturation?</p>
   <div class="opt-grid">
-    <button class="opt-btn" data-val="A">The op-amp has finite bandwidth</button><button class="opt-btn" data-val="B">The output voltage reaches the supply rail limits</button><button class="opt-btn" data-val="C">The input resistor R1 burns out</button><button class="opt-btn" data-val="D">The feedback capacitor Cf leaks current</button>
+    <button class="opt-btn" data-val="A">The op-amp has finite bandwidth</button><button class="opt-btn" data-val="B">The output voltage reaches the supply rail limits</button><button class="opt-btn" data-val="C">The input resistor $R_1$ burns out</button><button class="opt-btn" data-val="D">The feedback capacitor $C_f$ leaks current</button>
   </div>
   <button class="check-btn" disabled>Check Answer</button>
   <div class="q-feedback"></div>
@@ -431,7 +431,7 @@ where $V_{\text{start}}$ corresponds to $V_{\text{low}}$ and $V_{\text{end}}$ co
   <div class="q-id">C17 · Multiple Choice</div>
   <p class="q-text">In a practical op-amp integrator, the DC gain is determined by the ratio of which two components?</p>
   <div class="opt-grid">
-    <button class="opt-btn" data-val="A">R1 and Cf</button><button class="opt-btn" data-val="B">Rf and R1</button><button class="opt-btn" data-val="C">Rf and Cf</button><button class="opt-btn" data-val="D">R1 and C1</button>
+    <button class="opt-btn" data-val="A">$R_1$ and $C_f$</button><button class="opt-btn" data-val="B">$R_f$ and $R_1$</button><button class="opt-btn" data-val="C">$R_f$ and $C_f$</button><button class="opt-btn" data-val="D">$R_1$ and $C_1$</button>
   </div>
   <button class="check-btn" disabled>Check Answer</button>
   <div class="q-feedback"></div>
@@ -666,7 +666,7 @@ $$ t = RC \ln\left(\frac{V_s}{V_s - \frac{V_s}{2}}\right) = RC \ln\left(\frac{V_
   <div class="q-id">C26 · Multiple Choice</div>
   <p class="q-text">In a practical integrator, the resistor Rf in parallel with Cf introduces a zero in the transfer function. Where is this zero located in the s-domain?</p>
   <div class="opt-grid">
-    <button class="opt-btn" data-val="A">s = 0</button><button class="opt-btn" data-val="B">s = -1/(Rf Cf)</button><button class="opt-btn" data-val="C">s = 1/(Rf Cf)</button><button class="opt-btn" data-val="D">s = -Rf Cf</button>
+    <button class="opt-btn" data-val="A">$s = 0$</button><button class="opt-btn" data-val="B">$s = -1/(R_f C_f)$</button><button class="opt-btn" data-val="C">$s = 1/(R_f C_f)$</button><button class="opt-btn" data-val="D">$s = -R_f C_f$</button>
   </div>
   <button class="check-btn" disabled>Check Answer</button>
   <div class="q-feedback"></div>

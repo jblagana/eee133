@@ -635,7 +635,7 @@
           },
           {
             "kind": "R",
-            "value": "2 k"
+            "value": "2 kΩ"
           },
           {
             "kind": "C",
@@ -667,7 +667,7 @@
           },
           {
             "kind": "R",
-            "value": "10 k"
+            "value": "10 kΩ"
           },
           {
             "kind": "C",
@@ -696,7 +696,7 @@
           [
             {
               "kind": "R",
-              "value": "5 k"
+              "value": "5 kΩ"
             }
           ],
           [
@@ -725,7 +725,7 @@
           },
           {
             "kind": "R",
-            "value": "-1 k"
+            "value": "-1 kΩ"
           }
         ],
         "current_label": "i",
@@ -749,7 +749,7 @@
           },
           {
             "kind": "R",
-            "value": "-2 k"
+            "value": "-2 kΩ"
           }
         ],
         "current_label": "i_L",
@@ -773,7 +773,7 @@
           },
           {
             "kind": "R",
-            "value": "5 k"
+            "value": "5 kΩ"
           },
           {
             "kind": "C",
@@ -801,7 +801,7 @@
           },
           {
             "kind": "R",
-            "value": "4 k"
+            "value": "4 kΩ"
           },
           {
             "kind": "C",
@@ -829,7 +829,7 @@
           },
           {
             "kind": "R",
-            "value": "1 k"
+            "value": "1 kΩ"
           },
           {
             "kind": "C",
@@ -857,7 +857,7 @@
           },
           {
             "kind": "R",
-            "value": "100"
+            "value": "100 Ω"
           }
         ],
         "current_label": "i",
@@ -881,7 +881,7 @@
           },
           {
             "kind": "R",
-            "value": "2 k"
+            "value": "2 kΩ"
           },
           {
             "kind": "L",

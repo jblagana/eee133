@@ -189,10 +189,10 @@
       "question": "The resonant frequency $\\omega_0$ for both series and parallel RLC circuits is given by:",
       "type": "mcq",
       "options": [
-        "1/sqrt(LC)",
-        "sqrt(LC)",
-        "1/(2pi LC)",
-        "2pi sqrt(LC)"
+        "$1/\\sqrt{LC}$",
+        "$\\sqrt{LC}$",
+        "$1/(2\\pi LC)$",
+        "$2\\pi\\sqrt{LC}$"
       ],
       "answer": "A",
       "explanation": "The resonant frequency (or undamped natural frequency) is a property of the $L$ and $C$ elements and is defined as $\\omega_0 = \\frac{1}{\\sqrt{LC}}$ for both series and parallel configurations.",
@@ -385,10 +385,10 @@
       "question": "The characteristic equation $s^2 + 2\\alpha s + \\omega_0^2 = 0$ is derived from the differential equation governing the circuit. The coefficient of the $s$ term is:",
       "type": "mcq",
       "options": [
-        "2alpha",
+        "$2\\alpha$",
         "$\\alpha$",
         "$\\omega_0$",
-        "2w0"
+        "$2\\omega_0$"
       ],
       "answer": "A",
       "explanation": "By definition, the standard form of the second-order characteristic equation is\n$$s^2 + 2\\alpha s + \\omega_0^2 = 0$$\nwhere $2\\alpha$ is the coefficient of the first derivative term ($s$ term).",

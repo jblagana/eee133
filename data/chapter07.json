@@ -167,10 +167,10 @@
       "question": "The damping factor $\\alpha$ for a parallel RLC circuit is given by:",
       "type": "mcq",
       "options": [
-        "R/(2L)",
-        "1/(2RC)",
-        "1/sqrt(LC)",
-        "2RC"
+        "$R/(2L)$",
+        "$1/(2RC)$",
+        "$1/\\sqrt{LC}$",
+        "$2RC$"
       ],
       "answer": "B",
       "explanation": "In a parallel RLC circuit, the damping factor is defined as $\\alpha = \\frac{1}{2RC}$, which is the dual of the series case.",
@@ -209,7 +209,7 @@
       "options": [
         "Find the steady-state value $x_{ss}$",
         "Write the second-order differential equation",
-        "Solve for the constants A1 and A2",
+        "Solve for the constants $A_1$ and $A_2$",
         "Calculate the damping factor $\\alpha$"
       ],
       "answer": "B",
@@ -289,10 +289,10 @@
       "question": "For a series RLC circuit, the resonant frequency $\\omega_0$ is given by:",
       "type": "mcq",
       "options": [
-        "1/sqrt(LC)",
-        "1/(2pi sqrt(LC))",
-        "sqrt(LC)",
-        "R/sqrt(LC)"
+        "$1/\\sqrt{LC}$",
+        "$1/(2\\pi\\sqrt{LC})$",
+        "$\\sqrt{LC}$",
+        "$R/\\sqrt{LC}$"
       ],
       "answer": "A",
       "explanation": "The undamped natural frequency (resonant frequency) for any RLC circuit is $\\omega_0 = \\frac{1}{\\sqrt{LC}}$, independent of the resistance.",
@@ -452,7 +452,7 @@
             "to": "A",
             "comp": {
               "kind": "R",
-              "value": "4"
+              "value": "4 Ω"
             }
           },
           {
@@ -468,7 +468,7 @@
             "to": "B",
             "comp": {
               "kind": "R",
-              "value": "6"
+              "value": "6 Ω"
             }
           },
           {
@@ -540,7 +540,7 @@
           [
             {
               "kind": "R",
-              "value": "62.5"
+              "value": "R"
             }
           ],
           [
@@ -619,7 +619,7 @@
           [
             {
               "kind": "R",
-              "value": "100"
+              "value": "R"
             }
           ],
           [
@@ -698,7 +698,7 @@
           [
             {
               "kind": "R",
-              "value": "2 k"
+              "value": "2 kΩ"
             }
           ],
           [
@@ -826,7 +826,7 @@
             "to": "A",
             "comp": {
               "kind": "R",
-              "value": "2"
+              "value": "2 Ω"
             }
           },
           {
@@ -834,7 +834,7 @@
             "to": "G1",
             "comp": {
               "kind": "R",
-              "value": "6"
+              "value": "6 Ω"
             }
           },
           {
@@ -842,7 +842,7 @@
             "to": "B",
             "comp": {
               "kind": "R",
-              "value": "2"
+              "value": "2 Ω"
             }
           },
           {
@@ -850,7 +850,7 @@
             "to": "G2",
             "comp": {
               "kind": "R",
-              "value": "2"
+              "value": "2 Ω"
             }
           },
           {
@@ -915,7 +915,7 @@
             "$4(1 - e^{-t/2})$ A"
           ],
           "answer": "A",
-          "solution": "$i(t) = Ae^{-t/2} + Be^{-2t}$ with $A + B = i(0^+) = 0$ and $i'(0^+) = v_L(0^+)/L = 6$ A/s: $-0.5A - 2B = 6 \\Rightarrow A = 4$, $B = -4$. So $i(t) = 4e^{-t/2} - 4e^{-2t}$ A (peak $\\approx 1.59$ A at $t = \\tfrac{2}{3}\\ln 2 \\approx 0.46$ s)."
+          "solution": "$i(t) = Ae^{-t/2} + Be^{-2t}$ with $A + B = i(0^+) = 0$ and $i'(0^+) = v_L(0^+)/L = 6$ A/s: $-0.5A - 2B = 6 \\Rightarrow A = 4$, $B = -4$. So $i(t) = 4e^{-t/2} - 4e^{-2t}$ A (peak $\\approx 1.89$ A at $t = \\tfrac{4}{3}\\ln 2 \\approx 0.92$ s)."
         },
         {
           "ask": "Find the capacitor voltage $v_C(t)$ for $t \\ge 0$.",
@@ -988,7 +988,7 @@
             "to": "B",
             "comp": {
               "kind": "R",
-              "value": "30"
+              "value": "30 Ω"
             }
           },
           {
@@ -1132,7 +1132,7 @@
             "to": "B",
             "comp": {
               "kind": "R",
-              "value": "30"
+              "value": "30 Ω"
             }
           },
           {
@@ -1291,7 +1291,7 @@
             "to": "A",
             "comp": {
               "kind": "R",
-              "value": "6"
+              "value": "6 Ω"
             }
           },
           {
@@ -1319,12 +1319,16 @@
             "to": "Rx",
             "comp": {
               "kind": "R",
-              "value": "2"
+              "value": "2 Ω"
             }
           },
           {
             "from": "Cx",
             "to": "Rx"
+          },
+          {
+            "from": "G",
+            "to": "Cx"
           }
         ],
         "labels": [
@@ -1377,7 +1381,7 @@
           },
           {
             "kind": "R",
-            "value": "3.5"
+            "value": "3.5 Ω"
           },
           {
             "kind": "L",
@@ -1432,7 +1436,7 @@
           },
           {
             "kind": "R",
-            "value": "14.5 k"
+            "value": "14.5 kΩ"
           },
           {
             "kind": "L",
@@ -1609,94 +1613,70 @@
             0,
             0
           ],
-          "A": [
-            50,
-            0
-          ],
-          "PA": [
-            110,
-            0
-          ],
           "P": [
             160,
             0
           ],
-          "PB": [
-            210,
+          "CR": [
+            240,
             0
           ],
-          "B": [
-            270,
-            0
-          ],
-          "PA2": [
-            110,
+          "A": [
+            160,
             80
           ],
-          "PB2": [
-            210,
+          "B": [
+            240,
+            80
+          ],
+          "Sw": [
+            0,
             80
           ],
           "Lg": [
-            50,
+            160,
             160
           ],
           "Cg": [
-            270,
+            240,
             160
           ],
           "G": [
             0,
             160
-          ],
-          "Sw": [
-            0,
-            80
           ]
         },
         "edges": [
           {
             "from": "S1",
-            "to": "A"
-          },
-          {
-            "from": "A",
-            "to": "PA",
-            "comp": {
-              "kind": "R",
-              "value": "2"
-            }
-          },
-          {
-            "from": "PA",
             "to": "P"
           },
           {
             "from": "P",
-            "to": "PB"
+            "to": "CR"
           },
           {
-            "from": "PB",
-            "to": "B",
+            "from": "P",
+            "to": "A",
             "comp": {
               "kind": "R",
-              "value": "1"
+              "value": "2 Ω"
             }
           },
           {
-            "from": "PA",
-            "to": "PA2"
-          },
-          {
-            "from": "PB",
-            "to": "PB2"
-          },
-          {
-            "from": "PA2",
-            "to": "PB2",
+            "from": "CR",
+            "to": "B",
             "comp": {
               "kind": "R",
-              "value": "1"
+              "value": "1 Ω"
+            }
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "1 Ω"
             }
           },
           {
@@ -1756,7 +1736,7 @@
         ],
         "note": "L from A and C from B to the reference node"
       },
-      "solution": "Switch closed for $t \\ge 0$; zero initial conditions: $i_L(0^+) = 0$, $v_B(0^+) = 0$.\n\\nFor $t > 0$, KCL at A and B (with $v_A = 2\\,di_L/dt$): $(36 - v_A)/2 + (v_B - v_A) = i_L$ and $(36 - v_B) + (v_A - v_B) = v_B'$. Eliminating $v_A$ and $v_B$ gives $3\\,i_L'' + 5\\,i_L' + 2\\,i_L = 72$, whose characteristic equation $(3s + 2)(s + 1) = 0$ has roots $s_1 = -1$ and $s_2 = -2/3$ (overdamped).\n\\nForced (dc) values: $v_A(\\infty) = 0$ (inductor short), $v_B(\\infty) = 18$ V (from $v_B' = 0$), $i_L(\\infty) = 36 + 18 = 36$ A.\n\\n$i_L(t) = 36 + Ae^{-t} + Be^{-2t/3}$: $A + B = -36$, and $i_L'(0^+) = v_A(0^+)/2 = 6$ A/s (KCL at A at $0^+$ with $i_L = 0$, $v_B = 0$: $(36 - v_A)/2 - v_A = 0 \\Rightarrow v_A(0^+) = 12$ V), so $-A - (2/3)B = 6 \\Rightarrow A = 54$, $B = -90$. Hence $i_L(t) = 36 + 54e^{-t} - 90e^{-2t/3}$ A.\n\\n$v_B(t) = 18 + Ce^{-t} + De^{-2t/3}$: $C + D = -18$, and $v_B'(0^+) = 36 + v_A(0^+) = 48$ V/s, so $-C - (2/3)D = 48 \\Rightarrow C = -108$, $D = 90$. Hence $v_B(t) = 18 - 108e^{-t} + 90e^{-2t/3}$ V. Check at $t = 1.5$ s: KCL at B gives $v_B' = 14.62$ V/s from the circuit and $108e^{-1.5} - 60e^{-1} = 14.62$ V/s from the expression.",
+      "solution": "Switch closed for $t \\ge 0$; zero initial conditions: $i_L(0^+) = 0$, $v_B(0^+) = 0$.\n\\nFor $t > 0$, KCL at A and B (with $v_A = 2\\,di_L/dt$): $(36 - v_A)/2 + (v_B - v_A) = i_L$ and $(36 - v_B) + (v_A - v_B) = v_B'$. Eliminating $v_A$ and $v_B$ gives $3\\,i_L'' + 5\\,i_L' + 2\\,i_L = 72$, whose characteristic equation $(3s + 2)(s + 1) = 0$ has roots $s_1 = -1$ and $s_2 = -2/3$ (overdamped).\n\\nForced (dc) values: $v_A(\\infty) = 0$ (inductor short), $v_B(\\infty) = 18$ V (from $v_B' = 0$), $i_L(\\infty) = 36 + 18 = 36$ A.\n\\n$i_L(t) = 36 + Ae^{-t} + Be^{-2t/3}$: $A + B = -36$, and $i_L'(0^+) = v_A(0^+)/2 = 6$ A/s (KCL at A at $0^+$ with $i_L = 0$, $v_B = 0$: $(36 - v_A)/2 - v_A = 0 \\Rightarrow v_A(0^+) = 12$ V), so $-A - (2/3)B = 6 \\Rightarrow A = 54$, $B = -90$. Hence $i_L(t) = 36 + 54e^{-t} - 90e^{-2t/3}$ A.\n\\n$v_B(t) = 18 + Ce^{-t} + De^{-2t/3}$: $C + D = -18$, and $v_B'(0^+) = 36 + v_A(0^+) = 48$ V/s, so $-C - (2/3)D = 48 \\Rightarrow C = -108$, $D = 90$. Hence $v_B(t) = 18 - 108e^{-t} + 90e^{-2t/3}$ V. Check at $t = 1.5$ s: KCL at B gives $v_B' = 2.03$ V/s from the circuit and $108e^{-1.5} - 60e^{-1} = 2.03$ V/s from the expression.",
       "answer": "$s_1 = -1$, $s_2 = -2/3$; $di_L/dt(0^+) = 6$ A/s; $i_L(t) = 36 + 54e^{-t} - 90e^{-2t/3}$ A; $v_B(t) = 18 - 108e^{-t} + 90e^{-2t/3}$ V; $i_L(\\infty) = 36$ A, $v_B(\\infty) = 18$ V.",
       "set": 3,
       "parts": [
@@ -2280,7 +2260,7 @@
           },
           {
             "kind": "R",
-            "value": "6"
+            "value": "6 Ω"
           },
           {
             "kind": "L",
@@ -2336,7 +2316,7 @@
           },
           {
             "kind": "R",
-            "value": "0.6"
+            "value": "0.6 Ω"
           },
           {
             "kind": "L",
@@ -2382,7 +2362,7 @@
           [
             {
               "kind": "R",
-              "value": "4"
+              "value": "4 Ω"
             }
           ],
           [
@@ -2502,7 +2482,7 @@
           [
             {
               "kind": "R",
-              "value": "40 k"
+              "value": "40 kΩ"
             }
           ],
           [
@@ -2560,7 +2540,7 @@
         "components": [
           {
             "kind": "R",
-            "value": "10"
+            "value": "10 Ω"
           },
           {
             "kind": "L",
@@ -2612,11 +2592,11 @@
         "components": [
           {
             "kind": "R",
-            "value": "2"
+            "value": "2 Ω"
           },
           {
             "kind": "R",
-            "value": "2"
+            "value": "2 Ω"
           },
           {
             "kind": "L",
@@ -2668,11 +2648,11 @@
         "components": [
           {
             "kind": "R",
-            "value": "2"
+            "value": "2 Ω"
           },
           {
             "kind": "R",
-            "value": "2"
+            "value": "2 Ω"
           },
           {
             "kind": "L",

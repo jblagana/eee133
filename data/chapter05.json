@@ -9,7 +9,7 @@
       "options": [
         "$v_{out}(t) = -\\frac{1}{R_1 C_f} \\int_{0}^{t} v_s(\\tau) d\\tau + v_{out}(0)$",
         "$v_{out}(t) = -R_1 C_f \\frac{dv_s}{dt}$",
-        "vout(t) = -(Rf/R1) vs(t)",
+        "$v_{out}(t) = -\\frac{R_f}{R_1} v_s(t)$",
         "$v_{out}(t) = \\frac{1}{R_1 C_f} \\int_{0}^{t} v_s(\\tau) d\\tau$"
       ],
       "answer": "A",
@@ -171,8 +171,8 @@
       "options": [
         "The op-amp has finite bandwidth",
         "The output voltage reaches the supply rail limits",
-        "The input resistor R1 burns out",
-        "The feedback capacitor Cf leaks current"
+        "The input resistor $R_1$ burns out",
+        "The feedback capacitor $C_f$ leaks current"
       ],
       "answer": "B",
       "explanation": "The integrator output ramps linearly without bound in theory. In practice, the output cannot exceed the positive or negative supply rails, so it saturates when it hits these limits.",
@@ -221,10 +221,10 @@
       "question": "In a practical op-amp integrator, the DC gain is determined by the ratio of which two components?",
       "type": "mcq",
       "options": [
-        "R1 and Cf",
-        "Rf and R1",
-        "Rf and Cf",
-        "R1 and C1"
+        "$R_1$ and $C_f$",
+        "$R_f$ and $R_1$",
+        "$R_f$ and $C_f$",
+        "$R_1$ and $C_1$"
       ],
       "answer": "B",
       "explanation": "At DC, the capacitor acts as an open circuit, so the feedback path is through Rf. The gain is therefore -Rf/R1.",
@@ -339,10 +339,10 @@
       "question": "In a practical integrator, the resistor Rf in parallel with Cf introduces a zero in the transfer function. Where is this zero located in the s-domain?",
       "type": "mcq",
       "options": [
-        "s = 0",
-        "s = -1/(Rf Cf)",
-        "s = 1/(Rf Cf)",
-        "s = -Rf Cf"
+        "$s = 0$",
+        "$s = -1/(R_f C_f)$",
+        "$s = 1/(R_f C_f)$",
+        "$s = -R_f C_f$"
       ],
       "explanation": "The feedback impedance is $Z_f = R_f \\parallel \\frac{1}{sC_f} = \\frac{R_f}{1 + s R_f C_f}$. The transfer function exhibits a zero where the effect of the parallel combination cancels the pole, effectively creating a zero at $s = -\\frac{1}{R_f C_f}$ in the loop gain context. Alternatively, the DC gain is finite because the capacitor is bypassed by $R_f$ at DC. The zero in the feedback impedance expression $Z_f(s) = \\frac{R_f}{1 + s R_f C_f}$ is located at $s = -\\frac{1}{R_f C_f}$.",
       "answer": "B",
