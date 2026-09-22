@@ -491,72 +491,24 @@
       "circuit_spec": {
         "type": "netlist",
         "nodes": {
-          "S": [
-            60,
-            180
-          ],
-          "A": [
-            60,
-            40
-          ],
-          "M0": [
-            170,
-            180
-          ],
-          "B": [
-            170,
-            40
-          ],
           "C": [
-            300,
+            80,
             40
           ],
           "D": [
-            300,
+            80,
             180
           ],
           "F": [
-            460,
+            420,
             40
           ],
           "E": [
-            460,
+            420,
             180
           ]
         },
         "edges": [
-          {
-            "from": "S",
-            "to": "A",
-            "comp": {
-              "kind": "Idc",
-              "value": "10 mA"
-            }
-          },
-          {
-            "from": "S",
-            "to": "M0"
-          },
-          {
-            "from": "M0",
-            "to": "B",
-            "comp": {
-              "kind": "R",
-              "value": "5 kΩ"
-            }
-          },
-          {
-            "from": "A",
-            "to": "B"
-          },
-          {
-            "from": "B",
-            "to": "C",
-            "comp": {
-              "kind": "switch",
-              "value": "a→b at t=0"
-            }
-          },
           {
             "from": "C",
             "to": "D",
@@ -603,19 +555,99 @@
       "question": "A 24 V DC source is connected in series with a 4 Ω resistor and a 12 mH inductor. The circuit has been operating for a long time. At t=0, the source is inadvertently short-circuited at its terminals, leaving the $4\\ \\Omega$ resistor and the $12$ mH inductor in a closed loop. Find (a) the initial current in the short, (b) the final current in the short, and (c) the time in microseconds after the short until the current reaches 50% of its initial value.",
       "source_base": "N3",
       "circuit_spec": {
-        "type": "series",
-        "components": [
+        "type": "netlist",
+        "nodes": {
+          "A1": [
+            120,
+            40
+          ],
+          "S1": [
+            120,
+            180
+          ],
+          "T": [
+            270,
+            40
+          ],
+          "Bt": [
+            270,
+            180
+          ],
+          "I0": [
+            340,
+            180
+          ],
+          "B": [
+            430,
+            40
+          ],
+          "D": [
+            430,
+            180
+          ]
+        },
+        "edges": [
           {
-            "kind": "R",
-            "value": "4 Ω"
+            "from": "S1",
+            "to": "A1",
+            "comp": {
+              "kind": "Vdc",
+              "value": "24 V"
+            },
+            "label_side": "left"
           },
           {
-            "kind": "L",
-            "value": "12 mH"
+            "from": "A1",
+            "to": "T"
+          },
+          {
+            "from": "T",
+            "to": "B",
+            "comp": {
+              "kind": "R",
+              "value": "4 Ω"
+            }
+          },
+          {
+            "from": "B",
+            "to": "D",
+            "comp": {
+              "kind": "L",
+              "value": "12 mH"
+            },
+            "label_side": "left"
+          },
+          {
+            "from": "D",
+            "to": "I0"
+          },
+          {
+            "from": "I0",
+            "to": "Bt"
+          },
+          {
+            "from": "Bt",
+            "to": "S1"
+          },
+          {
+            "from": "T",
+            "to": "Bt",
+            "comp": {
+              "kind": "switch",
+              "value": "short at t=0"
+            }
           }
         ],
-        "current_label": "i",
-        "voltage_label": "v_L",
+        "labels": [
+          {
+            "at": "I0",
+            "text": "i"
+          },
+          {
+            "at": "B",
+            "text": "v_L"
+          }
+        ],
         "note": "Source short-circuited at t=0; R–L loop with i(0) = 6 A, τ = 3 ms."
       },
       "solution": "1. Initial Condition: For $t < 0$, the inductor behaves as a short circuit under DC steady-state conditions. The current is determined by the source voltage and the series resistance:\n$$i(0^-) = \\frac{V}{R} = \\frac{24}{4} = 6 \\text{ A}$$\nSince inductor current is continuous, $i(0^+) = 6$ A.\n\n2. Final Condition: At $t = 0$, the 24 V source is replaced by a short circuit. The resulting circuit consists of the 4 $\\Omega$ resistor and the 12 mH inductor in series, forming a closed loop. With no independent source driving the circuit, the final current is:\n$$i(\\infty) = 0 \\text{ A}$$\n\n3. Time Constant: The time constant $\\tau$ for the RL circuit is calculated as:\n$$\\tau = \\frac{L}{R} = \\frac{0.012}{4} = 0.003 \\text{ s} = 3 \\text{ ms} = 3000 \\text{ \\mu s}$$\n\n4. Current Expression: The current for $t \\ge 0$ is given by the natural response:\n$$i(t) = i(\\infty) + [i(0^+) - i(\\infty)]e^{-t/\\tau}$$\nSubstituting the known values:\n$$i(t) = 0 + (6 - 0)e^{-t/3\\,\\text{ms}} = 6 e^{-t/3\\,\\text{ms}} \\text{ A}$$\n\n5. Time to 50%: Determine the time $t$ at which the current decays to 50% of its initial value, i.e., $i(t) = 3$ A.\n$$3 = 6 e^{-t/3\\,\\text{ms}}$$\n$$0.5 = e^{-t/3\\,\\text{ms}}$$\nTaking the natural logarithm of both sides:\n$$\\ln(0.5) = -\\frac{t}{3\\,\\text{ms}}$$\n$$t = -3\\,\\text{ms}\\,\\ln(0.5) = 3\\,\\text{ms}\\,\\ln 2$$\n$$t \\approx 3\\,\\text{ms} \\times 0.6931 = 2.079\\,\\text{ms} = 2079\\,\\mu\\text{s}$$",
